@@ -228,15 +228,16 @@ body{padding-top:52px}
 @keyframes prodFloat{0%,100%{transform:translateY(0) rotate(-.4deg)}
   50%{transform:translateY(-13px) rotate(.5deg)}}
 @media(prefers-reduced-motion:reduce){.prodCard img{animation:none}}
-.prodCard b{font-size:14.5px;color:var(--ink);margin-top:14px;line-height:1.25}
-.prodCard i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:10px;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-top:5px}
+.prodCard b{font-size:19px;color:var(--ink);margin-top:18px;line-height:1.25}
+.prodCard i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:12.5px;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin-top:7px}
 /* the reserved slot is a gap: the 3D pack is the product shot.
    the ring stays as an invisible spacer so the label lines up with its neighbours */
 .prodSlot .slotRing{width:100%;aspect-ratio:3/4;border:0}
 /* game-style item select: the pack under the cursor lifts out of the line-up and the
    rest recede. Only live once the row has actually risen, see .live in the hero runway. */
-.prodRow.live .prodCard:not(.prodSlot){pointer-events:auto;cursor:pointer}
+/* the slot takes the cursor too in web 2: the docked hero shot is the pack there */
+.prodRow.live .prodCard{pointer-events:auto;cursor:pointer}
 /* the card carries the scale, not the img: the img already owns transform via prodFloat
    and an animation would win over a hover transform */
 .prodCard{position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .35s ease}
@@ -244,11 +245,17 @@ body{padding-top:52px}
 .prodCard b{transition:color .3s ease}
 /* :not(:hover) matters — a plain .prodCard here outranks the :hover rule below
    and would dim the very pack the cursor is on */
-.prodRow.live:has(.prodCard:not(.prodSlot):hover) .prodCard:not(:hover){opacity:.38}
-.prodRow.live .prodCard:not(.prodSlot):hover{opacity:1;z-index:2;
-  transform:scale(1.17) translateY(-10px)}
+.prodRow.live:has(.prodCard:hover) .prodCard:not(:hover){opacity:.38}
+.prodRow.live .prodCard:hover{opacity:1;z-index:2}
+/* the slot deliberately gets no transform: dockPoster reads .slotRing every frame to
+   place the hero shot, so moving the ring on hover would drag the pack with it and
+   feed back. The pack does its own lift and scale in JS instead. */
+.prodRow.live .prodCard:not(.prodSlot):hover{transform:scale(1.17) translateY(-10px)}
 .prodRow.live .prodCard:not(.prodSlot):hover img{filter:drop-shadow(0 28px 34px rgba(26,19,14,.34))}
-.prodRow.live .prodCard:not(.prodSlot):hover b{color:var(--red)}
+.prodRow.live .prodCard:hover b{color:var(--red)}
+/* the docked hero shot picks up the same lifted shadow when its slot is hovered */
+#heroJourney .stage:has(.prodRow.live .prodSlot:hover) .heroPoster img{
+  filter:drop-shadow(0 30px 38px rgba(26,19,14,.36))}
 @media(prefers-reduced-motion:reduce){
   .prodCard{transition:opacity .35s ease}
   .prodRow.live .prodCard:not(.prodSlot):hover{transform:none}
@@ -1046,8 +1053,24 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
      that is the "travel" — and only then shrinks into the reserved slot. Scaling it
      from the very first pixel of scroll made it shrink in place and never read as
      joining the line-up. */
+  /* hover on the reserved slot lifts the docked pack the same way the flat cards
+     lift. It needs its own rAF easing: dockPoster only fires on scroll, and the
+     cursor can arrive while the page is perfectly still. */
+  var hoverAmt=0, hoverTarget=0, lastP=0, lastE=0;
+  var slotEl=document.querySelector('.prodSlot');
+  if(slotEl){
+    slotEl.addEventListener('pointerenter',function(){ hoverTarget=1; });
+    slotEl.addEventListener('pointerleave',function(){ hoverTarget=0; });
+  }
+  (function hoverLoop(){
+    requestAnimationFrame(hoverLoop);
+    var d=hoverTarget-hoverAmt;
+    if(Math.abs(d)>0.0015){ hoverAmt+=d*0.16; dockPoster(lastP,lastE); }
+  })();
+
   function dockPoster(p,e){
     if(!poster) return;
+    lastP=p; lastE=e;
     /* re-measure whenever the pack is home: the transform is identity there, so the
        reading is clean, and it keeps the cache honest after fitBar() pads the body
        (measuring once at parse time left it a whole admin-bar height stale) */
@@ -1068,6 +1091,11 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     var x=(tx-0)*e;
     var y=travelY+(ty-travelY)*e;
     var s=1+(fit-1)*e;
+    /* hover only bites once it has actually docked, and scales about the pack's own
+       centre, so the slot it is sitting in does not shift under it */
+    var hv=hoverAmt*e;
+    s*=1+0.17*hv;
+    y-=10*hv;
     poster.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) scale('+s.toFixed(4)+')';
   }
   var heroSub=document.querySelector('.heroSub'), heroStats=document.querySelector('.heroStats');
