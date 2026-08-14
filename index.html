@@ -196,10 +196,19 @@ body{padding-top:52px}
    which stole width from the flex line and knocked .inner off centre. */
 #range .inner,#range .k{position:relative;z-index:1}
 /* the range row that rises inside the hero stage, centre slot reserved for the 3D pack */
-.prodRow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(38px);
+.prodRow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(102px);
   display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;
   width:min(1560px,94vw);opacity:0;pointer-events:none;z-index:3;
   transition:opacity .2s linear}
+/* sits above the line-up and fades in with it, driven by the same `e` in the runway */
+.prodHead{position:absolute;left:50%;top:50%;z-index:3;text-align:center;
+  transform:translate(-50%,-50%) translateY(-232px);opacity:0;pointer-events:none;
+  transition:opacity .2s linear}
+.phk{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--red-deep)}
+.prodHead h3{margin-top:12px;font-size:clamp(26px,3vw,46px);line-height:1;
+  text-transform:uppercase;color:var(--ink)}
+@media(max-width:900px){.prodHead{display:none}}
 /* no card chrome: the products sit straight on the paper, like a shelf line-up */
 .prodCard{background:none;border:0;padding:0;display:flex;flex-direction:column;
   align-items:center;text-align:center}
@@ -460,6 +469,10 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
       <span>Scroll<span class="cueLong">, the pack cooks itself</span></span>
     </div>
     <!-- the range rises as the hero pack shrinks into the reserved centre slot -->
+    <div class="prodHead" aria-hidden="true">
+      <span class="phk" data-c="hero.rangeKicker">Our best sellers</span>
+      <h3 class="disp" data-c="hero.rangeTitle">5 packs, 1 factory</h3>
+    </div>
     <div class="prodRow" aria-hidden="true">
       <div class="prodCard"><img src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="">
         <b data-c="range.items.1.title">Penang White Curry</b><i data-c="range.items.1.metaAValue">Premium 4-pack</i></div>
@@ -919,6 +932,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   var cue=document.getElementById('scrollCue');
   var cos=[].slice.call(document.querySelectorAll('.callout'));
   var prodRow=document.querySelector('.prodRow');
+  var prodHead=document.querySelector('.prodHead');
   var heroSub=document.querySelector('.heroSub'), heroStats=document.querySelector('.heroStats');
   gsap.to('[data-hline="1"]',{xPercent:-28,ease:'none',immediateRender:false,
     scrollTrigger:{trigger:'#heroJourney',start:'top top',end:'bottom bottom',scrub:SCRUB}});
@@ -946,9 +960,11 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
         var d=Math.max(0,Math.min(1,(p-0.60)/0.16));
         var e=d*d*(3-2*d);
         prodRow.style.opacity=e.toFixed(3);
-        prodRow.style.transform='translate(-50%,-50%) translateY('+((1-e)*38).toFixed(1)+'px)';
+        /* PROD_REST sits the settled row below the stage centre, off the 3D pack's shadow */
+        prodRow.style.transform='translate(-50%,-50%) translateY('+(64+(1-e)*38).toFixed(1)+'px)';
         /* only accept the cursor once the row has actually arrived */
         prodRow.classList.toggle('live',e>0.6);
+        if(prodHead) prodHead.style.opacity=e.toFixed(3);
       }
       window.__heroP=p;
     },
