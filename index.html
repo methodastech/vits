@@ -68,13 +68,17 @@ body{padding-top:52px}
 #heroCanvas canvas{display:block}
 .heroPoster{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center;pointer-events:none}
 .heroPoster img{height:62vh;width:auto;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(26,19,14,.25))}
-.callout{position:absolute;z-index:4;max-width:230px;background:rgba(255,255,255,.92);border:1px solid var(--line);
-  border-left:3px solid var(--red);border-radius:12px;padding:11px 14px;font-size:13px;color:var(--soft);
+/* same pill as the nav Trade Enquiry button: red ground, white type, 999px ends */
+.callout{position:absolute;z-index:4;max-width:250px;
+  background:var(--red);color:#fff;border:0;border-radius:999px;
+  padding:12px 24px;font-size:14.5px;font-weight:700;line-height:1.4;
   opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;pointer-events:none}
-.callout b{color:var(--ink)}
+.callout b{color:#fff}
+/* the trailing sentence stays a shade lighter so the lead still leads */
+.callout span{font-weight:600;color:rgba(255,255,255,.88)}
 .callout.act{opacity:1;transform:translateY(0)}
 .co1{top:20vh;left:7vw}.co2{top:52vh;left:10vw}.co3{top:18vh;right:8vw}.co4{top:46vh;right:6vw}.co5{top:72vh;right:16vw}
-@media(max-width:760px){.callout{max-width:165px;font-size:11.5px}.co1{top:16vh;left:4vw}.co2{top:64vh;left:4vw}.co3{top:16vh;right:4vw}.co4{top:64vh;right:4vw}.co5{display:none}
+@media(max-width:760px){.callout{max-width:180px;font-size:12px;padding:10px 18px}.co1{top:16vh;left:4vw}.co2{top:64vh;left:4vw}.co3{top:16vh;right:4vw}.co4{top:64vh;right:4vw}.co5{display:none}
   .heroSub{bottom:10vh;max-width:250px}.heroSub p{font-size:13px}.heroStats{display:none}}
 .cue{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(30px + var(--barh,52px));z-index:5;display:flex;align-items:center;gap:10px;
   font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);
