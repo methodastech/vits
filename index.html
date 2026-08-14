@@ -198,15 +198,14 @@ body{padding-top:52px}
 /* the range row that rises inside the hero stage, centre slot reserved for the 3D pack */
 .prodRow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(102px);
   display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;
-  width:min(1560px,94vw);opacity:0;pointer-events:none;z-index:3;
+  /* same page edge as every other section, so the line-up starts under the logo */
+  width:calc(100% - 2*var(--gutter));opacity:0;pointer-events:none;z-index:3;
   transition:opacity .2s linear}
 /* sits above the line-up and fades in with it, driven by the same `e` in the runway */
-.prodHead{position:absolute;left:50%;top:50%;z-index:3;text-align:center;
-  transform:translate(-50%,-50%) translateY(-232px);opacity:0;pointer-events:none;
+.prodHead{position:absolute;left:var(--gutter);top:50%;z-index:3;text-align:left;
+  transform:translateY(-50%) translateY(-240px);opacity:0;pointer-events:none;
   transition:opacity .2s linear}
-.phk{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--red-deep)}
-.prodHead h3{margin-top:12px;font-size:clamp(26px,3vw,46px);line-height:1;
+.prodHead h3{font-size:clamp(26px,3vw,46px);line-height:1;
   text-transform:uppercase;color:var(--ink)}
 @media(max-width:900px){.prodHead{display:none}}
 /* no card chrome: the products sit straight on the paper, like a shelf line-up */
@@ -326,8 +325,50 @@ body{padding-top:52px}
 .cookPoster{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center}
 .cookPoster img{height:56vh;object-fit:contain}
 
-/* ============ scene 7 · finale ============ */
-#finale{background:var(--cream2);padding:110px 26px 60px}
+/* ============ scene 7 · the bowl reel ============ */
+/* tall section, sticky stage: scroll position maps straight onto video time */
+#reel{position:relative;height:420vh;background:var(--cream)}
+/* the cream has to be painted on the stage itself: sticky makes a stacking context,
+   and the video's multiply blend needs a backdrop inside it to blend against */
+#reel .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;background:var(--cream)}
+/* the bowl takes the right of the stage so the copy on the left stays on clean paper */
+.reelVid{position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:min(60%,1040px);height:auto;max-height:92vh;object-fit:contain;
+  z-index:0;pointer-events:none;
+  /* the clips render on white; multiply drops that straight out onto the cream */
+  mix-blend-mode:multiply}
+.reelCopy{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);
+  z-index:2;max-width:30ch;pointer-events:none}
+.reelCopy .k{color:var(--red-deep)}
+.reelCopy h2{font-size:clamp(34px,4.6vw,68px);line-height:.98;text-transform:uppercase;
+  margin-top:14px;color:var(--ink)}
+.reelCopy h2 em{font-style:normal;color:var(--red)}
+.reelCopy p{margin-top:16px;font-size:15.5px;line-height:1.6;color:var(--soft);max-width:34ch}
+/* one tick per dish in the loop */
+.reelRail{position:absolute;left:50%;bottom:7vh;transform:translateX(-50%);z-index:2;
+  display:flex;gap:8px}
+.reelRail i{width:26px;height:2px;border-radius:2px;background:rgba(26,19,14,.18);
+  transition:background .35s ease}
+.reelRail i.act{background:var(--red)}
+@media(max-width:900px){
+  .reelVid{position:absolute;right:auto;left:50%;top:auto;bottom:4vh;
+    transform:translateX(-50%);width:96%;max-height:58vh}
+  .reelCopy{left:0;right:0;top:7vh;transform:none;max-width:none;text-align:center;
+    padding:0 var(--gutter)}
+  .reelCopy p{margin-left:auto;margin-right:auto}
+}
+/* no scrubbing when motion is reduced: hold the poster and stop pinning */
+@media(prefers-reduced-motion:reduce){
+  #reel{height:auto}
+  #reel .stage{position:relative;height:auto;min-height:70vh;padding:12vh 0}
+  .reelVid{position:relative;height:60vh}
+  .reelCopy{position:relative;left:auto;top:auto;transform:none;margin:0 auto}
+}
+
+/* ============ scene 8 · finale ============ */
+#finale{background:var(--cream2);padding:110px var(--gutter) 60px}
+#finale .fwrap{max-width:none}   /* align to the nav logo, same as #trade and #range */
 .fwrap{max-width:1180px;margin:0 auto}
 #finale h2{font-size:clamp(38px,6vw,84px);line-height:.98;text-transform:uppercase;max-width:16ch;margin-top:14px}
 #finale h2 em{font-style:normal;color:var(--red)}
@@ -470,8 +511,7 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
     </div>
     <!-- the range rises as the hero pack shrinks into the reserved centre slot -->
     <div class="prodHead" aria-hidden="true">
-      <span class="phk" data-c="hero.rangeKicker">Our best sellers</span>
-      <h3 class="disp" data-c="hero.rangeTitle">5 packs, 1 factory</h3>
+      <h3 class="disp" data-c="hero.rangeTitle">Our best sellers</h3>
     </div>
     <div class="prodRow" aria-hidden="true">
       <div class="prodCard"><img src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="">
@@ -753,7 +793,23 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
   </div>
 </section>
 
-<!-- ============ scene 7: the ask ============ -->
+<!-- ============ scene 7: the bowl reel ============ -->
+<!-- one 20s loop, scrubbed by scroll: the bowl turns while the dish changes -->
+<section id="reel" aria-label="Every bowl from one line">
+  <div class="stage">
+    <video id="reelVid" class="reelVid" muted playsinline preload="auto"
+           disablepictureinpicture aria-hidden="true"
+           poster="assets/reel-poster.jpg" src="assets/bowl-reel.mp4"></video>
+    <div class="reelCopy">
+      <span class="k" data-c="reel.kicker">06 &middot; One line, every bowl</span>
+      <h2 class="disp" data-c="reel.title">Same factory.<br><em>Every flavour.</em></h2>
+      <p data-c="reel.body">One noodle line and one seasoning kitchen behind every bowl on this page. Scroll to turn it.</p>
+    </div>
+    <div class="reelRail" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ============ scene 8: the ask ============ -->
 <section id="finale" aria-label="Trade enquiry">
   <div class="fwrap">
     <span class="k">05 &middot; The ask</span>
@@ -901,6 +957,34 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
       if(+o<0.05) gsap.set(el,{clearProps:'all'});
     });
   },8000); });
+
+  /* bowl reel: scroll position drives video time directly. The seek is eased in a rAF
+     loop rather than written straight from onUpdate, because jumping currentTime on
+     every scroll event outruns the decoder and the picture stutters. */
+  (function(){
+    var v=document.getElementById('reelVid');
+    if(!v) return;
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var ticks=[].slice.call(document.querySelectorAll('.reelRail i'));
+    var target=0,cur=0,ready=false;
+    function onMeta(){ if(v.duration&&isFinite(v.duration)) ready=true; }
+    v.addEventListener('loadedmetadata',onMeta); onMeta();
+    v.pause();
+    ScrollTrigger.create({trigger:'#reel',start:'top top',end:'bottom bottom',
+      onUpdate:function(self){ target=self.progress; }});
+    (function tick(){
+      requestAnimationFrame(tick);
+      if(!ready) return;
+      cur+=(target-cur)*0.14;
+      /* stop just shy of the end: seeking to exactly duration parks on a blank frame */
+      var want=cur*(v.duration-0.06);
+      if(Math.abs(v.currentTime-want)>0.008){ try{ v.currentTime=want; }catch(e){} }
+      if(ticks.length){
+        var i=Math.min(ticks.length-1,Math.floor(cur*ticks.length));
+        for(var j=0;j<ticks.length;j++) ticks[j].classList.toggle('act',j===i);
+      }
+    })();
+  })();
 
   /* trade: the pinned frame follows whichever capability owns the middle of the screen */
   (function(){
