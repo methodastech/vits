@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vit's Noodles · Website &amp; Digital Audit · Brand Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBF7F0;--paper2:#FFFDF9;--ink:#1A130E;--soft:#5A4F45;--faint:#9A8D80;--line:#EBE1D3;--line2:#DFD3C1;--red:#D8232A;--red-deep:#A81318;--wash:#FBEAE4;--ok:#1A8F5A;--warn:#C9941F;--bad:#D7263D;--dark:#180F0B;--gold:#E9A820;--maxw:none;}
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:none;margin:0;padding:0 22px}.mono{font-family:"JetBrains Mono",monospace}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);display:inline-flex;align-items:center;gap:10px;font-weight:600}
+  .hero{padding:50px 0 8px}.hero h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(36px,5.6vw,62px);line-height:1.03;letter-spacing:-.02em;margin:18px 0 0;max-width:22ch}.hero h1 em{font-style:italic;color:var(--red-deep)}
+  .hero .lede{font-size:clamp(17px,2vw,20px);color:var(--soft);max-width:66ch;margin:20px 0 0}
+  .vrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.vchip{background:var(--paper2);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;color:var(--soft)}.vchip b{color:var(--red-deep)}
+  .execsum{margin-top:32px;border:1px solid var(--line);border-radius:16px;background:var(--paper2);padding:26px 28px}
+  .execsum .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-deep);font-weight:700}
+  .execsum p{margin-top:10px;font-size:15.5px;color:var(--soft)}.execsum p b{color:var(--ink)}
+  section{padding:32px 0}
+  .chapdiv{display:flex;align-items:baseline;gap:18px;padding:42px 0 4px;border-top:1px solid var(--line);margin-top:10px}.cd-no{font-family:"Fraunces",serif;font-weight:600;font-size:38px;color:var(--red-deep);line-height:1}.cd-h{font-family:"Fraunces",serif;font-weight:500;font-size:27px;letter-spacing:-.01em}.cd-sub{font-size:15px;color:var(--soft);margin-top:5px}
+  h2{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(25px,3.6vw,37px);line-height:1.08;letter-spacing:-.015em;margin:13px 0 0;max-width:30ch}
+  h3.sub{font-family:"Fraunces",serif;font-weight:500;font-size:22px;margin:30px 0 0}
+  .sec-intro{font-size:16.5px;color:var(--soft);max-width:72ch;margin:15px 0 0}.sec-intro b,.sec-intro strong{color:var(--ink)}.sec-intro em{color:var(--red-deep)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
+  .card{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:20px 21px}.card .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--red-deep);font-weight:700}.card h3{font-family:"Fraunces",serif;font-weight:500;font-size:19px;margin-top:8px}.card p{font-size:14px;color:var(--soft);margin-top:9px;line-height:1.55}.card p b{color:var(--ink)}
+  .card.dark{background:var(--dark);border-color:#2e2118;color:#EFE4D6}.card.dark h3{color:#fff}.card.dark p{color:#C9B9A6}.card.dark .tag{color:#FF9A8E}.card.dark p b{color:#fff}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:22px}.stat{border:1px solid var(--line);border-radius:13px;background:var(--paper2);padding:16px 18px}.stat .num{font-family:"Fraunces",serif;font-size:28px;font-weight:500;color:var(--red-deep);line-height:1.05}.stat .lab{font-size:13px;font-weight:600;margin-top:8px}.stat .s{font-size:12px;color:var(--faint);margin-top:3px}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin-top:18px;font-size:14px;background:var(--paper2);border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}thead th{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--dark)}tr:last-child td{border-bottom:none}td.dim{font-weight:600;white-space:nowrap}td.sc{font-family:"JetBrains Mono",monospace;color:var(--red-deep);font-weight:700;white-space:nowrap}
+  .tbl-scroll{overflow-x:auto;margin-top:18px}.tbl-scroll table{margin-top:0;min-width:720px}
+  .vtag{font-family:"JetBrains Mono",monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:6px;font-weight:700;white-space:nowrap}.vtag.hi{background:rgba(26,143,90,.14);color:var(--ok)}.vtag.lo{background:rgba(201,148,31,.16);color:#9a6f12}.vtag.bad{background:rgba(215,38,61,.12);color:var(--bad)}
+  .diagram{margin-top:18px;border:1px solid var(--line);border-radius:14px;background:var(--paper2);padding:18px}.diagram .cap{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}.diagram svg{width:100%;height:auto;display:block}
+  .pin{margin-top:22px;border-left:3px solid var(--red);background:linear-gradient(90deg,rgba(216,35,42,.06),transparent);padding:15px 19px;border-radius:0 12px 12px 0;font-size:15px;display:block}.pin b{color:var(--red-deep)}.pin.warn{border-left-color:var(--warn);background:linear-gradient(90deg,rgba(201,148,31,.09),transparent)}.pin.warn b{color:#9a6f12}
+  .quote{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--soft);border-left:3px solid var(--line2);padding:6px 0 6px 18px;margin-top:16px}
+  footer{padding:34px 0 70px;color:var(--faint);font-size:12px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid var(--line);margin-top:30px}
+</style>
+<style id="vledgerCss">
+  .vl-sec{padding:46px 0 10px}
+  .vl-head{margin-bottom:8px}
+  .vl-k{display:block;font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);margin-bottom:10px;font-weight:700}
+  .vl-h2{font-family:Fraunces,Georgia,serif;font-size:clamp(26px,3.2vw,40px);line-height:1.12;margin:0 0 12px;font-weight:600}
+  .vl-lede{font-size:16px;line-height:1.6;color:#5A4F45;max-width:74ch;margin:0 0 8px}
+  .vl-legend{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+  .vl-lg{display:inline-flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:999px;border:1px solid}
+  .vl-scroll{overflow-x:auto;border:1px solid rgba(26,19,14,.14);border-radius:14px;background:#fff}
+  table.vledger{width:100%;border-collapse:separate;border-spacing:0;min-width:1080px;font-size:13.5px;border:0;border-radius:0}
+  table.vledger th{text-align:left;padding:12px 14px;background:#180F0B;color:#fff;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;border-right:1px solid rgba(255,255,255,.1)}
+  table.vledger th:last-child{border-right:0}
+  table.vledger td{padding:14px;vertical-align:top;line-height:1.55;color:#4a4038;border-bottom:1px solid rgba(26,19,14,.09);border-right:1px solid rgba(26,19,14,.06)}
+  table.vledger td:last-child{border-right:0}
+  table.vledger tr:last-child td{border-bottom:0}
+  table.vledger tbody tr:nth-child(even) td{background:#FBF8F2}
+  .vl-n{font-family:"JetBrains Mono",monospace;font-weight:700;color:#9a9ca6;font-size:12px;width:34px}
+  .vl-area{font-weight:700;color:#1A130E;min-width:132px}
+  .vl-area small{display:block;margin-top:4px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#9a8d80;font-weight:700}
+  .vl-good{color:#126B45;min-width:210px}
+  .vl-bad{color:#B3261E;min-width:230px}
+  .vl-act{min-width:280px}.vl-act b{color:#1A130E}
+  .vl-when{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.05em;color:#6B7280;white-space:nowrap}
+  .vd{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid;white-space:nowrap}
+  .vd.fix{background:#FEF4E2;border-color:#EFD09B;color:#8A5B08}
+  .vd.rem{background:#FDECEA;border-color:#F0B6AE;color:#B3261E}
+  .vd.edit{background:#EEF1FE;border-color:#C3CBF7;color:#1421B8}
+  .vd.keep{background:#E4F4EC;border-color:#A8D9C0;color:#126B45}
+  .vd.build{background:#F3EAFE;border-color:#D6C2F3;color:#5B21B6}
+  .vl-foot{margin-top:16px;padding:14px 16px;border-radius:12px;background:#F7F2E9;border-left:3px solid var(--red-deep);font-size:14px;line-height:1.6;color:#4a4038}
+  @media(max-width:700px){ .vl-sec{padding:32px 0 6px} }
+</style>
+<style id="printFix">
+@media print{
+  body{background:#fff}
+  .reveal,.fade,.draw,[data-reveal],[data-r],.rv{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}
+  svg *{opacity:1!important}
+  table,tr,td,th,figure,.card,.diagram{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  .bmws{display:none!important}
+}
+</style>
+</head>
+<body>
+<style id="bmwsCss">
+.bmws{background:#0B0805;color:#F2E9DD;position:sticky;top:0;z-index:900;border-bottom:1px solid #2a1d12}
+.bmws-in{display:flex;align-items:center;justify-content:space-between;padding:9px 22px;max-width:none;margin:0;gap:12px;flex-wrap:wrap}
+.bmws-crumb{display:flex;flex-direction:column;line-height:1.3;white-space:nowrap}
+.bmws-crumb b{font-size:13px;font-weight:700;color:#fff;letter-spacing:.01em;font-family:Inter,system-ui,sans-serif}
+.bmws-crumb span{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#A6907C}
+.bmws-tabs{display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:11px;overflow:auto;max-width:100%;margin-left:auto;padding:3px;gap:3px;background:rgba(255,255,255,.04)}
+.bmws-tabs a{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#E3D2BE;text-decoration:none;padding:7px 13px;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:background .25s,color .25s}
+.bmws-tabs a i{font-style:normal;color:#A6907C;font-size:9px;font-weight:700}
+.bmws-tabs a:hover{background:rgba(255,255,255,.09);color:#fff}
+.bmws-tabs a.on{background:#D8232A;color:#fff;font-weight:700}
+.bmws-tabs a.on i{color:rgba(255,255,255,.72)}
+</style>
+<div class="bmws"><div class="bmws-in">
+  <div class="bmws-crumb"><b>Vit's Noodles &middot; Website 1</b><span>Brand Method &middot; Admin Navigation</span></div>
+  <nav class="bmws-tabs" aria-label="Admin navigation">
+    <a class="on" href="audit.html"><i>00</i>Web Audit</a>
+    <a href="competitors.html"><i>01</i>Competitors</a>
+    <a href="plan.html"><i>02</i>Web Plan</a>
+    <a href="index.html"><i>03</i>Prototype Web 1</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">Vit's Noodles &middot; vitsnoodles.com &middot; Web Audit</span>
+  <h1>Fifty one years of capability, <em>invisible to the buyer</em> who matters.</h1>
+  <p class="lede">Every figure below was measured live on vitsnoodles.com between 10 and 12 August 2026, not estimated. The finding in one line: the site is a working content factory, 127 URLs deep, with real trade credentials, wearing a shop window that publishes none of the numbers a trade buyer needs and loads slower than a buyer will wait.</p>
+  <div class="vrow">
+    <span class="vchip"><b>127</b> live URLs in the sitemap</span>
+    <span class="vchip"><b>7.0s</b> homepage load</span>
+    <span class="vchip"><b>0</b> MOQ, capacity or lead-time figures published</span>
+    <span class="vchip"><b>241 of 253</b> homepage images without alt text</span>
+    <span class="vchip"><b>4</b> spellings of the brand name on one page</span>
+    <span class="vchip"><b>3.4 / 10</b> nine-lens score</span>
+  </div>
+  <div class="execsum">
+    <span class="tag">The 60 second verdict</span>
+    <p>vitsnoodles.com is <b>not a brochure site and not a rescue case</b>. It is WordPress with Yoast and WooCommerce, the SEO fundamentals are present, and the recipe and blog engines are genuinely active, the most recent recipe update landed 6 August. What it lacks is a lane for the buyer Vit's now says matters most: <b>the trade buyer at Gulfood, in the US, Bangkok and the UK</b>. That buyer finds no MOQ, no production capacity, no lead time, a 7 second load, and a brand name spelled four ways. The fix is not a teardown. It is a fast trade destination in front, a disciplined rebuild behind it, and a <b>127 URL migration that preserves every ranking</b>, which is the client's own stated fear.</p>
+  </div>
+</header>
+
+<section id="c01">
+  <div class="chapdiv"><div class="cd-no">01</div><div><div class="cd-h">The company before the site</div><div class="cd-sub">Who Vit's actually is, and the six jobs a winning trade site must do for them</div></div></div>
+  <p class="sec-intro">An audit that starts with the site judges aesthetics. This one starts with the company, so every score that follows is a score against revenue. <b>Vit's Noodles, VIT Makanan (K.L.) Sdn. Bhd.</b>, has manufactured noodles in Kuala Lumpur since 1975, halal certified by JAKIM since 1980.</p>
+  <div class="grid g3">
+    <div class="card"><span class="tag">The commercial model</span><h3>Plain noodles pay for everything</h3><p>Roughly <b>70% of revenue is the Malaysian plain-noodle base</b>, led by the yellow economy pack. Seasoned noodles, premium ranges and the Italian line sit on top. The base cannot be disturbed, the top is where growth lives.</p></div>
+    <div class="card"><span class="tag">The growth engine</span><h3>OEM, private label, bulk</h3><p>Behind the retail brand is a manufacturing business: OEM runs, private label for overseas buyers, bulk supply. Its customers are found at exhibitions, Dubai first, then the US, Bangkok and the UK, and its orders are containers, not cartons.</p></div>
+    <div class="card"><span class="tag">The catalogue</span><h3>25 SKUs across 7 categories</h3><p>Economy, premium Penang range, air-dried Healthy Series, Hotlicious pan mee, Italian series, fresh lines. Fried and air-dried processes, certifications FSSC 22000, HACCP, GMP, ISO 22000, JAKIM halal.</p></div>
+  </div>
+  <h3 class="sub">Six things a winning Vit's site has to do</h3>
+  <div class="goals2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px">
+    <div class="card"><span class="tag">Job 1</span><p><b>Answer the buyer's opening question</b>, can you make a taste like Buldak, like Indomie, before the first email.</p></div>
+    <div class="card"><span class="tag">Job 2</span><p><b>Publish the three trade numbers</b>: MOQ tiers, capacity, lead time, plus formats and shelf life per SKU.</p></div>
+    <div class="card"><span class="tag">Job 3</span><p><b>Serve two lanes without confusing either</b>: the 70% Malaysian consumer base and the overseas trade buyer.</p></div>
+    <div class="card"><span class="tag">Job 4</span><p><b>Load inside a buyer's patience</b> on a phone at an exhibition stand, under 3 seconds to first meaningful paint.</p></div>
+    <div class="card"><span class="tag">Job 5</span><p><b>Say every fact once, correctly</b>: one brand spelling, one export count, one founding claim, all evidenced.</p></div>
+    <div class="card"><span class="tag">Job 6</span><p><b>Keep the rankings it already owns</b>: 127 URLs of recipes, posts and products migrate with zero 404s.</p></div>
+  </div>
+  <span class="pin"><b>The rest of this audit scores the site against these six jobs.</b> Every chapter names the job it serves.</span>
+</section>
+
+<section id="c02">
+  <div class="chapdiv"><div class="cd-no">02</div><div><div class="cd-h">What the site actually is</div><div class="cd-sub">The inventory nobody had counted, read from the site's own sitemap index</div></div></div>
+  <p class="sec-intro">The first pass at scoping this project assumed an 8 page brochure site. The site's own <span class="mono">sitemap_index.xml</span> says otherwise: <b>127 live URLs</b>, most of them working content. Any plan that ignores this bins rankings the client already owns, and the client raised SEO preservation twice in the 12 August meeting.</p>
+  <div class="diagram">
+    <div class="cap">F1 &middot; The 127 URL inventory, read from the Yoast sitemaps, 10 Aug 2026</div>
+    <svg viewBox="0 0 960 300" role="img" aria-label="Inventory of the 127 URLs by type">
+      <g font-family="Inter,system-ui,sans-serif" font-size="15">
+        <rect x="150" y="20"  width="333" height="30" rx="6" fill="#D8232A"/><text x="20" y="41" fill="#1A130E" font-weight="600">44 recipes</text><text x="493" y="41" fill="#5A4F45">updated 6 Aug, the most active content</text>
+        <rect x="150" y="60"  width="189" height="30" rx="6" fill="#E9A820"/><text x="20" y="81" fill="#1A130E" font-weight="600">25 products</text><text x="349" y="81" fill="#5A4F45">WooCommerce, 7 categories</text>
+        <rect x="150" y="100" width="182" height="30" rx="6" fill="#C9691E"/><text x="20" y="121" fill="#1A130E" font-weight="600">24 blog posts</text><text x="342" y="121" fill="#5A4F45">a working B2B engine, last post 9 Jul</text>
+        <rect x="150" y="140" width="91"  height="30" rx="6" fill="#8A5B3A"/><text x="20" y="161" fill="#1A130E" font-weight="600">12 pages</text><text x="251" y="161" fill="#5A4F45">incl. OEM, Private Label, Bulk</text>
+        <rect x="150" y="180" width="83"  height="30" rx="6" fill="#B3937A"/><text x="20" y="201" fill="#1A130E" font-weight="600">11 recipe videos</text><text x="243" y="201" fill="#5A4F45">own video sitemap</text>
+        <rect x="150" y="220" width="23"  height="30" rx="6" fill="#D6C4B2"/><text x="20" y="241" fill="#1A130E" font-weight="600">3 author archives</text><text x="183" y="241" fill="#5A4F45">thin, should be noindexed</text>
+        <rect x="150" y="260" width="8"   height="30" rx="6" fill="#D6C4B2"/><text x="20" y="281" fill="#1A130E" font-weight="600">1 thank-you page</text><text x="168" y="281" fill="#5A4F45">indexable, should not be</text>
+      </g>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">127</div><div class="lab">Live URLs</div><div class="s">12 + 24 + 25 + 44 + 11 + 3 + 1 accounted in sections, plus remainder pages in the page sitemap</div></div>
+    <div class="stat"><div class="num">WP</div><div class="lab">WordPress + Divi 5.2.1</div><div class="s">Yoast SEO, WooCommerce</div></div>
+    <div class="stat"><div class="num">6 Aug</div><div class="lab">Last recipe update</div><div class="s">the engine is alive, not archived</div></div>
+    <div class="stat"><div class="num">9 Jul</div><div class="lab">Last blog post</div><div class="s">OEM, private label and export topics</div></div>
+  </div>
+  <h3 class="sub">What the site actually ships, measured</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Measurement</th><th>Found</th><th>Read</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Homepage full load</td><td class="sc">7.0s &middot; 3.41MB &middot; 114 requests</td><td>Past a buyer's patience, trending worse since July. Job 4 failed</td></tr>
+      <tr><td class="dim">Homepage copy</td><td class="sc">483 words &middot; 2 competing heroes</td><td>OEM slide fights the consumer slide, neither lane wins. Job 3 failed</td></tr>
+      <tr><td class="dim">Homepage images with alt</td><td class="sc">12 of 253</td><td>95% carry nothing, an accessibility and SEO cost in one figure</td></tr>
+      <tr><td class="dim">MOQ, capacity, lead time</td><td class="sc">0 figures on 3 trade pages</td><td>The three numbers a buyer emails about are absent. Job 2 failed</td></tr>
+      <tr><td class="dim">Gram weights on products</td><td class="sc">1 of 8 SKUs checked</td><td>Buyers fall back to price, the one comparison Vit's loses</td></tr>
+      <tr><td class="dim">Brand name forms</td><td class="sc">4 across 19 mentions, one page</td><td>47% consistency at best. Job 5 failed</td></tr>
+      <tr><td class="dim">Schema types</td><td class="sc">No Organization, Product or Recipe</td><td>The three types worth traffic are the three missing</td></tr>
+      <tr><td class="dim">International signals</td><td class="sc">en-US only &middot; no og:image</td><td>An exporter invisible to its own markets</td></tr>
+      <tr><td class="dim">Fundamentals</td><td class="sc">Titles, metas, H1, canonical present</td><td>The 6 out of 10 base that makes this a migration, not a rescue</td></tr>
+    </tbody>
+  </table></div>
+  <span class="pin"><b>Why this matters for the pitch:</b> the previous framing, a small brochure rebuild, would have deleted roughly 104 content URLs and the rankings attached to them. Counting the site first is the difference between a redesign and a migration. It is also the proof Christina asked for that we can work with another agency's build.</span>
+</section>
+
+<section id="c03">
+  <div class="chapdiv"><div class="cd-no">03</div><div><div class="cd-h">What a trade buyer finds today</div><div class="cd-sub">The site graded against the five things an OEM buyer checks before emailing</div></div></div>
+  <p class="sec-intro">The 12 August meeting reset the brief: the priority customer is the <b>trade buyer at exhibitions</b>, importers, distributors, wholesalers and private label clients. Published buyer research and trade platform practice agree on what that buyer evaluates first: packaging formats, shelf life, certifications, minimum order quantity, and customisation ability. Vit's publishes one of the five well.</p>
+  <div class="diagram">
+    <div class="cap">F2 &middot; The five checks an OEM buyer runs, vs what vitsnoodles.com publishes, read 12 Aug 2026</div>
+    <svg viewBox="0 0 960 330" role="img" aria-label="Buyer checklist versus what the site publishes">
+      <g font-family="Inter,system-ui,sans-serif">
+        <g font-size="15" font-weight="600" fill="#1A130E">
+          <text x="20" y="48">Certifications</text>
+          <text x="20" y="108">Packaging formats</text>
+          <text x="20" y="168">Customisation / OEM story</text>
+          <text x="20" y="228">Minimum order quantity</text>
+          <text x="20" y="288">Capacity &amp; lead time</text>
+        </g>
+        <g font-size="13.5">
+          <rect x="250" y="28" width="690" height="32" rx="7" fill="rgba(26,143,90,.13)" stroke="#1A8F5A"/><text x="266" y="49" fill="#126B45" font-weight="600">PUBLISHED. FSSC 22000, HACCP, GMP, ISO 22000, JAKIM halal since 1980. The strongest asset on the site.</text>
+          <rect x="250" y="88" width="690" height="32" rx="7" fill="rgba(201,148,31,.13)" stroke="#C9941F"/><text x="266" y="109" fill="#8A5B08" font-weight="600">PARTIAL. Product photos exist, but 7 of 8 SKUs checked publish no gram weight, and no carton or container data.</text>
+          <rect x="250" y="148" width="690" height="32" rx="7" fill="rgba(201,148,31,.13)" stroke="#C9941F"/><text x="266" y="169" fill="#8A5B08" font-weight="600">PARTIAL. OEM, Private Label and Bulk pages exist and read well, but stop before any operational number.</text>
+          <rect x="250" y="208" width="690" height="32" rx="7" fill="rgba(215,38,61,.12)" stroke="#D7263D"/><text x="266" y="229" fill="#B3261E" font-weight="600">ABSENT. No MOQ anywhere on the OEM, Private Label or Bulk pages.</text>
+          <rect x="250" y="268" width="690" height="32" rx="7" fill="rgba(215,38,61,.12)" stroke="#D7263D"/><text x="266" y="289" fill="#B3261E" font-weight="600">ABSENT. No production capacity and no lead-time figure anywhere on the site.</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="grid g2">
+    <div class="card"><span class="tag">The buyer's opening question</span><h3>"Can you create a taste similar to Buldak, or Indomie?"</h3><p>Christina's words for how buyers open. The site's answer today is silence: seasoned noodle capability is the thing Vit's says nobody knows about them, and the site never demonstrates it. The seasoning story is a content job before it is a branding job.</p></div>
+    <div class="card"><span class="tag">The export claim conflict</span><h3>One fact, four numbers</h3><p>The About page says <b>30 countries</b>, the OEM page says <b>30+</b>, a blog post says <b>20</b>, and the client says <b>50+</b> with 30 years of export experience. A buyer who notices stops trusting every other number. The real figure is owed by Christina, then published once, everywhere.</p></div>
+    <div class="card"><span class="tag">Trade platform practice</span><h3>Tiered MOQ converts better than silence</h3><p>Traditional OEM minimums in this category run 10,000+ units per SKU, and listings that publish tiered MOQs convert materially better than single-figure or absent MOQs. Publishing the number is not a concession, it is a filter that saves the sales team from unqualified enquiries.</p></div>
+    <div class="card dark"><span class="tag">The single highest-value fix</span><h3>Publish MOQ, capacity, lead time</h3><p>It needs no rebrand, no rebuild and no designer. Three figures from operations, published on the trade pages, would do more for exhibition follow-up than any visual change on this site. Owed by Vit's operations, chased through Christina.</p></div>
+  </div>
+  <h3 class="sub">The trade funnel, stage by stage</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Touchpoint</th><th>Score</th><th>What is won or lost</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Discover &middot; the stand, or a search</td><td class="sc">5 / 10</td><td>Exhibitions supply real meetings, but search finds a site with no hreflang and links that unfurl with no image</td></tr>
+      <tr><td class="dim">First look &middot; the homepage on a phone</td><td class="sc">3 / 10</td><td>7 seconds on stand wifi, then two heroes arguing. Half the follow-ups die here</td></tr>
+      <tr><td class="dim">Capability check &middot; OEM and Private Label pages</td><td class="sc">4 / 10</td><td>Credible copy wins interest, then zero operational numbers hand the buyer back to the anonymous factory next door</td></tr>
+      <tr><td class="dim">Trust check &middot; certifications and claims</td><td class="sc">6 / 10</td><td>The certification set is genuinely strong. Three export counts and three founding years spend the trust it earns</td></tr>
+      <tr><td class="dim">Contact &middot; the enquiry</td><td class="sc">4 / 10</td><td>A generic form with no response promise, no specification sheet, no reason to choose it over the WhatsApp number on a business card</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="c04">
+  <div class="chapdiv"><div class="cd-no">04</div><div><div class="cd-h">The shop window</div><div class="cd-sub">The homepage, measured</div></div></div>
+  <p class="sec-intro">The homepage tries to serve two audiences in one carousel and serves neither. Slide one sells OEM manufacturing to businesses, slide two sells "Loved Worldwide" to consumers. Below the fold it carries <b>483 words</b>, thin for a site with this much to say, and the word count problem is small next to the naming problem.</p>
+  <div class="grid g2">
+    <div class="card"><span class="tag">Measured 11 Aug</span><h3>The brand name, four ways on one page</h3><p>On the Private Label page the name appears 19 times in <b>4 different spellings</b>, and the most used form accounts for only <b>47%</b> of mentions. Across the site: the title tag says "Vit's Noodle" singular, the meta says "Vits Noodles", Facebook is /vitsnoodles, Instagram is @vits_malaysia, and the registered entity is VIT Makanan (K.L.) Sdn Bhd. Both apostrophe characters appear.</p></div>
+    <div class="card"><span class="tag">Why it matters</span><h3>This is the brand book argument, in evidence</h3><p>Vit's has never had brand guidelines, Christina confirmed it outright in the 12 August meeting. The spelling table is what 51 years without a rule book looks like in public. It is also the one audit finding that no competitor can copy their way out of for us: it is fixed by governance, which is what we sell.</p></div>
+    <div class="card"><span class="tag">Date claims</span><h3>1975, 1977, 1980, pick one</h3><p>The site trades on "since 1975". One blog title tag reads "A Malaysian Noodle Brand Since 1980". Company histories place the first noodle machine at 1977. The safe, sourced line is <b>"halal since 1980"</b>, JAKIM, which is also the more valuable claim for the Gulf buyer. "Making the noodle since 1975" needs the client's evidence before it goes on a pack or a page.</p></div>
+    <div class="card"><span class="tag">Heard in the meeting</span><h3>The curry correction</h3><p>Our July line "curry appears zero times on the homepage" was heard by Christina as "you have no curry", and she pushed back, correctly, that curry SKUs exist under the Classic range. The finding stands in its precise form: the homepage does not surface the word. The framing changes: curry is a <b>visibility</b> gap, not a product gap, and its job is now the overseas seasoning story, not a Malaysian launch.</p></div>
+  </div>
+  <div class="diagram">
+    <div class="cap">F5 &middot; The brand name on one page, counted, OEM page, 28 Jul 2026</div>
+    <svg viewBox="0 0 960 220" role="img" aria-label="Brand name spelling counts">
+      <g font-family="Inter,system-ui,sans-serif" font-size="15">
+        <text x="20" y="44" fill="#1A130E" font-weight="600">Vit's &middot; correct</text>
+        <rect x="200" y="24" width="440" height="30" rx="7" fill="#1A8F5A"/><text x="652" y="45" fill="#126B45" font-weight="700">11</text>
+        <text x="20" y="94" fill="#1A130E" font-weight="600">Vits</text>
+        <rect x="200" y="74" width="360" height="30" rx="7" fill="#D8232A"/><text x="572" y="95" fill="#B3261E" font-weight="700">9</text>
+        <text x="20" y="144" fill="#1A130E" font-weight="600">VITS</text>
+        <rect x="200" y="124" width="200" height="30" rx="7" fill="#D8232A"/><text x="412" y="145" fill="#B3261E" font-weight="700">5</text>
+        <text x="20" y="194" fill="#1A130E" font-weight="600">VITs</text>
+        <rect x="200" y="174" width="40" height="30" rx="7" fill="#D8232A"/><text x="252" y="195" fill="#B3261E" font-weight="700">1</text>
+      </g>
+    </svg>
+  </div>
+  <span class="pin warn"><b>Claims discipline, standing rule for every deliverable:</b> no export count, no "no preservatives", and no founding-year claim goes on the new site until Vit's evidences it. "Halal since 1980" is sourced and stays.</span>
+</section>
+
+<section id="c05">
+  <div class="chapdiv"><div class="cd-no">05</div><div><div class="cd-h">Technical SEO</div><div class="cd-sub">What Yoast already does, and the three schema gaps worth real traffic</div></div></div>
+  <p class="sec-intro">Credit first: the fundamentals are present. Every page checked carries a title, a meta description at page level, a single H1, a canonical, and Yoast's WebPage, WebSite and Breadcrumb schema. Blog posts carry Article schema. This is a <b>6 out of 10 technical base</b>, not a disaster. The gaps are specific, and the largest one is sitting on the site's most active content.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Layer</th><th>State, measured 10 to 12 Aug</th><th>Consequence</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Organization schema</td><td>Absent site-wide</td><td>No knowledge panel grounding, weak entity signal for "Vit's" against 4 spellings</td><td><span class="vtag bad">Add</span></td></tr>
+      <tr><td class="dim">Product schema</td><td>Absent on all 25 products</td><td>No price, availability or rating eligibility in search</td><td><span class="vtag bad">Add</span></td></tr>
+      <tr><td class="dim">Recipe schema</td><td>Absent on all 44 recipes</td><td>The single biggest untapped asset: recipe rich results on the site's most active content</td><td><span class="vtag bad">Add</span></td></tr>
+      <tr><td class="dim">Product meta descriptions</td><td>None on product pages</td><td>Search snippets improvised by Google</td><td><span class="vtag bad">Add</span></td></tr>
+      <tr><td class="dim">hreflang</td><td>en-US only</td><td>An exporter with no language or market targeting, invisible localisation for the Gulf</td><td><span class="vtag bad">Add</span></td></tr>
+      <tr><td class="dim">og:image</td><td>Absent</td><td>Links shared by buyers render blank</td><td><span class="vtag bad">Add</span></td></tr>
+      <tr><td class="dim">Titles, metas, H1, canonical</td><td>Present and sane at page level</td><td>Keep through migration</td><td><span class="vtag hi">Keep</span></td></tr>
+      <tr><td class="dim">Article schema on posts</td><td>Present via Yoast</td><td>Keep through migration</td><td><span class="vtag hi">Keep</span></td></tr>
+      <tr><td class="dim">Thin URLs</td><td>3 author archives + thank-you page indexable</td><td>Crawl waste, minor</td><td><span class="vtag lo">Noindex</span></td></tr>
+    </tbody>
+  </table></div>
+  <span class="pin"><b>The migration is the SEO plan.</b> All 127 URLs get a 301 map, the Yoast fundamentals carry over, and the three missing schema types are added in the build. SEO optimisation is included in the build. Ongoing SEO is a separate package, quoted after the site ships or when the client asks.</span>
+</section>
+
+<section id="c06">
+  <div class="chapdiv"><div class="cd-no">06</div><div><div class="cd-h">Performance</div><div class="cd-sub">Measured against the only clock that matters, a buyer's patience</div></div></div>
+  <p class="sec-intro">Re-measured 10 August: the homepage delivers <b>3.41MB over 114 requests</b> and completes in <b>7.0 seconds</b>, worse than the 6.4 seconds measured on 28 July. Christina's stated fear, from her previous agency, is that animation makes sites heavy. The truth on her own site is the opposite: the weight is images and plugin payload, not motion. There is no animation on vitsnoodles.com, and it is still slow.</p>
+  <div class="diagram">
+    <div class="cap">F3 &middot; Homepage full load vs the ~3 second window a first-time visitor gives a site, measured 10 Aug 2026</div>
+    <svg viewBox="0 0 960 190" role="img" aria-label="Load time bar chart">
+      <g font-family="Inter,system-ui,sans-serif" font-size="15">
+        <text x="20" y="46" fill="#1A130E" font-weight="600">Buyer patience</text>
+        <rect x="220" y="28" width="270" height="30" rx="7" fill="#1A8F5A"/>
+        <text x="500" y="49" fill="#126B45" font-weight="700">~3.0s</text>
+        <text x="20" y="106" fill="#1A130E" font-weight="600">vitsnoodles.com, 28 Jul</text>
+        <rect x="220" y="88" width="576" height="30" rx="7" fill="#E9A820"/>
+        <text x="806" y="109" fill="#8A5B08" font-weight="700">6.4s</text>
+        <text x="20" y="166" fill="#1A130E" font-weight="600">vitsnoodles.com, 10 Aug</text>
+        <rect x="220" y="148" width="630" height="30" rx="7" fill="#D8232A"/>
+        <text x="860" y="169" fill="#B3261E" font-weight="700">7.0s</text>
+      </g>
+    </svg>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">7.0s</div><div class="lab">Full load, 10 Aug</div><div class="s">6.4s on 28 Jul, trending worse</div></div>
+    <div class="stat"><div class="num">3.41MB</div><div class="lab">Page weight</div><div class="s">images and plugin payload</div></div>
+    <div class="stat"><div class="num">114</div><div class="lab">Requests</div><div class="s">Divi + plugin chain</div></div>
+    <div class="stat"><div class="num">241/253</div><div class="lab">Images without alt</div><div class="s">95% of homepage images</div></div>
+  </div>
+  <span class="pin"><b>The pitch answer to "animations are heavy":</b> the demo we show will carry a real-time 3D product and a full parallax journey in less page weight than this homepage's image payload, because procedural animation is code, not video. That claim gets proven in the prototype tab, not asserted.</span>
+</section>
+
+<section id="c07">
+  <div class="chapdiv"><div class="cd-no">07</div><div><div class="cd-h">The content engines</div><div class="cd-sub">The two machines already running, and the shop window that hides them</div></div></div>
+  <p class="sec-intro">Two genuinely valuable engines run on this site. The <b>recipe hub</b>, 44 recipes and 11 videos, freshest content on the domain, is a B2C retention machine. The <b>blog</b>, 24 posts on OEM, private label and export, is a B2B education machine, exactly the material a trade buyer reads. Neither is surfaced from the homepage in any structured way, neither carries its schema type, and the recipes have no filtering by range or heat.</p>
+  <div class="grid g3">
+    <div class="card"><span class="tag">B2C engine</span><h3>44 recipes, 11 videos</h3><p>Updated 6 August. With Recipe schema and a filterable hub this becomes the organic front door for the consumer lane, and the natural home of the heat-ladder story.</p></div>
+    <div class="card"><span class="tag">B2B engine</span><h3>24 posts on trade topics</h3><p>Last post 9 July. Migrated intact and cross-linked from the trade destination, this is the evidence base for the seasoning capability story buyers ask about.</p></div>
+    <div class="card"><span class="tag">Commerce layer</span><h3>25 products, 7 categories</h3><p>WooCommerce is installed and structured, but products carry no gram weights on 7 of 8 SKUs checked, no meta descriptions and no Product schema. E-commerce expansion is in the client's own pipeline, the plumbing already exists.</p></div>
+  </div>
+</section>
+
+<section id="c08">
+  <div class="chapdiv"><div class="cd-no">08</div><div><div class="cd-h">The two-lane resolution</div><div class="cd-sub">How one site serves a 70% Malaysian B2C business and an overseas B2B push without confusing either</div></div></div>
+  <p class="sec-intro">Christina's constraint is explicit: 70% of revenue is Malaysian and the site "cannot be too B2B". The buyer she wants is overseas trade. Brian's proposal in the meeting, which she confirmed aligns with their own pipeline, is separation: <b>the Malaysian B2C site stays and improves, and a dedicated trade destination carries the export story</b> on its own subdomain, in front of exhibition traffic, with zero risk to existing rankings.</p>
+  <div class="diagram">
+    <div class="cap">F4 &middot; One brand, two front doors, resolved 12 Aug 2026</div>
+    <svg viewBox="0 0 960 360" role="img" aria-label="Two lane architecture diagram">
+      <g font-family="Inter,system-ui,sans-serif">
+        <rect x="330" y="20" width="300" height="64" rx="12" fill="#180F0B"/>
+        <text x="480" y="47" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">VIT'S NOODLES</text>
+        <text x="480" y="68" text-anchor="middle" fill="#C9B9A6" font-size="12.5">one brand, one rule book, two doors</text>
+        <path d="M400 84 L240 150" stroke="#A81318" stroke-width="2.4" fill="none"/>
+        <path d="M560 84 L720 150" stroke="#C9691E" stroke-width="2.4" fill="none"/>
+        <rect x="40" y="150" width="400" height="180" rx="14" fill="#FFFDF9" stroke="#D8232A" stroke-width="2"/>
+        <text x="60" y="182" fill="#A81318" font-size="12" font-weight="700" font-family="JetBrains Mono,monospace">TRADE.VITSNOODLES.COM &middot; NEW</text>
+        <text x="60" y="210" fill="#1A130E" font-size="16" font-weight="700">The export destination</text>
+        <text x="60" y="236" fill="#5A4F45" font-size="13.5">For importers, distributors, private label buyers.</text>
+        <text x="60" y="256" fill="#5A4F45" font-size="13.5">Seasoning capability, certifications, MOQ tiers,</text>
+        <text x="60" y="276" fill="#5A4F45" font-size="13.5">capacity, lead times, exhibition calendar, enquiry.</text>
+        <text x="60" y="304" fill="#126B45" font-size="12.5" font-weight="700">Zero SEO risk: nothing on the main site moves.</text>
+        <rect x="520" y="150" width="400" height="180" rx="14" fill="#FFFDF9" stroke="#C9691E" stroke-width="2"/>
+        <text x="540" y="182" fill="#8A5B08" font-size="12" font-weight="700" font-family="JetBrains Mono,monospace">VITSNOODLES.COM &middot; STAYS &amp; IMPROVES</text>
+        <text x="540" y="210" fill="#1A130E" font-size="16" font-weight="700">The Malaysian home</text>
+        <text x="540" y="236" fill="#5A4F45" font-size="13.5">70% of revenue lives here. Recipes, ranges,</text>
+        <text x="540" y="256" fill="#5A4F45" font-size="13.5">retail finder, e-commerce later. Rebuilt on the</text>
+        <text x="540" y="276" fill="#5A4F45" font-size="13.5">same design system when the client is ready,</text>
+        <text x="540" y="304" fill="#126B45" font-size="12.5" font-weight="700">with the full 127 URL, 301-mapped migration.</text>
+      </g>
+    </svg>
+  </div>
+  <span class="pin"><b>The demo Bazil promised for Friday is the left box:</b> the trade destination's landing page, economy pack at the centre, built to prove the 3D parallax claim and the light-weight claim in one page.</span>
+</section>
+
+<section id="c09">
+  <div class="chapdiv"><div class="cd-no">09</div><div><div class="cd-h">The score, and how we got it</div><div class="cd-sub">Peers first, then nine lenses, then the priorities in date order</div></div></div>
+  <h3 class="sub">The peer bridge, what each type does well</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Peer type</th><th>What they do well</th><th>What we can take</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Premium Malaysians &middot; MyKuali, Red Chef</td><td>One owned flavour or one clean spec, told plainly, world-list proof</td><td>The specimen treatment for each range, spec as content</td></tr>
+      <tr><td class="dim">Korean giants &middot; Samyang, Nongshim</td><td>A printed number and a mechanic, channel-first selling</td><td>The heat ladder with a number on every pack</td></tr>
+      <tr><td class="dim">Global halal volume &middot; Indomie</td><td>The sachet ritual as the brand experience</td><td>The cook-the-noodle journey on the landing page</td></tr>
+      <tr><td class="dim">OEM factories &middot; CN, TH, VN</td><td>Disclosure: MOQ tiers, capacity, lead time published</td><td>The trade numbers, wrapped in a brand they do not have</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sec-intro">The full board, ranked with captures and cards, lives in the <b>01 Competitors</b> tab. The nine lenses below score vitsnoodles.com itself.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Lens</th><th>Score</th><th>Finding</th><th>Read</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">First impression</td><td class="sc">4 / 10</td><td>Two competing hero slides, OEM vs consumer, 483 words on the page</td><td>The window sells neither lane</td></tr>
+      <tr><td class="dim">Story &amp; positioning</td><td class="sc">3 / 10</td><td>51 years, 30 years exporting, seasoning capability: none of it told as a story anywhere</td><td>The best material is off-stage</td></tr>
+      <tr><td class="dim">Trade readiness</td><td class="sc">2 / 10</td><td>No MOQ, no capacity, no lead time, export count published three different ways</td><td>The priority buyer is unserved</td></tr>
+      <tr><td class="dim">Content depth</td><td class="sc">7 / 10</td><td>44 recipes updated 6 Aug, 24 trade posts, 11 videos</td><td>The strongest layer of the site</td></tr>
+      <tr><td class="dim">Technical SEO</td><td class="sc">5 / 10</td><td>Fundamentals present, but no Organization, Product or Recipe schema, no hreflang, no og:image</td><td>Solid base, missing the upside</td></tr>
+      <tr><td class="dim">Performance</td><td class="sc">3 / 10</td><td>7.0s load, 3.41MB, 114 requests, trending worse between measurements</td><td>Past a buyer's patience</td></tr>
+      <tr><td class="dim">Accessibility</td><td class="sc">2 / 10</td><td>241 of 253 homepage images without alt text</td><td>Also an SEO cost</td></tr>
+      <tr><td class="dim">Trust &amp; consistency</td><td class="sc">3 / 10</td><td>4 name spellings on one page, 3 founding-year claims, 4 export counts</td><td>Governance, not design</td></tr>
+      <tr><td class="dim">Commerce &amp; conversion</td><td class="sc">4 / 10</td><td>WooCommerce present, but no Product schema, no meta descriptions, gram weight on 1 of 8 SKUs checked</td><td>Plumbing without pressure</td></tr>
+    </tbody>
+  </table></div>
+  <div class="stats">
+    <div class="stat"><div class="num">3.4 / 10</div><div class="lab">Composite, this audit</div><div class="s">33 points over 9 lenses, computed, not weighted</div></div>
+    <div class="stat"><div class="num">6 / 10</div><div class="lab">Technical base alone</div><div class="s">why this is a migration, not a rescue</div></div>
+    <div class="stat"><div class="num">2 / 10</div><div class="lab">Trade readiness</div><div class="s">the lens the 12 Aug brief cares about most</div></div>
+  </div>
+  <p class="sec-intro"><b>Method note, fact vs inference:</b> every figure in the table is measured. The two judgement lenses are First impression and Story, where the score is our professional read of measured facts, flagged as such. The composite is the plain average of the nine. <b>The pattern in one line:</b> everything operational scores low, everything already-built scores high, which is why the fix is disclosure and migration, not demolition.</p>
+  <h3 class="sub">Priorities, dated</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Priority</th><th>What to resolve</th><th>Why now</th></tr></thead>
+    <tbody>
+      <tr><td class="sc">1 &middot; by Fri 15 Aug</td><td class="dim">The pitch pack: this workspace, the demo, the migration plan, the guidelines direction</td><td>Vit's is comparing agencies now, and the demo is the proof of both claims they doubt</td></tr>
+      <tr><td class="sc">2 &middot; with Christina, now</td><td class="dim">MOQ tiers, capacity, lead time, the real export count, show dates</td><td>Every gated block in the demo and the trade pages waits on these five facts</td></tr>
+      <tr><td class="sc">3 &middot; on appointment</td><td class="dim">Trade destination live on the subdomain, 3 weeks</td><td>Zero SEO risk, and every exhibition follow-up email needs the link</td></tr>
+      <tr><td class="sc">4 &middot; quick win, any week</td><td class="dim">Noindex the 4 thin URLs, set og:image site-wide</td><td>An hour of work that fixes every shared link a buyer sees</td></tr>
+      <tr><td class="sc">5 &middot; rebuild phase</td><td class="dim">127 URL migration with the 301 map, schema, weights, alt text</td><td>The rankings the client fears losing are protected by doing this properly once</td></tr>
+      <tr><td class="sc">6 &middot; before Oct lock</td><td class="dim">One canonical name swept across site, socials and artwork</td><td>The January print order makes today's spellings permanent for years</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="vl-sec" id="c10">
+  <div class="vl-head">
+    <span class="vl-k">10 &middot; The verdict ledger</span>
+    <h2 class="vl-h2">Every finding, what to do about it, and when</h2>
+    <p class="vl-lede">The full audit reduced to one working table. "When" uses the project's real clock: the pitch demo lands 14 to 15 August, the trade destination goes live first, the main-site rebuild follows on the client's decision, and Gulfood runs 15 to 19 March 2027.</p>
+  </div>
+  <div class="vl-legend">
+    <span class="vl-lg" style="background:#E4F4EC;border-color:#A8D9C0;color:#126B45">Keep</span>
+    <span class="vl-lg" style="background:#FEF4E2;border-color:#EFD09B;color:#8A5B08">Fix</span>
+    <span class="vl-lg" style="background:#EEF1FE;border-color:#C3CBF7;color:#1421B8">Edit</span>
+    <span class="vl-lg" style="background:#F3EAFE;border-color:#D6C2F3;color:#5B21B6">Build</span>
+    <span class="vl-lg" style="background:#FDECEA;border-color:#F0B6AE;color:#B3261E">Remove</span>
+  </div>
+  <div class="vl-scroll"><table class="vledger">
+    <thead><tr><th>#</th><th>Area</th><th>What is good</th><th>What is bad</th><th>Verdict</th><th>The action plan</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td class="vl-n">01</td><td class="vl-area">Trade pages<small>OEM · Private label · Bulk</small></td><td class="vl-good">They exist, read credibly, and carry the full certification set</td><td class="vl-bad">No MOQ, no capacity, no lead time, the three numbers a buyer emails about</td><td><span class="vd build">Build</span></td><td class="vl-act"><b>Trade destination publishes MOQ tiers, capacity and lead times.</b> Figures owed by operations via Christina.</td><td class="vl-when">Demo Fri &middot; live pre-Gulfood</td></tr>
+      <tr><td class="vl-n">02</td><td class="vl-area">Homepage hero<small>vitsnoodles.com</small></td><td class="vl-good">Photography exists, ranges are real</td><td class="vl-bad">Two heroes fight, OEM vs consumer, and neither wins</td><td><span class="vd edit">Edit</span></td><td class="vl-act"><b>B2C hero leads consumer, one line routes trade buyers to the trade destination.</b></td><td class="vl-when">Rebuild phase</td></tr>
+      <tr><td class="vl-n">03</td><td class="vl-area">Brand name<small>site-wide</small></td><td class="vl-good">The equity is real: red logo, yellow pack, 51 years known</td><td class="vl-bad">4 spellings in 19 mentions on one page, 47% consistency at best</td><td><span class="vd fix">Fix</span></td><td class="vl-act"><b>One canonical form set in the brand guidelines, swept across all 127 URLs during migration.</b></td><td class="vl-when">Guidelines Fri &middot; sweep at migration</td></tr>
+      <tr><td class="vl-n">04</td><td class="vl-area">Claims<small>export count · founding year</small></td><td class="vl-good">"Halal since 1980" is sourced and strong for Gulf buyers</td><td class="vl-bad">Export markets published as 20, 30 and 30+, client says 50+. Founding claimed 1975, 1977 and 1980 across sources</td><td><span class="vd fix">Fix</span></td><td class="vl-act"><b>Client confirms the real figures, then one number, everywhere.</b> Nothing unverified ships.</td><td class="vl-when">Awaiting client</td></tr>
+      <tr><td class="vl-n">05</td><td class="vl-area">Recipes<small>44 URLs + 11 videos</small></td><td class="vl-good">Most active content on the domain, updated 6 Aug</td><td class="vl-bad">No Recipe schema, no filterable hub, invisible from the homepage</td><td><span class="vd keep">Keep</span></td><td class="vl-act"><b>Migrate intact, add Recipe schema, build the filterable hub.</b> The rich-results upside of the whole project.</td><td class="vl-when">Rebuild phase</td></tr>
+      <tr><td class="vl-n">06</td><td class="vl-area">Blog<small>24 posts</small></td><td class="vl-good">Working B2B education engine on OEM and export topics</td><td class="vl-bad">Unlinked from any buyer journey</td><td><span class="vd keep">Keep</span></td><td class="vl-act"><b>Migrate intact, cross-link from the trade destination's capability story.</b></td><td class="vl-when">Rebuild phase</td></tr>
+      <tr><td class="vl-n">07</td><td class="vl-area">Products<small>25 WooCommerce SKUs</small></td><td class="vl-good">Commerce plumbing installed, 7 sane categories</td><td class="vl-bad">No Product schema, no meta descriptions, gram weight on 1 of 8 SKUs checked</td><td><span class="vd fix">Fix</span></td><td class="vl-act"><b>Publish weights on every SKU, add Product schema and metas.</b> Weights kill the price-only comparison Vit's loses.</td><td class="vl-when">Rebuild phase</td></tr>
+      <tr><td class="vl-n">08</td><td class="vl-area">Schema<small>site-wide</small></td><td class="vl-good">Yoast fundamentals present, Article on posts</td><td class="vl-bad">No Organization, Product or Recipe schema anywhere</td><td><span class="vd build">Build</span></td><td class="vl-act"><b>Add all three types in the build.</b> Organization schema also anchors the single canonical brand name.</td><td class="vl-when">Both phases</td></tr>
+      <tr><td class="vl-n">09</td><td class="vl-area">International<small>hreflang · og:image</small></td><td class="vl-good">Nothing yet, so nothing to unpick</td><td class="vl-bad">en-US only for an exporter, links shared with buyers render with no image</td><td><span class="vd build">Build</span></td><td class="vl-act"><b>hreflang for target markets on the trade destination, og:image set site-wide.</b></td><td class="vl-when">Trade destination first</td></tr>
+      <tr><td class="vl-n">10</td><td class="vl-area">Performance<small>homepage</small></td><td class="vl-good">No animation to blame, so the fix is mechanical</td><td class="vl-bad">7.0s, 3.41MB, 114 requests, worse than July's measurement</td><td><span class="vd fix">Fix</span></td><td class="vl-act"><b>Image pipeline, lazy loading, plugin diet in the rebuild.</b> The demo proves rich motion under a 3s first paint.</td><td class="vl-when">Demo Fri &middot; rebuild phase</td></tr>
+      <tr><td class="vl-n">11</td><td class="vl-area">Accessibility<small>alt text</small></td><td class="vl-good">12 images carry alt today, the pattern exists</td><td class="vl-bad">241 of 253 homepage images without alt</td><td><span class="vd fix">Fix</span></td><td class="vl-act"><b>Alt text authored during migration, enforced by the CMS template.</b></td><td class="vl-when">Rebuild phase</td></tr>
+      <tr><td class="vl-n">12</td><td class="vl-area">Thin URLs<small>authors · thank-you</small></td><td class="vl-good">Only 4 URLs affected</td><td class="vl-bad">Indexable pages that should not be</td><td><span class="vd rem">Remove</span></td><td class="vl-act"><b>Noindex the 3 author archives and the thank-you page.</b></td><td class="vl-when">Quick win, any time</td></tr>
+      <tr><td class="vl-n">13</td><td class="vl-area">Social routing<small>FB 185,529 · IG 6,378</small></td><td class="vl-good">Real audience, 1,473 posts of proof of effort</td><td class="vl-bad">29:1 Facebook skew against a stated Gen Z target, rivals sell on TikTok Shop</td><td><span class="vd edit">Edit</span></td><td class="vl-act"><b>Site links route by lane: consumer pages to IG and TikTok, trade pages to LinkedIn and the enquiry form.</b></td><td class="vl-when">Rebuild phase</td></tr>
+      <tr><td class="vl-n">14</td><td class="vl-area">Migration<small>all 127 URLs</small></td><td class="vl-good">Clean sitemap structure makes mapping straightforward</td><td class="vl-bad">The client's stated fear is losing rankings, raised twice in the meeting</td><td><span class="vd build">Build</span></td><td class="vl-act"><b>Full 301 map, zero 404 target, verified in the final build week.</b> The migration plan ships with the pitch.</td><td class="vl-when">Plan Fri &middot; verify at launch</td></tr>
+    </tbody>
+  </table></div>
+  <div class="vl-foot"><b>Reading order for the pitch:</b> rows 01, 10 and 14 are the three the client asked about, in her own words: serve the trade buyer, keep it light, do not lose our SEO. The demo answers 01 and 10 visibly. The plan document answers 14 in full.</div>
+</section>
+
+<section id="c11">
+  <div class="chapdiv"><div class="cd-no">11</div><div><div class="cd-h">Evidence</div><div class="cd-sub">Every load-bearing figure, where it came from, and when it was read</div></div></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Claim</th><th>Figure</th><th>Source</th><th>Read</th></tr></thead>
+    <tbody>
+      <tr><td>Live URL inventory</td><td class="sc">127</td><td>vitsnoodles.com/sitemap_index.xml, Yoast sitemaps</td><td>10 Aug 2026</td></tr>
+      <tr><td>Homepage load, weight, requests</td><td class="sc">7.0s · 3.41MB · 114</td><td>Live browser measurement</td><td>10 Aug 2026</td></tr>
+      <tr><td>Homepage images without alt</td><td class="sc">241 of 253</td><td>Live DOM count</td><td>10 Aug 2026</td></tr>
+      <tr><td>Name spellings on Private Label page</td><td class="sc">4 forms · 19 mentions · 47%</td><td>Live page text count</td><td>11 Aug 2026</td></tr>
+      <tr><td>MOQ, capacity, lead time published</td><td class="sc">0 figures</td><td>OEM, Private Label and Bulk pages</td><td>12 Aug 2026</td></tr>
+      <tr><td>Certifications</td><td class="sc">FSSC 22000, HACCP, GMP, ISO 22000, halal 1980</td><td>vitsnoodles.com certification content</td><td>12 Aug 2026</td></tr>
+      <tr><td>Recipe and blog freshness</td><td class="sc">6 Aug · 9 Jul</td><td>Yoast sitemap lastmod</td><td>10 Aug 2026</td></tr>
+      <tr><td>Schema coverage</td><td class="sc">No Organization / Product / Recipe</td><td>Rendered page source, all templates checked</td><td>10 Aug 2026</td></tr>
+      <tr><td>Export count conflict</td><td class="sc">20 · 30 · 30+ · says 50+</td><td>About, OEM, blog post, client statement 12 Aug</td><td>10 to 12 Aug 2026</td></tr>
+      <tr><td>Two-lane decision, B2B correction</td><td class="sc">Overseas first, trade buyer target</td><td>12 Aug meeting, Gemini transcript, 70pp</td><td>12 Aug 2026</td></tr>
+      <tr><td>Gulfood 2027</td><td class="sc">15 to 19 Mar, DWTC, 8,500 exhibitors</td><td>Gulfood official published figures</td><td>12 Aug 2026</td></tr>
+      <tr><td>Buyer evaluation criteria, MOQ practice</td><td class="sc">5 checks · tiered MOQ converts better</td><td>Trade platform and OEM sourcing research</td><td>12 Aug 2026</td></tr>
+      <tr><td>Social split</td><td class="sc">FB 185,529 · IG 6,378 · 29:1</td><td>Live profile counts</td><td>10 Aug 2026</td></tr>
+      <tr><td>Homepage word count, hero conflict</td><td class="sc">483 words · 2 heroes</td><td>Live page, first measured 28 Jul</td><td>28 Jul 2026</td></tr>
+    </tbody>
+  </table></div>
+  <p class="sec-intro"><b>Known gaps, stated outright:</b> we hold no analytics or Search Console access yet, so traffic, rankings and query data are not in this audit. We state no market share figure anywhere, no panel data is held. Three client facts remain unverified: the real export count, MOQ and capacity figures, and the US, Bangkok and UK show names and dates.</p>
+</section>
+
+<footer>
+  <div>Brand Method &middot; Vit's Noodles web audit &middot; measured 28 Jul to 12 Aug 2026 &middot; internal working document</div>
+</footer>
+
+</div>
+</body>
+</html>

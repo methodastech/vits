@@ -1,0 +1,11 @@
+# superseded page snapshots — git history covers these now
+*.bak.html
+
+# local tooling / editor state
+.claude/settings.local.json
+node_modules/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini

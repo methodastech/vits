@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vit's Noodles · Competitor Board · Brand Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBF7F0;--paper2:#FFFDF9;--ink:#1A130E;--soft:#5A4F45;--faint:#9A8D80;--line:#EBE1D3;--line2:#DFD3C1;--red:#D8232A;--red-deep:#A81318;--wash:#FBEAE4;--ok:#1A8F5A;--warn:#C9941F;--bad:#D7263D;--dark:#180F0B;--gold:#E9A820;}
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{padding:0 22px}.mono{font-family:"JetBrains Mono",monospace}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);display:inline-flex;align-items:center;gap:10px;font-weight:600}
+  .hero{padding:50px 0 8px}.hero h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(36px,5.6vw,62px);line-height:1.03;letter-spacing:-.02em;margin:18px 0 0;max-width:24ch}.hero h1 em{font-style:italic;color:var(--red-deep)}
+  .hero .lede{font-size:clamp(17px,2vw,20px);color:var(--soft);max-width:66ch;margin:20px 0 0}
+  .vrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.vchip{background:var(--paper2);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;color:var(--soft)}.vchip b{color:var(--red-deep)}
+  section{padding:32px 0}
+  .chapdiv{display:flex;align-items:baseline;gap:18px;padding:42px 0 4px;border-top:1px solid var(--line);margin-top:10px}.cd-no{font-family:"Fraunces",serif;font-weight:600;font-size:38px;color:var(--red-deep);line-height:1}.cd-h{font-family:"Fraunces",serif;font-weight:500;font-size:27px;letter-spacing:-.01em}.cd-sub{font-size:15px;color:var(--soft);margin-top:5px}
+  h2{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(25px,3.6vw,37px);line-height:1.08;margin:13px 0 0;max-width:30ch}
+  .sec-intro{font-size:16.5px;color:var(--soft);max-width:72ch;margin:15px 0 0}.sec-intro b{color:var(--ink)}.sec-intro em{color:var(--red-deep)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
+  .card{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:20px 21px}.card .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--red-deep);font-weight:700}.card h3{font-family:"Fraunces",serif;font-weight:500;font-size:19px;margin-top:8px}.card p{font-size:14px;color:var(--soft);margin-top:9px;line-height:1.55}.card p b{color:var(--ink)}
+  .quote{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--soft);border-left:3px solid var(--red);padding:6px 0 6px 18px;margin-top:16px;max-width:70ch}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin-top:18px;font-size:14px;background:var(--paper2);border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}thead th{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--dark)}tr:last-child td{border-bottom:none}td.dim{font-weight:600;white-space:nowrap}td.sc{font-family:"JetBrains Mono",monospace;color:var(--red-deep);font-weight:700;white-space:nowrap}
+  .tbl-scroll{overflow-x:auto;margin-top:18px}.tbl-scroll table{margin-top:0;min-width:760px}
+  .pin{margin-top:22px;border-left:3px solid var(--red);background:linear-gradient(90deg,rgba(216,35,42,.06),transparent);padding:15px 19px;border-radius:0 12px 12px 0;font-size:15px;display:block}.pin b{color:var(--red-deep)}.pin.warn{border-left-color:var(--warn);background:linear-gradient(90deg,rgba(201,148,31,.09),transparent)}.pin.warn b{color:#9a6f12}
+  .packboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:22px}
+  .shotboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:14px}
+  .shot{background:var(--paper2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .shot img{width:100%;display:block;aspect-ratio:1280/860;object-fit:cover;border-bottom:1px solid var(--line)}
+  .shot .meta{padding:12px 15px}
+  .shot .meta .nm{font-weight:700;font-size:14px}
+  .shot .meta .u{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--red-deep);margin-top:3px}
+  .shot .meta .rd{font-size:12.5px;color:var(--soft);margin-top:6px;line-height:1.5}
+  .pack{background:var(--paper2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .pack .ph{background:#fff;height:210px;display:flex;align-items:center;justify-content:center;padding:14px}
+  .pack .ph img{max-width:100%;max-height:100%;object-fit:contain}
+  .pack .meta{padding:14px 16px 16px;border-top:1px solid var(--line)}
+  .pack .meta .nm{font-weight:700;font-size:14.5px}
+  .pack .meta .rd{font-size:12.5px;color:var(--soft);margin-top:5px;line-height:1.5}
+  .pack .meta .pr{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red-deep);font-weight:700;margin-top:7px}
+  .rival{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:18px}
+  .rival .rh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .rival .rh h3{font-family:"Fraunces",serif;font-weight:500;font-size:23px}
+  .rival .rh .rk{font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red-deep);border-radius:6px;padding:4px 9px}
+  .rival .blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+  .rival .blk{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--paper)}
+  .rival .blk .bt{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-deep);font-weight:700}
+  .rival .blk p{font-size:13.5px;color:var(--soft);margin-top:7px;line-height:1.55}
+  .rival .read{margin-top:14px;font-size:14.5px;padding:12px 16px;border-radius:10px;background:var(--wash);border:1px solid #F2CFC5}.rival .read b{color:var(--red-deep)}
+  footer{padding:34px 0 70px;color:var(--faint);font-size:12px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid var(--line);margin-top:30px}
+</style>
+<style id="printFix">@media print{body{background:#fff}.reveal,[data-reveal]{opacity:1!important;transform:none!important}table,tr,td,th,.card,.pack,.rival{page-break-inside:avoid}h2,h3{page-break-after:avoid}.bmws{display:none!important}}</style>
+</head>
+<body>
+<style id="bmwsCss">
+.bmws{background:#0B0805;color:#F2E9DD;position:sticky;top:0;z-index:900;border-bottom:1px solid #2a1d12}
+.bmws-in{display:flex;align-items:center;justify-content:space-between;padding:9px 22px;gap:12px;flex-wrap:wrap}
+.bmws-crumb{display:flex;flex-direction:column;line-height:1.3;white-space:nowrap}
+.bmws-crumb b{font-size:13px;font-weight:700;color:#fff;font-family:Inter,system-ui,sans-serif}
+.bmws-crumb span{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#A6907C}
+.bmws-tabs{display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:11px;overflow:auto;max-width:100%;margin-left:auto;padding:3px;gap:3px;background:rgba(255,255,255,.04)}
+.bmws-tabs a{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#E3D2BE;text-decoration:none;padding:7px 13px;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:background .25s,color .25s}
+.bmws-tabs a i{font-style:normal;color:#A6907C;font-size:9px;font-weight:700}
+.bmws-tabs a:hover{background:rgba(255,255,255,.09);color:#fff}
+.bmws-tabs a.on{background:#D8232A;color:#fff;font-weight:700}
+.bmws-tabs a.on i{color:rgba(255,255,255,.72)}
+</style>
+<div class="bmws"><div class="bmws-in">
+  <div class="bmws-crumb"><b>Vit's Noodles &middot; Website 1</b><span>Brand Method &middot; Admin Navigation</span></div>
+  <nav class="bmws-tabs" aria-label="Admin navigation">
+    <a href="audit.html"><i>00</i>Web Audit</a>
+    <a class="on" href="competitors.html"><i>01</i>Competitors</a>
+    <a href="plan.html"><i>02</i>Web Plan</a>
+    <a href="index.html"><i>03</i>Prototype Web 1</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">Vit's Noodles &middot; Competitor Board &middot; Web Lens</span>
+  <h1>Vit's is not losing to Korea. It is losing to <em>everyone</em>, because it never built a brand online.</h1>
+  <p class="lede">This board reads the competition the way the new website must answer it. The deep retail and pricing analysis lives in the client workspace Market Audit. This document ranks the rivals a web visitor actually meets, shows what they look like, and ends with the five things the new site must do that none of the audit's nine rivals currently does.</p>
+  <div class="vrow">
+    <span class="vchip"><b>0</b> Vit's products on the Ramen Rater Malaysia Top Ten 2025</span>
+    <span class="vchip"><b>7</b> Malaysian companies on that list</span>
+    <span class="vchip"><b>RM5.70</b> the Samyang per-packet ceiling</span>
+    <span class="vchip"><b>RM1.75</b> what Vit's already charges, with zero premium credit</span>
+  </div>
+</header>
+
+<section id="s01">
+  <div class="chapdiv"><div class="cd-no">01</div><div><div class="cd-h">What Vit's itself confirmed</div><div class="cd-sub">The board is anchored on the client's own words, 12 Aug 2026</div></div></div>
+  <p class="quote">"Buyers open by asking: can you create taste similar like Buldak, Indomie?"</p>
+  <p class="sec-intro">That sentence, Christina's, sets the competitive frame. Overseas trade buyers benchmark Vit's against <b>Samyang's Buldak</b> and <b>Indomie's mi goreng</b> before any Malaysian brand is mentioned. At home the shelf fight is with Maggi, Mi Sedaap and Cintan on price, and MyKuali, Red Chef and Mamee Chef on premium local flavour. Vit's is known for <b>plain noodles, roughly 70% of revenue</b>, and by their own account almost nobody knows they make seasoned noodles. The website's competitive job is therefore double: prove seasoning capability to a trade buyer, without disturbing the plain-noodle base at home.</p>
+</section>
+
+<section id="s02">
+  <div class="chapdiv"><div class="cd-no">02</div><div><div class="cd-h">Most important to least</div><div class="cd-sub">Ranked by threat to the export B2B push, then by shelf pressure at home</div></div></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>#</th><th>Rival</th><th>Arena</th><th>Why they rank here</th><th>Per packet</th></tr></thead>
+    <tbody>
+      <tr><td class="sc">1</td><td class="dim">Samyang (Buldak)</td><td>Global, and the buyer's benchmark</td><td>FY2025 revenue KRW2.35tn, up 36%, roughly 80% overseas. The name buyers say first. Sells at 4.9x Maggi Kari in Malaysia</td><td class="sc">RM5.70</td></tr>
+      <tr><td class="sc">2</td><td class="dim">Indomie</td><td>Global halal volume</td><td>The other name buyers say. Indonesian scale, distribution everywhere Vit's wants to sell</td><td class="sc">n/a, not listed at retailers checked</td></tr>
+      <tr><td class="sc">3</td><td class="dim">MyKuali</td><td>Premium Malaysian curry</td><td>Owns Penang White Curry globally, world No.1 Ramen Rater 2014, No.2 and 3 on the Malaysia 2025 list</td><td class="sc">RM2.90</td></tr>
+      <tr><td class="sc">4</td><td class="dim">Nongshim</td><td>Halal push into Malaysia</td><td>Launched a halal Shin Ramyun built for Malaysia, July 2026, nationwide plus TikTok Shop. Halal is no longer Vit's moat</td><td class="sc">n/a</td></tr>
+      <tr><td class="sc">5</td><td class="dim">Red Chef</td><td>Premium Malaysian, product-led</td><td>No.1 on the Malaysia 2025 list with a non-fried, additive-clean noodle: nearly the spec of Vit's own air-dried line</td><td class="sc">premium tier</td></tr>
+      <tr><td class="sc">6</td><td class="dim">Mamee Chef</td><td>The manoeuvre peer</td><td>A legacy Malaysian maker that launched a premium sub-brand on local dishes and got world-rated. Curry is still open</td><td class="sc">premium tier</td></tr>
+      <tr><td class="sc">7</td><td class="dim">Maggi</td><td>Malaysian value shelf</td><td>Cheapest food per gram on the shelf with Maggi Big, plus the Syiok and Letup ranges bracketing Vit's price</td><td class="sc">RM1.16 to 1.78</td></tr>
+      <tr><td class="sc">8</td><td class="dim">Mi Sedaap</td><td>Malaysian value shelf</td><td>Indonesian value player, Korean Spicy line at RM1.72 shows value brands stealing premium cues</td><td class="sc">RM1.16 to 1.72</td></tr>
+      <tr><td class="sc">9</td><td class="dim">Cintan, Ibumie</td><td>Malaysian value shelf</td><td>Legacy value pressure, Ibumie's Penang White CurryMee sits on the 2025 list at No.10</td><td class="sc">RM1.26</td></tr>
+      <tr><td class="sc">10</td><td class="dim">OEM factories, CN/TH/VN</td><td>The trade-floor fight</td><td>At Gulfood the stand next door is a factory with published MOQs and lead times. They win on price and disclosure, not brand</td><td class="sc">trade pricing</td></tr>
+    </tbody>
+  </table></div>
+  <span class="pin"><b>The strategic read, one line:</b> the premium ceiling in Malaysia is Samyang's RM5.70, not MyKuali's RM2.90, and Vit's already charges a mid-premium RM1.75 while receiving zero premium credit for it. The gap is branding and disclosure, not manufacturing.</span>
+</section>
+
+<section id="s03">
+  <div class="chapdiv"><div class="cd-no">03</div><div><div class="cd-h">What each one actually looks like</div><div class="cd-sub">The shelf board: pack language, photographed. Vit's included for contrast</div></div></div>
+  <p class="sec-intro">Two boards. First <b>the shelf</b>: pack captures held from the July market audit, because the packs are the visual system every rival's website inherits. Then <b>the sites themselves</b>, captured live at 1280 by 860 on 13 August 2026 with a real browser user agent, every capture opened and looked at.</p>
+  <h3 class="sub" style="font-family:Fraunces,serif;font-weight:500;font-size:21px;margin:30px 0 0">The house, for contrast</h3>
+    <div class="packboard" style="margin-top:14px">
+    <div class="pack"><div class="ph"><img src="assets/econ-1.png" alt="Vit's economy pack, yellow wrapper, red logo band"></div><div class="meta"><div class="nm">Vit's Economy Pack, the flagship</div><div class="rd">Yellow wrapper, red logo band, phoenix emblem, noodle window. The equity Gen Z knows. This is the pack the demo puts in 3D.</div><div class="pr">RM1.75 / packet at Jaya Grocer, 4-pack format</div></div></div>
+    <div class="pack"><div class="ph"><img src="assets/comp-vits.png" alt="Vit's Penang White Curry retail 4 pack"></div><div class="meta"><div class="nm">Vit's Premium, Penang White Curry</div><div class="rd">The existing premium attempt: red pack, bowl photography, Taste of Malaysia banner. On shelf without traction, and walking into MyKuali's owned flavour.</div><div class="pr">Existing SKU, no traction</div></div></div>
+    </div>
+    <h3 class="sub" style="font-family:Fraunces,serif;font-weight:500;font-size:21px;margin:30px 0 0">The premium Malaysians</h3>
+    <div class="packboard" style="margin-top:14px">
+    <div class="pack"><div class="ph"><img src="assets/comp-mykuali.png" alt="MyKuali Penang White Curry pack"></div><div class="meta"><div class="nm">MyKuali</div><div class="rd">Heritage illustration, certification marks up front, one famous flavour. The proof a Malaysian curry noodle can win globally.</div><div class="pr">RM2.90 / packet</div></div></div>
+    </div>
+    <h3 class="sub" style="font-family:Fraunces,serif;font-weight:500;font-size:21px;margin:30px 0 0">The global names</h3>
+    <div class="packboard" style="margin-top:14px">
+    <div class="pack"><div class="ph"><img src="assets/comp-indomie.png" alt="Indomie pack and sachets in a bowl"></div><div class="meta"><div class="nm">Indomie</div><div class="rd">The global halal benchmark buyers name. The sachet ritual is the product experience, and their marketing knows it.</div><div class="pr">Not listed at retailers checked, no price held</div></div></div>
+    </div>
+    <h3 class="sub" style="font-family:Fraunces,serif;font-weight:500;font-size:21px;margin:30px 0 0">The value shelf</h3>
+    <div class="packboard" style="margin-top:14px">
+    <div class="pack"><div class="ph"><img src="assets/comp-maggi.png" alt="Maggi pack"></div><div class="meta"><div class="nm">Maggi</div><div class="rd">The default. Yellow-red value language, and with Maggi Big, the cheapest food per gram on the shelf at RM1.37 per 100g.</div><div class="pr">RM1.16 to 1.78 / packet</div></div></div>
+    <div class="pack"><div class="ph"><img src="assets/comp-misedaap.png" alt="Mi Sedaap pack"></div><div class="meta"><div class="nm">Mi Sedaap</div><div class="rd">Indonesian value with premium-cue borrowing, the Korean Spicy line dresses a RM1.72 packet in Seoul's colours.</div><div class="pr">RM1.16 to 1.72 / packet</div></div></div>
+    <div class="pack"><div class="ph"><img src="assets/comp-cintan.png" alt="Cintan pack"></div><div class="meta"><div class="nm">Cintan</div><div class="rd">Legacy value, Halal-first messaging.</div><div class="pr">RM1.26 / packet</div></div></div>
+    <div class="pack"><div class="ph"><img src="assets/comp-ibumie.png" alt="Ibumie pack"></div><div class="meta"><div class="nm">Ibumie</div><div class="rd">Penang positioning at value price, its White CurryMee holds No.10 on the Malaysia 2025 list.</div><div class="pr">No price held, not listed at retailers checked</div></div></div>
+    </div>
+    <h3 class="sub" style="font-family:Fraunces,serif;font-weight:500;font-size:21px;margin:34px 0 0">Their websites, captured 13 Aug 2026</h3>
+  <div class="shotboard">
+    <div class="shot"><img src="assets/site-mykuali.png" alt="MyKuali homepage capture"><div class="meta"><div class="nm">MyKuali</div><div class="u">mykuali.com.my</div><div class="rd">Template-built consumer site: campaign hero, awards page, Where To Buy. The world rankings do the selling, the site just points at them. No trade lane at all.</div></div></div>
+    <div class="shot"><img src="assets/site-indomie.png" alt="Indomie homepage capture"><div class="meta"><div class="nm">Indomie</div><div class="u">indomie.com</div><div class="rd">"Flavour, favoured by the world": illustrated globe hero, recipes, moments, a minigame. Pure consumer theatre at global scale, and still no buyer-facing numbers.</div></div></div>
+    <div class="shot"><img src="assets/site-maggi.png" alt="Maggi Malaysia homepage capture"><div class="meta"><div class="nm">Maggi Malaysia</div><div class="u">maggi.com.my</div><div class="rd">Nestle-grade recipe platform in Malay, search-first, cookie-consented, food photography. The benchmark for the B2C recipe hub, nothing else transfers.</div></div></div>
+    <div class="shot"><img src="assets/site-samyang.png" alt="Samyang Foods corporate homepage capture"><div class="meta"><div class="nm">Samyang Foods</div><div class="u">samyangfoods.com</div><div class="rd">Corporate site in Korean, orange identity, brand-first navigation. The Buldak selling happens on channels and shelves, not here: proof the mechanic, not the website, is their weapon.</div></div></div>
+    <div class="shot"><img src="assets/site-mameechef.png" alt="Mamee corporate homepage capture"><div class="meta"><div class="nm">Mamee</div><div class="u">mamee.com</div><div class="rd">Fresh yellow-and-blue corporate rebuild, motion-led, captured mid-animation. The manoeuvre peer invests in its web presence, and it shows.</div></div></div>
+  </div>
+</section>
+
+<section id="s04">
+  <div class="chapdiv"><div class="cd-no">04</div><div><div class="cd-h">Real rivals, in full</div><div class="cd-sub">The four that shape the website's answer, in the four-block format</div></div></div>
+
+  <div class="rival">
+    <div class="rh"><h3>Samyang, the Buldak machine</h3><span class="rk">Threat 1 &middot; global</span></div>
+    <div class="blocks">
+      <div class="blk"><div class="bt">What they sell</div><p>Extreme-heat identity at premium price: RM28.50 for a 140g x 5 multipack in Malaysia, RM5.70 a packet, 4.9x Maggi Kari. FY2025 revenue KRW2.35tn, up 36%, operating margin around 22%, roughly 80% of it overseas.</p></div>
+      <div class="blk"><div class="bt">How they acquire</div><p>The challenge mechanic: a printed Scoville number and a dare, made famous by a 2014 viral video. Western and SEA markets found Buldak through content, not the shelf. In Malaysia: 188 results for "samyang" at Jaya Grocer and a TikTok Shop presence.</p></div>
+      <div class="blk"><div class="bt">What they cannot do</div><p>Malaysian authenticity. Buldak's original is only 4,404 SHU, the heat story is theatre, and rempah-based flavour depth is not their game. They also cannot claim a 51-year halal heritage, JAKIM-certified since 1980.</p></div>
+      <div class="blk"><div class="bt">What we do differently</div><p>The heat ladder: three rungs, heat from rempah not raw capsaicin, a number printed on every pack from launch. The one part of the Buldak playbook nobody in Malaysia has copied, and Vit's already owns the Hotlicious seed.</p></div>
+    </div>
+    <div class="read"><b>Our read:</b> do not clone Buldak. Answer the buyer's "can you make Buldak?" with a capability page that shows heat as one of six seasoning directions the factory can run.</div>
+  </div>
+
+  <div class="rival">
+    <div class="rh"><h3>MyKuali, the premium incumbent</h3><span class="rk">Threat 3 &middot; premium curry</span></div>
+    <div class="blocks">
+      <div class="blk"><div class="bt">What they sell</div><p>One famous flavour: Penang White Curry, world No.1 on the Ramen Rater Top Ten 2014, No.2 all-time 2015, and still No.2 and No.3 on the Malaysia 2025 list. RM2.90 a packet, 2.5x Maggi Kari.</p></div>
+      <div class="blk"><div class="bt">How they acquire</div><p>Earned authority: international list rankings, food-tuber coverage, then export distribution. Founded 2011, the noodle launched May 2013, and by November 2013 it was moving 50,000 cartons a month.</p></div>
+      <div class="blk"><div class="bt">What they cannot do</div><p>Range breadth and manufacturing scale. MyKuali is a brand with a co-packer's depth, not a 51-year factory with OEM capacity, an air-dried line and four exhibition lanes a year.</p></div>
+      <div class="blk"><div class="bt">What we do differently</div><p>Never launch on their flavour. The flagship recommendation is Sarawak Curry Laksa, then Melaka Curry Kapitan, with Penang deliberately later. The site's curry story is a map of Malaysia, not one street in Penang.</p></div>
+    </div>
+    <div class="read"><b>Our read:</b> MyKuali proved the category. Their existence is the pitch's best evidence, and their owned flavour is the one square the new range must not step on first.</div>
+  </div>
+
+  <div class="rival">
+    <div class="rh"><h3>Red Chef, the product-led winner</h3><span class="rk">Threat 5 &middot; the blueprint</span></div>
+    <div class="blocks">
+      <div class="blk"><div class="bt">What they sell</div><p>Sesame Hae Bee Hiam, No.1 on the Ramen Rater Malaysia Top Ten 2025: non-fried, trans-fat-free, no added preservatives, no artificial colours, halal and HACCP, one regional flavour.</p></div>
+      <div class="blk"><div class="bt">How they acquire</div><p>Product spec as marketing. The clean-label claims are the content, list rankings are the distribution.</p></div>
+      <div class="blk"><div class="bt">What they cannot do</div><p>Match Vit's production reality: Red Chef's winning spec is nearly line for line what Vit's air-dried Healthy Series already is, air-dried, high fibre, trans-fat-free, coloured by real spinach and tomato, and Vit's owns the factory.</p></div>
+      <div class="blk"><div class="bt">What we do differently</div><p>Promote air-dried from side line to Pillar. The site gives the air-dried process its own capability page, with the spec table Red Chef markets, backed by a plant Red Chef does not own.</p></div>
+    </div>
+    <div class="read"><b>Our read:</b> the winning product spec of 2025 is sitting in Vit's own catalogue, unmarketed, at RM1.12 per 100g, cheaper than standard Maggi. That is a website failure, not a product failure, and it is fixable in the build.</div>
+  </div>
+
+  <div class="rival">
+    <div class="rh"><h3>The OEM floor at Gulfood</h3><span class="rk">Threat 10, but first at the stand</span></div>
+    <div class="blocks">
+      <div class="blk"><div class="bt">What they sell</div><p>Capacity. Chinese, Thai and Vietnamese factories with published MOQ tiers, container pricing and lead times, competing on disclosure and price. Traditional OEM minimums run 10,000+ units per SKU.</p></div>
+      <div class="blk"><div class="bt">How they acquire</div><p>Trade platforms and exhibition follow-up. Tiered MOQ listings convert materially better than single-figure or absent MOQs, which is the industry's own conversion data.</p></div>
+      <div class="blk"><div class="bt">What they cannot do</div><p>A 51-year brand story, JAKIM halal since 1980 with preferential Middle East access, a retail brand as proof the factory's own products sell, and Malaysian spice heritage as the seasoning story.</p></div>
+      <div class="blk"><div class="bt">What we do differently</div><p>The trade destination publishes what buyers check, MOQ tiers, capacity, lead time, certifications, formats, wrapped in the one thing the factories cannot copy: a brand.</p></div>
+    </div>
+    <div class="read"><b>Our read:</b> at the exhibition the real rival is not Samyang, it is the anonymous factory next door with better disclosure. Beating them costs three numbers from operations and one well-built page.</div>
+  </div>
+</section>
+
+<section id="s05">
+  <div class="chapdiv"><div class="cd-no">05</div><div><div class="cd-h">Who is who, and what to take from each</div><div class="cd-sub">The one-table summary for the pitch room</div></div></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Rival</th><th>Their lesson</th><th>What the Vit's site takes</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Samyang</td><td>A printed number plus a dare beats vague "spicy"</td><td>Heat ladder with a number on every pack, filmable top rung</td></tr>
+      <tr><td class="dim">Indomie</td><td>The sachet ritual is the experience</td><td>The cook-the-noodle finale in the demo, sachets and all</td></tr>
+      <tr><td class="dim">MyKuali</td><td>One owned flavour can carry a company abroad</td><td>Own an unclaimed flavour, tell it as a place story</td></tr>
+      <tr><td class="dim">Nongshim</td><td>Halal is now table stakes, channels are the fight</td><td>Halal-since-1980 stated as history, not as moat</td></tr>
+      <tr><td class="dim">Red Chef</td><td>Clean spec, told plainly, wins lists</td><td>Air-dried capability page with the full spec table</td></tr>
+      <tr><td class="dim">Mamee Chef</td><td>A legacy maker can launch premium and be believed</td><td>The manoeuvre is proven, curry is the open lane</td></tr>
+      <tr><td class="dim">Maggi, Mi Sedaap, Cintan</td><td>Value shelf communicates price per meal instantly</td><td>Publish gram weights so Vit's stops losing a comparison it could win</td></tr>
+      <tr><td class="dim">OEM factories</td><td>Disclosure converts buyers</td><td>MOQ tiers, capacity and lead time published on the trade destination</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s06">
+  <div class="chapdiv"><div class="cd-no">06</div><div><div class="cd-h">Five things the new site must do</div><div class="cd-sub">Each one is something no rival on this board currently does, plus the gaps we still owe</div></div></div>
+  <div class="grid g2">
+    <div class="card"><span class="tag">01</span><h3>Prove seasoning capability, visibly</h3><p>A capability story a buyer can taste with their eyes: the seasoning directions the factory runs, with the curry range as exhibit A. No rival frames their factory this way, and it answers the buyer's opening question before the first email.</p></div>
+    <div class="card"><span class="tag">02</span><h3>Publish the three trade numbers</h3><p>MOQ tiers, capacity, lead time. On this board only the anonymous OEM factories do it, and none of them wrap it in a brand. First mover among branded Malaysian makers wins the follow-up meeting.</p></div>
+    <div class="card"><span class="tag">03</span><h3>Make the pack the hero, in 3D</h3><p>Every rival shows flat pack photography. A pack you can turn, that opens and cooks as you scroll, is a shelf of one. It also proves the site can be rich and light at once, which is the client's stated doubt.</p></div>
+    <div class="card"><span class="tag">04</span><h3>Split the lanes cleanly</h3><p>Rivals either sell consumers (MyKuali, Red Chef) or buyers (factories). Nobody serves both without confusion. Two front doors, one brand, is the structural win the audit specifies.</p></div>
+    <div class="card"><span class="tag">05</span><h3>State heritage as evidence</h3><p>51 years, halal since 1980, 30 years exporting: told as dated, sourced facts with the carton and the plant as imagery. On a floor of unnamed factories, provenance is the differentiator that costs nothing new.</p></div>
+  </div>
+  <div style="margin-top:26px;border:1px solid var(--line);border-radius:14px;background:var(--paper2);padding:18px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:10px">The positioning map &middot; price per packet, anchored to Jaya Grocer, against premium credit, our judgement</div>
+    <svg viewBox="0 0 960 420" role="img" aria-label="Positioning map of rivals by price and premium credit" style="width:100%;height:auto;display:block">
+      <g font-family="Inter,system-ui,sans-serif">
+        <line x1="80" y1="360" x2="920" y2="360" stroke="#DFD3C1" stroke-width="1.6"/>
+        <line x1="80" y1="40" x2="80" y2="360" stroke="#DFD3C1" stroke-width="1.6"/>
+        <text x="500" y="398" text-anchor="middle" font-size="12.5" fill="#9A8D80" font-family="JetBrains Mono,monospace">PRICE PER PACKET, RM →</text>
+        <text x="34" y="200" text-anchor="middle" font-size="12.5" fill="#9A8D80" font-family="JetBrains Mono,monospace" transform="rotate(-90 34 200)">PREMIUM CREDIT →</text>
+        <g font-size="11" fill="#9A8D80" font-family="JetBrains Mono,monospace">
+          <text x="145" y="378" text-anchor="middle">1.00</text><text x="305" y="378" text-anchor="middle">2.00</text><text x="465" y="378" text-anchor="middle">3.00</text><text x="625" y="378" text-anchor="middle">4.00</text><text x="785" y="378" text-anchor="middle">5.00</text><text x="905" y="378" text-anchor="middle">5.70+</text>
+        </g>
+        <g font-size="13" font-weight="600">
+          <circle cx="171" cy="300" r="9" fill="#C9691E"/><text x="171" y="324" text-anchor="middle" fill="#5A4F45">Maggi 1.16</text>
+          <circle cx="171" cy="322" r="7" fill="#C9691E" opacity=".65"/><text x="171" y="345" text-anchor="middle" fill="#9A8D80" font-size="11.5">Mi Sedaap 1.16</text>
+          <circle cx="187" cy="286" r="7" fill="#C9691E" opacity=".65"/><text x="205" y="270" text-anchor="middle" fill="#9A8D80" font-size="11.5">Cintan 1.26</text>
+          <circle cx="265" cy="292" r="10" fill="#A81318"/><text x="265" y="318" text-anchor="middle" fill="#A81318">VIT'S TODAY 1.75</text>
+          <circle cx="449" cy="150" r="9" fill="#8A5B3A"/><text x="449" y="132" text-anchor="middle" fill="#5A4F45">MyKuali 2.90</text>
+          <circle cx="500" cy="190" r="8" fill="#8A5B3A" opacity=".7"/><text x="512" y="212" text-anchor="middle" fill="#9A8D80" font-size="11.5">Red Chef, premium tier</text>
+          <circle cx="897" cy="90" r="10" fill="#1A1512"/><text x="880" y="72" text-anchor="middle" fill="#1A1512">Samyang 5.70</text>
+          <rect x="360" y="96" width="180" height="52" rx="12" fill="none" stroke="#D8232A" stroke-width="2.4" stroke-dasharray="8 6"/>
+          <text x="450" y="118" text-anchor="middle" fill="#A81318" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700">VIT'S TARGET</text>
+          <text x="450" y="136" text-anchor="middle" fill="#A81318" font-size="12">RM2.50 to 3.50, credited</text>
+          <path d="M290 280 Q340 210 372 152" stroke="#D8232A" stroke-width="2.6" fill="none" marker-end="url(#arr2)"/>
+          <defs><marker id="arr2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#D8232A"/></marker></defs>
+        </g>
+        <text x="500" y="52" text-anchor="middle" font-size="12.5" fill="#5A4F45">The move the whole engagement exists to make: same factory, same packet, credited for what it already charges and more.</text>
+      </g>
+    </svg>
+  </div>
+  <span class="pin"><b>Honesty pin:</b> the horizontal axis is anchored to shelf prices read at one retailer on 11 August. The vertical axis is our professional judgement, not panel data, and the map says so.</span>
+  <span class="pin warn"><b>What we could not verify, named:</b> Red Chef's site sits behind a Cloudflare bot check after redirecting to yeelee.com.my, captured and archived as the bot-check page. Nongshim's English path returned their own 404 inside a live site shell. Cintan and Ibumie carry no dedicated brand sites worth boarding. Still owed from the retail side: Indomie and Ibumie shelf prices at the reference retailer, Red Chef and Mamee Chef exact pricing, and the client's real export count. We estimate none of them.</span>
+</section>
+
+<footer>
+  <div>Brand Method &middot; Vit's Noodles competitor board, web lens &middot; sources dated 10 to 12 Aug 2026 &middot; deep retail analysis lives in the client workspace Market Audit</div>
+</footer>
+
+</div>
+</body>
+</html>

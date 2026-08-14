@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vit's Noodles · Web Plan · Brand Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBF7F0;--paper2:#FFFDF9;--ink:#1A130E;--soft:#5A4F45;--faint:#9A8D80;--line:#EBE1D3;--line2:#DFD3C1;--red:#D8232A;--red-deep:#A81318;--wash:#FBEAE4;--ok:#1A8F5A;--warn:#C9941F;--bad:#D7263D;--dark:#180F0B;--gold:#E9A820;}
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{padding:0 22px}.mono{font-family:"JetBrains Mono",monospace}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-deep);display:inline-flex;align-items:center;gap:10px;font-weight:600}
+  .hero{padding:50px 0 8px}.hero h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(36px,5.6vw,62px);line-height:1.03;letter-spacing:-.02em;margin:18px 0 0;max-width:24ch}.hero h1 em{font-style:italic;color:var(--red-deep)}
+  .hero .lede{font-size:clamp(17px,2vw,20px);color:var(--soft);max-width:68ch;margin:20px 0 0}
+  .vrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.vchip{background:var(--paper2);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13px;color:var(--soft)}.vchip b{color:var(--red-deep)}
+  section{padding:32px 0}
+  .chapdiv{display:flex;align-items:baseline;gap:18px;padding:42px 0 4px;border-top:1px solid var(--line);margin-top:10px}.cd-no{font-family:"Fraunces",serif;font-weight:600;font-size:38px;color:var(--red-deep);line-height:1}.cd-h{font-family:"Fraunces",serif;font-weight:500;font-size:27px;letter-spacing:-.01em}.cd-sub{font-size:15px;color:var(--soft);margin-top:5px}
+  h2{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(25px,3.6vw,37px);line-height:1.08;margin:13px 0 0;max-width:30ch}
+  h3.sub{font-family:"Fraunces",serif;font-weight:500;font-size:22px;margin:30px 0 0}
+  .sec-intro{font-size:16.5px;color:var(--soft);max-width:72ch;margin:15px 0 0}.sec-intro b{color:var(--ink)}.sec-intro em{color:var(--red-deep)}
+  .grid{display:grid;gap:16px;margin-top:22px}.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
+  .card{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:20px 21px}.card .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--red-deep);font-weight:700}.card h3{font-family:"Fraunces",serif;font-weight:500;font-size:19px;margin-top:8px}.card p{font-size:14px;color:var(--soft);margin-top:9px;line-height:1.55}.card p b{color:var(--ink)}
+  .card.dark{background:var(--dark);border-color:#2e2118;color:#EFE4D6}.card.dark h3{color:#fff}.card.dark p{color:#C9B9A6}.card.dark .tag{color:#FF9A8E}.card.dark p b{color:#fff}
+  .quote{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--soft);border-left:3px solid var(--red);padding:6px 0 6px 18px;margin-top:16px;max-width:70ch}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin-top:18px;font-size:14px;background:var(--paper2);border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}thead th{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--dark)}tr:last-child td{border-bottom:none}td.dim{font-weight:600}td.sc{font-family:"JetBrains Mono",monospace;color:var(--red-deep);font-weight:700;white-space:nowrap}
+  td.gate{color:var(--bad);font-weight:600}
+  .tbl-scroll{overflow-x:auto;margin-top:18px}.tbl-scroll table{margin-top:0;min-width:760px}
+  .pin{margin-top:22px;border-left:3px solid var(--red);background:linear-gradient(90deg,rgba(216,35,42,.06),transparent);padding:15px 19px;border-radius:0 12px 12px 0;font-size:15px;display:block}.pin b{color:var(--red-deep)}.pin.warn{border-left-color:var(--warn);background:linear-gradient(90deg,rgba(201,148,31,.09),transparent)}.pin.warn b{color:#9a6f12}
+  .diagram{margin-top:18px;border:1px solid var(--line);border-radius:14px;background:var(--paper2);padding:18px}.diagram .cap{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}.diagram svg{width:100%;height:auto;display:block}
+  .scene{display:grid;grid-template-columns:64px 1fr;gap:18px;border:1px solid var(--line);border-radius:14px;background:var(--paper2);padding:20px;margin-top:14px}
+  .scene .no{font-family:"Fraunces",serif;font-weight:600;font-size:34px;color:var(--red-deep);line-height:1}
+  .scene h3{font-family:"Fraunces",serif;font-weight:500;font-size:20px}
+  .scene .mech{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--red-deep);font-weight:700;margin-top:8px}
+  .scene p{font-size:14.5px;color:var(--soft);margin-top:8px;line-height:1.58}.scene p b{color:var(--ink)}
+  .scene .ref{font-size:12.5px;color:var(--faint);margin-top:8px;font-style:italic}
+  footer{padding:34px 0 70px;color:var(--faint);font-size:12px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid var(--line);margin-top:30px}
+</style>
+<style id="printFix">@media print{body{background:#fff}.reveal,[data-reveal]{opacity:1!important;transform:none!important}table,tr,td,th,.card,.scene,.diagram{page-break-inside:avoid}h2,h3{page-break-after:avoid}.bmws{display:none!important}}</style>
+</head>
+<body>
+<style id="bmwsCss">
+.bmws{background:#0B0805;color:#F2E9DD;position:sticky;top:0;z-index:900;border-bottom:1px solid #2a1d12}
+.bmws-in{display:flex;align-items:center;justify-content:space-between;padding:9px 22px;gap:12px;flex-wrap:wrap}
+.bmws-crumb{display:flex;flex-direction:column;line-height:1.3;white-space:nowrap}
+.bmws-crumb b{font-size:13px;font-weight:700;color:#fff;font-family:Inter,system-ui,sans-serif}
+.bmws-crumb span{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#A6907C}
+.bmws-tabs{display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:11px;overflow:auto;max-width:100%;margin-left:auto;padding:3px;gap:3px;background:rgba(255,255,255,.04)}
+.bmws-tabs a{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#E3D2BE;text-decoration:none;padding:7px 13px;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center;gap:7px;transition:background .25s,color .25s}
+.bmws-tabs a i{font-style:normal;color:#A6907C;font-size:9px;font-weight:700}
+.bmws-tabs a:hover{background:rgba(255,255,255,.09);color:#fff}
+.bmws-tabs a.on{background:#D8232A;color:#fff;font-weight:700}
+.bmws-tabs a.on i{color:rgba(255,255,255,.72)}
+</style>
+<div class="bmws"><div class="bmws-in">
+  <div class="bmws-crumb"><b>Vit's Noodles &middot; Website 1</b><span>Brand Method &middot; Admin Navigation</span></div>
+  <nav class="bmws-tabs" aria-label="Admin navigation">
+    <a href="audit.html"><i>00</i>Web Audit</a>
+    <a href="competitors.html"><i>01</i>Competitors</a>
+    <a class="on" href="plan.html"><i>02</i>Web Plan</a>
+    <a href="index.html"><i>03</i>Prototype Web 1</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">Vit's Noodles &middot; Web Plan &middot; how the site is built to work</span>
+  <h1>One brand, two front doors, and a pack that <em>cooks itself</em> as you scroll.</h1>
+  <p class="lede">This plan turns the 12 August correction into a buildable website. The trade destination leads, the Malaysian home follows, the economy pack is the hero of both, and every motion decision is specified before a line of code, so the demo proves the two claims the client doubts: rich can be light, and bold can stay editable.</p>
+  <div class="vrow">
+    <span class="vchip">Lane 1: <b>trade destination</b>, new subdomain, zero SEO risk</span>
+    <span class="vchip">Lane 2: <b>vitsnoodles.com rebuild</b>, 127 URL migration</span>
+    <span class="vchip">Flagship: <b>the economy pack</b>, in real-time 3D</span>
+    <span class="vchip">Deadline anchor: <b>Gulfood, 15 to 19 Mar 2027</b></span>
+  </div>
+</header>
+
+<section id="p01">
+  <div class="chapdiv"><div class="cd-no">01</div><div><div class="cd-h">What the client decided</div><div class="cd-sub">The 12 August meeting, reduced to the decisions that bind this plan</div></div></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Decision</th><th>In the client's words</th><th>What it binds in this plan</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Overseas first</td><td>"This curry is not something that we will shout out in Malaysia, it is mainly for overseas."</td><td>The trade destination is lane 1 and the demo. Malaysia sees no repositioning.</td></tr>
+      <tr><td class="dim">The buyer is trade</td><td>"The target audience you have it right, those people who visit the exhibitions."</td><td>Landing page speaks to importers, distributors, wholesalers, private label clients.</td></tr>
+      <tr><td class="dim">Two lanes, one site family</td><td>The site "cannot be too B2B", 70% of revenue is Malaysian B2C</td><td>Subdomain separation. The main site keeps its consumer face.</td></tr>
+      <tr><td class="dim">Flagship = economy pack</td><td>The pitch focuses on the economy pack, "our OG product"</td><td>The 3D hero is the yellow pack, not the curry range.</td></tr>
+      <tr><td class="dim">SEO must survive</td><td>Raised twice: existing rankings cannot be lost</td><td>Chapter 07 is the migration plan, 127 URLs, 301 map, zero 404 target.</td></tr>
+      <tr><td class="dim">Light and editable</td><td>Previous agency: animations make sites heavy and hard to update</td><td>Performance budget in chapter 06, CMS text and image contract in chapter 08.</td></tr>
+      <tr><td class="dim">Work with existing code</td><td>"Can you work with the previous agency's build?"</td><td>Yes: the audit counted their site from its own sitemaps. Migration, not teardown.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="p02">
+  <div class="chapdiv"><div class="cd-no">02</div><div><div class="cd-h">The strategy the site carries</div><div class="cd-sub">Three jobs, in payment order</div></div></div>
+  <div class="grid g3">
+    <div class="card"><span class="tag">Job 1 &middot; prove capability</span><h3>Answer "can you make Buldak?" before the email</h3><p>Buyers open with that question. The site's answer: a seasoning capability story with the curry range as exhibit A, the heat ladder as the demonstration, and the factory's certifications underneath. Curry is the vehicle, capability is the message.</p></div>
+    <div class="card"><span class="tag">Job 2 &middot; publish the numbers</span><h3>MOQ tiers, capacity, lead time</h3><p>The five things a buyer checks, published plainly: formats, shelf life, certifications, MOQ, customisation. Nobody branded does this in Malaysia. Figures owed by operations, gated in red in the content plan.</p></div>
+    <div class="card"><span class="tag">Job 3 &middot; protect the base</span><h3>Malaysia sees improvement, not repositioning</h3><p>The Malaysian site keeps its consumer face, gains speed, schema, weights and the recipe hub, and loses nothing: every URL is mapped and redirected. The plain-noodle business that pays for everything is untouched.</p></div>
+  </div>
+  <h3 class="sub" style="font-family:Fraunces,serif;font-weight:500;font-size:22px;margin:30px 0 0">How this becomes the best trade site in the category</h3>
+  <p class="sec-intro">The ambition, concretely: the only branded Malaysian noodle manufacturer whose site answers all five buyer checks on one page, in under three seconds, with a product experience no rival attempts. The capability-gap table is why the bar is reachable.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>What rivals cannot do</th><th>Score today</th><th>Why not, today</th><th>What it costs them</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Publish trade numbers with a brand attached</td><td class="sc">0 of 9 branded rivals</td><td>Retail brands hide trade terms behind sales teams, factories have terms but no brand</td><td>Every buyer email starts from zero, twice the follow-up work per show</td></tr>
+      <tr><td class="dim">Show the product cooking, in code</td><td class="sc">0 of 9</td><td>Flat pack photography everywhere, video where there is motion at all</td><td>Heavy pages, no shelf-of-one moment, nothing memorable at the stand follow-up</td></tr>
+      <tr><td class="dim">Serve B2C and B2B without confusion</td><td class="sc">0 of 9</td><td>Retail rivals ignore buyers, factory sites ignore eaters</td><td>Vit's is the only one with both audiences already paying it</td></tr>
+      <tr><td class="dim">Prove seasoning capability as content</td><td class="sc">0 of 9</td><td>Nobody frames the factory as a seasoning kitchen with evidence</td><td>The buyer's opening question goes unanswered industry-wide</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="p03">
+  <div class="chapdiv"><div class="cd-no">03</div><div><div class="cd-h">The whole site, top to bottom</div><div class="cd-sub">Both lanes, every page, and what each is for</div></div></div>
+  <div class="diagram">
+    <div class="cap">D1 &middot; The two-lane sitemap. Lane 1 ships first and is the demo. Lane 2 is the rebuild behind it.</div>
+    <svg viewBox="0 0 960 430" role="img" aria-label="Two lane sitemap">
+      <g font-family="Inter,system-ui,sans-serif">
+        <rect x="330" y="14" width="300" height="56" rx="12" fill="#180F0B"/>
+        <text x="480" y="38" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">VIT'S NOODLES</text>
+        <text x="480" y="57" text-anchor="middle" fill="#C9B9A6" font-size="12">one brand &middot; one design system &middot; two doors</text>
+        <path d="M400 70 L200 116" stroke="#A81318" stroke-width="2.2" fill="none"/>
+        <path d="M560 70 L760 116" stroke="#C9691E" stroke-width="2.2" fill="none"/>
+        <rect x="30" y="116" width="420" height="64" rx="10" fill="#D8232A"/>
+        <text x="240" y="143" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">LANE 1 &middot; trade.vitsnoodles.com &middot; NEW</text>
+        <text x="240" y="163" text-anchor="middle" fill="#FBEAE4" font-size="12">the export destination &middot; 4 pages &middot; ships first</text>
+        <g font-size="13">
+          <rect x="30" y="196" width="200" height="52" rx="9" fill="#FFFDF9" stroke="#D8232A" stroke-width="1.6"/>
+          <text x="130" y="218" text-anchor="middle" fill="#1A130E" font-weight="700">01 The Landing</text>
+          <text x="130" y="236" text-anchor="middle" fill="#5A4F45" font-size="11.5">the 7-scene scroll journey</text>
+          <rect x="250" y="196" width="200" height="52" rx="9" fill="#FFFDF9" stroke="#D8232A" stroke-width="1.6"/>
+          <text x="350" y="218" text-anchor="middle" fill="#1A130E" font-weight="700">02 OEM &amp; Private Label</text>
+          <text x="350" y="236" text-anchor="middle" fill="#5A4F45" font-size="11.5">capability, MOQ tiers, lead time</text>
+          <rect x="30" y="260" width="200" height="52" rx="9" fill="#FFFDF9" stroke="#D8232A" stroke-width="1.6"/>
+          <text x="130" y="282" text-anchor="middle" fill="#1A130E" font-weight="700">03 The Range</text>
+          <text x="130" y="300" text-anchor="middle" fill="#5A4F45" font-size="11.5">specimen showcase, all lines</text>
+          <rect x="250" y="260" width="200" height="52" rx="9" fill="#FFFDF9" stroke="#D8232A" stroke-width="1.6"/>
+          <text x="350" y="282" text-anchor="middle" fill="#1A130E" font-weight="700">04 Trade Desk</text>
+          <text x="350" y="300" text-anchor="middle" fill="#5A4F45" font-size="11.5">enquiry, shows calendar, docs</text>
+        </g>
+        <rect x="540" y="116" width="390" height="64" rx="10" fill="#C9691E"/>
+        <text x="735" y="143" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">LANE 2 &middot; vitsnoodles.com &middot; REBUILD</text>
+        <text x="735" y="163" text-anchor="middle" fill="#FDF3E4" font-size="12">10 core pages + 3 templates &middot; full migration</text>
+        <g font-size="12.5">
+          <rect x="540" y="196" width="185" height="44" rx="9" fill="#FFFDF9" stroke="#C9691E" stroke-width="1.4"/>
+          <text x="632" y="214" text-anchor="middle" fill="#1A130E" font-weight="700">Home &middot; consumer-led</text>
+          <text x="632" y="231" text-anchor="middle" fill="#5A4F45" font-size="11">one trade routing line</text>
+          <rect x="745" y="196" width="185" height="44" rx="9" fill="#FFFDF9" stroke="#C9691E" stroke-width="1.4"/>
+          <text x="837" y="214" text-anchor="middle" fill="#1A130E" font-weight="700">Ranges &middot; 7 categories</text>
+          <text x="837" y="231" text-anchor="middle" fill="#5A4F45" font-size="11">product template x 25 SKUs</text>
+          <rect x="540" y="252" width="185" height="44" rx="9" fill="#FFFDF9" stroke="#C9691E" stroke-width="1.4"/>
+          <text x="632" y="270" text-anchor="middle" fill="#1A130E" font-weight="700">Recipe Hub &middot; filterable</text>
+          <text x="632" y="287" text-anchor="middle" fill="#5A4F45" font-size="11">recipe template x 44 + videos</text>
+          <rect x="745" y="252" width="185" height="44" rx="9" fill="#FFFDF9" stroke="#C9691E" stroke-width="1.4"/>
+          <text x="837" y="270" text-anchor="middle" fill="#1A130E" font-weight="700">Stories &middot; blog</text>
+          <text x="837" y="287" text-anchor="middle" fill="#5A4F45" font-size="11">post template x 24</text>
+          <rect x="540" y="308" width="185" height="44" rx="9" fill="#FFFDF9" stroke="#C9691E" stroke-width="1.4"/>
+          <text x="632" y="326" text-anchor="middle" fill="#1A130E" font-weight="700">About &middot; 51 years</text>
+          <text x="632" y="343" text-anchor="middle" fill="#5A4F45" font-size="11">heritage, halal 1980, plant</text>
+          <rect x="745" y="308" width="185" height="44" rx="9" fill="#FFFDF9" stroke="#C9691E" stroke-width="1.4"/>
+          <text x="837" y="326" text-anchor="middle" fill="#1A130E" font-weight="700">Contact + Where to buy</text>
+          <text x="837" y="343" text-anchor="middle" fill="#5A4F45" font-size="11">retail finder, e-commerce later</text>
+        </g>
+        <path d="M240 180 L240 196 M350 180 L350 196 M130 248 L130 260 M350 248 L350 260" stroke="#D8232A" stroke-width="1.6"/>
+        <text x="480" y="408" text-anchor="middle" fill="#9A8D80" font-size="12" font-family="JetBrains Mono,monospace">CROSS-LINKS: trade landing routes consumers home &middot; home routes buyers to trade &middot; recipes feed both</text>
+      </g>
+    </svg>
+  </div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Page type</th><th>What it is for</th><th>Layout</th><th>Components</th><th>Content rules</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Trade landing</td><td>Convert a buyer's 90 seconds into a meeting</td><td>The 7-scene scroll journey, chapter 05</td><td>3D pack, stat cards, capability band, specimen row, carton stack, bowl finale, enquiry</td><td>Every claim dated and sourced, no unverified export count</td></tr>
+      <tr><td class="dim">OEM &amp; Private Label</td><td>Disclosure page a buyer bookmarks</td><td>Long-form, sticky summary rail</td><td>MOQ tier table, capacity, lead time, certifications wall, process steps, format gallery</td><td>Numbers from operations only, red-gated until confirmed</td></tr>
+      <tr><td class="dim">Range showcase</td><td>Prove breadth and seasoning capability</td><td>Specimen gallery, one SKU centred at a time</td><td>Crossfading pack stage, flavour meta, heat rung, texture close-ups</td><td>Gram weights on every SKU, no exceptions</td></tr>
+      <tr><td class="dim">Trade desk</td><td>Make contact effortless in buyer time</td><td>Short, form-led</td><td>Enquiry form, exhibition calendar, downloadables, WhatsApp business line</td><td>Response-time promise stated, then honoured</td></tr>
+      <tr><td class="dim">Consumer home (lane 2)</td><td>Serve the 70% without confusing it</td><td>Consumer-led hero, range strip, recipes</td><td>One routing line to trade, retail finder</td><td>One brand-name spelling, everywhere</td></tr>
+      <tr><td class="dim">Product template (x25)</td><td>Win the comparison Vit's currently loses</td><td>WooCommerce single</td><td>Weight, servings, Product schema, meta description</td><td>Price only where channel-correct</td></tr>
+      <tr><td class="dim">Recipe template (x44)</td><td>Rich results and retention</td><td>Standard recipe layout</td><td>Recipe schema, video embed, range link, heat rung</td><td>Schema validated on every publish</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="p04">
+  <div class="chapdiv"><div class="cd-no">04</div><div><div class="cd-h">Audiences, from first search to reply</div><div class="cd-sub">Four trade segments and the home shopper, with the task each must complete</div></div></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>The task</th><th>Who needs it</th><th>Where it happens</th><th>Steps allowed</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">"Can this factory make what my market wants?"</td><td>Importer, met at a show, opens the site on a phone at the stand</td><td>Trade landing, scenes 2 to 4</td><td class="sc">1 scroll</td></tr>
+      <tr><td class="dim">"What are their minimums and lead times?"</td><td>Distributor comparing three suppliers after the show</td><td>OEM page, MOQ tier table above the fold</td><td class="sc">2 clicks</td></tr>
+      <tr><td class="dim">"Can they make our recipe, our label?"</td><td>Private label buyer, e.g. the Cambodia beef and tom yam case</td><td>OEM page, customisation block + enquiry</td><td class="sc">3 clicks to a sent form</td></tr>
+      <tr><td class="dim">"Are they certified for my market?"</td><td>Gulf wholesaler checking halal lineage</td><td>Certification wall, halal since 1980, JAKIM MS 1500</td><td class="sc">1 click from any page</td></tr>
+      <tr><td class="dim">"Where do I buy the yellow pack?"</td><td>Malaysian shopper, 70% of revenue</td><td>Lane 2 home, retail finder</td><td class="sc">2 clicks</td></tr>
+    </tbody>
+  </table></div>
+  <div class="diagram">
+    <div class="cap">D2 &middot; The four journeys, entry to reply, drawn</div>
+    <svg viewBox="0 0 960 360" role="img" aria-label="Four audience journeys from entry to conversion">
+      <g font-family="Inter,system-ui,sans-serif" font-size="13">
+        <g font-size="13.5" font-weight="700" fill="#1A130E">
+          <text x="20" y="52">Importer, at the stand</text>
+          <text x="20" y="132">Distributor, comparing</text>
+          <text x="20" y="212">Private label buyer</text>
+          <text x="20" y="292">Malaysian shopper</text>
+        </g>
+        <g>
+          <rect x="230" y="30" width="150" height="36" rx="9" fill="#FBEAE4" stroke="#D8232A"/><text x="305" y="53" text-anchor="middle" fill="#A81318">QR at the stand</text>
+          <rect x="420" y="30" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="495" y="53" text-anchor="middle" fill="#5A4F45">Landing, scenes 1 to 4</text>
+          <rect x="610" y="30" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="685" y="53" text-anchor="middle" fill="#5A4F45">Capability story</text>
+          <rect x="800" y="30" width="140" height="36" rx="9" fill="#D8232A"/><text x="870" y="53" text-anchor="middle" fill="#fff" font-weight="700">Meeting booked</text>
+          <rect x="230" y="110" width="150" height="36" rx="9" fill="#FBEAE4" stroke="#D8232A"/><text x="305" y="133" text-anchor="middle" fill="#A81318">Follow-up email link</text>
+          <rect x="420" y="110" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="495" y="133" text-anchor="middle" fill="#5A4F45">OEM page, MOQ tiers</text>
+          <rect x="610" y="110" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="685" y="133" text-anchor="middle" fill="#5A4F45">Spec sheet download</text>
+          <rect x="800" y="110" width="140" height="36" rx="9" fill="#D8232A"/><text x="870" y="133" text-anchor="middle" fill="#fff" font-weight="700">Shortlisted</text>
+          <rect x="230" y="190" width="150" height="36" rx="9" fill="#FBEAE4" stroke="#D8232A"/><text x="305" y="213" text-anchor="middle" fill="#A81318">Search, OEM noodles</text>
+          <rect x="420" y="190" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="495" y="213" text-anchor="middle" fill="#5A4F45">Customisation block</text>
+          <rect x="610" y="190" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="685" y="213" text-anchor="middle" fill="#5A4F45">Enquiry, 3 fields in</text>
+          <rect x="800" y="190" width="140" height="36" rx="9" fill="#D8232A"/><text x="870" y="213" text-anchor="middle" fill="#fff" font-weight="700">Form sent</text>
+          <rect x="230" y="270" width="150" height="36" rx="9" fill="#FBEAE4" stroke="#C9691E"/><text x="305" y="293" text-anchor="middle" fill="#8A5B08">Recipe, from search</text>
+          <rect x="420" y="270" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="495" y="293" text-anchor="middle" fill="#5A4F45">Range page, weights</text>
+          <rect x="610" y="270" width="150" height="36" rx="9" fill="#FFFDF9" stroke="#DFD3C1"/><text x="685" y="293" text-anchor="middle" fill="#5A4F45">Retail finder</text>
+          <rect x="800" y="270" width="140" height="36" rx="9" fill="#C9691E"/><text x="870" y="293" text-anchor="middle" fill="#fff" font-weight="700">Bought in store</text>
+        </g>
+        <g stroke="#B8A78F" stroke-width="1.8" fill="none">
+          <path d="M380 48 h40 M570 48 h40 M760 48 h40 M380 128 h40 M570 128 h40 M760 128 h40 M380 208 h40 M570 208 h40 M760 208 h40 M380 288 h40 M570 288 h40 M760 288 h40"/>
+        </g>
+        <text x="480" y="345" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#9A8D80">TRADE JOURNEYS END AT A HUMAN REPLY INSIDE ONE BUSINESS DAY &middot; THE SHOPPER JOURNEY ENDS AT A SHELF</text>
+      </g>
+    </svg>
+  </div>
+  <span class="pin"><b>The phone-at-the-stand rule:</b> the landing page's first four scenes must land inside 90 seconds on a mid-range Android over exhibition wifi. That is the real device target, and it is why the performance budget in chapter 06 is not negotiable.</span>
+</section>
+
+<section id="p05">
+  <div class="chapdiv"><div class="cd-no">05</div><div><div class="cd-h">The landing page, scene by scene</div><div class="cd-sub">Bazil's narrative, the four decoded references, one specified journey</div></div></div>
+  <p class="sec-intro">The order is the client's own: <b>product, then company, then the trade offer, then the experience</b>. The motion grammar is taken from four studied references: the Lagunitas IPA page (pinned product, sections scroll past it, ends in a noodle bowl), the Tubik drinks hero (display type behind product, range fly-in), the Flora specimen gallery (one centred product, crossfade), and the scroll-rotating 3D can demo. Not any particular parallax: a journey with a beginning, a middle and a bowl.</p>
+
+  <div class="scene"><div class="no">1</div><div>
+    <h3>The pack, floating in the light</h3>
+    <div class="mech">3D pack &middot; slow idle spin &middot; display type behind product</div>
+    <p>Cream paper background. Giant condensed display type, <b>THE YELLOW PACK OF MALAYSIA</b>, runs edge to edge BEHIND the real-time 3D economy pack, which floats tilted, slowly turning, catching light on the film. One line below: 51 years, one factory, halal since 1980. Stat chips right: 700g, 10 cakes, since 1975 pending verification. The scroll cue is a noodle strand drawn as a line.</p>
+    <p class="ref">Reference: Tubik hero, type-behind-product. Lagunitas stat card.</p>
+  </div></div>
+
+  <div class="scene"><div class="no">2</div><div>
+    <h3>What the product is</h3>
+    <div class="mech">Scroll-scrub rotation &middot; annotation callouts fan out</div>
+    <p>The pack straightens and scales up as the headline slides away. Splat-shaped callouts fan out around it, wheat flour and palm oil, the noodle window, the phoenix mark, 10 cakes one decision, halal mark. The pack answers the shelf question: this is the noodle Malaysia already knows.</p>
+    <p class="ref">Reference: Lagunitas ingredient splats. Claude-built can, scroll-linked rotation.</p>
+  </div></div>
+
+  <div class="scene"><div class="no">3</div><div>
+    <h3>Who makes it, 51 years of it</h3>
+    <div class="mech">Pinned pack shrinks to a corner &middot; timeline band scrolls</div>
+    <p>The pack docks small in the corner like a wax seal while the company story passes: 1975 the family starts, 1980 halal certified JAKIM, the plant, 30 years exporting, four exhibitions a year. Dated fact tiles, warm archival tone, one sentence each. No claim without a source.</p>
+    <p class="ref">Reference: Lagunitas brewer-video section, product pinned while story scrolls.</p>
+  </div></div>
+
+  <div class="scene"><div class="no">4</div><div>
+    <h3>The trade offer, said plainly</h3>
+    <div class="mech">Colour flips to dark &middot; carton stack builds on scroll</div>
+    <p>The page turns kraft-and-dark: the OEM carton, modelled from the real Economy Pack carton, stacks into a pallet wall as you scroll. Over it, the offer: OEM, private label, bulk. The five buyer checks as a row of cards: formats, shelf life, certifications, MOQ tiers, customisation. MOQ figures red-gated until operations confirms. CTA: talk to the trade desk.</p>
+    <p class="ref">Reference: the factory band in the 3D can demo. The carton is our own asset, photographed from their site.</p>
+  </div></div>
+
+  <div class="scene"><div class="no">5</div><div>
+    <h3>The range, one specimen at a time</h3>
+    <div class="mech">Dark specimen stage &middot; crossfade between SKUs</div>
+    <p>Museum-dark band. One pack centred at a time, flavour name in display serif, origin and heat meta below, texture close-ups right. Crossfade through the lines: Economy, Premium Penang range, Air-dried Healthy Series, Hotlicious Pan Mee, Italian series. The air-dried card carries its spec: air-dried, trans-fat-free, coloured by real spinach and tomato.</p>
+    <p class="ref">Reference: Flora specimen gallery, dark, serif, crossfade.</p>
+  </div></div>
+
+  <div class="scene"><div class="no">6</div><div>
+    <h3>The cook</h3>
+    <div class="mech">The showpiece &middot; scroll-scrubbed 3D sequence</div>
+    <p>Back to light. The economy pack returns centre stage, larger. As the visitor scrolls: <b>the pack tilts, the wrapper opens, a noodle cake slides out and drops into a waiting bowl, steam rises, strands loosen and swirl</b>. The scrub runs both directions, scroll up and it un-cooks. Copy is minimal: three time markers, 3 minutes, one pot, one meal. This single scene is the pitch's proof that rich motion can be code-light.</p>
+    <p class="ref">Reference: Bazil's brief verbatim. Lagunitas finale bowl. Every beat scroll-scrubbed, reversible, 60fps.</p>
+  </div></div>
+
+  <div class="scene"><div class="no">7</div><div>
+    <h3>The bowl, and the ask</h3>
+    <div class="mech">Settle &middot; steam idles &middot; enquiry form</div>
+    <p>The finished bowl sits centred, steam idling, chopsticks lifting a strand. Beside it the closing line, one factory, any flavour your market wants, and the trade enquiry form with the exhibition calendar: Gulfood 15 to 19 March 2027, then the US, Bangkok, UK. Footer carries the one canonical brand name, the certifications, and nothing else.</p>
+    <p class="ref">Reference: Lagunitas "Beer speaks" recipe close. Flora's calm.</p>
+  </div></div>
+
+  <span class="pin"><b>Copy voice for the whole page:</b> confident, not shouting. Short declaratives. Malay phrases where they earn their place. No exclamation marks, no unverified claims, heat described by rung not by dare.</span>
+</section>
+
+<section id="p06">
+  <div class="chapdiv"><div class="cd-no">06</div><div><div class="cd-h">Motion and 3D, engineered</div><div class="cd-sub">How the showpiece stays light, editable and reversible</div></div></div>
+  <div class="grid g2">
+    <div class="card"><span class="tag">Stack</span><h3>Code, not video</h3><p>GSAP ScrollTrigger for the journey, Three.js for the pack, carton and bowl. No video payloads anywhere: the entire motion system is procedural, which is why the page can carry a full 3D journey in less weight than the current homepage's image payload.</p></div>
+    <div class="card"><span class="tag">Budget</span><h3>The numbers the demo must hit</h3><p>First paint under 2s on mid-range mobile, scroll at 60fps with DPR capped, JS under 350KB gzipped including Three.js, textures under 600KB total, one canvas, draw calls under 60. Static poster fallback for reduced-motion and old devices.</p></div>
+    <div class="card"><span class="tag">Reversibility</span><h3>Every beat scrubbed, nothing fired</h3><p>All journey animation is scroll-scrubbed, not time-triggered: scroll up and the noodle un-cooks. This kills the two classic failures, animations that start too late and animations that break when the visitor changes direction.</p></div>
+    <div class="card"><span class="tag">Editability</span><h3>The CMS contract</h3><p>Every headline, paragraph, stat and image on the page is a content field. The 3D scene reads its copy from the same fields. The client edits text and swaps images without touching the motion system, which answers the "hard to update" objection in writing.</p></div>
+  </div>
+</section>
+
+<section id="p07">
+  <div class="chapdiv"><div class="cd-no">07</div><div><div class="cd-h">SEO preservation and the migration</div><div class="cd-sub">The answer to the fear the client raised twice</div></div></div>
+  <p class="sec-intro">Two moves, in order of risk. <b>Move one carries no risk at all:</b> the trade destination is a new subdomain, nothing on vitsnoodles.com changes, every existing ranking stays where it is. <b>Move two is the rebuild, and it is a mapped migration, not a redesign:</b> all 127 URLs inventoried in the web audit carry a 301 redirect to their successor, content transfers intact, and the build adds what Yoast never had.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Step</th><th>What happens</th><th>Proof it worked</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">1 &middot; Freeze &amp; crawl</td><td>Full crawl of all 127 URLs, titles, metas, schema and inlinks archived before anything moves</td><td>The archive itself, delivered</td></tr>
+      <tr><td class="dim">2 &middot; Map</td><td>Every URL assigned a successor: kept, merged, or improved. Nothing dropped silently</td><td>The 301 map, 127 rows, client-visible</td></tr>
+      <tr><td class="dim">3 &middot; Carry the fundamentals</td><td>Titles, metas, H1s, canonicals migrate with the content</td><td>Diff report, old vs new</td></tr>
+      <tr><td class="dim">4 &middot; Add what was missing</td><td>Organization, Product and Recipe schema, hreflang, og:image, product metas, alt text</td><td>Rich results test passes per template</td></tr>
+      <tr><td class="dim">5 &middot; Launch &amp; verify</td><td>Redirects live, sitemap resubmitted, Search Console monitored</td><td>Zero 404s in the crawl, week one and week four checks</td></tr>
+    </tbody>
+  </table></div>
+  <span class="pin"><b>Scope rule, stated in the proposal and repeated here:</b> SEO optimisation is included in the build, schema, hreflang, metadata, alt text, speed and redirects. Ongoing SEO is a separate package, quoted after the site ships or when the client asks for it.</span>
+</section>
+
+<section id="p08">
+  <div class="chapdiv"><div class="cd-no">08</div><div><div class="cd-h">Content plan</div><div class="cd-sub">Every page, what it must say, whose facts, and what gates it</div></div></div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Page / block</th><th>What it must say</th><th>Facts from</th><th>Words by</th><th>Gate</th></tr></thead>
+    <tbody>
+      <tr><td class="dim">Landing scene 1 to 2</td><td>The pack, the specs, the one-line heritage</td><td>Pack itself, site product data</td><td>Brand Method</td><td>None, ready</td></tr>
+      <tr><td class="dim">Landing scene 3, story</td><td>Dated history: 1975 start, 1980 halal, exporting since, plant</td><td>Client documents</td><td>Brand Method</td><td class="gate">Founding-year evidence, export count</td></tr>
+      <tr><td class="dim">Landing scene 4, offer</td><td>OEM, private label, bulk, the five buyer checks</td><td>Operations via Christina</td><td>Brand Method</td><td class="gate">MOQ tiers, capacity, lead time</td></tr>
+      <tr><td class="dim">Landing scenes 5 to 7</td><td>Range, the cook, the ask</td><td>Product catalogue</td><td>Brand Method</td><td>None, ready</td></tr>
+      <tr><td class="dim">OEM &amp; Private Label page</td><td>Full disclosure page, certifications wall</td><td>Operations, cert documents</td><td>Brand Method</td><td class="gate">Same three figures, cert scans</td></tr>
+      <tr><td class="dim">Range showcase</td><td>Every line with weight, heat rung, spec</td><td>Product catalogue</td><td>Brand Method</td><td>Gram weights for 7 of 8 unpublished SKUs</td></tr>
+      <tr><td class="dim">Trade desk</td><td>Enquiry, calendar: Gulfood dated, others pending</td><td>Client show bookings</td><td>Brand Method</td><td class="gate">US, Bangkok, UK show names and dates</td></tr>
+      <tr><td class="dim">Lane 2 pages</td><td>Consumer content, recipes, retail finder</td><td>Existing site, migrated</td><td>Migrate, then edit</td><td>None to start</td></tr>
+    </tbody>
+  </table></div>
+  <span class="pin warn"><b>Red gates are client-owed facts, all requested from Christina on 12 August:</b> the real export count, MOQ, capacity and lead-time figures from operations, and the three remaining show names and dates. The demo ships with these blocks marked "to be confirmed" in design, honestly, rather than with invented numbers.</span>
+</section>
+
+<section id="p09">
+  <div class="chapdiv"><div class="cd-no">09</div><div><div class="cd-h">Look and feel</div><div class="cd-sub">The design language, drawn from the pack, not imposed on it</div></div></div>
+  <div class="grid g3">
+    <div class="card"><span class="tag">Colour</span><h3>The pack is the palette</h3><p>Cream paper base, the pack's yellow as the field colour, Vit's red for type and accents, kraft brown for the trade band, museum-dark for the specimen stage. Nothing outside the pack's own world.</p></div>
+    <div class="card"><span class="tag">Type</span><h3>Big, confident, bilingual</h3><p>A condensed display face for the giant headlines, a working sans for body, monospace for spec labels. EN leads, BM phrases where they earn their place, consistent with the pack's own bilingual habit.</p></div>
+    <div class="card"><span class="tag">Imagery</span><h3>Real product, drawn accents</h3><p>The 3D pack and carton are modelled on the real artwork. Illustrated accents, steam wisps, noodle-strand lines, the phoenix, come from the pack. No stock photography, no AI-look imagery: the client named that fear and the answer is craft.</p></div>
+  </div>
+</section>
+
+<section id="p10">
+  <div class="chapdiv"><div class="cd-no">10</div><div><div class="cd-h">Build plan and clock</div><div class="cd-sub">Where we stand on the nine-step path, then what ships when</div></div></div>
+  <div class="diagram">
+    <div class="cap">D3 &middot; The build path &middot; marker as of 13 Aug 2026</div>
+    <svg viewBox="0 0 960 110" role="img" aria-label="Build path with current position">
+      <g font-family="JetBrains Mono,monospace" font-size="10.5">
+        <rect x="10"  y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="64"  y="42" text-anchor="middle" fill="#126B45" font-weight="700">00</text><text x="64"  y="60" text-anchor="middle" fill="#126B45">WHERE WE ARE</text>
+        <rect x="128" y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="182" y="42" text-anchor="middle" fill="#126B45" font-weight="700">01</text><text x="182" y="60" text-anchor="middle" fill="#126B45">GOALS &amp; AUDIENCE</text>
+        <rect x="246" y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="300" y="42" text-anchor="middle" fill="#126B45" font-weight="700">02</text><text x="300" y="60" text-anchor="middle" fill="#126B45">SITEMAP</text>
+        <rect x="364" y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="418" y="42" text-anchor="middle" fill="#126B45" font-weight="700">03</text><text x="418" y="60" text-anchor="middle" fill="#126B45">USER FLOWS</text>
+        <rect x="482" y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="536" y="42" text-anchor="middle" fill="#126B45" font-weight="700">04</text><text x="536" y="60" text-anchor="middle" fill="#126B45">PAGE OBJECTIVES</text>
+        <rect x="600" y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="654" y="42" text-anchor="middle" fill="#126B45" font-weight="700">05</text><text x="654" y="60" text-anchor="middle" fill="#126B45">CONTENT PLAN</text>
+        <rect x="718" y="20" width="108" height="52" rx="9" fill="#E4F4EC" stroke="#A8D9C0"/><text x="772" y="42" text-anchor="middle" fill="#126B45" font-weight="700">06</text><text x="772" y="60" text-anchor="middle" fill="#126B45">DESIGN DIRECTION</text>
+        <rect x="836" y="14" width="114" height="64" rx="9" fill="#D8232A"/><text x="893" y="40" text-anchor="middle" fill="#fff" font-weight="700">07 &middot; NOW</text><text x="893" y="58" text-anchor="middle" fill="#FBEAE4">SIGN-OFF, FRI</text>
+        <text x="480" y="100" text-anchor="middle" fill="#9A8D80">STEPS 00 TO 06 ARE THIS WORKSPACE &middot; 07 IS THE PITCH &middot; THE BUILD STARTS ON THE CLIENT'S YES</text>
+      </g>
+    </svg>
+  </div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>When</th><th>What ships</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td class="sc">Fri 14 to Sat 15 Aug</td><td class="dim">The pitch pack: this workspace, the demo landing page, SEO migration plan, identity guidelines direction, revised action plan and proposal</td><td>Brand Method</td></tr>
+      <tr><td class="sc">On appointment</td><td class="dim">Trade Launch build, 3 weeks: the four trade pages on the subdomain, 2 weeks build + 1 week testing as promised in the meeting</td><td>Brand Method</td></tr>
+      <tr><td class="sc">Client decision window</td><td class="dim">Trade + Site, 4 weeks total: adds the vitsnoodles.com rebuild and the full 127 URL migration &middot; Signature 3D, 6 weeks: both lanes in full WebGL</td><td>Both</td></tr>
+      <tr><td class="sc">October 2026</td><td class="dim">Artwork lock for the packaging run, January print order, February production</td><td>Client, with our artwork</td></tr>
+      <tr><td class="sc">15 to 19 Mar 2027</td><td class="dim">Gulfood, Dubai World Trade Centre: 8,500 exhibitors, 195 countries, the trade destination live and in every follow-up email</td><td>Client, armed</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="p11">
+  <div class="chapdiv"><div class="cd-no">11</div><div><div class="cd-h">What happens after launch</div><div class="cd-sub">The site as an operating asset, not a delivered file</div></div></div>
+  <div class="grid g2">
+    <div class="card"><span class="tag">Measurement</span><h3>Buyer signals, not vanity</h3><p>Search Console and analytics wired at launch. The KPIs are trade KPIs: enquiries sent, MOQ page depth, follow-up meetings booked per show, plus zero 404s at migration and rich-result impressions on recipes.</p></div>
+    <div class="card"><span class="tag">Care</span><h3>Kept current in buyer time</h3><p>Exhibition calendar and trade documents updated per show cycle. Care plan from the standing rate card, reactive support free, proactive care paid, quoted separately as always.</p></div>
+    <div class="card"><span class="tag">Growth, when earned</span><h3>E-commerce and channels</h3><p>WooCommerce is already installed: the D2C shop and TikTok Shop channel activate on lane 2 when the client calls for it, on the plumbing this build leaves clean.</p></div>
+    <div class="card"><span class="tag">Ongoing SEO</span><h3>A separate conversation</h3><p>Optimisation ships in the build. An ongoing SEO retainer, content, links, query mining, is quoted only after the site is live or when the client asks, per the standing rule.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div>Brand Method &middot; Vit's Noodles web plan &middot; drafted 12 Aug 2026 against the 12 Aug meeting record &middot; internal working document</div>
+</footer>
+
+</div>
+</body>
+</html>
