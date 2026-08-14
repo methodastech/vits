@@ -67,7 +67,13 @@ body{padding-top:52px}
 #heroCanvas{position:absolute;inset:0;z-index:2;pointer-events:none}
 #heroCanvas canvas{display:block}
 .heroPoster{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center;pointer-events:none}
-.heroPoster img{height:62vh;width:auto;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(26,19,14,.25))}
+.heroPoster img{height:62vh;width:auto;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(26,19,14,.25));
+  /* idle bob. On `translate`, not `transform`: the scroll runway owns transform for
+     the travel-and-dock, and an animation on the same property would win over it.
+     14px keeps it in step with the line-up packs once it has docked among them. */
+  animation:heroFloat 5.6s ease-in-out infinite;will-change:translate}
+@keyframes heroFloat{0%,100%{translate:0 0}50%{translate:0 -14px}}
+@media(prefers-reduced-motion:reduce){.heroPoster img{animation:none}}
 /* same pill as the nav Trade Enquiry button: red ground, white type, 999px ends */
 .callout{position:absolute;z-index:4;max-width:250px;
   background:var(--red);color:#fff;border:0;border-radius:999px;
@@ -354,7 +360,7 @@ body{padding-top:52px}
 .reelCopy{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);
   z-index:2;max-width:30ch;pointer-events:none}
 .reelCopy .k{color:var(--red-deep)}
-.reelCopy h2{font-size:clamp(34px,4.6vw,68px);line-height:.98;text-transform:uppercase;
+.reelCopy h2{font-size:clamp(44px,6.4vw,104px);line-height:.98;text-transform:uppercase;
   margin-top:14px;color:var(--ink)}
 .reelCopy h2 em{font-style:normal;color:var(--red)}
 .reelCopy p{margin-top:16px;font-size:15.5px;line-height:1.6;color:var(--soft);max-width:34ch}
@@ -532,7 +538,7 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
         <b data-c="range.items.1.title">Penang White Curry</b><i data-c="range.items.1.metaAValue">Premium 4-pack</i></div>
       <div class="prodCard"><img src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="">
         <b data-c="range.items.2.title">Mi Kering Tomato</b><i data-c="range.items.2.metaAValue">Air dried</i></div>
-      <div class="prodCard"><img src="assets/sku-mini-pack.png" data-c-src="range.items.0.image" alt="">
+      <div class="prodCard prodSlot"><div class="slotRing"></div>
         <b data-c="range.items.0.title">The Mini Pack</b><i data-c="range.items.0.metaAValue">350g · 5 cakes</i></div>
       <div class="prodCard"><img src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="">
         <b data-c="range.items.3.title">Mi Kering Bayam</b><i data-c="range.items.3.metaAValue">Air dried</i></div>
@@ -1017,6 +1023,53 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   var cos=[].slice.call(document.querySelectorAll('.callout'));
   var prodRow=document.querySelector('.prodRow');
   var prodHead=document.querySelector('.prodHead');
+
+  /* prototype 2 has no 3D pack to fly into the reserved slot, so the flat hero shot
+     does the docking itself: it shrinks and slides into the centre of the line-up as
+     the row rises. The untransformed rect is cached, because measuring it while a
+     transform is applied would compound every frame. */
+  var poster=document.querySelector('.heroPoster img'), posterBase=null;
+  function measurePoster(){
+    if(!poster) return;
+    /* clear BOTH: the float lives on `translate`, so measuring with only `transform`
+       cleared bakes up to a bob's worth of offset into the baseline and the dock
+       lands short by that much */
+    var pt=poster.style.transform, pl=poster.style.translate;
+    poster.style.transform='none'; poster.style.translate='none';
+    posterBase=poster.getBoundingClientRect();
+    poster.style.transform=pt; poster.style.translate=pl;
+  }
+  addEventListener('resize',measurePoster);
+  addEventListener('load',measurePoster);
+  measurePoster();
+  /* two beats, not one. The pack first rides down the pinned hero at full size —
+     that is the "travel" — and only then shrinks into the reserved slot. Scaling it
+     from the very first pixel of scroll made it shrink in place and never read as
+     joining the line-up. */
+  function dockPoster(p,e){
+    if(!poster) return;
+    /* re-measure whenever the pack is home: the transform is identity there, so the
+       reading is clean, and it keeps the cache honest after fitBar() pads the body
+       (measuring once at parse time left it a whole admin-bar height stale) */
+    if(p<=0.02||!posterBase||!posterBase.width) measurePoster();
+    if(!posterBase||!posterBase.width) return;
+    var ring=document.querySelector('.prodSlot .slotRing');
+    if(!ring) return;
+    var r=ring.getBoundingClientRect();
+    if(!r.width) return;
+    /* beat 1: descend, still full size */
+    var t=Math.max(0,Math.min(1,(p-0.06)/0.46));
+    t=t*t*(3-2*t);
+    var travelY=t*innerHeight*0.30;
+    /* beat 2: close the gap to the slot and scale to fit it */
+    var fit=Math.min(r.width/posterBase.width,r.height/posterBase.height);
+    var tx=(r.left+r.width/2)-(posterBase.left+posterBase.width/2);
+    var ty=(r.top+r.height/2)-(posterBase.top+posterBase.height/2);
+    var x=(tx-0)*e;
+    var y=travelY+(ty-travelY)*e;
+    var s=1+(fit-1)*e;
+    poster.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) scale('+s.toFixed(4)+')';
+  }
   var heroSub=document.querySelector('.heroSub'), heroStats=document.querySelector('.heroStats');
   gsap.to('[data-hline="1"]',{xPercent:-28,ease:'none',immediateRender:false,
     scrollTrigger:{trigger:'#heroJourney',start:'top top',end:'bottom bottom',scrub:SCRUB}});
@@ -1049,6 +1102,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
         /* only accept the cursor once the row has actually arrived */
         prodRow.classList.toggle('live',e>0.6);
         if(prodHead) prodHead.style.opacity=e.toFixed(3);
+        dockPoster(p,e);
       }
       window.__heroP=p;
     },
