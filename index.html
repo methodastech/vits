@@ -338,21 +338,17 @@ body{padding-top:52px}
 /* width is the explicit complement of left: a video is a replaced element, so `right`
    is ignored once it has a width, and `width:auto` would use the file's native 1440
    and hang off the stage — which read as a crop again */
-.reelVid{position:absolute;left:32%;width:68%;top:50%;transform:translateY(-50%);
-  height:auto;max-height:92vh;object-fit:contain;
+/* bottom-anchored, then pushed down by the white margin under the bowl so the base
+   lands on the section edge instead of floating above it. 5.5% is measured, not
+   guessed: across the four clips the bowl bottoms sit 5.7%-9.3% above the frame
+   edge, so anything past the tightest one starts cutting the bowl off. */
+.reelVid{position:absolute;left:32%;width:68%;top:auto;bottom:0;transform:translateY(5.5%);
+  height:auto;max-height:100vh;object-fit:contain;
   z-index:0;pointer-events:none;
   /* the clips render on white; multiply drops that straight out onto the cream */
   mix-blend-mode:multiply}
-/* Cream scrims over the stage edges, not a mask on the video. Masking a
-   multiply-blended element just lightens it toward the backdrop, which reads as a
-   wash rather than an edge; painting cream over the top and bottom actually hides
-   whatever the stage clips. Above the video, below the copy. */
-#reel .stage::before,#reel .stage::after{content:"";position:absolute;left:0;right:0;
-  height:15%;z-index:1;pointer-events:none}
-#reel .stage::before{top:0;
-  background:linear-gradient(to bottom,var(--cream) 0%,rgba(251,243,226,.86) 42%,rgba(251,243,226,0) 100%)}
-#reel .stage::after{bottom:0;
-  background:linear-gradient(to top,var(--cream) 0%,rgba(251,243,226,.86) 42%,rgba(251,243,226,0) 100%)}
+/* no edge scrims: the bowl is meant to run off the bottom of the section, and any
+   fade there cut it short of the edge */
 @media(max-width:1500px){.reelVid{left:42%;width:58%}}
 .reelCopy{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);
   z-index:2;max-width:30ch;pointer-events:none}
