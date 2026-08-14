@@ -340,9 +340,10 @@ body{padding-top:52px}
    and hang off the stage — which read as a crop again */
 /* bottom-anchored, then pushed down by the white margin under the bowl so the base
    lands on the section edge instead of floating above it. 5.5% is measured, not
-   guessed: across the four clips the bowl bottoms sit 5.7%-9.3% above the frame
-   edge, so anything past the tightest one starts cutting the bowl off. */
-.reelVid{position:absolute;left:32%;width:68%;top:auto;bottom:0;transform:translateY(5.5%);
+   guessed: measured on the rendered frames, the three bowl bottoms sit 6.6%, 8.8%
+   and 9.5% above the frame edge, so the tightest sets the limit — go past it and
+   the bowl starts getting cut again. */
+.reelVid{position:absolute;left:32%;width:68%;top:auto;bottom:0;transform:translateY(6.4%);
   height:auto;max-height:100vh;object-fit:contain;
   z-index:0;pointer-events:none;
   /* the clips render on white; multiply drops that straight out onto the cream */
@@ -811,13 +812,13 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
   <div class="stage">
     <video id="reelVid" class="reelVid" muted playsinline preload="auto"
            disablepictureinpicture aria-hidden="true"
-           poster="assets/reel-poster.jpg?v=3" src="assets/bowl-reel.mp4?v=3"></video>
+           poster="assets/reel-poster.jpg?v=4" src="assets/bowl-reel.mp4?v=4"></video>
     <div class="reelCopy">
       <span class="k" data-c="reel.kicker">06 &middot; One line, every bowl</span>
       <h2 class="disp" data-c="reel.title">Same factory.<br><em>Every flavour.</em></h2>
       <p data-c="reel.body">One noodle line and one seasoning kitchen behind every bowl on this page. Scroll to turn it.</p>
     </div>
-    <div class="reelRail" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i></div>
+    <div class="reelRail" aria-hidden="true"><i class="act"></i><i></i><i></i></div>
   </div>
 </section>
 
