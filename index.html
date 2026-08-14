@@ -342,11 +342,17 @@ body{padding-top:52px}
   height:auto;max-height:92vh;object-fit:contain;
   z-index:0;pointer-events:none;
   /* the clips render on white; multiply drops that straight out onto the cream */
-  mix-blend-mode:multiply;
-  /* soften the frame edges so anything the stage clips fades into the cream
-     instead of ending on a hard horizontal cut */
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%)}
+  mix-blend-mode:multiply}
+/* Cream scrims over the stage edges, not a mask on the video. Masking a
+   multiply-blended element just lightens it toward the backdrop, which reads as a
+   wash rather than an edge; painting cream over the top and bottom actually hides
+   whatever the stage clips. Above the video, below the copy. */
+#reel .stage::before,#reel .stage::after{content:"";position:absolute;left:0;right:0;
+  height:15%;z-index:1;pointer-events:none}
+#reel .stage::before{top:0;
+  background:linear-gradient(to bottom,var(--cream) 0%,rgba(251,243,226,.86) 42%,rgba(251,243,226,0) 100%)}
+#reel .stage::after{bottom:0;
+  background:linear-gradient(to top,var(--cream) 0%,rgba(251,243,226,.86) 42%,rgba(251,243,226,0) 100%)}
 @media(max-width:1500px){.reelVid{left:42%;width:58%}}
 .reelCopy{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);
   z-index:2;max-width:30ch;pointer-events:none}
