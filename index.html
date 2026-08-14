@@ -286,6 +286,17 @@ body{padding-top:52px}
 .specImgs{position:relative;height:64vh;min-height:300px}
 .specImgs img,.specImgs .spec3d{position:absolute;inset:0;margin:auto;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(.94) rotate(-1.5deg);transition:opacity .55s,transform .55s;filter:drop-shadow(0 26px 34px rgba(0,0,0,.5))}
 .specImgs img.act,.specImgs .spec3d.act{opacity:1;transform:scale(1) rotate(0deg)}
+/* the range packs hover like the hero line-up. This animates `translate`, a separate
+   property from `transform`, so the entrance scale/rotate transition above still runs. */
+@keyframes specFloat{0%,100%{translate:0 0}50%{translate:0 -18px}}
+.specImgs img.act,.specImgs .spec3d.act{animation:specFloat 6.2s ease-in-out infinite}
+.specImgs .si1.act{animation-duration:5.6s;animation-delay:-1.1s}
+.specImgs .si2.act{animation-duration:6.6s;animation-delay:-2.3s}
+.specImgs .si3.act{animation-duration:5.9s;animation-delay:-.7s}
+.specImgs .si4.act{animation-duration:6.9s;animation-delay:-3.2s}
+@media(prefers-reduced-motion:reduce){
+  .specImgs img.act,.specImgs .spec3d.act{animation:none}
+}
 .specImgs img.photo{border-radius:18px}
 .specImgs .spec3d{width:100%;height:100%;max-height:none;max-width:none;filter:none}
 .specImgs .spec3d canvas{display:block;width:100%;height:100%}
@@ -1919,6 +1930,19 @@ function sizeAll(){
 }
 addEventListener('resize',sizeAll); sizeAll();
 
+/* how far the hero pack shrinks when it docks. Derived from the reserved slot so the
+   3D pack lands the same visual height as the flat pack shots on either side.
+   K is the calibration: slot image height in px -> world scale at camA's z. */
+const DOCK_K=0.00144;
+let _dockS=0.48, _dockW=0;
+function dockScale(){
+  const ring=document.querySelector('.prodSlot .slotRing');
+  if(!ring) return _dockS;
+  const w=ring.getBoundingClientRect().width;
+  if(w && Math.abs(w-_dockW)>0.5){ _dockW=w; _dockS=Math.max(0.12,Math.min(0.9,w*DOCK_K)); }
+  return _dockS;
+}
+
 const clock=new THREE.Clock();
 function frame(){
   requestAnimationFrame(frame);
@@ -1938,8 +1962,10 @@ function frame(){
     packA.rotation.x=0.06-straight*0.02;
     packA.rotation.y=Math.sin(t*0.5)*0.16 + straight*0.5 - 0.25;
     /* smaller through the callout beat so the labels have room around it */
-    /* docks down into the reserved centre slot of the range row instead of flying off */
-    const s=(0.86+straight*0.16)*(1-dock*0.52);
+    /* docks down into the reserved centre slot of the range row instead of flying off.
+       The docked size is measured off the slot rather than hard-coded, so the pack
+       stays the same size as the flat packs either side of it at any row width. */
+    const s=(0.86+straight*0.16)*(1-dock*(1-dockScale()));
     packA.scale.set(s,s,s);
     /* the row is centred in the stage, so the pack settles on the slot's image area,
        which sits a touch above the card centre because the label hangs below it */
