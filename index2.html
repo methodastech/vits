@@ -1049,10 +1049,8 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   addEventListener('resize',measurePoster);
   addEventListener('load',measurePoster);
   measurePoster();
-  /* two beats, not one. The pack first rides down the pinned hero at full size —
-     that is the "travel" — and only then shrinks into the reserved slot. Scaling it
-     from the very first pixel of scroll made it shrink in place and never read as
-     joining the line-up. */
+  /* the pack is the fixed point of the hero: it sits dead centre while the callouts
+     stream past it, then docks into the reserved slot at the end of the runway */
   /* hover on the reserved slot lifts the docked pack the same way the flat cards
      lift. It needs its own rAF easing: dockPoster only fires on scroll, and the
      cursor can arrive while the page is perfectly still. */
@@ -1080,16 +1078,13 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     if(!ring) return;
     var r=ring.getBoundingClientRect();
     if(!r.width) return;
-    /* beat 1: descend, still full size */
-    var t=Math.max(0,Math.min(1,(p-0.06)/0.46));
-    t=t*t*(3-2*t);
-    var travelY=t*innerHeight*0.30;
-    /* beat 2: close the gap to the slot and scale to fit it */
+    /* the pack holds the centre of the stage for the whole first act — the callouts
+       are what move past it — and only leaves it to dock into the slot */
     var fit=Math.min(r.width/posterBase.width,r.height/posterBase.height);
     var tx=(r.left+r.width/2)-(posterBase.left+posterBase.width/2);
     var ty=(r.top+r.height/2)-(posterBase.top+posterBase.height/2);
-    var x=(tx-0)*e;
-    var y=travelY+(ty-travelY)*e;
+    var x=tx*e;
+    var y=ty*e;
     var s=1+(fit-1)*e;
     /* hover only bites once it has actually docked, and scales about the pack's own
        centre, so the slot it is sitting in does not shift under it */
@@ -1113,6 +1108,16 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
       /* callouts appear one by one through the middle of the runway, clear near the end */
       var n = p<0.18?0 : p>0.58?0 : Math.min(5,Math.floor((p-0.18)/0.40*6));
       cos.forEach(function(c,i){ c.classList.toggle('act', i<n); });
+      /* the pack holds the centre, so the callouts carry the motion: they drift
+         outward across the runway. On `translate`, because `.act` already owns
+         `transform` for the reveal. Sideways only — a vertical component pushed the
+         top pair up behind the fixed nav. */
+      var k=Math.max(0,Math.min(1,(p-0.14)/0.46));
+      k=k*k*(3-2*k);
+      cos.forEach(function(c){
+        var right=/co3|co4|co5/.test(c.className);
+        c.style.translate=((right?1:-1)*k*118).toFixed(1)+'px 0px';
+      });
       /* the opening line and stat chips belong to the first beat only, so they
          clear before the callouts arrive rather than sitting there all the way down */
       var f=1-Math.max(0,Math.min(1,(p-0.10)/0.12));
