@@ -342,7 +342,11 @@ body{padding-top:52px}
   height:auto;max-height:92vh;object-fit:contain;
   z-index:0;pointer-events:none;
   /* the clips render on white; multiply drops that straight out onto the cream */
-  mix-blend-mode:multiply}
+  mix-blend-mode:multiply;
+  /* soften the frame edges so anything the stage clips fades into the cream
+     instead of ending on a hard horizontal cut */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%)}
 @media(max-width:1500px){.reelVid{left:42%;width:58%}}
 .reelCopy{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);
   z-index:2;max-width:30ch;pointer-events:none}
