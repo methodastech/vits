@@ -67,7 +67,9 @@
         "title": "1 pack, 5 meals.",
         "body": "The value engine of the whole range."
       }
-    ]
+    ],
+    "rangeSub": "Five lines from one factory. The plain yellow pack Malaysia cooks at home, and the seasoned range that travels.",
+    "rangeTitle": "Our best sellers"
   },
   "pack": {
     "_note": "Drives the real-time 3D packaging artwork. Text, colours and figures are all live fields.",
@@ -147,27 +149,32 @@
       {
         "year": "1975",
         "body": "The family starts making noodles in Kuala Lumpur. The phoenix goes on the first wrapper.",
-        "flag": ""
+        "flag": "",
+        "image": "assets/journey-1975.jpg"
       },
       {
         "year": "1980",
         "body": "Halal certified by JAKIM. 46 years unbroken, with preferential access across the Gulf.",
-        "flag": ""
+        "flag": "",
+        "image": "assets/journey-1980.jpg"
       },
       {
         "year": "70%",
         "body": "Of revenue is the Malaysian plain noodle base. The home market is served first, always.",
-        "flag": ""
+        "flag": "",
+        "image": "assets/journey-70pct.jpg"
       },
       {
-        "year": "30 yrs",
+        "year": "30 years",
         "body": "Of export experience across dozens of markets.",
-        "flag": "Exact count being confirmed"
+        "flag": "Exact count being confirmed",
+        "image": "assets/journey-export.jpg"
       },
       {
         "year": "4 shows",
         "body": "A year on the world circuit. Dubai first, then the United States, Bangkok and the UK.",
-        "flag": ""
+        "flag": "",
+        "image": "assets/journey-shows.jpg"
       }
     ],
     "footNote": "Dates as published by Vit's. Final verification before anything goes to print or page."
@@ -355,6 +362,12 @@
       }
     ]
   },
+  "reel": {
+    "_note": "The scroll-scrubbed bowl reel. Lives on the About page, under the factory band.",
+    "kicker": "One line, every bowl",
+    "title": "Same factory.<br><em>Every flavour.</em>",
+    "body": "One noodle line and one seasoning kitchen behind every bowl we ship, ours and yours alike. Scroll to turn it."
+  },
   "finale": {
     "kicker": "05 · The ask",
     "heading1": "1 factory.",
@@ -411,5 +424,50 @@
     "note": "Vit's Noodles · VIT Makanan (K.L.) Sdn. Bhd. · Kuala Lumpur, Malaysia",
     "demo": "Demo by Brand Method · Aug 2026 · wrapper artwork simplified for the demo",
     "credit": "Ramen model: \"Classic Ramen\" by Polypus_yum, CC BY 4.0"
+  },
+  "about": {
+    "kicker": "About us",
+    "h1": "The noodle",
+    "h2": "Malaysia grew up on",
+    "lede": "Vit Makanan (K.L.) Sdn. Bhd. has made noodles in Kuala Lumpur since 1975. One factory, one family recipe, and a yellow pack a whole country recognises by sight. Today that same line runs export orders under our label and yours.",
+    "facts": [
+      {
+        "n": "1975",
+        "s": "Founded in Kuala Lumpur"
+      },
+      {
+        "n": "1980",
+        "s": "Halal certified by JAKIM"
+      },
+      {
+        "n": "70%",
+        "s": "Of revenue is the home market"
+      },
+      {
+        "n": "20+",
+        "s": "Export markets served"
+      }
+    ],
+    "factory": {
+      "kicker": "01 · The factory",
+      "title": "A seasoning kitchen, not just a noodle line",
+      "body": "Most factories make noodles. Fewer can develop the taste that goes on them. Our kitchen speaks curry, tom yam, rendang, white pepper and beyond, which is why a buyer can walk in with a flavour brief and walk out with a sample.",
+      "body2": "Fried and air-dried lines run side by side, so the same building serves a value pillow pack and a trans-fat-free kraft carton without compromise on either.",
+      "image": "assets/oem-line.jpg"
+    },
+    "standards": {
+      "kicker": "02 · How we hold the line",
+      "title": "Audited, certified, export ready",
+      "note": "Certificates and scopes are issued on request with any specification sheet."
+    },
+    "timeline": {
+      "kicker": "03 · The long version",
+      "title": "51 years, in order"
+    },
+    "cta": {
+      "title": "Tell us what your market wants",
+      "body": "Send a market, a format and a volume. The specification sheet comes back in 1 business day.",
+      "label": "Talk to the trade desk"
+    }
   }
 }

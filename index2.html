@@ -9,6 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=JetBrains+Mono:wght@500;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root{
+  /* the wrapper's key fret, as a repeatable band. One token, used for dividers,
+     the credentials edges, the footer lip and the current-page nav underline. */
+  --fret:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewBox='0 0 24 18'%3E%3Cpath d='M0 18V0h18v12H8V6h6' fill='none' stroke='%23D8232A' stroke-width='3'/%3E%3C/svg%3E");
+  --fret-gold:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewBox='0 0 24 18'%3E%3Cpath d='M0 18V0h18v12H8V6h6' fill='none' stroke='%23E9C46A' stroke-width='3'/%3E%3C/svg%3E");
   /* page edge: the nav logo and the full-width sections share this. Scales with the
      viewport so wide screens get a real margin instead of text hugging the edge. */
   --gutter:clamp(20px,8.4vw,176px);
@@ -45,6 +49,11 @@ body{padding-top:52px}
 .nav .lg{height:56px;width:auto}
 .nav .links{display:flex;gap:30px;align-items:center;font-size:15.5px;font-weight:600}
 .nav .links a{color:var(--ink);text-decoration:none;opacity:.82}.nav .links a:hover{opacity:1}
+/* current page: a plain rule. The fret is reserved for section edges, where it
+   has room to read as a pattern rather than a smudge. */
+.nav .links a.on{opacity:1;font-weight:700;position:relative}
+.nav .links a.on::after{content:"";position:absolute;left:0;right:0;bottom:-8px;
+  height:2px;background:var(--red)}
 .nav .cta{background:var(--red);color:#fff;border-radius:999px;padding:12px 24px;font-size:14.5px;font-weight:700;text-decoration:none;transition:transform .25s,background .25s}
 /* the button lives inside .links, so it needs to outrank `.nav .links a` */
 .nav .links a.cta{color:#fff;opacity:1}
@@ -52,18 +61,17 @@ body{padding-top:52px}
 @media(max-width:760px){.nav .links a:not(.cta){display:none}}
 
 /* ============ scene 1 + 2 · hero journey ============ */
-#heroJourney{position:relative;height:260vh}
+/* 560, up from 460: the milestone photos doubled the journey column, and riding
+   325vh of content through the old runway pushed the text past faster than it
+   could be read. The extra 100vh brings the column back near scroll parity. */
+#heroJourney{position:relative;height:560vh}
 #heroJourney .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .heroType{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:1;pointer-events:none}
-.heroType .l{font-size:clamp(30px,10.2vw,200px);line-height:.92;color:var(--red);white-space:nowrap;text-transform:uppercase}
+.heroType .l{font-size:clamp(26px,calc((100vw - 2*var(--gutter))/9.35),200px);line-height:.92;color:var(--red);white-space:nowrap;text-transform:uppercase}
 .heroType .l2{color:var(--ink)}
-.heroSub{position:absolute;left:26px;bottom:16vh;z-index:3;max-width:330px}
+.heroSub{position:absolute;left:var(--gutter);bottom:16vh;z-index:3;max-width:330px}
 .heroSub .eyebrow{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-deep);font-weight:700}
 .heroSub p{margin-top:10px;font-size:15.5px;color:var(--soft)}
-.heroStats{position:absolute;right:26px;bottom:16vh;z-index:3;display:flex;flex-direction:column;gap:9px}
-.hstat{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:12px;padding:10px 15px;min-width:170px;backdrop-filter:none}
-.hstat .n{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em;font-size:21px;color:var(--red-deep)}
-.hstat .s{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin-top:2px}
 #heroCanvas{position:absolute;inset:0;z-index:2;pointer-events:none}
 #heroCanvas canvas{display:block}
 .heroPoster{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center;pointer-events:none}
@@ -85,7 +93,7 @@ body{padding-top:52px}
 .callout.act{opacity:1;transform:translateY(0)}
 .co1{top:20vh;left:7vw}.co2{top:52vh;left:10vw}.co3{top:18vh;right:8vw}.co4{top:46vh;right:6vw}.co5{top:72vh;right:16vw}
 @media(max-width:760px){.callout{max-width:180px;font-size:12px;padding:10px 18px}.co1{top:16vh;left:4vw}.co2{top:64vh;left:4vw}.co3{top:16vh;right:4vw}.co4{top:64vh;right:4vw}.co5{display:none}
-  .heroSub{bottom:10vh;max-width:250px}.heroSub p{font-size:13px}.heroStats{display:none}}
+  .heroSub{bottom:10vh;max-width:250px}.heroSub p{font-size:13px}}
 .cue{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(30px + var(--barh,52px));z-index:5;display:flex;align-items:center;gap:10px;
   font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);
   background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:999px;padding:9px 16px;transition:opacity .5s}
@@ -208,11 +216,51 @@ body{padding-top:52px}
   width:calc(100% - 2*var(--gutter));opacity:0;pointer-events:none;z-index:3;
   transition:opacity .2s linear}
 /* sits above the line-up and fades in with it, driven by the same `e` in the runway */
+/* ===== the vertical journey: milestones ride up the left while the pack
+   travels down the right. Lives inside the hero stage so one pack serves both. ===== */
+.journey{position:absolute;left:var(--gutter);top:0;width:min(48vw,600px);height:100%;
+  z-index:3;pointer-events:none;opacity:0;transition:opacity .25s linear;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  will-change:transform}
+.journeyIntro{padding-top:22vh}
+.journeyIntro .k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red-deep);font-weight:700}
+.journeyIntro h2{font-size:clamp(34px,4.6vw,68px);line-height:1;text-transform:uppercase;
+  margin-top:14px;color:var(--ink)}
+.journeyIntro h2 em{font-style:normal;color:var(--red)}
+.journeyIntro p{margin-top:18px;max-width:52ch;font-size:16px;line-height:1.6;color:var(--soft)}
+/* the rail: one continuous line with a marker per milestone */
+.journeySteps{list-style:none;margin:12vh 0 0;padding:0 0 0 34px;position:relative}
+.journeySteps::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,transparent,var(--red) 8%,var(--red) 92%,transparent)}
+.journeySteps li{position:relative;margin-bottom:11vh;max-width:44ch}
+.journeySteps li::before{content:"";position:absolute;left:-34px;top:14px;width:16px;height:16px;
+  border-radius:50%;background:var(--cream);border:3px solid var(--red)}
+.journeySteps .yr{display:block;font-family:Inter,sans-serif;font-weight:700;
+  letter-spacing:-.01em;font-size:clamp(30px,3.4vw,46px);line-height:1;color:var(--red-deep)}
+.journeySteps p{margin-top:10px;font-size:16px;line-height:1.55;color:var(--soft)}
+/* one photo per milestone, set like a print: white border, soft drop, a degree of
+   tilt that alternates side to side so the column reads as an album, not a grid */
+.journeySteps .jShot{margin:18px 0 0;width:min(320px,90%);border-radius:0;overflow:hidden;
+  background:#fff;border:6px solid #fff;box-shadow:0 16px 38px rgba(26,19,14,.18);
+  transform:rotate(-1.4deg)}
+.journeySteps li:nth-child(even) .jShot{transform:rotate(1.2deg)}
+/* aspect-ratio reserves the box before the file arrives, so the column height the
+   travel is measured from never changes under it */
+.journeySteps .jShot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.journeySteps .tbc{display:inline-block;margin-top:10px;background:rgba(216,35,42,.12);
+  color:var(--red-deep);font-family:"JetBrains Mono",monospace;font-size:9px;
+  letter-spacing:.08em;padding:4px 9px;border-radius:6px;text-transform:uppercase;font-weight:700}
+@media(max-width:900px){.journey{display:none}}
+
 .prodHead{position:absolute;left:var(--gutter);top:50%;z-index:3;text-align:left;
-  transform:translateY(-50%) translateY(-240px);opacity:0;pointer-events:none;
+  /* the sub-line made this block taller, which pushed the heading under the fixed
+     nav. Clamped so it can never rise above the bar, whatever the viewport. */
+  transform:translateY(-50%) translateY(min(-190px,-14vh));opacity:0;pointer-events:none;
   transition:opacity .2s linear}
 .prodHead h3{font-size:clamp(26px,3vw,46px);line-height:1;
   text-transform:uppercase;color:var(--ink)}
+.prodHead p{margin-top:12px;max-width:34ch;font-size:15px;line-height:1.5;color:var(--soft)}
 @media(max-width:900px){.prodHead{display:none}}
 /* no card chrome: the products sit straight on the paper, like a shelf line-up */
 .prodCard{background:none;border:0;padding:0;display:flex;flex-direction:column;
@@ -223,8 +271,8 @@ body{padding-top:52px}
   animation:prodFloat 5.4s ease-in-out infinite;will-change:transform}
 .prodCard:nth-child(1) img{animation-delay:-.2s;animation-duration:5.0s}
 .prodCard:nth-child(2) img{animation-delay:-1.7s;animation-duration:5.8s}
-.prodCard:nth-child(4) img{animation-delay:-3.1s;animation-duration:5.2s}
-.prodCard:nth-child(5) img{animation-delay:-4.3s;animation-duration:6.1s}
+.prodCard:nth-child(3) img{animation-delay:-3.1s;animation-duration:5.2s}
+.prodCard:nth-child(4) img{animation-delay:-4.3s;animation-duration:6.1s}
 @keyframes prodFloat{0%,100%{transform:translateY(0) rotate(-.4deg)}
   50%{transform:translateY(-13px) rotate(.5deg)}}
 @media(prefers-reduced-motion:reduce){.prodCard img{animation:none}}
@@ -338,59 +386,7 @@ body{padding-top:52px}
 .cookPoster{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center}
 .cookPoster img{height:56vh;object-fit:contain}
 
-/* ============ scene 7 · the bowl reel ============ */
-/* tall section, sticky stage: scroll position maps straight onto video time */
-#reel{position:relative;height:420vh;background:var(--cream)}
-/* the cream has to be painted on the stage itself: sticky makes a stacking context,
-   and the video's multiply blend needs a backdrop inside it to blend against */
-#reel .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;background:var(--cream)}
-/* the bowl takes the right of the stage so the copy on the left stays on clean paper.
-   Anchored by its left edge, not sized from the right, so it never creeps back over
-   the copy as the viewport narrows. */
-/* width is the explicit complement of left: a video is a replaced element, so `right`
-   is ignored once it has a width, and `width:auto` would use the file's native 1440
-   and hang off the stage — which read as a crop again */
-/* bottom-anchored, then pushed down by the white margin under the bowl so the base
-   lands on the section edge instead of floating above it. 5.5% is measured, not
-   guessed: measured on the rendered frames, the three bowl bottoms sit 6.6%, 8.8%
-   and 9.5% above the frame edge, so the tightest sets the limit — go past it and
-   the bowl starts getting cut again. */
-.reelVid{position:absolute;left:32%;width:68%;top:auto;bottom:0;transform:translate(-4%,-2%);
-  height:auto;max-height:100vh;object-fit:contain;
-  z-index:0;pointer-events:none;
-  /* the clips render on white; multiply drops that straight out onto the cream */
-  mix-blend-mode:multiply}
-/* no edge scrims: the bowl is meant to run off the bottom of the section, and any
-   fade there cut it short of the edge */
-@media(max-width:1500px){.reelVid{left:42%;width:58%}}
-.reelCopy{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);
-  z-index:2;max-width:30ch;pointer-events:none}
-.reelCopy .k{color:var(--red-deep)}
-.reelCopy h2{font-size:clamp(44px,6.4vw,104px);line-height:.98;text-transform:uppercase;
-  margin-top:14px;color:var(--ink)}
-.reelCopy h2 em{font-style:normal;color:var(--red)}
-.reelCopy p{margin-top:16px;font-size:15.5px;line-height:1.6;color:var(--soft);max-width:34ch}
-/* one tick per dish in the loop */
-.reelRail{position:absolute;left:50%;bottom:7vh;transform:translateX(-50%);z-index:2;
-  display:flex;gap:8px}
-.reelRail i{width:26px;height:2px;border-radius:2px;background:rgba(26,19,14,.18);
-  transition:background .35s ease}
-.reelRail i.act{background:var(--red)}
-@media(max-width:900px){
-  .reelVid{position:absolute;right:auto;left:50%;top:auto;bottom:4vh;
-    transform:translateX(-50%);width:96%;max-height:58vh}
-  .reelCopy{left:0;right:0;top:7vh;transform:none;max-width:none;text-align:center;
-    padding:0 var(--gutter)}
-  .reelCopy p{margin-left:auto;margin-right:auto}
-}
-/* no scrubbing when motion is reduced: hold the poster and stop pinning */
-@media(prefers-reduced-motion:reduce){
-  #reel{height:auto}
-  #reel .stage{position:relative;height:auto;min-height:70vh;padding:12vh 0}
-  .reelVid{position:relative;height:60vh}
-  .reelCopy{position:relative;left:auto;top:auto;transform:none;margin:0 auto}
-}
+/* scene 7 (the bowl reel) moved to about.html — its styles live there now */
 
 /* ============ scene 8 · finale ============ */
 #finale{background:var(--cream2);padding:110px var(--gutter) 60px}
@@ -451,7 +447,7 @@ footer .credit a{color:var(--soft);text-decoration:underline}
 
 /* ============ mobile pacing + fit ============ */
 @media(max-width:760px){
-  #heroJourney{height:200vh}
+  #heroJourney{height:360vh}
   #range{height:300vh}
   #cook{height:380vh}
   #range .inner{gap:10px;padding-top:14vh}
@@ -461,7 +457,7 @@ footer .credit a{color:var(--soft);text-decoration:underline}
   .specImgs{height:34vh;min-height:200px}
   #range .k{top:calc(52px + 64px)}
   .cookType{padding-top:16vh}
-  .heroType .l{font-size:clamp(26px,10.6vw,200px)}
+  .heroType .l{font-size:clamp(22px,calc((100vw - 2*var(--gutter))/9.35),200px)}
   .cueLong{display:none}
   .heroSub{bottom:15vh}
   .bmws-crumb span{display:none}
@@ -484,6 +480,23 @@ footer .credit a{color:var(--soft);text-decoration:underline}
 }
 body.no3d #heroCanvas,body.no3d #cookCanvas{display:none}
 body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
+
+/* ===== the key fret, used sparingly: edges and dividers only, never behind text ===== */
+.fretBand{height:26px;background-image:var(--fret);background-size:auto 26px;
+  background-repeat:repeat-x;background-position:center;opacity:.9;pointer-events:none}
+.fretBand.thin{height:20px;background-size:auto 20px;opacity:.8}
+.fretBand.gold{background-image:var(--fret-gold)}
+/* the credentials strip wears it top and bottom, framing it like the wrapper band */
+.markStrip{position:relative}
+.markStrip::before,.markStrip::after{content:'';position:absolute;left:0;right:0;height:22px;
+  background-image:var(--fret);background-size:auto 22px;background-repeat:repeat-x;opacity:.6}
+.markStrip::before{top:0}
+.markStrip::after{bottom:0;transform:scaleY(-1)}
+/* a lip above the yellow footer, so the page foot echoes the pack foot */
+.siteFoot{position:relative}
+.siteFoot::before{content:'';position:absolute;top:0;left:0;right:0;height:24px;
+  background-image:var(--fret);background-size:auto 24px;background-repeat:repeat-x;opacity:.55}
+
 </style>
 </head>
 <body class="no3d">
@@ -502,9 +515,8 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 <nav class="nav" id="siteNav">
   <img class="lg" src="assets/vits-logo.png" alt="Vit's">
   <div class="links">
-    <a href="#story">The Story</a>
-    <a href="#trade">OEM &amp; Private Label</a>
-    <a href="#range">The Range</a>
+    <a class="on" href="#top">Home</a>
+    <a href="about.html">About Us</a>
     <a class="cta" href="#finale">Trade Enquiry</a>
   </div>
 </nav>
@@ -519,19 +531,33 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
     <div id="heroCanvas"></div>
     <div class="heroPoster" aria-hidden="true"><img src="assets/sku-mini-pack.png" data-c-src="range.items.0.image" alt="Vit's Mini Pack"></div>
     <div class="heroSub">
-      <span class="eyebrow" data-c="hero.eyebrow">Vit's Noodles &middot; since 1975 &middot; Kuala Lumpur</span>
       <p data-c="hero.lede">51 years. 1 factory. The noodle Malaysia grew up on, now cooked for the world.</p>
     </div>
-    <div class="heroStats">
-      <div class="hstat"><div class="n" data-c="hero.stats.0.value">350g</div><div class="s" data-c="hero.stats.0.label">5 cakes, 1 pack</div></div>
-      <div class="hstat"><div class="n" data-c="hero.stats.1.value">1980</div><div class="s" data-c="hero.stats.1.label">halal certified, JAKIM</div></div>
-      <div class="hstat"><div class="n" data-c="hero.stats.2.value">3 min</div><div class="s" data-c="hero.stats.2.label">flour, oil, salt, done</div></div>
+    <!-- the story, as a vertical journey the pack travels past -->
+    <div class="journey" aria-hidden="true">
+      <div class="journeyIntro">
+        <h2 class="disp"><span data-c="story.heading1">51 years,</span><br><em data-c="story.heading2">1 family recipe</em></h2>
+        <p data-c="story.lede">Before the brand, there was the factory. Vit Makanan (K.L.) Sdn. Bhd. has made noodles in Kuala Lumpur since 1975, halal certified since 1980, and quietly feeds a country that knows the yellow pack by sight.</p>
+      </div>
+      <ol class="journeySteps">
+        <li><span class="yr" data-c="story.tiles.0.year">1975</span>
+          <p data-c="story.tiles.0.body">The family starts making noodles in Kuala Lumpur. The phoenix goes on the first wrapper.</p>
+          <figure class="jShot"><img src="assets/journey-1975.jpg" data-c-src="story.tiles.0.image" alt="" loading="lazy"></figure></li>
+        <li><span class="yr" data-c="story.tiles.1.year">1980</span>
+          <p data-c="story.tiles.1.body">Halal certified by JAKIM. 46 years unbroken, with preferential access across the Gulf.</p>
+          <figure class="jShot"><img src="assets/journey-1980.jpg" data-c-src="story.tiles.1.image" alt="" loading="lazy"></figure></li>
+        <li><span class="yr" data-c="story.tiles.2.year">70%</span>
+          <p data-c="story.tiles.2.body">Of revenue is the Malaysian plain noodle base. The home market is served first, always.</p>
+          <figure class="jShot"><img src="assets/journey-70pct.jpg" data-c-src="story.tiles.2.image" alt="" loading="lazy"></figure></li>
+        <li><span class="yr" data-c="story.tiles.3.year">30 years</span>
+          <p data-c="story.tiles.3.body">Of export experience across dozens of markets.</p>
+          <span class="tbc" data-c="story.tiles.3.flag" data-c-if="story.tiles.3.flag">Exact count being confirmed</span>
+          <figure class="jShot"><img src="assets/journey-export.jpg" data-c-src="story.tiles.3.image" alt="" loading="lazy"></figure></li>
+        <li><span class="yr" data-c="story.tiles.4.year">4 shows</span>
+          <p data-c="story.tiles.4.body">A year on the world circuit. Dubai first, then the United States, Bangkok and the UK.</p>
+          <figure class="jShot"><img src="assets/journey-shows.jpg" data-c-src="story.tiles.4.image" alt="" loading="lazy"></figure></li>
+      </ol>
     </div>
-    <div class="callout co1" data-co="0"><b data-c="hero.callouts.0.title">The wrapper Malaysia knows.</b> <span data-c="hero.callouts.0.body">Yellow field, red band. 1 glance finds it on any shelf.</span></div>
-    <div class="callout co2" data-co="1"><b data-c="hero.callouts.1.title">The noodle window.</b> <span data-c="hero.callouts.1.body">You see the 5 cakes before you buy. Nothing hidden.</span></div>
-    <div class="callout co3" data-co="2"><b data-c="hero.callouts.2.title">The phoenix mark.</b> <span data-c="hero.callouts.2.body">On every pack since the beginning.</span></div>
-    <div class="callout co4" data-co="3"><b data-c="hero.callouts.3.title">A 3 line recipe.</b> <span data-c="hero.callouts.3.body">Wheat flour, palm oil, salt.</span></div>
-    <div class="callout co5" data-co="4"><b data-c="hero.callouts.4.title">1 pack, 5 meals.</b> <span data-c="hero.callouts.4.body">The value engine of the whole range.</span></div>
     <div class="cue" id="scrollCue">
       <svg class="strand" viewBox="0 0 46 14" fill="none"><path d="M1 7 Q6 1 11 7 T21 7 T31 7 T41 7" stroke="#A81318" stroke-width="1.6" stroke-linecap="round"/><path d="M41 7l-3-3M41 7l-3 3" stroke="#A81318" stroke-width="1.6" stroke-linecap="round"/></svg>
       <span>Scroll<span class="cueLong">, the pack cooks itself</span></span>
@@ -539,39 +565,24 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
     <!-- the range rises as the hero pack shrinks into the reserved centre slot -->
     <div class="prodHead" aria-hidden="true">
       <h3 class="disp" data-c="hero.rangeTitle">Our best sellers</h3>
+      <p data-c="hero.rangeSub">Five lines from one factory. The plain yellow pack Malaysia
+        cooks at home, and the seasoned range that travels.</p>
     </div>
     <div class="prodRow" aria-hidden="true">
       <div class="prodCard"><img src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="">
         <b data-c="range.items.1.title">Penang White Curry</b><i data-c="range.items.1.metaAValue">Premium 4-pack</i></div>
       <div class="prodCard"><img src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="">
         <b data-c="range.items.2.title">Mi Kering Tomato</b><i data-c="range.items.2.metaAValue">Air dried</i></div>
-      <div class="prodCard prodSlot"><div class="slotRing"></div>
-        <b data-c="range.items.0.title">The Mini Pack</b><i data-c="range.items.0.metaAValue">350g · 5 cakes</i></div>
-      <div class="prodCard"><img src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="">
-        <b data-c="range.items.3.title">Mi Kering Bayam</b><i data-c="range.items.3.metaAValue">Air dried</i></div>
       <div class="prodCard"><img src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="">
         <b data-c="range.items.4.title">Mi Goreng Carbonara</b><i data-c="range.items.4.metaAValue">MIFT Gold 2025</i></div>
+      <div class="prodCard"><img src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="">
+        <b data-c="range.items.3.title">Mi Kering Bayam</b><i data-c="range.items.3.metaAValue">Air dried</i></div>
+      <div class="prodCard prodSlot"><div class="slotRing"></div>
+        <b data-c="range.items.0.title">The Mini Pack</b><i data-c="range.items.0.metaAValue">350g · 5 cakes</i></div>
     </div>
   </div>
 </section>
 
-<!-- ============ scene 3: the story ============ -->
-<section id="story" aria-label="51 years">
-  <div class="pat" data-plx="14"></div>
-  <div class="swrap">
-    <span class="k">02 &middot; Who makes it</span>
-    <h2 class="disp rv" data-plx="-4">51 years,<br><em>1 family recipe</em></h2>
-    <p class="lede rv">Before the brand, there was the factory. Vit Makanan (K.L.) Sdn. Bhd. has made noodles in Kuala Lumpur since 1975, halal certified since 1980, and quietly feeds a country that knows the yellow pack by sight.</p>
-    <div class="tiles">
-      <div class="tile rv" data-plx="6"><div class="yr" data-c="story.tiles.0.year">1975</div><p data-c="story.tiles.0.body">The family starts making noodles in Kuala Lumpur. The phoenix goes on the first wrapper.</p></div>
-      <div class="tile rv" data-plx="-5"><div class="yr" data-c="story.tiles.1.year">1980</div><p data-c="story.tiles.1.body">Halal certified by JAKIM. 46 years unbroken, with preferential access across the Gulf.</p></div>
-      <div class="tile rv" data-plx="8"><div class="yr" data-c="story.tiles.2.year">70%</div><p data-c="story.tiles.2.body">Of revenue is the Malaysian plain noodle base. The home market is served first, always.</p></div>
-      <div class="tile rv" data-plx="-6"><div class="yr" data-c="story.tiles.3.year">30 yrs</div><p data-c="story.tiles.3.body">Of export experience across dozens of markets.</p><span class="tbc" data-c="story.tiles.3.flag" data-c-if="story.tiles.3.flag">Exact count being confirmed</span></div>
-      <div class="tile rv" data-plx="5"><div class="yr" data-c="story.tiles.4.year">4 shows</div><p data-c="story.tiles.4.body">A year on the world circuit. Dubai first, then the United States, Bangkok and the UK.</p></div>
-    </div>
-    <p class="foot-note" data-c="story.footNote">Dates as published by Vit's. Final verification before anything goes to print or page.</p>
-  </div>
-</section>
 
 <!-- ============ the credentials strip ============ -->
 <section class="markStrip" aria-label="Certifications and standards">
@@ -617,10 +628,8 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 
 <!-- ============ scene 4: the trade offer ============ -->
 <section id="trade" aria-label="OEM and private label">
-  <div class="pat" data-plx="12"></div>
   <div class="swrap">
-    <span class="k">03 &middot; For trade buyers</span>
-    <h2 class="disp rv" data-plx="-4">Seasoned noodles,<br><em>made to your market</em></h2>
+    <h2 class="disp rv" data-plx="-4">Your recipe,<br><em>our line</em></h2>
     <p class="lede rv">Buyers open with 1 question: <b>can you create a taste like Buldak, like Indomie.</b> The answer is the factory itself. 51 years of noodle mastery, a seasoning kitchen that speaks curry, tom yam, rendang and beyond, and a line that runs your recipe under your label.</p>
     <div class="tSplit">
       <!-- the frame stays put; whichever capability owns the middle of the screen drives it -->
@@ -758,7 +767,6 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
         <rect class="hl h4" width="100%" height="100%" fill="url(#hp4)"/>
       </svg>
     </div>
-    <span class="k">04 &middot; The range</span>
     <div class="inner">
       <div class="specTxt">
         <div class="spec s0 act">
@@ -806,26 +814,11 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 
 <!-- scene 6 (the 3D cook runway) is intentionally absent from prototype 2 -->
 
-<!-- ============ scene 7: the bowl reel ============ -->
-<!-- one 20s loop, scrubbed by scroll: the bowl turns while the dish changes -->
-<section id="reel" aria-label="Every bowl from one line">
-  <div class="stage">
-    <video id="reelVid" class="reelVid" muted playsinline preload="auto"
-           disablepictureinpicture aria-hidden="true"
-           poster="assets/reel-poster.jpg?v=4" src="assets/bowl-reel.mp4?v=4"></video>
-    <div class="reelCopy">
-      <span class="k" data-c="reel.kicker">06 &middot; One line, every bowl</span>
-      <h2 class="disp" data-c="reel.title">Same factory.<br><em>Every flavour.</em></h2>
-      <p data-c="reel.body">One noodle line and one seasoning kitchen behind every bowl on this page. Scroll to turn it.</p>
-    </div>
-    <div class="reelRail" aria-hidden="true"><i class="act"></i><i></i><i></i></div>
-  </div>
-</section>
+<!-- scene 7 (the bowl reel) now lives on about.html, under the factory band -->
 
 <!-- ============ scene 8: the ask ============ -->
 <section id="finale" aria-label="Trade enquiry">
   <div class="fwrap">
-    <span class="k">05 &middot; The ask</span>
     <h2 class="disp rv" data-plx="-3">1 factory.<br><em>Any flavour</em> your market wants.</h2>
     <div class="fgrid">
       <div>
@@ -971,34 +964,6 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     });
   },8000); });
 
-  /* bowl reel: scroll position drives video time directly. The seek is eased in a rAF
-     loop rather than written straight from onUpdate, because jumping currentTime on
-     every scroll event outruns the decoder and the picture stutters. */
-  (function(){
-    var v=document.getElementById('reelVid');
-    if(!v) return;
-    if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    var ticks=[].slice.call(document.querySelectorAll('.reelRail i'));
-    var target=0,cur=0,ready=false;
-    function onMeta(){ if(v.duration&&isFinite(v.duration)) ready=true; }
-    v.addEventListener('loadedmetadata',onMeta); onMeta();
-    v.pause();
-    ScrollTrigger.create({trigger:'#reel',start:'top top',end:'bottom bottom',
-      onUpdate:function(self){ target=self.progress; }});
-    (function tick(){
-      requestAnimationFrame(tick);
-      if(!ready) return;
-      cur+=(target-cur)*0.14;
-      /* stop just shy of the end: seeking to exactly duration parks on a blank frame */
-      var want=cur*(v.duration-0.06);
-      if(Math.abs(v.currentTime-want)>0.008){ try{ v.currentTime=want; }catch(e){} }
-      if(ticks.length){
-        var i=Math.min(ticks.length-1,Math.floor(cur*ticks.length));
-        for(var j=0;j<ticks.length;j++) ticks[j].classList.toggle('act',j===i);
-      }
-    })();
-  })();
-
   /* trade: the pinned frame follows whichever capability owns the middle of the screen */
   (function(){
     var items=[].slice.call(document.querySelectorAll('#trade .tItem'));
@@ -1027,7 +992,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
 
   /* hero runway: type slides out, callouts step, cue hides */
   var cue=document.getElementById('scrollCue');
-  var cos=[].slice.call(document.querySelectorAll('.callout'));
+  /* callouts were replaced by the vertical journey; nothing to collect now */
   var prodRow=document.querySelector('.prodRow');
   var prodHead=document.querySelector('.prodHead');
 
@@ -1066,7 +1031,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     if(Math.abs(d)>0.0015){ hoverAmt+=d*0.16; dockPoster(lastP,lastE); }
   })();
 
-  function dockPoster(p,e){
+  function dockPoster(p,e,j){
     if(!poster) return;
     lastP=p; lastE=e;
     /* re-measure whenever the pack is home: the transform is identity there, so the
@@ -1091,43 +1056,69 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     var hv=hoverAmt*e;
     s*=1+0.17*hv;
     y-=10*hv;
+    /* through the journey the pack sits right of centre and drifts down, clearing the
+       left for the milestones and reading as travelling past them. It eases out as the
+       dock takes over, so the two never fight for the same transform. */
+    var away=1-e;
+    /* the sideways move finishes BEFORE the journey text arrives, otherwise the pack
+       is still crossing the column while the heading is being read */
+    var shift=Math.max(0,Math.min(1,(p-0.06)/0.16));
+    shift=shift*shift*(3-2*shift);
+    x+=shift*innerWidth*0.27*away;
+    y+=(j||0)*innerHeight*0.16*away;
     poster.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) scale('+s.toFixed(4)+')';
   }
-  var heroSub=document.querySelector('.heroSub'), heroStats=document.querySelector('.heroStats');
+  var heroSub=document.querySelector(".heroSub");
   gsap.to('[data-hline="1"]',{xPercent:-28,ease:'none',immediateRender:false,
     scrollTrigger:{trigger:'#heroJourney',start:'top top',end:'bottom bottom',scrub:SCRUB}});
   gsap.to('[data-hline="2"]',{xPercent:28,ease:'none',immediateRender:false,
     scrollTrigger:{trigger:'#heroJourney',start:'top top',end:'bottom bottom',scrub:SCRUB}});
-  /* the headline belongs to the first beat: clear it before the callouts step in */
-  gsap.to('.heroType',{opacity:0,ease:'none',immediateRender:false,
-    scrollTrigger:{trigger:'#heroJourney',start:'top top',end:'17% top',scrub:SCRUB}});
+  /* the headline rides up and out of frame instead of dissolving. Driven in the
+     onUpdate below rather than a tween, so the callouts can be gated on it
+     actually having left the frame. */
+  var heroType=document.querySelector('.heroType');
+  var journey=document.querySelector('.journey');
+  /* travel is measured, not hard-coded: the milestone photos made the column far
+     taller than the 168vh the old constant assumed. End the ride with the column
+     bottom ~58vh down the frame — the same resting point the old tuning produced.
+     The photo boxes carry aspect-ratio, so scrollHeight is final before the files
+     arrive and this measure never shifts under the scroll. */
+  var jTravel=168;
+  function measureJourney(){
+    if(!journey||!journey.scrollHeight) return;
+    jTravel=Math.max(150, journey.scrollHeight/innerHeight*100-58);
+  }
+  measureJourney();
+  addEventListener('resize',measureJourney);
+  document.addEventListener('vits:content',measureJourney);
   ScrollTrigger.create({trigger:'#heroJourney',start:'top top',end:'bottom bottom',
     onUpdate:function(self){
       var p=self.progress;
       cue.classList.toggle('hide',p>0.06);
-      /* callouts appear one by one through the middle of the runway, clear near the end */
-      var n = p<0.18?0 : p>0.58?0 : Math.min(5,Math.floor((p-0.18)/0.40*6));
-      cos.forEach(function(c,i){ c.classList.toggle('act', i<n); });
-      /* the pack holds the centre, so the callouts carry the motion: they drift
-         outward across the runway. On `translate`, because `.act` already owns
-         `transform` for the reveal. Sideways only — a vertical component pushed the
-         top pair up behind the fixed nav. */
-      var k=Math.max(0,Math.min(1,(p-0.14)/0.46));
-      k=k*k*(3-2*k);
-      cos.forEach(function(c){
-        var right=/co3|co4|co5/.test(c.className);
-        c.style.translate=((right?1:-1)*k*118).toFixed(1)+'px 0px';
-      });
-      /* the opening line and stat chips belong to the first beat only, so they
-         clear before the callouts arrive rather than sitting there all the way down */
-      var f=1-Math.max(0,Math.min(1,(p-0.10)/0.12));
-      if(heroSub){ heroSub.style.opacity=f.toFixed(3);
-        heroSub.style.pointerEvents=f<0.05?'none':''; }
-      if(heroStats){ heroStats.style.opacity=f.toFixed(3);
-        heroStats.style.pointerEvents=f<0.05?'none':''; }
-      /* the range row rises as the pack shrinks into its reserved slot */
+      /* the headline travels up and out. 82vh clears the second line past the top
+         of the frame; the callouts are held back until that has happened. */
+      var TYPE_OUT=0.30;
+      var ty=Math.max(0,Math.min(1,p/TYPE_OUT));
+      ty=ty*ty*(3-2*ty);
+      if(heroType) heroType.style.translate='0px '+(-ty*82).toFixed(1)+'vh';
+      /* the journey rides up the left once the headline has cleared. Its column is
+         taller than the frame, so each milestone passes through in turn. */
+      var J_IN=TYPE_OUT-0.04, J_OUT=0.68;
+      var j=Math.max(0,Math.min(1,(p-J_IN)/(J_OUT-J_IN)));
+      if(journey){
+        journey.style.opacity=(p>J_IN-0.03&&p<J_OUT+0.05)?'1':'0';
+        journey.style.transform='translateY('+(26-j*jTravel).toFixed(1)+'vh)';
+      }
+      /* the opening line and the stat chips travel up and out of frame too, rather
+         than fading. Slightly slower than the headline so the three layers part
+         at different rates and the whole frame reads as rising past the pack. */
+      var f=Math.max(0,Math.min(1,(p-0.05)/0.40));
+      f=f*f*(3-2*f);
+      if(heroSub){ heroSub.style.translate='0px '+(-f*92).toFixed(1)+'vh';
+        heroSub.style.pointerEvents=f>0.7?'none':''; }
+      /* the range row rises only once the journey has passed */
       if(prodRow){
-        var d=Math.max(0,Math.min(1,(p-0.60)/0.16));
+        var d=Math.max(0,Math.min(1,(p-0.72)/0.15));
         var e=d*d*(3-2*d);
         prodRow.style.opacity=e.toFixed(3);
         /* PROD_REST sits the settled row below the stage centre, off the 3D pack's shadow */
@@ -1135,12 +1126,12 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
         /* only accept the cursor once the row has actually arrived */
         prodRow.classList.toggle('live',e>0.6);
         if(prodHead) prodHead.style.opacity=e.toFixed(3);
-        dockPoster(p,e);
+        dockPoster(p,e,j);
       }
       window.__heroP=p;
     },
-    onLeave:function(){ cos.forEach(function(c){c.classList.remove('act');}); window.__heroP=1; },
-    onLeaveBack:function(){ cos.forEach(function(c){c.classList.remove('act');}); window.__heroP=0; }
+    onLeave:function(){ window.__heroP=1; },
+    onLeaveBack:function(){ window.__heroP=0; }
   });
 
   /* range specimens: stepped crossfade over the pinned runway */
