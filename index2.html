@@ -11,6 +11,11 @@
 :root{
   /* the wrapper's key fret, as a repeatable band. One token, used for dividers,
      the credentials edges, the footer lip and the current-page nav underline. */
+  /* barely-there paper grain so the cream is never a flat field. One tile shared by
+     every cream surface; at 4.5% ink it reads as texture, not as a motif, and it is
+     a data URI so it costs no request. */
+  --paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%231A130E' stroke-opacity='.045' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M-6 18q9-9 18 0t18 0 18 0 18 0'/%3E%3Cpath d='M-6 54q9-9 18 0t18 0 18 0 18 0'/%3E%3C/g%3E%3C/svg%3E");
+  --paper-size:72px;
   --fret:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewBox='0 0 24 18'%3E%3Cpath d='M0 18V0h18v12H8V6h6' fill='none' stroke='%23D8232A' stroke-width='3'/%3E%3C/svg%3E");
   --fret-gold:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewBox='0 0 24 18'%3E%3Cpath d='M0 18V0h18v12H8V6h6' fill='none' stroke='%23E9C46A' stroke-width='3'/%3E%3C/svg%3E");
   /* page edge: the nav logo and the full-width sections share this. Scales with the
@@ -22,7 +27,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream) var(--paper) repeat;background-size:var(--paper-size);color:var(--ink);
   font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 .mono{font-family:"JetBrains Mono",monospace}
@@ -101,7 +106,7 @@ body{padding-top:52px}
 .cue.hide{opacity:0}
 
 /* ============ scene 3 · story ============ */
-#story{position:relative;background:var(--cream2);padding:110px var(--gutter) 90px;overflow:hidden}
+#story{position:relative;background:var(--cream2) var(--paper) repeat;background-size:var(--paper-size);padding:110px var(--gutter) 90px;overflow:hidden}
 #story .pat{position:absolute;inset:-18% 0;background:url("assets/noodle-pattern.png") repeat;background-size:420px;opacity:.05;pointer-events:none}
 .swrap{max-width:1180px;margin:0 auto;position:relative}
 #story .swrap{max-width:none;margin:0;padding:0}   /* story runs the full width */
@@ -389,7 +394,7 @@ body{padding-top:52px}
 /* scene 7 (the bowl reel) moved to about.html — its styles live there now */
 
 /* ============ scene 8 · finale ============ */
-#finale{background:var(--cream2);padding:110px var(--gutter) 60px}
+#finale{background:var(--cream2) var(--paper) repeat;background-size:var(--paper-size);padding:110px var(--gutter) 60px}
 #finale .fwrap{max-width:none}   /* align to the nav logo, same as #trade and #range */
 .fwrap{max-width:1180px;margin:0 auto}
 #finale h2{font-size:clamp(38px,6vw,84px);line-height:.98;text-transform:uppercase;max-width:16ch;margin-top:14px}
