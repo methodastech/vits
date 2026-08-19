@@ -21,6 +21,7 @@
   /* page edge: the nav logo and the full-width sections share this. Scales with the
      viewport so wide screens get a real margin instead of text hugging the edge. */
   --gutter:clamp(20px,8.4vw,176px);
+  --h-sec:clamp(30px,5.2vw,74px);
   /* how much of the hero the headline column takes; the pack gets the rest */
   --heroCol:56vw;
   --cream:#FBF3E2;--cream2:#FFF9EC;--yellow:#FFCB05;--red:#D8232A;--red-deep:#A81318;
@@ -160,7 +161,6 @@ body{padding-top:52px}
 .swrap{max-width:1180px;margin:0 auto;position:relative}
 #story .swrap{max-width:none;margin:0;padding:0}   /* story runs the full width */
 .k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-deep);font-weight:700}
-#story h2{font-size:clamp(40px,6.4vw,86px);line-height:.98;text-transform:uppercase;margin-top:14px;max-width:14ch}
 #story h2 em{font-style:normal;color:var(--red)}
 #story .lede{margin-top:18px;max-width:60ch;color:var(--soft);font-size:17px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:44px}
@@ -178,7 +178,7 @@ body{padding-top:52px}
 #trade .swrap{max-width:none}
 #trade .pat{position:absolute;inset:-18% 0;background:url("assets/noodle-pattern.png") repeat;background-size:520px;opacity:.04;pointer-events:none;filter:invert(1)}
 #trade .k{color:#FF9A8E}
-#trade h2{font-size:clamp(38px,6vw,82px);line-height:.98;text-transform:uppercase;margin-top:14px;max-width:16ch;color:#fff}
+#trade h2{font-size:var(--h-sec);line-height:.98;text-transform:uppercase;margin-top:14px;max-width:16ch;color:#fff}
 #trade h2 em{font-style:normal;color:var(--yellow)}
 #trade .lede{margin-top:18px;max-width:62ch;color:#C9B9A6;font-size:17px}
 #trade .lede b{color:#fff}
@@ -266,7 +266,7 @@ body{padding-top:52px}
 .journeyIntro{padding-top:11vh}
 .journeyIntro .k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--red-deep);font-weight:700}
-.journeyIntro h2{font-size:clamp(34px,4.6vw,68px);line-height:1;text-transform:uppercase;
+.journeyIntro h2{font-size:var(--h-sec);line-height:1;text-transform:uppercase;
   margin-top:14px;color:var(--ink)}
 .journeyIntro h2 em{font-style:normal;color:var(--red)}
 .journeyIntro p{margin-top:18px;max-width:52ch;font-size:16px;line-height:1.6;color:var(--soft)}
@@ -308,7 +308,7 @@ body{padding-top:52px}
      nav. Clamped so it can never rise above the bar, whatever the viewport. */
   transform:translateY(-50%) translateY(min(-190px,-14vh));opacity:0;pointer-events:none;
   transition:opacity .2s linear}
-.prodHead h3{font-size:clamp(26px,3vw,46px);line-height:1;
+.prodHead h3{font-size:var(--h-sec);line-height:1;
   text-transform:uppercase;color:var(--ink)}
 .prodHead p{margin-top:12px;max-width:34ch;font-size:15px;line-height:1.5;color:var(--soft)}
 @media(max-width:900px){.prodHead{display:none}}
@@ -403,7 +403,7 @@ body{padding-top:52px}
 .spec{position:absolute;inset:0;opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s;pointer-events:none}
 .spec.act{opacity:1;transform:none;pointer-events:auto}
 .spec .ln{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);font-weight:700}
-.spec h3{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.022em;font-size:clamp(36px,4.6vw,66px);line-height:1;text-transform:uppercase;margin-top:10px}
+.spec h3{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.022em;font-size:var(--h-sec);line-height:1;text-transform:uppercase;margin-top:10px}
 .spec p{color:#C9B9A6;font-size:15px;margin-top:14px;max-width:44ch}
 /* dummy add-to-cart under each product panel; presentational only for now */
 /* ---- dummy checkout ---- */
@@ -500,7 +500,7 @@ body{padding-top:52px}
 #finale{background:var(--cream2) var(--paper) repeat;background-size:var(--paper-size);padding:110px var(--gutter) 60px}
 #finale .fwrap{max-width:none}   /* align to the nav logo, same as #trade and #range */
 .fwrap{max-width:1180px;margin:0 auto}
-#finale h2{font-size:clamp(38px,6vw,84px);line-height:.98;text-transform:uppercase;max-width:16ch;margin-top:14px}
+#finale h2{font-size:var(--h-sec);line-height:.98;text-transform:uppercase;max-width:16ch;margin-top:14px}
 #finale h2 em{font-style:normal;color:var(--red)}
 /* only the enquiry form left in here, so it no longer needs two columns */
 /* form left, bowl right. The form keeps a sane measure while the bowl takes the
