@@ -2085,17 +2085,17 @@ function drawSideAlpha(){
    a pillow pack moves a lot, which is most of what tells them apart in 3D.
    ============================================================ */
 const RANGE_SKUS=[
-  { key:'mini',   dims:[2.5,2.8,1.0], bulge:0.30, crimp:true,
+  { key:'mini',   model:'assets/pack-mini.glb', dims:[2.5,2.8,1.0], bulge:0.30, crimp:true,
     field:'#FFE000', band:'#E30613', ink:'#1A1A1A', accent:'#E30613',
     kicker:'', title:'', window:true, phoenix:true, meander:true,
     countBox:true, weight:'350g (12.5oz)' },
-  { key:'penang', dims:[2.6,2.9,1.05], bulge:0.30, crimp:true,
+  { key:'penang', model:'assets/pack-penang.glb', dims:[2.6,2.9,1.05], bulge:0.30, crimp:true,
     field:'#F0C9C2', band:'#B4232B', ink:'#4A1418', accent:'#B4232B',
     kicker:'Taste of Malaysia', title:'Penang\nWhite Curry',
     sub:'Mi Segera Perisa Kari Putih', zh:'檳城白咖哩',
     window:false, phoenix:true, meander:true, bowl:'#E9C9A6',
     countBox:false, count:'4', countLabel:'4 PACK', weight:'4 x 105g' },
-  { key:'tomato', dims:[2.1,3.0,0.95], bulge:0.06, crimp:false,
+  { key:'tomato', model:'assets/pack-tomato.glb', dims:[2.1,3.0,0.95], bulge:0.06, crimp:false,
     field:'#EFE2CB', band:'#C4342A', ink:'#3A2A18', accent:'#C4342A',
     kicker:'Air Dried · Trans Fat Free', title:'Mi Kering\nTomato',
     sub:'Tomato Noodles', zh:'蕃茄麵',
@@ -2422,6 +2422,41 @@ const packA=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack); scA
    One renderer, five packs. Each is normalised by its own height so a tall kraft
    carton and a wide pouch present at the SAME on-screen size as the mini pack,
    which is what keeps the row looking like a line-up rather than a size chart. */
+/* Scanned packs, converted from the Meshy exports. A SKU carrying a model keeps
+   its coded pack as the placeholder and swaps the scan in when it lands, so the
+   row draws immediately and nothing waits on a download. The model is scaled to
+   the same height the coded pack would have had, which leaves dockScale, the
+   per-SKU fit and every position calculation untouched. */
+const _packLoader=new GLTFLoader();
+const _modelCache={};
+function swapInModel(group,sk){
+  if(!sk.model) return;
+  const apply=src=>{
+    const inst=src.clone(true);
+    const box=new THREE.Box3().setFromObject(inst);
+    const size=new THREE.Vector3(), ctr=new THREE.Vector3();
+    box.getSize(size); box.getCenter(ctr);
+    if(!size.y) return;
+    const k=sk.dims[1]/size.y;                 /* match the coded pack's height */
+    inst.scale.setScalar(k);
+    inst.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
+    inst.traverse(o=>{ if(o.isMesh){
+      o.castShadow=false;
+      if(o.material&&o.material.map) o.material.map.anisotropy=Q.aniso;
+    }});
+    /* drop the coded geometry only once the scan is ready to take its place */
+    for(let i=group.children.length-1;i>=0;i--) group.remove(group.children[i]);
+    group.add(inst);
+    group.userData.scanned=true;
+  };
+  if(_modelCache[sk.model]){ apply(_modelCache[sk.model]); return; }
+  _packLoader.load(sk.model,g=>{ _modelCache[sk.model]=g.scene; apply(g.scene); },
+    undefined,()=>{ /* keep the coded pack if the scan cannot be fetched */ });
+}
+
+/* the hero pack is the mini pack, so it takes the same scan */
+swapInModel(packA,RANGE_SKUS[0]);
+
 const sidePacks=RANGE_SKUS.slice(1).map(function(sk,i){
   const g=buildPack(drawSkuFront(sk),drawSkuSide(sk),drawSkuCrimp(sk),null,null,drawSkuBack(sk),
                     sk.dims,sk.bulge,sk.crimp);
@@ -2431,6 +2466,7 @@ const sidePacks=RANGE_SKUS.slice(1).map(function(sk,i){
      these sit, so the shadow arrived as a detached smudge under the labels */
   g.traverse(function(o){ if(o.isMesh) o.castShadow=false; });
   g.visible=false;
+  swapInModel(g,sk);
   scA.add(g);
   return g;
 });
@@ -2482,6 +2518,7 @@ if(rC){
     grp.userData.fit=k;         /* the turntable multiplies by this, see below */
     grp.scale.setScalar(k);
     grp.visible=(i===0);
+    swapInModel(grp,s);
     scC.add(grp);
     return grp;
   });
