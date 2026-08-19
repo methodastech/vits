@@ -173,41 +173,22 @@ body{padding-top:52px}
 #trade .lede b{color:#fff}
 /* pinned split: the factory holds the left while the capabilities scroll past it.
    Each capability owns the middle of the screen in turn and swaps the frame. */
-.tSplit{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,80px);
-  margin-top:64px;align-items:start}
-.tVisual{position:sticky;top:13vh}
-.tFrame{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
-  background:#0F0A05;border:1px solid rgba(255,255,255,.14)}
-.tShot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transform:scale(1.05);transition:opacity .8s ease,transform 1.4s ease}
-.tShot.act{opacity:1;transform:scale(1)}
-/* keeps the footer legible whatever frame is showing */
-.tFrame::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to top,rgba(12,8,5,.9) 0%,rgba(12,8,5,.28) 32%,transparent 60%)}
-.tFrameFoot{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 22px;
-  display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
-.tStep{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;
-  color:var(--yellow);white-space:nowrap}
-.tStep u{text-decoration:none;color:rgba(242,233,221,.45)}
-.tCap{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.07em;
-  text-transform:uppercase;color:#C9B9A6;line-height:1.65;max-width:32ch;text-align:right}
-/* progress rail, one tick per capability */
-.tRail{display:flex;gap:6px;margin-top:14px}
-.tRail i{flex:1;height:2px;background:rgba(255,255,255,.15);border-radius:2px;transition:background .45s ease}
-.tRail i.act{background:var(--yellow)}
+.tSplit{margin-top:56px}
 /* The capability run used to be five blocks at 38vh each — nearly two screens of
    scrolling to read five short paragraphs. It is a card grid now: the same content,
    readable at a glance, and the section costs a fraction of the runway. */
 .tList{list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.tItem{min-height:0;padding:20px 22px;border:1px solid rgba(255,255,255,.14);
-  border-radius:14px;background:rgba(255,255,255,.035);
-  display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-content:start;
-  opacity:1;transition:border-color .35s ease,background .35s ease,transform .35s ease}
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tItem{min-height:0;padding:0;border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;background:rgba(255,255,255,.035);overflow:hidden;
+  display:flex;flex-direction:column;opacity:1;
+  transition:border-color .35s ease,transform .35s ease}
+.tPic{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  border-bottom:1px solid rgba(255,255,255,.12)}
+.tBody{padding:16px 18px 20px;display:grid;grid-template-columns:auto 1fr;gap:0 12px;
+  align-content:start}
 /* the last card takes the full width when the count is odd, so the grid never
    ends on a visible hole */
-.tItem:last-child:nth-child(odd){grid-column:1 / -1}
-.tItem.act{border-color:rgba(255,203,5,.55);background:rgba(255,203,5,.07)}
 .tItem:hover{transform:translateY(-2px)}
 .tNo{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
   color:var(--yellow);padding-top:3px}
@@ -217,15 +198,11 @@ body{padding-top:52px}
 .tItem .tbc{grid-column:2;justify-self:start;margin-top:13px;background:rgba(216,35,42,.2);color:#FF9A8E}
 @media(max-width:900px){
   .tSplit{grid-template-columns:1fr;gap:30px}
-  .tList{grid-template-columns:1fr}
-  .tVisual{position:static}
-  .tFrame{aspect-ratio:16/10}
+  .tList{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
   .tItem{min-height:0;opacity:1}
 }
 @media(prefers-reduced-motion:reduce){
-  .tVisual{position:static}
   .tItem{min-height:0;opacity:1}
-  .tShot{transition:none}
 }
 .cartonCap{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#A6907C;margin-top:12px}
 /* Peranakan tiling behind the range stage: heritage at a whisper, never competing
@@ -283,7 +260,11 @@ body{padding-top:52px}
 .journeyIntro h2 em{font-style:normal;color:var(--red)}
 .journeyIntro p{margin-top:18px;max-width:52ch;font-size:16px;line-height:1.6;color:var(--soft)}
 /* the rail: one continuous line with a marker per milestone */
-.journeySteps{list-style:none;margin:11vh 0 0;padding:0 0 0 34px;position:relative}
+/* a deliberate run of empty column between the intro and 1975. jTravel is derived
+   from the column height, so a taller column also travels faster — the gap has to
+   be large to buy real scroll distance between reading the intro and the timeline
+   starting. */
+.journeySteps{list-style:none;margin:62vh 0 0;padding:0 0 0 34px;position:relative}
 .journeySteps::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
   background:linear-gradient(180deg,transparent,var(--red) 8%,var(--red) 92%,transparent)}
 .journeySteps li{position:relative;margin-bottom:11vh;max-width:44ch}
@@ -409,6 +390,14 @@ body{padding-top:52px}
 .spec .ln{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);font-weight:700}
 .spec h3{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.022em;font-size:clamp(36px,4.6vw,66px);line-height:1;text-transform:uppercase;margin-top:10px}
 .spec p{color:#C9B9A6;font-size:15px;margin-top:14px;max-width:44ch}
+/* dummy add-to-cart under each product panel; presentational only for now */
+.addCart{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+  padding:12px 22px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--red);color:#fff;font-family:Inter,sans-serif;font-weight:700;
+  font-size:14.5px;letter-spacing:-.01em;
+  transition:background .3s ease,transform .3s ease}
+.addCart span{font-size:17px;line-height:1;opacity:.85}
+.addCart:hover{background:var(--red-deep);transform:translateY(-1px)}
 .spec .meta{display:flex;gap:26px;margin-top:22px;flex-wrap:wrap}
 .spec .m .a{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8d7d6c}
 .spec .m .b{font-size:14.5px;font-weight:600;color:#fff;margin-top:3px}
@@ -699,43 +688,33 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
   <div class="swrap">
     <h2 class="disp rv" data-plx="-4">Your recipe,<br><em>our line</em></h2>
     <p class="lede rv">Buyers open with 1 question: <b>can you create a taste like Buldak, like Indomie.</b> The answer is the factory itself. 51 years of noodle mastery, a seasoning kitchen that speaks curry, tom yam, rendang and beyond, and a line that runs your recipe under your label.</p>
+    <!-- four plain cards, picture over copy. The sticky frame and its
+         scroll-driven swap are gone; each point carries its own image. -->
     <div class="tSplit">
-      <!-- the frame stays put; whichever capability owns the middle of the screen drives it -->
-      <div class="tVisual">
-        <div class="tFrame">
-          <img class="tShot act" src="assets/oem-line.jpg" data-c-src="trade.cartonImages.2" alt="The noodle production line">
-          <img class="tShot" src="assets/oem-pallets.jpg" data-c-src="trade.cartonImages.0" alt="Export cartons stacked on pallets in the warehouse">
-          <img class="tShot" src="assets/oem-qc.jpg" data-c-src="trade.cartonImages.3" alt="Quality control bench">
-          <img class="tShot" src="assets/oem-loading.jpg" data-c-src="trade.cartonImages.1" alt="Cartons loaded at the bay">
-          <img class="tShot" src="assets/oem-seasoning.jpg" alt="Seasoning development bench">
-          <div class="tFrameFoot">
-            <span class="tStep"><b>01</b><u>&thinsp;/&thinsp;05</u></span>
-            <span class="tCap" data-c="trade.cartonCaption">The real carton, as it ships. OEM, private label and bulk, from Kuala Lumpur to 20+ markets.</span>
-          </div>
-        </div>
-        <div class="tRail" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i><i></i></div>
-      </div>
-
       <ol class="tList">
-        <li class="tItem act">
-          <span class="tNo">01</span>
+        <li class="tItem">
+          <img class="tPic" src="assets/oem-line.jpg" alt="The noodle production line" loading="lazy">
+          <div class="tBody"><span class="tNo">01</span>
           <h3 data-c="trade.checks.0.title">Formats</h3>
-          <p data-c="trade.checks.0.body">Pillow packs, mini packs, zip packs, air-dried kraft, cup on request. Retail 4-packs to 700g economy family packs.</p>
+          <p data-c="trade.checks.0.body">Pillow packs, mini packs, zip packs, air-dried kraft, cup on request. Retail 4-packs to 700g economy family packs.</p></div>
         </li>
         <li class="tItem">
-          <span class="tNo">02</span>
+          <img class="tPic" src="assets/oem-pallets.jpg" alt="Export cartons stacked on pallets" loading="lazy">
+          <div class="tBody"><span class="tNo">02</span>
           <h3 data-c="trade.checks.1.title">Shelf life</h3>
-          <p data-c="trade.checks.1.body">Fried and air-dried lines with export-grade shelf life, stated per SKU on the specification sheet.</p>
+          <p data-c="trade.checks.1.body">Fried and air-dried lines with export-grade shelf life, stated per SKU on the specification sheet.</p></div>
         </li>
         <li class="tItem">
-          <span class="tNo">03</span>
+          <img class="tPic" src="assets/oem-qc.jpg" alt="Quality control bench" loading="lazy">
+          <div class="tBody"><span class="tNo">03</span>
           <h3 data-c="trade.checks.2.title">Certifications</h3>
-          <p data-c="trade.checks.2.body">FSSC 22000, HACCP, GMP, ISO 22000, and JAKIM halal held since 1980.</p>
+          <p data-c="trade.checks.2.body">FSSC 22000, HACCP, GMP, ISO 22000, and JAKIM halal held since 1980.</p></div>
         </li>
         <li class="tItem">
-          <span class="tNo">04</span>
+          <img class="tPic" src="assets/oem-seasoning.jpg" alt="Seasoning development bench" loading="lazy">
+          <div class="tBody"><span class="tNo">04</span>
           <h3 data-c="trade.checks.3.title">Customisation</h3>
-          <p data-c="trade.checks.3.body">Your recipe or ours. Seasoning development, your label, your language, your compliance.</p>
+          <p data-c="trade.checks.3.body">Your recipe or ours. Seasoning development, your label, your language, your compliance.</p></div>
         </li>
       </ol>
     </div>
@@ -836,30 +815,35 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
           <h3>The Mini Pack</h3>
           <p>5 cakes, 350 grams, 1 decision. The pack that built the company and still anchors the Malaysian kitchen.</p>
           <div class="meta"><div class="m"><div class="a">Weight</div><div class="b">350g &middot; 5 cakes</div></div><div class="m"><div class="a">Character</div><div class="b">Plain, yours to season</div></div></div>
+          <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
         </div>
         <div class="spec s1">
           <div class="ln">Premium &middot; Taste of Penang</div>
           <h3>Penang White Curry</h3>
           <p>The premium line: white curry, asam laksa and Hokkien mee, cooked from paste, not powder.</p>
           <div class="meta"><div class="m"><div class="a">Line</div><div class="b">Premium 4-pack</div></div><div class="m"><div class="a">Character</div><div class="b">Traditional paste</div></div></div>
+          <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
         </div>
         <div class="spec s2">
           <div class="ln">Healthy Series &middot; Air Dried</div>
           <h3>Mi Kering Tomato</h3>
           <p>Air dried, never fried, coloured by real tomato. The clean spec that wins world lists, made here for years.</p>
           <div class="meta"><div class="m"><div class="a">Process</div><div class="b">Air dried, trans-fat-free</div></div><div class="m"><div class="a">Colour from</div><div class="b">Real tomato</div></div></div>
+          <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
         </div>
         <div class="spec s3">
           <div class="ln">Healthy Series &middot; Air Dried</div>
           <h3>Mi Kering Bayam</h3>
           <p>Spinach in the noodle, not on the label. High fibre, air dried, the quiet pride of the plant.</p>
           <div class="meta"><div class="m"><div class="a">Process</div><div class="b">Air dried, high fibre</div></div><div class="m"><div class="a">Colour from</div><div class="b">Real spinach</div></div></div>
+          <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
         </div>
         <div class="spec s4">
           <div class="ln">Italian Series &middot; Awarded</div>
           <h3>Mi Goreng Carbonara</h3>
           <p>MIFT Gold Award for Product Innovation 2025. Proof the seasoning kitchen can leave Malaysia and land.</p>
           <div class="meta"><div class="m"><div class="a">Award</div><div class="b">MIFT Gold, 2025</div></div><div class="m"><div class="a">Character</div><div class="b">Creamy, zip pack</div></div></div>
+          <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
         </div>
       </div>
       <div class="specImgs">
@@ -1046,39 +1030,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     });
   },8000); });
 
-  /* trade: the frame follows the cards. With all five on screen at once, "whichever
-     one owns the middle of the viewport" no longer means anything, so the frame is
-     driven by hover and otherwise advances on its own — no scroll runway needed. */
-  (function(){
-    var items=[].slice.call(document.querySelectorAll('#trade .tItem'));
-    if(!items.length) return;
-    var shots=[].slice.call(document.querySelectorAll('#trade .tShot'));
-    var ticks=[].slice.call(document.querySelectorAll('#trade .tRail i'));
-    var stepNo=document.querySelector('#trade .tStep b');
-    var cur=-1, held=false, timer=null;
-    function set(i){
-      if(i===cur) return; cur=i;
-      items.forEach(function(el,j){ el.classList.toggle('act',j===i); });
-      shots.forEach(function(el,j){ el.classList.toggle('act',j===i); });
-      ticks.forEach(function(el,j){ el.classList.toggle('act',j<=i); });
-      if(stepNo) stepNo.textContent=('0'+(i+1)).slice(-2);
-    }
-    function advance(){ if(!held) set((cur+1)%items.length); }
-    function play(){ if(!timer) timer=setInterval(advance,3600); }
-    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-    items.forEach(function(el,j){
-      el.addEventListener('pointerenter',function(){ held=true; set(j); });
-      el.addEventListener('pointerleave',function(){ held=false; });
-      el.addEventListener('focusin',function(){ held=true; set(j); });
-    });
-    set(0);
-    /* only tick over while the section is actually on screen */
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(e){ e[0].isIntersecting?play():stop(); },{threshold:0.15})
-        .observe(document.querySelector('#trade'));
-    } else play();
-    if(matchMedia('(prefers-reduced-motion:reduce)').matches) stop();
-  })();
+  /* no trade frame driver: each card carries its own picture now. */
 
   /* hero runway: type slides out, callouts step, cue hides */
   var cue=document.getElementById('scrollCue');
