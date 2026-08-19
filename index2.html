@@ -449,8 +449,16 @@ body{padding-top:52px}
 #finale h2{font-size:clamp(38px,6vw,84px);line-height:.98;text-transform:uppercase;max-width:16ch;margin-top:14px}
 #finale h2 em{font-style:normal;color:var(--red)}
 /* only the enquiry form left in here, so it no longer needs two columns */
-.fgrid{margin-top:46px;max-width:620px}
-@media(max-width:900px){.fgrid{grid-template-columns:1fr}}
+/* form left, bowl right. The form keeps a sane measure while the bowl takes the
+   rest of the width. */
+.fgrid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);
+  gap:clamp(28px,4vw,64px);margin-top:46px;align-items:center}
+.fReel{position:relative}
+/* the clip is shot on white, so multiply drops that straight out onto the cream */
+.fReelVid{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+@media(prefers-reduced-motion:reduce){.fReel{display:none}}
+@media(max-width:900px){.fgrid{grid-template-columns:1fr}
+  .fReel{order:-1}}
 .fform{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px}
 .fform .k{margin-bottom:6px;display:block}
 .fform label{display:block;font-size:12px;font-weight:600;color:var(--soft);margin-top:14px}
@@ -858,6 +866,13 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
         <button type="submit">Send to the trade desk</button>
         <div class="note">Demo build. The live form routes to the trade desk inbox with a 1 business day reply promise.</div>
       </form>
+      <!-- the bowl turns as you scroll the ask, straight on the section paper
+           rather than inside a card -->
+      <div class="fReel" aria-hidden="true">
+        <video id="fReelVid" class="fReelVid" muted playsinline preload="auto"
+               disablepictureinpicture poster="assets/reel-poster.jpg?v=4"
+               src="assets/bowl-reel.mp4?v=4"></video>
+      </div>
     </div>
   </div>
 </section>
@@ -1001,6 +1016,29 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
       if(+o<0.05) gsap.set(el,{clearProps:'all'});
     });
   },8000); });
+
+  /* the finale bowl is scrubbed by scroll, not autoplayed. The seek is eased in a
+     rAF loop because writing currentTime straight from onUpdate outruns the decoder
+     and the picture stutters. Same approach as the reel on Prototype Web 1. */
+  (function(){
+    var v=document.getElementById('fReelVid');
+    if(!v) return;
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var target=0,cur=0,ready=false;
+    function onMeta(){ if(v.duration&&isFinite(v.duration)) ready=true; }
+    v.addEventListener('loadedmetadata',onMeta); onMeta();
+    v.pause();
+    ScrollTrigger.create({trigger:'#finale',start:'top bottom',end:'bottom bottom',
+      onUpdate:function(self){ target=self.progress; }});
+    (function tick(){
+      requestAnimationFrame(tick);
+      if(!ready) return;
+      cur+=(target-cur)*0.14;
+      /* stop just shy of the end: seeking to exactly duration parks on a blank frame */
+      var want=cur*(v.duration-0.06);
+      if(Math.abs(v.currentTime-want)>0.008){ try{ v.currentTime=want; }catch(e){} }
+    })();
+  })();
 
   /* no trade frame driver: each card carries its own picture now. */
 
