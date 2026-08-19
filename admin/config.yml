@@ -62,7 +62,8 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Headline line 1", name: "line1", widget: "string" }
+              - { label: "Headline word 1", name: "line1a", widget: "string", hint: "Sits on its own line on Prototype 2" }
+              - { label: "Headline line 1", name: "line1b", widget: "string" }
               - { label: "Headline line 2", name: "line2", widget: "string" }
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Lede", name: "lede", widget: "text" }
@@ -180,6 +181,7 @@ collections:
                   - { label: "Figure", name: "year", widget: "string" }
                   - { label: "Body", name: "body", widget: "text" }
                   - { label: "Red gate flag", name: "flag", widget: "string", required: false }
+                  - { label: "Photo", name: "image", widget: "image", required: false, hint: "Shown beside this milestone on the home page journey" }
               - { label: "Foot note", name: "footNote", widget: "text" }
 
           - label: "Credentials strip"

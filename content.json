@@ -26,7 +26,8 @@
     }
   },
   "hero": {
-    "line1": "The Yellow Pack",
+    "line1a": "The",
+    "line1b": "Yellow Pack",
     "line2": "of Malaysia",
     "eyebrow": "Vit's Noodles · since 1975 · Kuala Lumpur",
     "lede": "51 years. 1 factory. The noodle Malaysia grew up on, now cooked for the world.",
@@ -363,10 +364,10 @@
     ]
   },
   "reel": {
-    "_note": "The scroll-scrubbed bowl reel. Lives on the About page, under the factory band.",
-    "kicker": "One line, every bowl",
+    "_note": "The scroll-scrubbed bowl reel. Scene 6 on Prototype Web 1.",
+    "kicker": "06 · One line, every bowl",
     "title": "Same factory.<br><em>Every flavour.</em>",
-    "body": "One noodle line and one seasoning kitchen behind every bowl we ship, ours and yours alike. Scroll to turn it."
+    "body": "One noodle line and one seasoning kitchen behind every bowl on this page. Scroll to turn it."
   },
   "finale": {
     "kicker": "05 · The ask",

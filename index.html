@@ -228,6 +228,12 @@ body{padding-top:52px}
 /* the reserved slot is a gap: the 3D pack is the product shot.
    the ring stays as an invisible spacer so the label lines up with its neighbours */
 .prodSlot .slotRing{width:100%;aspect-ratio:3/4;border:0}
+/* every card now reserves the same 3:4 box, so all five 3D packs are measured
+   off an identical target and land at one standard size */
+.prodCard[data-sku] .slotRing{width:100%;aspect-ratio:3/4;border:0}
+/* the flat shot is only a fallback once the 3D row is running */
+.prodCard[data-sku] .flatFallback{position:absolute;inset:0 0 auto 0}
+.prodRow.is3d .flatFallback{display:none}
 /* game-style item select: the pack under the cursor lifts out of the line-up and the
    rest recede. Only live once the row has actually risen, see .live in the hero runway. */
 .prodRow.live .prodCard:not(.prodSlot){pointer-events:auto;cursor:pointer}
@@ -249,21 +255,24 @@ body{padding-top:52px}
 }
 @media(max-width:900px){.prodRow{display:none}}
 /* credentials marquee between the story and the trade offer */
-.markStrip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:30px 0;background:rgba(255,255,255,.45);text-align:center}
+/* the credentials bar carries the same red as the Trade Enquiry button, so the
+   one loud horizontal band on the page belongs to the same family as the CTA */
+.markStrip{border-top:0;border-bottom:0;
+  padding:30px 0;background:var(--red);text-align:center}
 .markWin{overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .markTrack{display:flex;width:max-content;animation:markScroll 46s linear infinite}
 .markStrip:hover .markTrack{animation-play-state:paused}
 .markRow{display:flex;align-items:center;gap:54px;padding-right:54px}
-.mk{display:flex;align-items:center;gap:12px;color:var(--red-deep);white-space:nowrap}
+/* the icons stroke with currentColor, so this whitens them too */
+.mk{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.92);white-space:nowrap}
 .mk svg{width:32px;height:32px;flex:0 0 32px}
 .mk span{display:flex;flex-direction:column;font-size:14.5px;font-weight:700;
-  color:var(--ink);line-height:1.15;text-align:left}
+  color:#fff;line-height:1.15;text-align:left}
 /* the sub-label was 9px on .11em tracking, which read as texture rather than words */
 .mk i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
-  letter-spacing:.05em;text-transform:uppercase;color:#574C42;margin-top:5px}
+  letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:5px}
 @keyframes markScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:760px){.markRow{gap:34px;padding-right:34px}.mk span{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.markTrack{animation:none}
@@ -307,6 +316,9 @@ body{padding-top:52px}
 .specImgs img.photo{border-radius:18px}
 .specImgs .spec3d{width:100%;height:100%;max-height:none;max-width:none;filter:none}
 .specImgs .spec3d canvas{display:block;width:100%;height:100%}
+/* once the 3D stage is live the flat art is only a fallback, so it is taken out
+   of the picture entirely rather than sitting behind the canvas */
+.specImgs.is3d img.fallback{display:none}
 .dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:1}
 .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,transform .3s}
 .dots i.act{background:var(--yellow);transform:scale(1.25)}
@@ -500,7 +512,9 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 <section id="heroJourney" aria-label="The mini pack">
   <div class="stage">
     <div class="heroType" aria-hidden="true">
-      <div class="l disp" data-hline="1" data-c="hero.line1">The Yellow Pack</div>
+      <!-- same two fields prototype 2 breaks across lines, set inline here so this
+           hero still reads as one line and neither page needs its own copy -->
+      <div class="l disp" data-hline="1"><span data-c="hero.line1a">The</span> <span data-c="hero.line1b">Yellow Pack</span></div>
       <div class="l l2 disp" data-hline="2" data-c="hero.line2">of Malaysia</div>
     </div>
     <div id="heroCanvas"></div>
@@ -528,15 +542,15 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
       <h3 class="disp" data-c="hero.rangeTitle">Our best sellers</h3>
     </div>
     <div class="prodRow" aria-hidden="true">
-      <div class="prodCard"><img src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="">
+      <div class="prodCard" data-sku="1"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="">
         <b data-c="range.items.1.title">Penang White Curry</b><i data-c="range.items.1.metaAValue">Premium 4-pack</i></div>
-      <div class="prodCard"><img src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="">
+      <div class="prodCard" data-sku="2"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="">
         <b data-c="range.items.2.title">Mi Kering Tomato</b><i data-c="range.items.2.metaAValue">Air dried</i></div>
       <div class="prodCard prodSlot"><div class="slotRing"></div>
         <b data-c="range.items.0.title">The Mini Pack</b><i data-c="range.items.0.metaAValue">350g · 5 cakes</i></div>
-      <div class="prodCard"><img src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="">
+      <div class="prodCard" data-sku="3"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="">
         <b data-c="range.items.3.title">Mi Kering Bayam</b><i data-c="range.items.3.metaAValue">Air dried</i></div>
-      <div class="prodCard"><img src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="">
+      <div class="prodCard" data-sku="4"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="">
         <b data-c="range.items.4.title">Mi Goreng Carbonara</b><i data-c="range.items.4.metaAValue">MIFT Gold 2025</i></div>
     </div>
   </div>
@@ -779,12 +793,16 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
           <div class="meta"><div class="m"><div class="a">Award</div><div class="b">MIFT Gold, 2025</div></div><div class="m"><div class="a">Character</div><div class="b">Creamy, zip pack</div></div></div>
         </div>
       </div>
+      <!-- All five specimens are the real 3D pack now, drawn in code and swapped
+           in place, so every product turns and catches light like the Mini Pack
+           did. The flat PNGs stay as the no-WebGL fallback underneath. -->
       <div class="specImgs">
-        <img class="si0 act" src="assets/sku-mini-pack.png" data-c-src="range.items.0.image" alt="Vit's Mini Pack">
-        <img class="si1 photo" src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="Vit's Penang White Curry">
-        <img class="si2" src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="Vit's Mi Kering Tomato">
-        <img class="si3" src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="Vit's Mi Kering Bayam">
-        <img class="si4" src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="Vit's Mi Goreng Carbonara">
+        <div id="rangeCanvas" class="spec3d act" aria-hidden="true"></div>
+        <img class="si0 act fallback" src="assets/sku-mini-pack.png" data-c-src="range.items.0.image" alt="Vit's Mini Pack">
+        <img class="si1 fallback" src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="Vit's Penang White Curry">
+        <img class="si2 fallback" src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="Vit's Mi Kering Tomato">
+        <img class="si3 fallback" src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="Vit's Mi Kering Bayam">
+        <img class="si4 fallback" src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="Vit's Mi Goreng Carbonara">
       </div>
     </div>
     <div class="dots" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i><i></i></div>
@@ -816,7 +834,7 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
            poster="assets/reel-poster.jpg?v=4" src="assets/bowl-reel.mp4?v=4"></video>
     <div class="reelCopy">
       <span class="k" data-c="reel.kicker">06 &middot; One line, every bowl</span>
-      <h2 class="disp" data-c="reel.title">Same factory.<br><em>Every flavour.</em></h2>
+      <h2 class="disp" data-c-html="reel.title">Same factory.<br><em>Every flavour.</em></h2>
       <p data-c="reel.body">One noodle line and one seasoning kitchen behind every bowl on this page. Scroll to turn it.</p>
     </div>
     <div class="reelRail" aria-hidden="true"><i class="act"></i><i></i><i></i></div>
@@ -1077,7 +1095,11 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   var rangeStage=document.querySelector('#range .stage');
   function setSpec(i){
     specs.forEach(function(s,j){s.classList.toggle('act',j===i);});
-    sims.forEach(function(s,j){s.classList.toggle('act',j===i);});
+    /* the 3D stage is always the active child and changes which pack it shows;
+       only the flat fallbacks are index-switched, for the no-WebGL case */
+    var flats=sims.filter(function(s){return s.id!=='rangeCanvas';});
+    flats.forEach(function(s,j){s.classList.toggle('act',j===i);});
+    if(window.__setRangePack) window.__setRangePack(i);
     dots.forEach(function(s,j){s.classList.toggle('act',j===i);});
     /* the Peranakan tiling warms up only on the Taste of Penang slide */
     if(rangeStage){
@@ -1594,18 +1616,220 @@ function drawSideAlpha(){
 }
 
 /* ---------- the pack mesh (shared builder) ---------- */
-function buildPack(front,side,crimp,aFront,aSide,back){
-  const W=2.5,H=2.8,D=1.0;                  /* 250 x 280 x 100 mm */
+/* ============================================================
+   The range, as five real packs rather than five flat cut-outs.
+   Each entry carries its own proportions, palette and furniture; the
+   painters below read the spec, so a new SKU is a data row, not new code.
+   dims are the real carton in metres/10: [width, height, depth].
+   bulge is how much the film pillows out — a printed carton barely moves,
+   a pillow pack moves a lot, which is most of what tells them apart in 3D.
+   ============================================================ */
+const RANGE_SKUS=[
+  { key:'mini',   dims:[2.5,2.8,1.0], bulge:0.30, crimp:true,
+    field:'#FFE000', band:'#E30613', ink:'#1A1A1A', accent:'#E30613',
+    kicker:'', title:'', window:true, phoenix:true, meander:true,
+    countBox:true, weight:'350g (12.5oz)' },
+  { key:'penang', dims:[2.6,2.9,1.05], bulge:0.30, crimp:true,
+    field:'#F0C9C2', band:'#B4232B', ink:'#4A1418', accent:'#B4232B',
+    kicker:'Taste of Malaysia', title:'Penang\nWhite Curry',
+    sub:'Mi Segera Perisa Kari Putih', zh:'檳城白咖哩',
+    window:false, phoenix:true, meander:true, bowl:'#E9C9A6',
+    countBox:false, count:'4', countLabel:'4 PACK', weight:'4 x 105g' },
+  { key:'tomato', dims:[2.1,3.0,0.95], bulge:0.06, crimp:false,
+    field:'#EFE2CB', band:'#C4342A', ink:'#3A2A18', accent:'#C4342A',
+    kicker:'Air Dried · Trans Fat Free', title:'Mi Kering\nTomato',
+    sub:'Tomato Noodles', zh:'蕃茄麵',
+    window:false, phoenix:false, meander:false, bowl:'#D8503C',
+    countBox:false, count:'5', countLabel:'AIR DRIED', weight:'300g' },
+  { key:'bayam',  dims:[2.1,3.0,0.95], bulge:0.06, crimp:false,
+    field:'#EBE6D2', band:'#4E7A3A', ink:'#27351C', accent:'#4E7A3A',
+    kicker:'Air Dried · High Fibre', title:'Mi Kering\nBayam',
+    sub:'Spinach Noodles', zh:'菠菜麵',
+    window:false, phoenix:false, meander:false, bowl:'#6E9B4B',
+    countBox:false, count:'5', countLabel:'HIGH FIBRE', weight:'300g' },
+  { key:'carbo',  dims:[2.9,2.5,0.9],  bulge:0.24, crimp:true,
+    field:'#F6E3A8', band:'#C8102E', ink:'#3A2B10', accent:'#1A7A3C',
+    kicker:'Vit’s Mi Segera Perisa', title:'Carbonara',
+    sub:'Mi Goreng · Creamy', zh:'卡邦尼',
+    window:false, phoenix:false, meander:false,
+    /* a real carbonara is cream on cream, which vanished against the field —
+       pushed warmer so the dish still reads at pack size */
+    bowl:'#DCBF7E', tricolour:true,
+    countBox:false, count:'5', countLabel:'MIFT GOLD 2025', weight:'5 x 80g' }
+];
+
+/* a soft product bowl, so each front has something appetising rather than
+   flat type. Drawn, not photographed, to match how the mini pack is made. */
+function skuBowl(x,cx,cy,r,col){
+  x.save();
+  x.fillStyle='rgba(0,0,0,.10)';
+  x.beginPath(); x.ellipse(cx,cy+r*0.52,r*0.94,r*0.20,0,0,Math.PI*2); x.fill();
+  x.fillStyle='#fff';
+  x.beginPath(); x.ellipse(cx,cy,r,r*0.72,0,0,Math.PI*2); x.fill();
+  x.strokeStyle='rgba(0,0,0,.14)'; x.lineWidth=3; x.stroke();
+  x.save();
+  x.beginPath(); x.ellipse(cx,cy,r*0.9,r*0.64,0,0,Math.PI*2); x.clip();
+  x.fillStyle=col;
+  x.fillRect(cx-r,cy-r,r*2,r*2);
+  /* noodle strands catching the light */
+  x.strokeStyle='rgba(255,255,255,.55)'; x.lineWidth=r*0.075; x.lineCap='round';
+  for(let i=0;i<9;i++){
+    x.beginPath();
+    for(let t=-r;t<=r;t+=6) x.lineTo(cx+t,cy-r*0.42+i*r*0.13+Math.sin(t*0.05+i)*r*0.05);
+    x.stroke();
+  }
+  x.restore();
+  x.lineCap='butt';
+  x.restore();
+}
+
+/* Each panel's canvas must match the aspect of the FACE it lands on, or the
+   artwork is stretched to fit — a 1024x1147 canvas on the carbonara's wide face
+   pulled its wordmark sideways. So every painter derives its own height from the
+   SKU's dims and lays out in fractions of it rather than fixed pixels. */
+function faceH(s){ return Math.round(FW*(s.dims[1]/s.dims[0])); }
+
+/* the generic front. The mini pack keeps its own bespoke painter above;
+   everything else is composed from the spec. */
+function drawSkuFront(s){
+  const FH2=faceH(s), U=FH2/1147;             /* U scales the vertical rhythm */
+  const [c,x]=panel(FW,FH2);
+  x.fillStyle=s.field; x.fillRect(0,0,FW,FH2);
+  const band=Math.round(64*U);
+  x.fillStyle=s.band; x.fillRect(0,0,FW,band);
+  x.fillStyle='#fff'; x.textAlign='center';
+  x.font='italic 800 '+Math.round(38*U)+'px Inter,Helvetica,Arial,sans-serif';
+  for(let i=0;i<9;i++) x.fillText("Vit's",68+i*114,band*0.72);
+  if(s.tricolour){ /* the Italian flag flash the carbonara pack carries */
+    const th=Math.round(26*U);
+    x.fillStyle='#1A7A3C'; x.fillRect(0,band,FW/3,th);
+    x.fillStyle='#fff';    x.fillRect(FW/3,band,FW/3,th);
+    x.fillStyle='#C8102E'; x.fillRect(FW*2/3,band,FW/3,th);
+  }
+  if(s.meander){ meander(x,0,206*U,FW,44*U,s.band); meander(x,0,FH2-64*U,FW,44*U,s.band); }
+  /* the mark */
+  drawLogo(x,512,(s.phoenix?372:330)*U,(s.phoenix?300:340));
+  if(s.phoenix) phoenix(x,512,585*U,0.52);
+  /* Everything below the mark flows off a single cursor rather than sitting at
+     fixed offsets. On a short wide face like the carbonara the fixed layout
+     stacked the kicker straight through the title. */
+  let ty=(s.phoenix? 690*U : (330*U + 340*LOGO_AR*0.5 + 62*U));
+  if(s.kicker){
+    x.fillStyle=s.accent; x.textAlign='center';
+    const ks=Math.round(26*U);
+    x.font='700 '+ks+'px Inter,sans-serif';
+    x.fillText(s.kicker.toUpperCase(),512,ty);
+    ty+=ks*1.9;
+  }
+  if(s.title){
+    x.fillStyle=s.ink; x.textAlign='center';
+    const lines=s.title.split('\n');
+    const size=Math.round((lines.length>1?76:92)*U);
+    x.font='800 '+size+'px Inter,sans-serif';
+    lines.forEach(function(l){ ty+=size*0.86; x.fillText(l.toUpperCase(),512,ty); });
+    if(s.zh){ const zs=Math.round(40*U);
+      x.font='700 '+zs+'px "Noto Sans SC","Microsoft YaHei",sans-serif';
+      x.fillStyle=s.accent; ty+=zs*1.15; x.fillText(s.zh,512,ty); }
+    if(s.sub){ const ss=Math.round(27*U);
+      x.font='600 '+ss+'px Inter,sans-serif'; x.fillStyle=s.ink;
+      ty+=ss*1.5; x.fillText(s.sub,512,ty); }
+  }
+  /* the dish takes whatever room is genuinely left between the type and the foot,
+     and is dropped entirely if that gap is too small to hold a legible bowl */
+  if(s.bowl){
+    const footY=FH2-190*U;
+    const gap=footY-ty;
+    const r=Math.min(200*U, gap*0.46, FW*0.26);
+    if(r>34*U) skuBowl(x,512,ty+gap*0.52,r,s.bowl);
+  }
+  /* JAKIM mark and the weight, along the foot */
+  jakimMark(x,104,FH2-176*U,46);
+  x.fillStyle=s.ink; x.font='600 '+Math.round(15*U)+'px Inter,sans-serif'; x.textAlign='center';
+  x.fillText('MS 1500 : 2009',104,FH2-108*U);
+  x.textAlign='right';
+  x.fillStyle=s.ink; x.font='800 '+Math.round(34*U)+'px Inter,sans-serif';
+  x.fillText(s.weight,FW-46,FH2-118*U);
+  if(s.countLabel){
+    x.font='700 '+Math.round(17*U)+'px Inter,sans-serif'; x.fillStyle=s.accent;
+    x.fillText(s.countLabel,FW-46,FH2-152*U);
+  }
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
+}
+
+/* the gusset. Sized off depth-to-height so the vertical wordmark is not squashed. */
+function drawSkuSide(s){
+  const SW=420, SH=Math.round(SW*(s.dims[1]/s.dims[2]));
+  const [c,x]=panel(SW,SH);
+  const band=Math.round(SH*0.055);
+  x.fillStyle=s.field; x.fillRect(0,0,SW,SH);
+  x.fillStyle=s.band; x.fillRect(0,0,SW,band); x.fillRect(0,SH-band,SW,band);
+  x.save(); x.translate(SW/2,SH/2); x.rotate(-Math.PI/2);
+  x.fillStyle=s.ink; x.textAlign='center'; x.font='800 62px Inter,sans-serif';
+  x.fillText((s.title||"Vit's").replace('\n',' ').toUpperCase(),0,-14);
+  x.font='600 26px Inter,sans-serif'; x.fillStyle=s.accent;
+  x.fillText(s.sub||'Instant Noodles',0,30);
+  x.restore();
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
+}
+
+/* the reverse: cooking steps, so a full turn has somewhere to land */
+function drawSkuBack(s){
+  const FH=faceH(s);
+  const [c,x]=panel(FW,FH);
+  x.fillStyle=s.field; x.fillRect(0,0,FW,FH);
+  x.fillStyle=s.band; x.fillRect(0,0,FW,64);
+  x.fillStyle=s.ink; x.textAlign='left';
+  x.font='800 44px Inter,sans-serif'; x.fillText('COOKING INSTRUCTIONS',64,168);
+  x.font='600 26px Inter,sans-serif'; x.fillStyle=s.accent;
+  x.fillText('CARA MEMASAK · 烹調方法',64,214);
+  const steps=[['1','Boil 400ml of water.'],['2','Add the noodle cake, 3 minutes.'],['3','Drain, season, serve hot.']];
+  let y=300;
+  steps.forEach(function(st){
+    x.fillStyle=s.accent; x.beginPath(); x.arc(88,y-10,26,0,Math.PI*2); x.fill();
+    x.fillStyle='#fff'; x.textAlign='center'; x.font='800 28px Inter,sans-serif'; x.fillText(st[0],88,y);
+    x.fillStyle=s.ink; x.textAlign='left'; x.font='600 27px Inter,sans-serif'; x.fillText(st[1],136,y);
+    y+=96;
+  });
+  x.fillStyle=s.ink; x.font='800 26px Inter,sans-serif'; x.fillText('INGREDIENTS / RAMUAN',64,y+40);
+  x.font='500 23px Inter,sans-serif'; x.fillText('Wheat flour, palm oil, salt, mineral salts.',64,y+80);
+  x.font='500 20px Inter,sans-serif';
+  x.fillText('Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur, Malaysia.',64,y+124);
+  /* barcode block */
+  x.fillStyle='#fff'; x.fillRect(FW-330,FH-260,266,150);
+  let bx=FW-314;
+  for(let i=0;i<52;i++){ const w=(i%4===0)?5:2; x.fillStyle='#1A1A1A';
+    x.fillRect(bx,FH-246,w,108); bx+=w+3; if(bx>FW-96) break; }
+  x.fillStyle='#1A1A1A'; x.font='600 19px Inter,sans-serif'; x.textAlign='center';
+  x.fillText('9 555555 123456',FW-197,FH-122);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
+}
+
+/* the crimped seal at head and foot */
+function drawSkuCrimp(s){
+  const [c,x]=panel(512,128);
+  x.fillStyle=s.band; x.fillRect(0,0,512,128);
+  x.strokeStyle='rgba(0,0,0,.20)'; x.lineWidth=3;
+  for(let i=0;i<64;i++){ x.beginPath(); x.moveTo(i*8,0); x.lineTo(i*8,128); x.stroke(); }
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t;
+}
+
+function buildPack(front,side,crimp,aFront,aSide,back,dims,bulge,hasCrimp){
+  const W=(dims&&dims[0])||2.5, H=(dims&&dims[1])||2.8, D=(dims&&dims[2])||1.0;
+  const BU=(bulge==null)?0.30:bulge;
+  const CRIMP=(hasCrimp==null)?true:hasCrimp;
   const g=new THREE.BoxGeometry(W,H,D,Q.seg[0],Q.seg[1],Q.seg[2]);
   const pos=g.attributes.position;
   for(let i=0;i<pos.count;i++){
     let x=pos.getX(i),y=pos.getY(i),z=pos.getZ(i);
     const ny=Math.abs(y)/(H/2), nx=Math.abs(x)/(W/2);
-    /* pillow bulge on faces */
-    z += Math.sign(z)*0.30*Math.cos(nx*Math.PI/2)*Math.cos(ny*Math.PI/2)*(Math.abs(z)/(D/2));
-    /* crimp pinch near top and bottom */
-    const cr=(ny-0.8)/0.2;
-    if(cr>0){ const k=Math.pow(Math.min(cr,1),1.4); z*=(1-k*0.93); x*=(1-k*0.08); }
+    /* pillow bulge on faces. A printed carton uses a tiny value here and keeps
+       its edges, which is what separates the kraft boxes from the film packs. */
+    z += Math.sign(z)*BU*Math.cos(nx*Math.PI/2)*Math.cos(ny*Math.PI/2)*(Math.abs(z)/(D/2));
+    /* crimp pinch near top and bottom. Cartons skip it and stay square. */
+    if(CRIMP){
+      const cr=(ny-0.8)/0.2;
+      if(cr>0){ const k=Math.pow(Math.min(cr,1),1.4); z*=(1-k*0.93); x*=(1-k*0.08); }
+    }
     pos.setXYZ(i,x,y,z);
   }
   g.computeVertexNormals();
@@ -1624,11 +1848,14 @@ function buildPack(front,side,crimp,aFront,aSide,back){
   const mesh=new THREE.Mesh(g,[mSide,mSide,mCr,mCr,mFront,mBack]);
   mesh.castShadow=Q.shadows;
   const grp=new THREE.Group(); grp.add(mesh);
-  /* crimp fins */
-  const finG=new THREE.BoxGeometry(W*0.86,0.16,0.05);
-  const finT=new THREE.Mesh(finG,mCr); finT.position.y=H/2+0.06; grp.add(finT);
-  const finB=new THREE.Mesh(finG.clone(),mCr); finB.position.y=-H/2-0.06; grp.add(finB);
-  grp.userData.finT=finT;
+  /* crimp fins — film packs only. A printed carton has folded flaps, not a
+     sealed fin, so giving it one made it read as a pouch. */
+  if(CRIMP){
+    const finG=new THREE.BoxGeometry(W*0.86,0.16,0.05);
+    const finT=new THREE.Mesh(finG,mCr); finT.position.y=H/2+0.06; grp.add(finT);
+    const finB=new THREE.Mesh(finG.clone(),mCr); finB.position.y=-H/2-0.06; grp.add(finB);
+    grp.userData.finT=finT;
+  }
   return grp;
 }
 
@@ -1726,6 +1953,30 @@ const camA=new THREE.PerspectiveCamera(34,heroHolder.clientWidth/heroHolder.clie
 camA.position.set(0,0.1,9.6);
 lights(scA,rA);
 const packA=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack); scA.add(packA);
+
+/* ---- the other four best sellers, as real packs in the same scene ----
+   One renderer, five packs. Each is normalised by its own height so a tall kraft
+   carton and a wide pouch present at the SAME on-screen size as the mini pack,
+   which is what keeps the row looking like a line-up rather than a size chart. */
+const sidePacks=RANGE_SKUS.slice(1).map(function(sk,i){
+  const g=buildPack(drawSkuFront(sk),drawSkuSide(sk),drawSkuCrimp(sk),null,null,drawSkuBack(sk),
+                    sk.dims,sk.bulge,sk.crimp);
+  g.userData.fit=2.8/sk.dims[1];          /* standardise height against the mini pack */
+  g.userData.card=document.querySelector('.prodCard[data-sku="'+(i+1)+'"]');
+  g.visible=false;
+  scA.add(g);
+  return g;
+});
+/* only retire the flat art once the packs actually exist and a context is live */
+if(sidePacks.length===4){
+  const row=document.querySelector(".prodRow");
+  if(row) row.classList.add("is3d");
+}
+/* screen x -> world x on the z=0 plane, so each pack sits exactly over its card */
+function worldXAt(px){
+  const half=Math.tan(camA.fov*Math.PI/360)*camA.position.z;
+  return ((px/heroHolder.clientWidth)*2-1)*half*camA.aspect;
+}
 const shA=new THREE.Mesh(new THREE.PlaneGeometry(4.6,4.6),
   new THREE.MeshBasicMaterial({map:texShadow,transparent:true,depthWrite:false}));
 shA.rotation.x=-Math.PI/2; shA.position.y=-2.35; scA.add(shA);
@@ -1734,13 +1985,41 @@ shadowCatcher(scA,-2.34);
 /* ---------- scene C: the range specimen, same pack, slow turntable ---------- */
 const rangeHolder=document.getElementById('rangeCanvas');
 const rC=rangeHolder?makeRenderer(rangeHolder):null;
-let scC=null,camC=null,packC=null;
+let scC=null,camC=null,packC=null,rangePacks=null;
 if(rC){
   scC=new THREE.Scene();
   camC=new THREE.PerspectiveCamera(32,rangeHolder.clientWidth/rangeHolder.clientHeight,0.1,50);
   camC.position.set(0,0.15,9.2);
   lights(scC,rC);
-  packC=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack); scC.add(packC);
+  /* All five SKUs are built once and parked in the same scene; only the active
+     one is visible. One renderer, one turntable, five packs — cheaper than a
+     canvas per product and it keeps the drag-to-spin working across the lot. */
+  rangePacks=RANGE_SKUS.map(function(s,i){
+    var grp;
+    if(s.key==='mini'){
+      /* the mini pack keeps its bespoke artwork, window die-cut and all */
+      grp=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack,s.dims,s.bulge,s.crimp);
+    } else {
+      grp=buildPack(drawSkuFront(s),drawSkuSide(s),drawSkuCrimp(s),null,null,drawSkuBack(s),
+                    s.dims,s.bulge,s.crimp);
+    }
+    /* every pack is normalised to the same on-screen height, so switching
+       specimen does not make the frame jump */
+    var k=2.8/s.dims[1];
+    grp.userData.fit=k;         /* the turntable multiplies by this, see below */
+    grp.scale.setScalar(k);
+    grp.visible=(i===0);
+    scC.add(grp);
+    return grp;
+  });
+  packC=rangePacks[0];
+  /* only now that a renderer and five packs actually exist do we retire the flat art */
+  if(rangeHolder.parentElement) rangeHolder.parentElement.classList.add('is3d');
+  window.__setRangePack=function(i){
+    if(!rangePacks||!rangePacks[i]) return;
+    rangePacks.forEach(function(g,j){ g.visible=(j===i); });
+    packC=rangePacks[i];
+  };
   const shC=new THREE.Mesh(new THREE.PlaneGeometry(4.6,4.6),
     new THREE.MeshBasicMaterial({map:texShadow,transparent:true,depthWrite:false,opacity:.75}));
   shC.rotation.x=-Math.PI/2; shC.position.y=-2.05; scC.add(shC);
@@ -2084,6 +2363,25 @@ function frame(){
     packA.position.y=(-0.1+Math.sin(t*1.1)*0.09)*(1-straight*0.5) + dock*0.22;
     packA.position.x=0;
     camA.position.z=9.6*mfA;
+    /* the four side packs settle into their own cards on the same dock beat.
+       Scale is dockScale() x their own fit, so every pack in the row presents at
+       one standard height regardless of its real carton size. */
+    for(let i=0;i<sidePacks.length;i++){
+      const g=sidePacks[i], card=g.userData.card;
+      if(!card){ g.visible=false; continue; }
+      g.visible=dock>0.02;
+      if(!g.visible) continue;
+      const ring=card.querySelector(".slotRing")||card;
+      const b=ring.getBoundingClientRect();
+      const hb=heroHolder.getBoundingClientRect();
+      g.position.x=worldXAt(b.left+b.width/2-hb.left);
+      g.position.y=0.22+(1-dock)*-0.45+Math.sin(t*0.9+i)*0.045;
+      g.rotation.y=Math.sin(t*0.42+i*1.3)*0.13-0.22;
+      g.rotation.x=0.05;
+      g.rotation.z=-0.03;
+      const gs=dockScale()*g.userData.fit*(0.72+0.28*dock);
+      g.scale.setScalar(gs);
+    }
     shA.material.opacity=(1-dock)*0.9;
     shA.scale.setScalar(1+straight*0.2);
     rA.render(scA,camA);
@@ -2106,7 +2404,9 @@ function frame(){
     packC.rotation.x=spin.x;
     packC.rotation.z=-0.04;
     packC.position.y=Math.sin(t*0.85)*0.05;
-    packC.scale.setScalar(1.30);
+    /* fold in the per-SKU fit so a tall carton and a wide pouch read the same
+       size on screen; without it this line flattened them all back to raw dims */
+    packC.scale.setScalar(1.30*(packC.userData.fit||1));
     camC.position.z=9.2*mfC;
     rC.render(scC,camC);
   }
