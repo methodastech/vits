@@ -178,7 +178,8 @@
         "image": "assets/journey-shows.jpg"
       }
     ],
-    "footNote": "Dates as published by Vit's. Final verification before anything goes to print or page."
+    "footNote": "Dates as published by Vit's. Final verification before anything goes to print or page.",
+    "introImage": "assets/journey-factory.jpg"
   },
   "credentials": {
     "eyebrow": "Audited, certified, export ready",

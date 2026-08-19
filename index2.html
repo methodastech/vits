@@ -270,13 +270,18 @@ body{padding-top:52px}
 .journeySteps p{margin-top:10px;font-size:16px;line-height:1.55;color:var(--soft)}
 /* one photo per milestone, set like a print: white border, soft drop, a degree of
    tilt that alternates side to side so the column reads as an album, not a grid */
+/* same white print border as the milestone shots, sized for a panoramic frame */
+.journeyIntro .jShot{margin:26px 0 0;width:min(100%,560px);overflow:hidden;
+  background:#fff;border:6px solid #fff;box-shadow:0 16px 38px rgba(26,19,14,.18);
+  transform:rotate(-0.7deg)}
+.journeyIntro .jShot img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .journeySteps .jShot{margin:18px 0 0;width:min(320px,90%);border-radius:0;overflow:hidden;
   background:#fff;border:6px solid #fff;box-shadow:0 16px 38px rgba(26,19,14,.18);
   transform:rotate(-1.4deg)}
 .journeySteps li:nth-child(even) .jShot{transform:rotate(1.2deg)}
 /* aspect-ratio reserves the box before the file arrives, so the column height the
    travel is measured from never changes under it */
-.journeySteps .jShot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.journeySteps .jShot img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .journeySteps .tbc{display:inline-block;margin-top:10px;background:rgba(216,35,42,.12);
   color:var(--red-deep);font-family:"JetBrains Mono",monospace;font-size:9px;
   letter-spacing:.08em;padding:4px 9px;border-radius:6px;text-transform:uppercase;font-weight:700}
@@ -383,6 +388,37 @@ body{padding-top:52px}
 .spec h3{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.022em;font-size:clamp(36px,4.6vw,66px);line-height:1;text-transform:uppercase;margin-top:10px}
 .spec p{color:#C9B9A6;font-size:15px;margin-top:14px;max-width:44ch}
 /* dummy add-to-cart under each product panel; presentational only for now */
+/* ---- dummy checkout ---- */
+.coWrap{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px}
+.coWrap[hidden]{display:none}
+.coBack{position:absolute;inset:0;background:rgba(26,19,14,.55)}
+.coCard{position:relative;z-index:1;width:min(100%,430px);background:var(--cream2);
+  border-radius:18px;padding:28px;box-shadow:0 30px 80px rgba(26,19,14,.4);
+  animation:coIn .28s cubic-bezier(.22,1,.36,1)}
+@keyframes coIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.coX{position:absolute;top:12px;right:14px;width:32px;height:32px;border:0;background:none;
+  font-size:26px;line-height:1;color:var(--soft);cursor:pointer;border-radius:50%}
+.coX:hover{background:rgba(26,19,14,.07);color:var(--ink)}
+.coCard h3{font-family:Inter,sans-serif;font-weight:700;font-size:24px;letter-spacing:-.02em;
+  color:var(--ink);margin-top:10px}
+.coList{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.coList li{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--ink);
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+.coName{flex:1}
+/* the shots are transparent PNGs on no ground, so give them a tile to sit on */
+.coThumb{width:46px;height:46px;flex:0 0 46px;object-fit:contain;border-radius:9px;
+  background:var(--cream);border:1px solid var(--line);padding:4px}
+.coList li i{font-style:normal;color:var(--faint);font-family:"JetBrains Mono",monospace;font-size:11px}
+.coList .coEmpty{justify-content:center;color:var(--faint);border:0}
+.coRow{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-size:14.5px;color:var(--ink)}
+.coRow b{font-size:19px;font-weight:700}
+.coMuted{margin-top:6px;color:var(--soft);font-size:12.5px}
+.coPay{width:100%;margin-top:20px;padding:14px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--red);color:#fff;font-family:Inter,sans-serif;font-weight:700;font-size:15px;
+  transition:background .3s ease}
+.coPay:hover{background:var(--red-deep)}
+.coPay.done{background:var(--ok)}
+.coNote{margin-top:12px;font-size:11.5px;color:var(--faint);text-align:center}
 .addCart{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
   padding:12px 22px;border-radius:999px;border:0;cursor:pointer;
   background:var(--red);color:#fff;font-family:Inter,sans-serif;font-weight:700;
@@ -451,11 +487,14 @@ body{padding-top:52px}
 /* only the enquiry form left in here, so it no longer needs two columns */
 /* form left, bowl right. The form keeps a sane measure while the bowl takes the
    rest of the width. */
-.fgrid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);
-  gap:clamp(28px,4vw,64px);margin-top:46px;align-items:center}
+/* the form is a short set of fields, not the centrepiece: it takes a tighter
+   measure and the bowl gets the room it was missing */
+.fgrid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);
+  gap:clamp(24px,3vw,48px);margin-top:46px;align-items:center}
 .fReel{position:relative}
 /* the clip is shot on white, so multiply drops that straight out onto the cream */
-.fReelVid{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.fReelVid{display:block;width:118%;max-width:none;margin-left:-9%;height:auto;
+  mix-blend-mode:multiply}
 @media(prefers-reduced-motion:reduce){.fReel{display:none}}
 @media(max-width:900px){.fgrid{grid-template-columns:1fr}
   .fReel{order:-1}}
@@ -614,6 +653,10 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
       <div class="journeyIntro">
         <h2 class="disp"><span data-c="story.heading1">51 years,</span><br><em data-c="story.heading2">1 family recipe</em></h2>
         <p data-c="story.lede">Before the brand, there was the factory. Vit Makanan (K.L.) Sdn. Bhd. has made noodles in Kuala Lumpur since 1975, halal certified since 1980, and quietly feeds a country that knows the yellow pack by sight.</p>
+        <figure class="jShot introShot">
+          <img src="assets/journey-factory.jpg" data-c-src="story.introImage"
+               alt="Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur" loading="lazy">
+        </figure>
       </div>
       <ol class="journeySteps">
         <li><span class="yr" data-c="story.tiles.0.year">1975</span>
@@ -1298,5 +1341,87 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
 <!-- prototype 2 ships no WebGL: the three.js importmap and the whole init3D
      module are removed, not just left uncalled, so none of it is downloaded -->
 
+
+<!-- Dummy checkout. Presentational only: nothing is submitted, and the basket is
+     held in memory for the demo, not persisted. -->
+<div class="coWrap" id="checkout" hidden>
+  <div class="coBack" data-co-close></div>
+  <div class="coCard" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+    <button class="coX" type="button" aria-label="Close" data-co-close>&times;</button>
+    <span class="k">Checkout &middot; demo</span>
+    <h3 id="coTitle">Your basket</h3>
+    <ul class="coList"></ul>
+    <div class="coRow"><span>Subtotal</span><b class="coSum">RM 0.00</b></div>
+    <div class="coRow coMuted"><span>Shipping</span><span>Calculated at the trade desk</span></div>
+    <button class="coPay" type="button">Complete order</button>
+    <p class="coNote">Demo build. No payment is taken and no order is placed.</p>
+  </div>
+</div>
+<script>
+/* Dummy checkout. The basket lives in memory for the demo only: nothing is
+   persisted, nothing is sent, and no payment path exists behind it. */
+(function(){
+  var modal=document.getElementById('checkout');
+  if(!modal) return;
+  var list=modal.querySelector('.coList'), sum=modal.querySelector('.coSum');
+  var pay=modal.querySelector('.coPay'), badge=document.querySelector('.cartBtn i');
+  var basket=[];
+  var PRICE={"The Mini Pack":4.90,"Penang White Curry":8.50,"Mi Kering Tomato":6.90,
+             "Mi Kering Bayam":6.90,"Mi Goreng Carbonara":7.50};
+  function money(n){ return "RM "+n.toFixed(2); }
+  function render(){
+    list.innerHTML="";
+    if(!basket.length){
+      var li=document.createElement("li");
+      li.className="coEmpty"; li.textContent="Nothing in the basket yet";
+      list.appendChild(li);
+    } else basket.forEach(function(it){
+      var li=document.createElement("li");
+      if(it.img){
+        var t=document.createElement("img");
+        t.className="coThumb"; t.src=it.img; t.alt=""; t.loading="lazy";
+        li.appendChild(t);
+      }
+      var a=document.createElement("span"); a.className="coName"; a.textContent=it.name+" ";
+      var q=document.createElement("i"); q.textContent="x"+it.qty; a.appendChild(q);
+      var b=document.createElement("span"); b.textContent=money(it.price*it.qty);
+      li.appendChild(a); li.appendChild(b); list.appendChild(li);
+    });
+    sum.textContent=money(basket.reduce(function(a,b){ return a+b.price*b.qty; },0));
+    if(badge) badge.textContent=basket.reduce(function(a,b){ return a+b.qty; },0);
+  }
+  function open(){ modal.hidden=false; document.body.style.overflow="hidden";
+    if(window.__lenis&&window.__lenis.stop) window.__lenis.stop(); }
+  function close(){ modal.hidden=true; document.body.style.overflow="";
+    if(window.__lenis&&window.__lenis.start) window.__lenis.start();
+    pay.classList.remove("done"); pay.textContent="Complete order"; }
+  modal.addEventListener("click",function(e){
+    if(e.target.hasAttribute("data-co-close")) close(); });
+  addEventListener("keydown",function(e){ if(e.key==="Escape"&&!modal.hidden) close(); });
+  document.querySelectorAll(".addCart").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var panel=btn.closest(".spec");
+      var h=panel?panel.querySelector("h3"):null;
+      var name=h?h.textContent.trim():"Vits noodles";
+      /* the .spec panels and the .specImgs shots are index-matched, so the
+         product picture comes from the shot sitting at the same position */
+      var panels=[].slice.call(document.querySelectorAll("#range .spec"));
+      var shots=[].slice.call(document.querySelectorAll(".specImgs img"));
+      var idx=panels.indexOf(panel);
+      var img=(idx>-1&&shots[idx])?shots[idx].getAttribute("src"):null;
+      var hit=basket.filter(function(b){ return b.name===name; })[0];
+      if(hit) hit.qty++; else basket.push({name:name,qty:1,price:PRICE[name]||6.90,img:img});
+      render(); open();
+    });
+  });
+  var navCart=document.querySelector(".cartBtn");
+  if(navCart) navCart.addEventListener("click",function(e){ e.preventDefault(); render(); open(); });
+  pay.addEventListener("click",function(){
+    pay.classList.add("done"); pay.textContent="Order placed (demo)";
+    basket=[]; setTimeout(render,400);
+  });
+  render();
+})();
+</script>
 </body>
 </html>
