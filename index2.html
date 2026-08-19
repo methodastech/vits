@@ -99,12 +99,24 @@ body{padding-top:52px}
    is "YELLOW PACK" at 7.19em measured at this weight and tracking — that, not the
    9.5em single-line headline, is what the size has to clear, which is where the
    extra scale comes from. */
-.heroType .l{font-size:clamp(30px,calc((var(--heroCol) - var(--gutter) - 6px)/7.35),190px);
+.heroType .l{font-size:clamp(30px,calc((var(--heroCol) - var(--gutter) - 6px)/7.8),190px);
   line-height:.88;color:var(--red);text-transform:uppercase;text-align:left;
   white-space:nowrap;letter-spacing:-.024em}
 .heroType .l2{color:var(--ink)}
 /* the subheading, hung directly off the headline */
-.heroSub{margin-top:clamp(16px,2.4vh,34px);z-index:3;max-width:42ch}
+
+/* takes the reader to the "51 years" beat, which lives inside the pinned hero
+   rather than at its own anchor */
+.heroJump{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+  padding:13px 24px;border-radius:999px;border:1.5px solid var(--red);cursor:pointer;
+  background:none;color:var(--red);font-family:Inter,sans-serif;font-weight:700;
+  font-size:14.5px;letter-spacing:-.01em;pointer-events:auto;
+  transition:background .3s ease,color .3s ease,transform .3s ease}
+.heroJump::after{content:"↓";font-size:16px;line-height:1}
+.heroJump:hover{background:var(--red);color:#fff;transform:translateY(-1px)}
+/* fills the same column the headline sets in, so the two share a right edge
+   instead of the lede stopping short at its own measure */
+.heroSub{margin-top:clamp(16px,2.4vh,34px);z-index:3;max-width:none}
 .heroSub p{font-size:clamp(15px,1.15vw,20px);line-height:1.5;color:var(--soft)}
 .heroSub .eyebrow{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-deep);font-weight:700}
 .heroSub p{margin-top:10px;font-size:15.5px;color:var(--soft)}
@@ -332,7 +344,9 @@ body{padding-top:52px}
 /* the slot deliberately gets no transform: dockPoster reads .slotRing every frame to
    place the hero shot, so moving the ring on hover would drag the pack with it and
    feed back. The pack does its own lift and scale in JS instead. */
-.prodRow.live .prodCard:not(.prodSlot):hover{transform:scale(1.17) translateY(-10px)}
+/* 1.12 rather than 1.17: at the old scale the card grew ~40px upward, more than
+   the gap to the subheading could take */
+.prodRow.live .prodCard:not(.prodSlot):hover{transform:scale(1.12) translateY(-8px)}
 .prodRow.live .prodCard:not(.prodSlot):hover img{filter:drop-shadow(0 28px 34px rgba(26,19,14,.34))}
 .prodRow.live .prodCard:hover b{color:var(--red)}
 /* the docked hero shot picks up the same lifted shadow when its slot is hovered */
@@ -405,9 +419,9 @@ body{padding-top:52px}
 .coList li{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--ink);
   padding-bottom:10px;border-bottom:1px solid var(--line)}
 .coName{flex:1}
-/* the shots are transparent PNGs on no ground, so give them a tile to sit on */
-.coThumb{width:46px;height:46px;flex:0 0 46px;object-fit:contain;border-radius:9px;
-  background:var(--cream);border:1px solid var(--line);padding:4px}
+/* no tile: the shots are transparent PNGs and read better sitting straight on
+   the card, the same way the product row presents them */
+.coThumb{width:48px;height:48px;flex:0 0 48px;object-fit:contain}
 .coList li i{font-style:normal;color:var(--faint);font-family:"JetBrains Mono",monospace;font-size:11px}
 .coList .coEmpty{justify-content:center;color:var(--faint);border:0}
 .coRow{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-size:14.5px;color:var(--ink)}
@@ -489,12 +503,13 @@ body{padding-top:52px}
    rest of the width. */
 /* the form is a short set of fields, not the centrepiece: it takes a tighter
    measure and the bowl gets the room it was missing */
-.fgrid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);
-  gap:clamp(24px,3vw,48px);margin-top:46px;align-items:center}
+.fgrid{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);
+  gap:clamp(16px,2vw,32px);margin-top:46px;align-items:center}
 .fReel{position:relative}
 /* the clip is shot on white, so multiply drops that straight out onto the cream */
-.fReelVid{display:block;width:118%;max-width:none;margin-left:-9%;height:auto;
-  mix-blend-mode:multiply}
+/* fills its own column and no more: the negative margin that made it bigger
+   also dragged it across into the form */
+.fReelVid{display:block;width:100%;height:auto;mix-blend-mode:multiply}
 @media(prefers-reduced-motion:reduce){.fReel{display:none}}
 @media(max-width:900px){.fgrid{grid-template-columns:1fr}
   .fReel{order:-1}}
@@ -559,7 +574,7 @@ footer .credit a{color:var(--soft);text-decoration:underline}
      behind the headline as it did before */
   :root{--heroCol:100vw}
   .heroType{width:100vw;align-items:center;padding-left:0}
-  .heroType .l{font-size:clamp(22px,calc((100vw - 2*var(--gutter))/7.35),200px);text-align:center}
+  .heroType .l{font-size:clamp(22px,calc((100vw - 2*var(--gutter))/7.8),200px);text-align:center}
   .heroPoster{left:0}
   .cueLong{display:none}
   .heroSub{max-width:none;padding:0 var(--gutter);text-align:center}
@@ -639,11 +654,13 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
            still travel together against "of Malaysia". -->
       <div class="l disp" data-hline="1" data-c="hero.line1a">The</div>
       <div class="l disp" data-hline="1" data-c="hero.line1b">Yellow Pack</div>
-      <div class="l l2 disp" data-hline="2" data-c="hero.line2">of Malaysia</div>
+      <div class="l l2 disp" data-hline="2" data-c="hero.line2">Malaysians</div>
+      <div class="l l2 disp" data-hline="2" data-c="hero.line3">grew up with</div>
       <!-- the lede now hangs off the headline as its subheading rather than
            floating alone at the foot of the frame -->
       <div class="heroSub">
         <p data-c="hero.lede">51 years. 1 factory. The noodle Malaysia grew up on, now cooked for the world.</p>
+        <button class="heroJump" type="button" data-c="hero.jumpLabel">Explore the journey</button>
       </div>
     </div>
     <div id="heroCanvas"></div>
@@ -1060,6 +1077,24 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     });
   },8000); });
 
+  /* "Explore the journey" scrolls to the point in the pinned hero where the
+     "51 years" intro sits centred. That beat has no anchor of its own — the
+     column is transformed inside a sticky stage — so the target is computed
+     from the section's own scroll range. */
+  (function(){
+    var btn=document.querySelector('.heroJump');
+    var hj=document.querySelector('#heroJourney');
+    if(!btn||!hj) return;
+    var INTRO_AT=0.33;                  /* measured: where the intro reaches mid frame */
+    btn.addEventListener('click',function(){
+      var y0=hj.getBoundingClientRect().top+scrollY;
+      var span=hj.offsetHeight-innerHeight;
+      var target=y0+span*INTRO_AT;
+      if(window.__lenis&&window.__lenis.scrollTo) window.__lenis.scrollTo(target);
+      else window.scrollTo({top:target,behavior:'smooth'});
+    });
+  })();
+
   /* the finale bowl is scrubbed by scroll, not autoplayed. The seek is eased in a
      rAF loop because writing currentTime straight from onUpdate outruns the decoder
      and the picture stutters. Same approach as the reel on Prototype Web 1. */
@@ -1287,12 +1322,24 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
            full opacity by 0.80 when the pack begins its drop */
         var d=Math.max(0,Math.min(1,(p-0.71)/0.06));
         var e=d*d*(3-2*d);
-        prodRow.style.opacity=e.toFixed(3);
-        /* PROD_REST sits the settled row below the stage centre, off the 3D pack's shadow */
-        prodRow.style.transform='translate(-50%,-50%) translateY('+(64+(1-e)*38).toFixed(1)+'px)';
+        /* The line-up rides up from under the fold rather than fading in on the
+           spot. Opacity still ramps, but three times faster than the travel, so
+           it is opaque for most of the rise and reads as arrival, not a dissolve.
+           The stage clips at its own edge, so the early part of the climb is
+           hidden without needing the fade to do that work. */
+        var op=Math.min(1,e*3);
+        prodRow.style.opacity=op.toFixed(3);
+        /* settles at 100: less than that dragged the row up until only 8px
+           separated the first pack from the subheading, and hover then closed it. */
+        prodRow.style.transform='translate(-50%,-50%) translateY('+(100+(1-e)*430).toFixed(1)+'px)';
         /* only accept the cursor once the row has actually arrived */
         prodRow.classList.toggle('live',e>0.6);
-        if(prodHead) prodHead.style.opacity=e.toFixed(3);
+        if(prodHead){
+          prodHead.style.opacity=op.toFixed(3);
+          /* its own transform is set in CSS, so the rise goes on `translate`
+             instead and the two compose rather than clobbering each other */
+          prodHead.style.translate='0px '+((1-e)*300).toFixed(1)+'px';
+        }
         dockPoster(p,e,j);
       }
       window.__heroP=p;

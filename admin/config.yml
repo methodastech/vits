@@ -65,6 +65,7 @@ collections:
               - { label: "Headline word 1", name: "line1a", widget: "string", hint: "Sits on its own line on Prototype 2" }
               - { label: "Headline line 1", name: "line1b", widget: "string" }
               - { label: "Headline line 2", name: "line2", widget: "string" }
+              - { label: "Headline line 3", name: "line3", widget: "string", required: false }
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Lede", name: "lede", widget: "text" }
               - { label: "Scroll cue", name: "scrollCue", widget: "string" }

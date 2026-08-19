@@ -28,7 +28,7 @@
   "hero": {
     "line1a": "The",
     "line1b": "Yellow Pack",
-    "line2": "of Malaysia",
+    "line2": "Malaysians",
     "eyebrow": "Vit's Noodles · since 1975 · Kuala Lumpur",
     "lede": "Since 1975, one factory in Kuala Lumpur has made the noodle Malaysians reach for without thinking. The yellow pack that sits in the cupboard, the one your mother bought, still made to the recipe the family started with. Today it feeds more than 20 markets and has not changed a thing.",
     "scrollCue": "Scroll",
@@ -70,7 +70,9 @@
       }
     ],
     "rangeSub": "Five lines from one factory. The plain yellow pack Malaysia cooks at home, and the seasoned range that travels.",
-    "rangeTitle": "Our best sellers"
+    "rangeTitle": "Our best sellers",
+    "line3": "grew up with",
+    "jumpLabel": "Explore the journey"
   },
   "pack": {
     "_note": "Drives the real-time 3D packaging artwork. Text, colours and figures are all live fields.",
