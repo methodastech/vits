@@ -201,8 +201,9 @@ body{padding-top:52px}
 /* the last card takes the full width when the count is odd, so the grid never
    ends on a visible hole */
 .tItem:hover{transform:translateY(-2px)}
-.tNo{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
-  color:var(--yellow);padding-top:3px}
+/* was a two-digit mono number; now an icon on the same yellow */
+.tNo{color:var(--yellow);padding-top:1px;display:flex;align-items:flex-start}
+.tNo svg{width:22px;height:22px;display:block}
 .tItem h3{grid-column:2;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.015em;
   font-size:clamp(17px,1.4vw,21px);line-height:1.15;color:#fff}
 .tItem p{grid-column:2;margin-top:8px;font-size:13.5px;line-height:1.6;color:#C9B9A6;max-width:none}
@@ -437,6 +438,19 @@ body{padding-top:52px}
 .coPay:hover{background:var(--red-deep)}
 .coPay.done{background:var(--ok)}
 .coNote{margin-top:12px;font-size:11.5px;color:var(--faint);text-align:center}
+/* the send button confirms in place: it turns green, the label is replaced by a
+   tick that draws itself, then it returns to its resting state */
+.fform button[type=submit]{position:relative;transition:background .35s ease}
+.fform button[type=submit].sent{background:var(--ok)}
+.fform button[type=submit] .sendTick{position:absolute;inset:0;display:none;
+  align-items:center;justify-content:center;gap:9px}
+.fform button[type=submit].sent .sendTick{display:flex}
+.fform button[type=submit].sent .sendLabel{visibility:hidden}
+.sendTick svg{width:20px;height:20px}
+.sendTick path{stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:26;stroke-dashoffset:26;animation:tickDraw .45s .05s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes tickDraw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.sendTick path{animation:none;stroke-dashoffset:0}}
 .addCart{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
   padding:12px 22px;border-radius:999px;border:0;cursor:pointer;
   background:var(--red);color:#fff;font-family:Inter,sans-serif;font-weight:700;
@@ -630,6 +644,7 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
     <a href="plan.html"><i>02</i>Web Plan</a>
     <a href="index.html"><i>03</i>Prototype Web 1</a>
     <a class="on" href="index2.html"><i>04</i>Prototype Web 2</a>
+    <a href="index3.html"><i>05</i>Prototype Web 3</a>
   </nav>
 </div></div>
 
@@ -750,25 +765,25 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
       <ol class="tList">
         <li class="tItem">
           <img class="tPic" src="assets/oem-line.jpg" alt="The noodle production line" loading="lazy">
-          <div class="tBody"><span class="tNo">01</span>
+          <div class="tBody"><span class="tNo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
           <h3 data-c="trade.checks.0.title">Formats</h3>
           <p data-c="trade.checks.0.body">Pillow packs, mini packs, zip packs, air-dried kraft, cup on request. Retail 4-packs to 700g economy family packs.</p></div>
         </li>
         <li class="tItem">
           <img class="tPic" src="assets/oem-pallets.jpg" alt="Export cartons stacked on pallets" loading="lazy">
-          <div class="tBody"><span class="tNo">02</span>
+          <div class="tBody"><span class="tNo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.4 2"/></svg></span>
           <h3 data-c="trade.checks.1.title">Shelf life</h3>
           <p data-c="trade.checks.1.body">Fried and air-dried lines with export-grade shelf life, stated per SKU on the specification sheet.</p></div>
         </li>
         <li class="tItem">
           <img class="tPic" src="assets/oem-qc.jpg" alt="Quality control bench" loading="lazy">
-          <div class="tBody"><span class="tNo">03</span>
+          <div class="tBody"><span class="tNo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l7 3v6.1c0 4.3-3 7.4-7 9.3-4-1.9-7-5-7-9.3V5.8z"/><path d="m8.7 12 2.3 2.3L15.6 9.6"/></svg></span>
           <h3 data-c="trade.checks.2.title">Certifications</h3>
           <p data-c="trade.checks.2.body">FSSC 22000, HACCP, GMP, ISO 22000, and JAKIM halal held since 1980.</p></div>
         </li>
         <li class="tItem">
           <img class="tPic" src="assets/oem-seasoning.jpg" alt="Seasoning development bench" loading="lazy">
-          <div class="tBody"><span class="tNo">04</span>
+          <div class="tBody"><span class="tNo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.1"/><circle cx="10" cy="17" r="2.1"/></svg></span>
           <h3 data-c="trade.checks.3.title">Customisation</h3>
           <p data-c="trade.checks.3.body">Your recipe or ours. Seasoning development, your label, your language, your compliance.</p></div>
         </li>
@@ -918,7 +933,7 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 <!-- ============ scene 8: the ask ============ -->
 <section id="finale" aria-label="Trade enquiry">
   <div class="fwrap">
-    <h2 class="disp rv" data-plx="-3">1 factory.<br><em>Any flavour</em> your market wants.</h2>
+    <h2 class="disp rv" data-plx="-3"><em>Any flavour</em> your market wants.</h2>
     <div class="fgrid">
       <form class="fform rv" data-plx="-4" onsubmit="return false">
         <span class="k">Trade enquiry</span>
@@ -962,7 +977,6 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
     <nav class="footCols" aria-label="Footer">
       <div><h4>Home</h4><a href="#">Who Are We</a><a href="#">Our Services</a><a href="#">Our Products</a><a href="#">Where To Buy</a><a href="#">Need Help?</a></div>
       <div><h4>About Us</h4><a href="#">Our Milestone</a><a href="#">What Makes Us Different</a><a href="#">Our Philosophy</a><a href="#">Our Brands</a><a href="#">Certifications</a><a href="#">Food Safety</a><a href="#">Our Partners</a><a href="#">FAQ</a></div>
-      <div><h4>Products</h4><a href="#">All Categories</a><a href="#">Vit's Classic Instant Noodles</a><a href="#">Vit's Fresh Noodle Series</a><a href="#">Vit's Instant Noodles with Flavour</a><a href="#">Vit's Plain Instant Noodles</a><a href="#">Vit's Taste of Malaysia</a><a href="#">Vit's Italian Mi Goreng</a></div>
       <div><h4>Services</h4><a href="#">Private Label</a><a href="#">Bulk Purchase</a><a href="#">OEM</a></div>
       <div><h4>Resources</h4><a href="#">Recipes</a><a href="#">Blogs</a><a href="#">FAQs</a></div>
     </nav>
@@ -1476,6 +1490,39 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     basket=[]; setTimeout(render,400);
   });
   render();
+})();
+</script>
+
+<script>
+/* Send confirmation. Demo only: nothing is transmitted, the button just
+   acknowledges the click so the flow reads as complete. */
+(function(){
+  var form=document.querySelector('.fform');
+  if(!form) return;
+  var btn=form.querySelector('button[type=submit]');
+  if(!btn||btn.querySelector('.sendLabel')) return;
+  var label=document.createElement('span');
+  label.className='sendLabel'; label.textContent=btn.textContent.trim();
+  btn.textContent='';
+  btn.appendChild(label);
+  var tick=document.createElement('span');
+  tick.className='sendTick';
+  tick.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.6l5.2 5.2L20 7"/></svg><span>Sent</span>';
+  btn.appendChild(tick);
+  var busy=false;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(busy) return;
+    busy=true;
+    btn.classList.add('sent');
+    btn.disabled=true;
+    setTimeout(function(){
+      btn.classList.remove('sent');
+      btn.disabled=false;
+      busy=false;
+      form.reset();
+    },2600);
+  });
 })();
 </script>
 </body>
