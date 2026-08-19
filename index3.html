@@ -552,7 +552,10 @@ body{padding-top:52px}
   display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s}
 .footSocial a:hover{transform:translateY(-2px);opacity:.85}
 .footSocial svg{width:20px;height:20px;fill:var(--yellow)}
-.footCols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px}
+/* auto-fit, not a fixed 5: removing the Products column left an empty fifth
+   track holding open a dead gap on the right, so the columns stopped short of
+   the gutter instead of spanning to it */
+.footCols{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:30px}
 .footCols h4{font-size:16px;font-weight:800;text-decoration:underline;
   text-underline-offset:4px;margin-bottom:14px}
 .footCols a{display:block;font-size:14.5px;font-weight:600;color:#1A1206;
@@ -625,9 +628,48 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 #cookHost{position:absolute;left:-10000px;top:0;width:900px;height:640px;
   pointer-events:none;opacity:0}
 #cookHost #cookCanvas{width:100%;height:100%}
-/* this prototype IS the 3D one: the flat hero poster is only the fallback */
-.heroPoster{display:none}
+/* this prototype IS the 3D one, so the flat poster is only the fallback. Scoped
+   to bodies that are actually running 3D, or the phone fallback below has nothing
+   left to show. */
+body:not(.no3d) .heroPoster{display:none}
 .specImgs img.flatFallback{display:none}
+
+
+/* ===== phones: flat art, not three WebGL contexts =====
+   The 3D only had a prefers-reduced-motion escape, so a phone was running the
+   hero, range and (off-screen) cook scenes at once. Under 760px it falls back to
+   the same flat art Prototype 2 uses, which is what these images are for. */
+@media(max-width:760px){
+  body.is-flat #heroCanvas,body.is-flat #rangeCanvas,body.is-flat #cookHost{display:none!important}
+  body.is-flat .heroPoster{display:flex!important}
+  body.is-flat .prodRow .flatFallback{display:block!important}
+  body.is-flat .specImgs .spec3d{display:none!important}
+  body.is-flat .specImgs img.flatFallback{display:block!important}
+
+  /* the four capability cards stack into a tall column on a phone; as a swipeable
+     rail they stay one screen and read like the rest of the page */
+  .tList{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    gap:12px;padding-bottom:6px;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none}
+  .tList::-webkit-scrollbar{display:none}
+  .tItem{flex:0 0 78%;scroll-snap-align:start}
+  /* the fallback pack is 62vh tall and sits at z-index 2, so on a phone it filled
+     the screen and buried the headline. Behind the type, smaller, and sat low so
+     the words lead and the pack backs them. */
+  /* the panel CTA reads as the action for the whole card on a phone, so it sits
+     centred under the copy rather than hanging off the left */
+  .spec .addCart{display:flex;margin-left:auto;margin-right:auto;justify-content:center}
+  .spec{text-align:center}
+  .spec .meta{justify-content:center}
+  /* the desktop box is pinned right with width:max-content; on a phone it needs
+     to span and centre instead, or the pack hangs off the left edge */
+  body.is-flat .heroPoster{z-index:0;left:0;right:0;width:auto;
+    align-items:flex-end;justify-content:center;padding-bottom:4vh}
+  body.is-flat .heroPoster img{height:38vh;opacity:.92}
+  /* the admin bar is a dev tool and its tabs ran off the edge */
+  .bmws-tabs{overflow-x:auto;scrollbar-width:none}
+  .bmws-tabs::-webkit-scrollbar{display:none}
+}
 
 /* ===== the key fret, used sparingly: edges and dividers only, never behind text ===== */
 .fretBand{height:26px;background-image:var(--fret);background-size:auto 26px;
@@ -2977,6 +3019,17 @@ function frame(){
 }
 frame();
 }
+</script>
+
+<script>
+/* Phones fall back to the flat art rather than running three WebGL contexts.
+   Set as a class so the CSS above can switch every 3D surface at once, and
+   re-evaluated on resize so rotating a tablet lands in the right mode. */
+(function(){
+  function sync(){ document.body.classList.toggle('is-flat', innerWidth<=760); }
+  sync();
+  addEventListener('resize',sync);
+})();
 </script>
 </body>
 </html>

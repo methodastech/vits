@@ -552,7 +552,10 @@ body{padding-top:52px}
   display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s}
 .footSocial a:hover{transform:translateY(-2px);opacity:.85}
 .footSocial svg{width:20px;height:20px;fill:var(--yellow)}
-.footCols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px}
+/* auto-fit, not a fixed 5: removing the Products column left an empty fifth
+   track holding open a dead gap on the right, so the columns stopped short of
+   the gutter instead of spanning to it */
+.footCols{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:30px}
 .footCols h4{font-size:16px;font-weight:800;text-decoration:underline;
   text-underline-offset:4px;margin-bottom:14px}
 .footCols a{display:block;font-size:14.5px;font-weight:600;color:#1A1206;
