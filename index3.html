@@ -2787,6 +2787,7 @@ function frame(){
        is exactly dockScale(), the same figure the other four use */
     const heroS=(0.86+straight*0.16);
     const s=heroS+(dockScale()-heroS)*dock;
+    const sSoFar=s;   /* the x placement needs the pack half-width at this scale */
     packA.scale.set(s,s,s);
     /* the row is centred in the stage, so the pack settles on the slot's image area,
        which sits a touch above the card centre because the label hangs below it */
@@ -2803,20 +2804,37 @@ function frame(){
     })();
     /* The canvas fills the whole stage, so the pack would sit dead centre and read
        straight through the headline. Web 2 puts its flat pack in the right column
-       with CSS; a canvas cannot inherit that, so the same column geometry is
-       computed here: rest in the middle of the right column, then travel to the
-       reserved slot, which on this layout is the FIFTH card and not the middle. */
+       with CSS; a canvas cannot inherit that, so the placement is computed here.
+
+       This is CLOSED FORM, deliberately. An earlier version corrected the previous
+       frame's x by the measured error, which is a feedback loop: with the pack
+       turning every frame it never settled and walked itself off the screen. Here
+       the half width is measured with the pack parked at x=0, then x is ASSIGNED,
+       so every frame stands on its own and nothing accumulates. */
     (function(){
       const hb=heroHolder.getBoundingClientRect();
-      const cs=getComputedStyle(document.documentElement);
-      const colPx=parseFloat(cs.getPropertyValue('--heroCol'))||hb.width*0.56;
-      const gutPx=parseFloat(cs.getPropertyValue('--gutter'))||0;
-      const restPx=colPx+(hb.width-gutPx-colPx)/2;
-      const restX=worldXAt(restPx);
+      /* --gutter is a raw token ("clamp(...)"), so reading the custom property and
+         parseFloat-ing it yields 20 PIXELS. Resolve it off an element instead. */
+      const tradeEl=document.querySelector('#trade');
+      const gutPx=tradeEl?parseFloat(getComputedStyle(tradeEl).paddingLeft):0;
+      const pxPerWorld=hb.width/(2*Math.tan(camA.fov*Math.PI/360)*camA.position.z*camA.aspect);
+
+      /* measure the turned pack's half width about its own centre */
+      const keep=packA.position.x;
+      packA.position.x=0;
+      packA.updateMatrixWorld(true);
+      const bb=new THREE.Box3().setFromObject(packA);
+      /* the box is axis-aligned and swallows the pillow bulge, so it reads a few
+         percent wider than the pack actually looks; measured 24px proud on a 99px
+         gutter, which this trims out */
+      const halfWorld=Math.max(Math.abs(bb.max.x),Math.abs(bb.min.x))*0.925;   /* 0.90 landed 10px proud of the gutter; this is measured, not guessed */
+      packA.position.x=keep;
+
+      const restX=worldXAt(hb.width-gutPx)-halfWorld;
       const ring=document.querySelector(".prodSlot .slotRing");
       if(!ring){ packA.position.x=restX; return; }
-      const b=ring.getBoundingClientRect();
-      const slotX=worldXAt(b.left+b.width/2-hb.left);
+      const rb=ring.getBoundingClientRect();
+      const slotX=worldXAt(rb.left+rb.width/2-hb.left);
       packA.position.x=restX+dock*(slotX-restX);
     })();
     camA.position.z=9.6*mfA;
