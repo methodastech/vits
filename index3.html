@@ -2341,8 +2341,12 @@ function envMap(renderer){
 }
 function lights(scene,renderer){
   scene.environment=envMap(renderer);
-  scene.add(new THREE.HemisphereLight(0xfff6e0,0x8a6238,1.12));
-  const d=new THREE.DirectionalLight(0xffffff,0.72); d.position.set(4,6,6); scene.add(d);
+  /* Lighting was summing to 2.84 with no tone mapping, so every value over 1.0
+     clipped to white and took the saturation with it: the pink Penang read as
+     off-white and the kraft cartons went flat. Down to ~1.80 total, which keeps
+     the packs inside the displayable range and lets the print colour show. */
+  scene.add(new THREE.HemisphereLight(0xfff6e0,0x8a6238,0.70));
+  const d=new THREE.DirectionalLight(0xffffff,0.50); d.position.set(4,6,6); scene.add(d);
   /* shadow comes from straight overhead so the pack is grounded, not slabbed sideways */
   if(Q.shadows){
     const sl=new THREE.DirectionalLight(0xffffff,0);
@@ -2353,8 +2357,8 @@ function lights(scene,renderer){
     sl.shadow.bias=-0.0012; sl.shadow.normalBias=0.035; sl.shadow.radius=4;
     scene.add(sl);
   }
-  const f=new THREE.DirectionalLight(0xffe2b0,0.45); f.position.set(-5,2,-4); scene.add(f);
-  const r=new THREE.DirectionalLight(0xffffff,0.55); r.position.set(-3,4,7); scene.add(r);
+  const f=new THREE.DirectionalLight(0xffe2b0,0.28); f.position.set(-5,2,-4); scene.add(f);
+  const r=new THREE.DirectionalLight(0xffffff,0.32); r.position.set(-3,4,7); scene.add(r);
 }
 
 /* ---------- scene A: hero ---------- */
