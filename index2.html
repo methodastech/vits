@@ -181,21 +181,29 @@ body{padding-top:52px}
 .tRail{display:flex;gap:6px;margin-top:14px}
 .tRail i{flex:1;height:2px;background:rgba(255,255,255,.15);border-radius:2px;transition:background .45s ease}
 .tRail i.act{background:var(--yellow)}
-/* the capability run: no card chrome, just numbered editorial blocks on hairlines */
-.tList{list-style:none;margin:0;padding:0}
-.tItem{min-height:38vh;padding:26px 0;border-top:1px solid rgba(255,255,255,.14);
-  display:grid;grid-template-columns:auto 1fr;gap:0 22px;align-content:center;
-  opacity:.34;transition:opacity .55s ease}
-.tItem:first-child{border-top:0}
-.tItem.act{opacity:1}
-.tNo{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;
-  color:var(--yellow);padding-top:10px}
+/* The capability run used to be five blocks at 38vh each — nearly two screens of
+   scrolling to read five short paragraphs. It is a card grid now: the same content,
+   readable at a glance, and the section costs a fraction of the runway. */
+.tList{list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tItem{min-height:0;padding:20px 22px;border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;background:rgba(255,255,255,.035);
+  display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-content:start;
+  opacity:1;transition:border-color .35s ease,background .35s ease,transform .35s ease}
+/* the last card takes the full width when the count is odd, so the grid never
+   ends on a visible hole */
+.tItem:last-child:nth-child(odd){grid-column:1 / -1}
+.tItem.act{border-color:rgba(255,203,5,.55);background:rgba(255,203,5,.07)}
+.tItem:hover{transform:translateY(-2px)}
+.tNo{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  color:var(--yellow);padding-top:3px}
 .tItem h3{grid-column:2;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.015em;
-  font-size:clamp(22px,2.3vw,33px);line-height:1.08;color:#fff}
-.tItem p{grid-column:2;margin-top:11px;font-size:15px;line-height:1.65;color:#C9B9A6;max-width:46ch}
+  font-size:clamp(17px,1.4vw,21px);line-height:1.15;color:#fff}
+.tItem p{grid-column:2;margin-top:8px;font-size:13.5px;line-height:1.6;color:#C9B9A6;max-width:none}
 .tItem .tbc{grid-column:2;justify-self:start;margin-top:13px;background:rgba(216,35,42,.2);color:#FF9A8E}
 @media(max-width:900px){
   .tSplit{grid-template-columns:1fr;gap:30px}
+  .tList{grid-template-columns:1fr}
   .tVisual{position:static}
   .tFrame{aspect-ratio:16/10}
   .tItem{min-height:0;opacity:1}
@@ -251,7 +259,9 @@ body{padding-top:52px}
   z-index:3;pointer-events:none;opacity:0;transition:opacity .25s linear;
   display:flex;flex-direction:column;justify-content:flex-start;
   will-change:transform}
-.journeyIntro{padding-top:9vh}   /* was 22vh: it alone delayed the first milestone */
+/* padding above and steps-margin below are deliberately EQUAL, so "51 years,
+   1 family recipe" is centred between the top of the column and the 1975 marker */
+.journeyIntro{padding-top:11vh}
 .journeyIntro .k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--red-deep);font-weight:700}
 .journeyIntro h2{font-size:clamp(34px,4.6vw,68px);line-height:1;text-transform:uppercase;
@@ -259,7 +269,7 @@ body{padding-top:52px}
 .journeyIntro h2 em{font-style:normal;color:var(--red)}
 .journeyIntro p{margin-top:18px;max-width:52ch;font-size:16px;line-height:1.6;color:var(--soft)}
 /* the rail: one continuous line with a marker per milestone */
-.journeySteps{list-style:none;margin:12vh 0 0;padding:0 0 0 34px;position:relative}
+.journeySteps{list-style:none;margin:11vh 0 0;padding:0 0 0 34px;position:relative}
 .journeySteps::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
   background:linear-gradient(180deg,transparent,var(--red) 8%,var(--red) 92%,transparent)}
 .journeySteps li{position:relative;margin-bottom:11vh;max-width:44ch}
@@ -354,7 +364,7 @@ body{padding-top:52px}
 /* each mark is a stacked pair, hung off a short red rule that replaces the icon as
    the thing your eye catches while the row slides past */
 .mk{display:flex;flex-direction:column;justify-content:center;gap:6px;
-  white-space:nowrap;padding-left:16px;border-left:2px solid rgba(255,255,255,.6);
+  white-space:nowrap;padding-left:16px;border-left:2px solid var(--yellow);
   text-align:left}
 .mk b{font-family:Inter,Helvetica,sans-serif;font-weight:700;font-size:17px;
   letter-spacing:-.012em;line-height:1.1;color:#fff}
@@ -423,7 +433,7 @@ body{padding-top:52px}
 .cookPoster{position:absolute;inset:0;z-index:2;display:none;align-items:center;justify-content:center}
 .cookPoster img{height:56vh;object-fit:contain}
 
-/* scene 7 (the bowl reel) moved to about.html — its styles live there now */
+/* scene 7 (the bowl reel) lives on Prototype Web 1 */
 
 /* ===== the travel rail: one continuous thread down the page edge =====
    The same red line the journey milestones hang off, promoted to the page edge so
@@ -572,7 +582,6 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
   <img class="lg" src="assets/vits-logo.png" alt="Vit's">
   <div class="links">
     <a class="on" href="#top">Home</a>
-    <a href="about.html">About Us</a>
     <a class="cta" href="#finale">Trade Enquiry</a>
   </div>
 </nav>
@@ -853,7 +862,7 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 
 <!-- scene 6 (the 3D cook runway) is intentionally absent from prototype 2 -->
 
-<!-- scene 7 (the bowl reel) now lives on about.html, under the factory band -->
+<!-- scene 7 (the bowl reel) lives on Prototype Web 1 -->
 
 <!-- ============ scene 8: the ask ============ -->
 <section id="finale" aria-label="Trade enquiry">
@@ -1023,14 +1032,16 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     });
   },8000); });
 
-  /* trade: the pinned frame follows whichever capability owns the middle of the screen */
+  /* trade: the frame follows the cards. With all five on screen at once, "whichever
+     one owns the middle of the viewport" no longer means anything, so the frame is
+     driven by hover and otherwise advances on its own — no scroll runway needed. */
   (function(){
     var items=[].slice.call(document.querySelectorAll('#trade .tItem'));
     if(!items.length) return;
     var shots=[].slice.call(document.querySelectorAll('#trade .tShot'));
     var ticks=[].slice.call(document.querySelectorAll('#trade .tRail i'));
     var stepNo=document.querySelector('#trade .tStep b');
-    var cur=-1;
+    var cur=-1, held=false, timer=null;
     function set(i){
       if(i===cur) return; cur=i;
       items.forEach(function(el,j){ el.classList.toggle('act',j===i); });
@@ -1038,15 +1049,21 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
       ticks.forEach(function(el,j){ el.classList.toggle('act',j<=i); });
       if(stepNo) stepNo.textContent=('0'+(i+1)).slice(-2);
     }
-    ScrollTrigger.create({trigger:'#trade',start:'top bottom',end:'bottom top',
-      onUpdate:function(){
-        var mid=innerHeight*0.5,best=0,bd=1e9;
-        items.forEach(function(el,j){
-          var r=el.getBoundingClientRect(),d=Math.abs(r.top+r.height/2-mid);
-          if(d<bd){bd=d;best=j;}
-        });
-        set(best);
-      }});
+    function advance(){ if(!held) set((cur+1)%items.length); }
+    function play(){ if(!timer) timer=setInterval(advance,3600); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    items.forEach(function(el,j){
+      el.addEventListener('pointerenter',function(){ held=true; set(j); });
+      el.addEventListener('pointerleave',function(){ held=false; });
+      el.addEventListener('focusin',function(){ held=true; set(j); });
+    });
+    set(0);
+    /* only tick over while the section is actually on screen */
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ e[0].isIntersecting?play():stop(); },{threshold:0.15})
+        .observe(document.querySelector('#trade'));
+    } else play();
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches) stop();
   })();
 
   /* hero runway: type slides out, callouts step, cue hides */
