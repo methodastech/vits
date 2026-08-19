@@ -108,12 +108,12 @@ body{padding-top:52px}
 /* takes the reader to the "51 years" beat, which lives inside the pinned hero
    rather than at its own anchor */
 .heroJump{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
-  padding:13px 24px;border-radius:999px;border:1.5px solid var(--red);cursor:pointer;
-  background:none;color:var(--red);font-family:Inter,sans-serif;font-weight:700;
+  padding:14px 26px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--red);color:#fff;font-family:Inter,sans-serif;font-weight:700;
   font-size:14.5px;letter-spacing:-.01em;pointer-events:auto;
-  transition:background .3s ease,color .3s ease,transform .3s ease}
+  transition:background .3s ease,transform .3s ease}
 .heroJump::after{content:"↓";font-size:16px;line-height:1}
-.heroJump:hover{background:var(--red);color:#fff;transform:translateY(-1px)}
+.heroJump:hover{background:var(--red-deep);transform:translateY(-1px)}
 /* fills the same column the headline sets in, so the two share a right edge
    instead of the lede stopping short at its own measure */
 .heroSub{margin-top:clamp(16px,2.4vh,34px);z-index:3;max-width:none}
@@ -128,7 +128,11 @@ body{padding-top:52px}
    send the pack to the wrong place when it docks. */
 /* right edge respects the page gutter, same as every other section, so the pack
    does not run out past the margin the logo and headline sit inside */
-.heroPoster{position:absolute;top:0;bottom:0;left:var(--heroCol);right:var(--gutter);
+/* The box is sized to the pack (width:max-content) and pinned to the gutter, so
+   the pack itself sits flush with the page edge. It must stay CENTRED inside this
+   box: the dock reads the box centre as the pack untransformed position, so
+   right-aligning the image instead would send it to the wrong place on landing. */
+.heroPoster{position:absolute;top:0;bottom:0;left:auto;right:calc(var(--gutter) - 1.43vh);width:max-content;
   z-index:2;display:none;align-items:center;justify-content:center;pointer-events:none}
 .heroPoster img{height:62vh;width:auto;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(26,19,14,.25));
   /* idle bob. On `translate`, not `transform`: the scroll runway owns transform for
@@ -1106,7 +1110,11 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     function onMeta(){ if(v.duration&&isFinite(v.duration)) ready=true; }
     v.addEventListener('loadedmetadata',onMeta); onMeta();
     v.pause();
-    ScrollTrigger.create({trigger:'#finale',start:'top bottom',end:'bottom bottom',
+    /* Pinned rather than padded: the section is held in place while the clip
+       plays, which buys the scroll length without leaving dead space beneath
+       the form. The footer is unreachable until the bowl has finished. */
+    ScrollTrigger.create({trigger:'#finale',start:'top top',end:'+=90%',
+      pin:true,pinSpacing:true,anticipatePin:1,
       onUpdate:function(self){ target=self.progress; }});
     (function tick(){
       requestAnimationFrame(tick);
