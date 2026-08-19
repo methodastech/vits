@@ -2783,18 +2783,41 @@ function frame(){
     /* docks down into the reserved centre slot of the range row instead of flying off.
        The docked size is measured off the slot rather than hard-coded, so the pack
        stays the same size as the flat packs either side of it at any row width. */
-    const s=(0.86+straight*0.16)*(1-dock*(1-dockScale()));
+    /* the 0.86..1.02 hero swell is eased out as it docks, so at rest in the row it
+       is exactly dockScale(), the same figure the other four use */
+    const heroS=(0.86+straight*0.16);
+    const s=heroS+(dockScale()-heroS)*dock;
     packA.scale.set(s,s,s);
     /* the row is centred in the stage, so the pack settles on the slot's image area,
        which sits a touch above the card centre because the label hangs below it */
-    packA.position.y=(-0.1+Math.sin(t*1.1)*0.09)*(1-straight*0.5) + dock*0.22;
-    /* Web 1 reserves the middle card so 0 was right there; this layout reserves
-       the fifth, so the pack has to travel to the slot it actually lands in. */
+    /* Docked, this is just the fifth pack in the row and must sit like the other
+       four: on the centre of its own ring. It was still using the hero's resting
+       height plus a fixed nudge, which left it riding above its neighbours. */
     (function(){
+      const restY=(-0.1+Math.sin(t*1.1)*0.09)*(1-straight*0.5);
       const ring=document.querySelector(".prodSlot .slotRing");
-      if(!ring){ packA.position.x=0; return; }
+      if(!ring||dock<=0){ packA.position.y=restY; return; }
       const b=ring.getBoundingClientRect(), hb=heroHolder.getBoundingClientRect();
-      packA.position.x=dock*worldXAt(b.left+b.width/2-hb.left);
+      const seatY=worldYAt(b.top+b.height/2-hb.top);
+      packA.position.y=restY+dock*(seatY-restY);
+    })();
+    /* The canvas fills the whole stage, so the pack would sit dead centre and read
+       straight through the headline. Web 2 puts its flat pack in the right column
+       with CSS; a canvas cannot inherit that, so the same column geometry is
+       computed here: rest in the middle of the right column, then travel to the
+       reserved slot, which on this layout is the FIFTH card and not the middle. */
+    (function(){
+      const hb=heroHolder.getBoundingClientRect();
+      const cs=getComputedStyle(document.documentElement);
+      const colPx=parseFloat(cs.getPropertyValue('--heroCol'))||hb.width*0.56;
+      const gutPx=parseFloat(cs.getPropertyValue('--gutter'))||0;
+      const restPx=colPx+(hb.width-gutPx-colPx)/2;
+      const restX=worldXAt(restPx);
+      const ring=document.querySelector(".prodSlot .slotRing");
+      if(!ring){ packA.position.x=restX; return; }
+      const b=ring.getBoundingClientRect();
+      const slotX=worldXAt(b.left+b.width/2-hb.left);
+      packA.position.x=restX+dock*(slotX-restX);
     })();
     camA.position.z=9.6*mfA;
     /* the four side packs settle into their own cards on the same dock beat.
