@@ -137,11 +137,6 @@ body{padding-top:52px}
 .co1{top:20vh;left:7vw}.co2{top:52vh;left:10vw}.co3{top:18vh;right:8vw}.co4{top:46vh;right:6vw}.co5{top:72vh;right:16vw}
 @media(max-width:760px){.callout{max-width:180px;font-size:12px;padding:10px 18px}.co1{top:16vh;left:4vw}.co2{top:64vh;left:4vw}.co3{top:16vh;right:4vw}.co4{top:64vh;right:4vw}.co5{display:none}
   .heroSub{bottom:10vh;max-width:250px}.heroSub p{font-size:13px}}
-.cue{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(30px + var(--barh,52px));z-index:5;display:flex;align-items:center;gap:10px;
-  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-deep);
-  background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:999px;padding:9px 16px;transition:opacity .5s}
-.cue .strand{width:46px;height:14px}
-.cue.hide{opacity:0}
 
 /* ============ scene 3 · story ============ */
 #story{position:relative;background:var(--cream2) var(--paper) repeat;background-size:var(--paper-size);padding:110px var(--gutter) 90px;overflow:hidden}
@@ -371,9 +366,6 @@ body{padding-top:52px}
   .mk b{font-size:15px} .mk i{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.markTrack{animation:none}
   .markRow{flex-wrap:wrap;justify-content:center;gap:24px 30px}}
-.certRow{display:flex;flex-wrap:wrap;gap:9px;margin-top:52px}
-.cert{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:#F2E9DD;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 14px}
-.cert.gold{border-color:var(--yellow);color:var(--yellow)}
 #trade .cta{display:inline-block;margin-top:36px;background:var(--red);color:#fff;border-radius:999px;padding:14px 26px;font-weight:700;font-size:14.5px;text-decoration:none;transition:background .25s,transform .25s}
 #trade .cta:hover{background:var(--red-deep);transform:translateY(-1px)}
 
@@ -456,13 +448,9 @@ body{padding-top:52px}
 .fwrap{max-width:1180px;margin:0 auto}
 #finale h2{font-size:clamp(38px,6vw,84px);line-height:.98;text-transform:uppercase;max-width:16ch;margin-top:14px}
 #finale h2 em{font-style:normal;color:var(--red)}
-.fgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;margin-top:46px;align-items:start}
+/* only the enquiry form left in here, so it no longer needs two columns */
+.fgrid{margin-top:46px;max-width:620px}
 @media(max-width:900px){.fgrid{grid-template-columns:1fr}}
-.shows{display:grid;gap:11px}
-.show{display:flex;align-items:baseline;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.show .d{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em;font-size:19px;color:var(--red-deep);min-width:150px}
-.show .w{font-size:14px;color:var(--soft)}
-.show .w b{color:var(--ink)}
 .fform{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px}
 .fform .k{margin-bottom:6px;display:block}
 .fform label{display:block;font-size:12px;font-weight:600;color:var(--soft);margin-top:14px}
@@ -638,10 +626,6 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
           <figure class="jShot"><img src="assets/journey-shows.jpg" data-c-src="story.tiles.4.image" alt="" loading="lazy"></figure></li>
       </ol>
     </div>
-    <div class="cue" id="scrollCue">
-      <svg class="strand" viewBox="0 0 46 14" fill="none"><path d="M1 7 Q6 1 11 7 T21 7 T31 7 T41 7" stroke="#A81318" stroke-width="1.6" stroke-linecap="round"/><path d="M41 7l-3-3M41 7l-3 3" stroke="#A81318" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <span>Scroll<span class="cueLong">, the pack cooks itself</span></span>
-    </div>
     <!-- the range rises as the hero pack shrinks into the reserved centre slot -->
     <div class="prodHead" aria-hidden="true">
       <h3 class="disp" data-c="hero.rangeTitle">Our best sellers</h3>
@@ -717,9 +701,6 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
           <p data-c="trade.checks.3.body">Your recipe or ours. Seasoning development, your label, your language, your compliance.</p></div>
         </li>
       </ol>
-    </div>
-    <div class="certRow rv">
-      <span class="cert gold">JAKIM Halal &middot; since 1980</span><span class="cert">FSSC 22000</span><span class="cert">HACCP</span><span class="cert">GMP</span><span class="cert">ISO 22000</span>
     </div>
     <a class="cta" href="#finale">Talk to the trade desk</a>
   </div>
@@ -867,15 +848,6 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
   <div class="fwrap">
     <h2 class="disp rv" data-plx="-3">1 factory.<br><em>Any flavour</em> your market wants.</h2>
     <div class="fgrid">
-      <div>
-        <div class="shows" data-plx="4">
-          <div class="show rv"><div class="d">15 to 19 Mar 2027</div><div class="w"><b>Gulfood, Dubai World Trade Centre.</b> 8,500 exhibitors, 195 countries. Meet us at the stand.</div></div>
-          <div class="show rv"><div class="d">2027</div><div class="w"><b>United States.</b> Show and dates to be announced.</div></div>
-          <div class="show rv"><div class="d">2027</div><div class="w"><b>Bangkok.</b> Show and dates to be announced.</div></div>
-          <div class="show rv"><div class="d">2027</div><div class="w"><b>United Kingdom.</b> Show and dates to be announced.</div></div>
-        </div>
-        <p class="lede rv" style="margin-top:26px;color:var(--soft);font-size:15px;max-width:52ch">Or skip the queue. Tell the trade desk your market, your format and your volume, and the specification sheet comes back in 1 business day.</p>
-      </div>
       <form class="fform rv" data-plx="-4" onsubmit="return false">
         <span class="k">Trade enquiry</span>
         <label>Name<input type="text" placeholder="Your name"></label>
@@ -1200,7 +1172,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   ScrollTrigger.create({trigger:'#heroJourney',start:'top top',end:'bottom bottom',
     onUpdate:function(self){
       var p=self.progress;
-      cue.classList.toggle('hide',p>0.06);
+      if(cue) cue.classList.toggle('hide',p>0.06);   /* cue removed from the markup */
       /* the headline travels up and out. 82vh clears the second line past the top
          of the frame; the callouts are held back until that has happened. */
       var TYPE_OUT=0.30;
