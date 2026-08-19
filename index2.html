@@ -58,6 +58,18 @@ body{padding-top:52px}
 .nav .links a{color:var(--ink);text-decoration:none;opacity:.82}.nav .links a:hover{opacity:1}
 /* current page: a plain rule. The fret is reserved for section edges, where it
    has room to read as a pattern rather than a smudge. */
+/* dummy cart, sized to sit level with the CTA pill */
+.cartBtn{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;margin-left:14px;border-radius:50%;color:var(--ink);
+  border:1.5px solid rgba(26,19,14,.18);transition:background .3s ease,color .3s ease,border-color .3s ease}
+.cartBtn svg{width:20px;height:20px}
+.cartBtn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.cartBtn i{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;padding:0 4px;
+  border-radius:9px;background:var(--red);color:#fff;font-style:normal;
+  font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.cartBtn:hover i{background:var(--ink)}
+@media(max-width:760px){.cartBtn{display:none}}
 .nav .links a.on{opacity:1;font-weight:700;position:relative}
 .nav .links a.on::after{content:"";position:absolute;left:0;right:0;bottom:-8px;
   height:2px;background:var(--red)}
@@ -102,7 +114,9 @@ body{padding-top:52px}
    being nudged inside it, because the dock reads this box's centre as the pack's
    untransformed position — off-centring the image within a full-width box would
    send the pack to the wrong place when it docks. */
-.heroPoster{position:absolute;top:0;bottom:0;left:var(--heroCol);right:0;
+/* right edge respects the page gutter, same as every other section, so the pack
+   does not run out past the margin the logo and headline sit inside */
+.heroPoster{position:absolute;top:0;bottom:0;left:var(--heroCol);right:var(--gutter);
   z-index:2;display:none;align-items:center;justify-content:center;pointer-events:none}
 .heroPoster img{height:62vh;width:auto;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(26,19,14,.25));
   /* idle bob. On `translate`, not `transform`: the scroll runway owns transform for
@@ -553,10 +567,8 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
 .fretBand.gold{background-image:var(--fret-gold)}
 /* the credentials strip carries no fret: the marks are the content there, and the
    pattern fought them for attention. Its own hairline rules do the framing. */
-/* a lip above the yellow footer, so the page foot echoes the pack foot */
+/* no fret lip above the footer: the yellow band stands on its own */
 .siteFoot{position:relative}
-.siteFoot::before{content:'';position:absolute;top:0;left:0;right:0;height:24px;
-  background-image:var(--fret);background-size:auto 24px;background-repeat:repeat-x;opacity:.55}
 
 </style>
 </head>
@@ -583,6 +595,14 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
   <div class="links">
     <a class="on" href="#top">Home</a>
     <a class="cta" href="#finale">Trade Enquiry</a>
+    <!-- dummy cart: presentational only, no basket behind it yet -->
+    <a class="cartBtn" href="#" aria-label="Cart (demo)" title="Cart">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2.5 3.2h2.4l2.2 10.6h9.9l2.1-7.6H6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9.4" cy="19" r="1.7" fill="currentColor"/>
+        <circle cx="16.6" cy="19" r="1.7" fill="currentColor"/>
+      </svg><i>0</i>
+    </a>
   </div>
 </nav>
 
@@ -714,14 +734,8 @@ body.no3d .heroPoster,body.no3d .cookPoster{display:flex}
         </li>
         <li class="tItem">
           <span class="tNo">04</span>
-          <h3 data-c="trade.checks.3.title">Minimum order, capacity, lead time</h3>
-          <p data-c="trade.checks.3.body">Published as tiers, so you can plan a first order and a repeat.</p>
-          <span class="tbc" data-c="trade.checks.3.flag" data-c-if="trade.checks.3.flag">Figures from operations, being confirmed</span>
-        </li>
-        <li class="tItem">
-          <span class="tNo">05</span>
-          <h3 data-c="trade.checks.4.title">Customisation</h3>
-          <p data-c="trade.checks.4.body">Your recipe or ours. Seasoning development, your label, your language, your compliance.</p>
+          <h3 data-c="trade.checks.3.title">Customisation</h3>
+          <p data-c="trade.checks.3.body">Your recipe or ours. Seasoning development, your label, your language, your compliance.</p>
         </li>
       </ol>
     </div>
@@ -1129,7 +1143,8 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
      Bayam card, and a part-faded card lets the pack show through it; at opacity 1
      the card occludes it properly (prodRow z-index 3 over heroPoster z-index 2),
      so the pack slides in behind the line-up and surfaces in its own slot. */
-  var MOVE_IN=0.80,  MOVE_OUT=0.92;
+  /* pulled in from 0.80/0.92: the pack was hanging in dead air waiting to drop */
+  var MOVE_IN=0.76,  MOVE_OUT=0.88;
   function ease(p,a,b){
     var d=Math.max(0,Math.min(1,(p-a)/(b-a)));
     return d*d*(3-2*d);
@@ -1219,7 +1234,9 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   /* how far below the frame the column waits before it rides up. 100 left a
      dead screen between the headline leaving and the first milestone arriving;
      at 52 the intro is already in frame as the type clears. */
-  var J_START=52;
+  /* A full frame below the fold, so no part of the journey shows behind the hero.
+     The dead gap this once caused is fixed by the intro padding (11vh) instead. */
+  var J_START=100;
   var jTravel=430;
   function measureJourney(){
     if(!journey||!journey.scrollHeight) return;
@@ -1263,7 +1280,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
       if(prodRow){
         /* starts at 0.73, only once the journey column has fully cleared, and is at
            full opacity by 0.80 when the pack begins its drop */
-        var d=Math.max(0,Math.min(1,(p-0.73)/0.07));
+        var d=Math.max(0,Math.min(1,(p-0.71)/0.06));
         var e=d*d*(3-2*d);
         prodRow.style.opacity=e.toFixed(3);
         /* PROD_REST sits the settled row below the stage centre, off the 3D pack's shadow */

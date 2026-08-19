@@ -30,7 +30,7 @@
     "line1b": "Yellow Pack",
     "line2": "of Malaysia",
     "eyebrow": "Vit's Noodles · since 1975 · Kuala Lumpur",
-    "lede": "51 years. 1 factory. The noodle Malaysia grew up on, now cooked for the world.",
+    "lede": "Since 1975, one factory in Kuala Lumpur has made the noodle Malaysians reach for without thinking. The yellow pack that sits in the cupboard, the one your mother bought, still made to the recipe the family started with. Today it feeds more than 20 markets and has not changed a thing.",
     "scrollCue": "Scroll",
     "scrollCueLong": ", the pack cooks itself",
     "stats": [
@@ -249,13 +249,6 @@
         "title": "Certifications",
         "body": "FSSC 22000, HACCP, GMP, ISO 22000, and JAKIM halal held since 1980.",
         "flag": ""
-      },
-      {
-        "no": "04",
-        "icon": "tiers",
-        "title": "Minimum order, capacity, lead time",
-        "body": "Published as tiers, so you can plan a first order and a repeat.",
-        "flag": "Figures from operations, being confirmed"
       },
       {
         "no": "05",
