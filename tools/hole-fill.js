@@ -40,8 +40,19 @@ const POS=Array.from(readAcc(prim.attributes.POSITION));
 const NOR=Array.from(readAcc(prim.attributes.NORMAL));
 const UV =Array.from(readAcc(prim.attributes.TEXCOORD_0));
 const IDX=Array.from(readAcc(prim.indices));
-const texView=J.bufferViews[J.images[0].bufferView];
-const TEX=BIN.slice(texView.byteOffset||0,(texView.byteOffset||0)+texView.byteLength);
+/* carry whatever the source material is: some models are textured, others are a
+   flat baseColorFactor with no image at all */
+const srcMat=(J.materials&&J.materials[prim.material!==undefined?prim.material:0])||{};
+const srcPbr=srcMat.pbrMetallicRoughness||{};
+const hasTex=!!(J.images&&J.images.length&&srcPbr.baseColorTexture);
+let TEX=null, texMime='image/jpeg';
+if(hasTex){
+  const ti=srcPbr.baseColorTexture.index;
+  const im=J.images[(J.textures&&J.textures[ti]&&J.textures[ti].source)||0];
+  texMime=im.mimeType||'image/jpeg';
+  const tv=J.bufferViews[im.bufferView];
+  TEX=BIN.slice(tv.byteOffset||0,(tv.byteOffset||0)+tv.byteLength);
+}
 const nv0=POS.length/3, nt0=IDX.length/3;
 console.log('in  : '+nt0.toLocaleString()+' tris, '+nv0.toLocaleString()+' verts');
 
@@ -93,7 +104,10 @@ for(const [start,list] of out){
       if(cur===start) break;
       if(++guard>200000) break;
     }
-    if(loop.length>=3) loops.push(loop); 
+    /* two-edge slits are the commonest residue on a badly torn mesh: a pair of
+       edges closing back on itself. A centroid fan shuts them just as well, and
+       skipping them left thousands open. One lone edge cannot be closed. */
+    if(loop.length>=2) loops.push(loop);
   }
 }
 console.log('    loops          : '+loops.length.toLocaleString());
@@ -120,7 +134,8 @@ console.log('fill: +'+added.toLocaleString()+' tris, +'+loops.length.toLocaleStr
 const pos=Float32Array.from(POS), nor=Float32Array.from(NOR), uvA=Float32Array.from(UV), idx=Uint32Array.from(IDX);
 const M=pos.length/3;
 const pad=n=>(4-(n%4))%4;
-const parts=[Buffer.from(pos.buffer),Buffer.from(nor.buffer),Buffer.from(uvA.buffer),Buffer.from(idx.buffer),TEX];
+const parts=[Buffer.from(pos.buffer),Buffer.from(nor.buffer),Buffer.from(uvA.buffer),Buffer.from(idx.buffer)];
+if(hasTex) parts.push(TEX);
 let off=0; const views=parts.map(p=>{const v={byteOffset:off,byteLength:p.length}; off+=p.length+pad(p.length); return v;});
 const bin=Buffer.concat(parts.flatMap(p=>[p,Buffer.alloc(pad(p.length))]));
 let lo=[1e9,1e9,1e9],hi=[-1e9,-1e9,-1e9];
@@ -129,16 +144,21 @@ const g={
   asset:{version:'2.0',generator:'vits hole-fill'},
   scene:0, scenes:[{nodes:[0]}], nodes:[{mesh:0,name:'pack'}],
   meshes:[{name:'pack',primitives:[{attributes:{POSITION:0,NORMAL:1,TEXCOORD_0:2},indices:3,material:0,mode:4}]}],
-  materials:[{name:'pack',doubleSided:true,pbrMetallicRoughness:{baseColorTexture:{index:0},metallicFactor:0,roughnessFactor:0.72}}],
-  textures:[{sampler:0,source:0}], samplers:[{magFilter:9729,minFilter:9987}],
-  images:[{mimeType:'image/jpeg',bufferView:4}],
+  materials:[{name:'mesh',doubleSided:srcMat.doubleSided!==false,
+    pbrMetallicRoughness:Object.assign(
+      {metallicFactor:srcPbr.metallicFactor!==undefined?srcPbr.metallicFactor:0,
+       roughnessFactor:srcPbr.roughnessFactor!==undefined?srcPbr.roughnessFactor:0.72},
+      hasTex?{baseColorTexture:{index:0}}
+           :{baseColorFactor:srcPbr.baseColorFactor||[1,1,1,1]})}],
+  ...(hasTex?{textures:[{sampler:0,source:0}],samplers:[{magFilter:9729,minFilter:9987}],
+              images:[{mimeType:texMime,bufferView:4}]}:{}),
   accessors:[
     {bufferView:0,componentType:5126,count:M,type:'VEC3',min:lo,max:hi},
     {bufferView:1,componentType:5126,count:M,type:'VEC3'},
     {bufferView:2,componentType:5126,count:M,type:'VEC2'},
     {bufferView:3,componentType:5125,count:idx.length,type:'SCALAR'}
   ],
-  bufferViews:[0,1,2,3,4].map(i=>Object.assign({buffer:0},views[i],i<3?{target:34962}:i===3?{target:34963}:{})),
+  bufferViews:views.map((v,i)=>Object.assign({buffer:0},v,i<3?{target:34962}:i===3?{target:34963}:{})),
   buffers:[{byteLength:bin.length}]
 };
 const js=Buffer.from(JSON.stringify(g),'utf8');
