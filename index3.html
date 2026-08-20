@@ -2447,8 +2447,10 @@ const sidePacks=RANGE_SKUS.slice(1).map(function(sk,i){
   scA.add(g);
   return g;
 });
-/* only retire the flat art once the packs actually exist and a context is live */
-if(sidePacks.length===4){
+/* only retire the flat art once the packs actually exist and a context is live.
+   Counted against the SKU list, not a literal: a hardcoded 4 silently turned the
+   whole row flat when the carbonara was removed and the count became 3. */
+if(sidePacks.length===RANGE_SKUS.length-1){
   const row=document.querySelector(".prodRow");
   if(row) row.classList.add("is3d");
 }
@@ -2877,7 +2879,7 @@ function frame(){
       packA.position.x=restX+dock*(slotX-restX);
     })();
     camA.position.z=9.6*mfA;
-    /* the four side packs settle into their own cards on the same dock beat.
+    /* the side packs settle into their own cards on the same dock beat.
        Scale is dockScale() x their own fit, so every pack in the row presents at
        one standard height regardless of its real carton size. */
     for(let i=0;i<sidePacks.length;i++){
