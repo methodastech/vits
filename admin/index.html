@@ -103,17 +103,5 @@
   });
 })();
 </script>
-<script>
-/* Netlify Identity: catch the invite/recovery token and open the login dialog,
-   then hand off to the CMS once the user is confirmed. */
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', function (user) {
-    if (!user) {
-      window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
-    }
-  });
-}
-</script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </body>
 </html>

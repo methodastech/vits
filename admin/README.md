@@ -17,22 +17,23 @@ There are two ways in.
 
 `https://<the-site>/admin/`
 
-**This does not work yet.** The editor is built and branded, but its backend is
-`git-gateway`, which needs a host that provides identity. Until the three steps
-below are done, `/admin/` shows a "Login with Netlify Identity" button that
-cannot succeed — locally or anywhere else.
+**Editors sign in with a GitHub account** that has write access to
+`methodastech/vits`. The backend is `github`, which routes the OAuth handshake
+through Netlify's gateway — that part needs a one-time setup:
 
 ### To turn it on
 
-1. **Deploy to Netlify** from the GitHub repo (`methodastech/vits`). Build
-   command: none. Publish directory: the repo root.
-2. In the Netlify site: **Identity → Enable Identity**, then
-   **Identity → Services → Git Gateway → Enable**.
-3. **Identity → Invite users**, and send the client an invite. They set a
-   password from the email and can then sign in at `/admin/`.
+1. **Create a GitHub OAuth app** (GitHub → Settings → Developer settings →
+   OAuth Apps → New, under the account or org that owns the repo):
+   - Homepage URL: `https://vitsnoodle.netlify.app`
+   - Authorization callback URL: `https://api.netlify.com/auth/done`
+2. In the Netlify site: **Site configuration → Access & security → OAuth →
+   Install provider → GitHub**, and paste the app's Client ID and secret.
+3. **Give each editor write access to the repo** (GitHub → repo → Settings →
+   Collaborators). Their saves in `/admin/` become commits under their name.
 
-Optional but worth doing: under Identity → Registration, set it to
-**Invite only**, otherwise anyone can register themselves an editor account.
+(The original plan was `git-gateway` + Netlify Identity, but Identity is closed
+to new sites — `/.netlify/identity` 404s on a fresh deploy.)
 
 ### Using it
 

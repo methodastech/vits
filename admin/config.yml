@@ -1,13 +1,14 @@
 # Decap CMS — git-based, no server needed.
 # Edits commit straight to the repo and the host redeploys.
 #
-# BEFORE THIS WORKS, three things are needed (see admin/README.md):
-#   1. this project in a git repo on GitHub
-#   2. deployed to Netlify (or any host with git-gateway + identity)
-#   3. Identity + Git Gateway enabled, and editors invited
+# Editors sign in with GitHub and need write access to the repo.
+# (git-gateway was the original plan, but Netlify Identity is closed to new
+# sites — /.netlify/identity 404s — so the github backend it is. It uses
+# Netlify's OAuth gateway, which needs a one-time setup: see admin/README.md.)
 
 backend:
-  name: git-gateway
+  name: github
+  repo: methodastech/vits
   branch: main
 
 # Local editing: when the page is served from localhost, Decap talks to
