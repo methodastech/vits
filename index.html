@@ -1461,9 +1461,13 @@ function drawBack(){
 /* side panel geometry, 100mm x 280mm */
 const SW=410,SH=1147;
 const SWIN={cx:205,cy:596,rx:150,ry:330};
-const SOVAL={cx:176,cy:596,w:224};
+/* Gusset furniture runs UP the panel, stacked, not side by side across it:
+   on the real pack the variety type sits above the mark, both centred on
+   the panel's narrow width. Laying them out across the width squeezed the
+   mark against the type and read as a horizontal logo beside vertical text. */
+const SOVAL={cx:205,cy:790,w:250};
 function sideType(x){
-  x.save(); x.translate(322,596); x.rotate(-Math.PI/2); x.textAlign='center';
+  x.save(); x.translate(205,450); x.rotate(-Math.PI/2); x.textAlign='center';
   x.font='700 34px '+PF; x.fillText(pk('variety.en','INSTANT NOODLES'),0,-22);
   x.font='700 34px "Noto Sans SC","Microsoft YaHei",sans-serif'; x.fillText(pk('variety.zh','快熟麵'),0,16);
   x.font='700 30px '+PF; x.fillText(pk('variety.ms','MI SEGERA'),0,52);
