@@ -2433,7 +2433,19 @@ const packA=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack); scA
    per-SKU fit and every position calculation untouched. */
 const _packLoader=new GLTFLoader();
 const _modelCache={};
+/* The scanned packs (assets/pack-*.glb) carry their artwork as a single baked
+   JPEG on an organic UV unwrap, so nothing printed on them can be driven by the
+   CMS — colour, typeface and every string are fixed in the file. The coded packs
+   built just above are drawn live from content, which is what the client's
+   controls expect. Flip this to true to go back to the scans, accepting that the
+   CMS stops reaching the packaging.
+   To have both, the GLBs need rebuilding through tools/pack-build.js, which
+   box-projects one UV rect per panel so the coded textures drop straight on;
+   that needs the source FBX files, which are not in this repo. */
+const USE_SCANNED_PACKS=false;
+
 function swapInModel(group,sk){
+  if(!USE_SCANNED_PACKS) return;
   if(!sk.model) return;
   const apply=src=>{
     const inst=src.clone(true);
