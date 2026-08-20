@@ -2561,9 +2561,19 @@ function swapInModel(group,sk){
            die-cut alpha mask shaped to the coded silhouette; the scan already
            has the right outline, so that mask would only punch holes in it. */
         o.geometry=panelWrap(o.geometry);
-        o.material=liveMats.map(m=>{
+        o.material=liveMats.map((m,i)=>{
           const c=m.clone();            /* same live canvas textures, new flags */
           c.alphaMap=null; c.alphaTest=0; c.transparent=false;
+          /* The crimp stripes are drawn for the coded pack's razor-thin top
+             edge; on the scan the whole folded shoulder classifies as top, so
+             the strip stretches into a murky band. The real pack's shoulders
+             are plain field colour, so paint them that. */
+          if(i===2||i===3){
+            const cv=canv(8,8), x2=cv.getContext('2d');
+            x2.fillStyle=CF; x2.fillRect(0,0,8,8);
+            const t=new THREE.CanvasTexture(cv); t.colorSpace=THREE.SRGBColorSpace;
+            c.map=t;
+          }
           return c;
         });
       } else if(o.material&&o.material.map){
