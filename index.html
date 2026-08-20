@@ -1492,7 +1492,12 @@ function drawSide(){
   x.ellipse(SWIN.cx,SWIN.cy,SWIN.rx,SWIN.ry,0,0,Math.PI*2); x.stroke();
   x.restore();
   /* mark and vertical lockup, printed over the film */
-  drawLogo(x,SOVAL.cx,SOVAL.cy,SOVAL.w);
+  /* On the real pack the wordmark runs up the gusset rather than sitting
+     upright, which is what the scan's own artwork shows. The type beside it is
+     already turned by sideType, so the mark has to turn with it. */
+  x.save(); x.translate(SOVAL.cx,SOVAL.cy); x.rotate(-Math.PI/2);
+  drawLogo(x,0,0,SOVAL.w);
+  x.restore();
   x.fillStyle=CR; sideType(x);
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4; return t;
 }
@@ -1644,7 +1649,9 @@ function drawSideAlpha(){
     x.fillStyle='#000'; x.beginPath();
     x.ellipse(SWIN.cx,SWIN.cy,SWIN.rx-6,SWIN.ry-6,0,0,Math.PI*2); x.fill();
     x.fillStyle='#fff';                           /* the mark is printed over the window */
-    drawLogoSil(x,SOVAL.cx,SOVAL.cy,SOVAL.w);
+    x.save(); x.translate(SOVAL.cx,SOVAL.cy); x.rotate(-Math.PI/2);
+    drawLogoSil(x,0,0,SOVAL.w);
+    x.restore();   /* the die-cut mask has to turn with the mark */
     sideType(x);
   });
 }
