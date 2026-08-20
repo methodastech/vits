@@ -1,0 +1,292 @@
+{
+  "brand": {
+    "logo": "assets/vits-logo.png",
+    "name": "Vit's Noodles",
+    "legal": "VIT Makanan (K.L.) Sdn. Bhd.",
+    "city": "Kuala Lumpur, Malaysia"
+  },
+  "hero": {
+    "scrollCueLong": ", the pack cooks itself",
+    "callouts": [
+      {
+        "title": "The wrapper Malaysia knows.",
+        "body": "Yellow field, red band. 1 glance finds it on any shelf."
+      },
+      {
+        "title": "The noodle window.",
+        "body": "You see the 5 cakes before you buy. Nothing hidden."
+      },
+      {
+        "title": "The phoenix mark.",
+        "body": "On every pack since the beginning."
+      },
+      {
+        "title": "A 3 line recipe.",
+        "body": "Wheat flour, palm oil, salt."
+      },
+      {
+        "title": "1 pack, 5 meals.",
+        "body": "The value engine of the whole range."
+      }
+    ],
+    "rangeSub": "Five lines from one factory. The plain yellow pack Malaysia cooks at home, and the seasoned range that travels.",
+    "line1a": "The",
+    "line1b": "Yellow Pack",
+    "scrollCue": "Scroll",
+    "jumpLabel": "Explore the journey",
+    "eyebrow": "Vit's Noodles · since 1975 · Kuala Lumpur",
+    "lede": "Since 1975, one factory in Kuala Lumpur has made the noodle Malaysians reach for without thinking. The yellow pack that sits in the cupboard, the one your mother bought, still made to the recipe the family started with. Today it feeds more than 20 markets and has not changed a thing.",
+    "rangeTitle": "Our best sellers",
+    "line2": "Malaysians",
+    "stats": [
+      {
+        "value": "350g",
+        "label": "5 cakes, 1 pack"
+      },
+      {
+        "value": "1980",
+        "label": "halal certified, JAKIM"
+      },
+      {
+        "value": "3 min",
+        "label": "flour, oil, salt, done"
+      }
+    ],
+    "line3": "grew up with"
+  },
+  "pack": {
+    "fonts": {
+      "family": "Inter"
+    },
+    "colours": {
+      "field": "#767044",
+      "red": "#E30613",
+      "redDeep": "#C1121F",
+      "ink": "#1A1A1A"
+    },
+    "back": {
+      "heading": "COOKING INSTRUCTIONS",
+      "subheading": "CARA MEMASAK · 烹調方法",
+      "steps": [
+        {
+          "no": "1",
+          "en": "Boil 400ml of water in a pot.",
+          "ms": "Didihkan 400ml air."
+        },
+        {
+          "no": "2",
+          "en": "Add the noodle cake, cook 3 minutes.",
+          "ms": "Masukkan mi, masak 3 minit."
+        },
+        {
+          "no": "3",
+          "en": "Drain, season to taste, serve hot.",
+          "ms": "Tos, perasakan, hidang panas."
+        }
+      ],
+      "ingredientsHeading": "INGREDIENTS / RAMUAN",
+      "ingredients": "Wheat flour, palm oil, salt, mineral salts.",
+      "manufacturer": "Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur, Malaysia.",
+      "barcode": "9 555555 123456"
+    },
+    "variety": {
+      "en": "INSTANT NOODLES",
+      "zh": "快熟麵",
+      "ms": "MI SEGERA"
+    },
+    "mark": {
+      "image": "assets/vits-logo.png",
+      "chinese": "唯一麵"
+    },
+    "count": {
+      "prefix": "Mini",
+      "prefixSmall": "PACK",
+      "number": "5",
+      "unit1": "Cekas",
+      "unit2": "&",
+      "unit3": "Kenyang"
+    },
+    "_note": "Drives the real-time 3D packaging artwork. Text, colours and figures are all live fields.",
+    "netWeight": {
+      "line1": "Net Weight /",
+      "line2": "Berat Bersih / 淨重:",
+      "value": "350g (12.5oz)"
+    },
+    "sealRepeat": "Vit's",
+    "claim": {
+      "en": "Lebih Kenyal, Lebih Sedap!",
+      "zh": "更爽更香！"
+    },
+    "halal": {
+      "ring": "MALAYSIA",
+      "ringArabic": "ماليزيا",
+      "centreArabic": "حلال",
+      "centreLatin": "HALAL",
+      "certLine1": "MS 1500 : 2009",
+      "certLine2": "1 045-12/2012-2004"
+    }
+  },
+  "story": {
+    "kicker": "01 · The story",
+    "heading1": "51 years,",
+    "heading2": "1 family recipe",
+    "lede": "Before the brand, there was the factory. Vit Makanan (K.L.) Sdn. Bhd. has made noodles in Kuala Lumpur since 1975, halal certified since 1980, and quietly feeds a country that knows the yellow pack by sight.",
+    "tiles": [
+      {
+        "year": "1975",
+        "body": "The family starts making noodles in Kuala Lumpur. The phoenix goes on the first wrapper.",
+        "flag": "",
+        "image": "assets/journey-1975.jpg"
+      },
+      {
+        "year": "1980",
+        "body": "Halal certified by JAKIM. 46 years unbroken, with preferential access across the Gulf.",
+        "flag": "",
+        "image": "assets/journey-1980.jpg"
+      },
+      {
+        "year": "70%",
+        "body": "Of revenue is the Malaysian plain noodle base. The home market is served first, always.",
+        "flag": "",
+        "image": "assets/journey-70pct.jpg"
+      },
+      {
+        "year": "30 years",
+        "body": "Of export experience across dozens of markets.",
+        "flag": "Exact count being confirmed",
+        "image": "assets/journey-export.jpg"
+      },
+      {
+        "year": "4 shows",
+        "body": "A year on the world circuit. Dubai first, then the United States, Bangkok and the UK.",
+        "flag": "",
+        "image": "assets/journey-shows.jpg"
+      }
+    ],
+    "footNote": "Dates as published by Vit's. Final verification before anything goes to print or page.",
+    "introImage": "assets/journey-factory.jpg"
+  },
+  "trade": {
+    "certChips": [
+      "JAKIM Halal · since 1980",
+      "FSSC 22000",
+      "HACCP",
+      "GMP",
+      "ISO 22000"
+    ],
+    "cartonCaption": "The real carton, as it ships. OEM, private label and bulk, from Kuala Lumpur to 20+ markets.",
+    "checks": [
+      {
+        "no": "01",
+        "icon": "formats",
+        "title": "Formats",
+        "body": "Pillow packs, mini packs, zip packs, air-dried kraft, cup on request. Retail 4-packs to 700g economy family packs.",
+        "flag": ""
+      },
+      {
+        "no": "02",
+        "icon": "shelf",
+        "title": "Shelf life",
+        "body": "Fried and air-dried lines with export-grade shelf life, stated per SKU on the specification sheet.",
+        "flag": ""
+      },
+      {
+        "no": "03",
+        "icon": "cert",
+        "title": "Certifications",
+        "body": "FSSC 22000, HACCP, GMP, ISO 22000, and JAKIM halal held since 1980.",
+        "flag": ""
+      },
+      {
+        "no": "05",
+        "icon": "custom",
+        "title": "Customisation",
+        "body": "Your recipe or ours. Seasoning development, your label, your language, your compliance.",
+        "flag": ""
+      }
+    ],
+    "heading1": "Seasoned noodles,",
+    "cta": {
+      "label": "Talk to the trade desk",
+      "href": "#trade-form"
+    },
+    "heading2": "made to your",
+    "heading3": "recipe.",
+    "kicker": "03 · For trade buyers",
+    "cartonImages": [
+      "assets/oem-pallets.jpg",
+      "assets/oem-loading.jpg",
+      "assets/oem-line.jpg",
+      "assets/oem-qc.jpg"
+    ],
+    "lede": "Buyers open with 1 question: can you create a taste like Buldak, like Indomie. The answer is the factory itself. 51 years of noodle mastery, a seasoning kitchen that speaks curry, tom yam, rendang and beyond, and a line that runs your recipe under your label."
+  },
+  "range": {
+    "kicker": "04 · The range",
+    "items": [
+      {
+        "body": "5 cakes, 350 grams, 1 decision. The pack that built the company and still anchors the Malaysian kitchen.",
+        "metaBValue": "Plain, yours to season",
+        "line": "The OG · Mini Pack",
+        "metaAValue": "350g · 5 cakes",
+        "use3D": false,
+        "title": "The Mini Pack",
+        "image": "assets/sku-mini-pack.png",
+        "metaA": "Weight",
+        "metaB": "Character"
+      },
+      {
+        "body": "The premium line: white curry, asam laksa and Hokkien mee, cooked from paste, not powder.",
+        "metaBValue": "Traditional paste",
+        "line": "Premium · Taste of Penang",
+        "metaAValue": "Premium 4-pack",
+        "use3D": false,
+        "title": "Penang White Curry",
+        "image": "assets/sku-penang-curry.png",
+        "metaA": "Line",
+        "metaB": "Character"
+      },
+      {
+        "body": "Air dried, never fried, coloured by real tomato. The clean spec that wins world lists, made here for years.",
+        "metaBValue": "Real tomato",
+        "line": "Healthy Series · Air Dried",
+        "metaAValue": "Air dried, trans-fat-free",
+        "use3D": false,
+        "title": "Mi Kering Tomato",
+        "image": "assets/sku-airdried-tomato.png",
+        "metaA": "Process",
+        "metaB": "Colour from"
+      },
+      {
+        "body": "Spinach in the noodle, not on the label. High fibre, air dried, the quiet pride of the plant.",
+        "metaBValue": "Real spinach",
+        "line": "Healthy Series · Air Dried",
+        "metaAValue": "Air dried, high fibre",
+        "use3D": false,
+        "title": "Mi Kering Bayam",
+        "image": "assets/sku-airdried-spinach.png",
+        "metaA": "Process",
+        "metaB": "Colour from"
+      },
+      {
+        "body": "MIFT Gold Award for Product Innovation 2025. Proof the seasoning kitchen can leave Malaysia and land.",
+        "metaBValue": "Creamy, zip pack",
+        "line": "Italian Series · Awarded",
+        "metaAValue": "MIFT Gold, 2025",
+        "use3D": false,
+        "title": "Mi Goreng Carbonara",
+        "image": "assets/sku-carbonara.png",
+        "metaA": "Award",
+        "metaB": "Character"
+      }
+    ]
+  },
+  "footer": {
+    "address": "Lot 126, Jalan Taman Industri Integrasi Rawang 1/2, Taman Industri Integrasi Rawang, 48000 Rawang Selangor, Malaysia.",
+    "phone": "Tel: +603-6093 3999 / Fax: +603-6093 3888/222",
+    "email": "Email: vit@vit.com.my",
+    "note": "Vit's Noodles · VIT Makanan (K.L.) Sdn. Bhd. · Kuala Lumpur, Malaysia",
+    "demo": "Demo by Brand Method · Aug 2026 · wrapper artwork simplified for the demo",
+    "credit": "Ramen model: \"Classic Ramen\" by Polypus_yum, CC BY 4.0"
+  }
+}

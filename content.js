@@ -63,10 +63,16 @@
     });
   }
 
+  /* Each prototype owns its content file, so editing one cannot disturb another.
+     The page names its own via data-content on the script tag; prototype 1 keeps
+     the original name, so nothing has to change there. */
+  var SRC = (document.currentScript &&
+             document.currentScript.getAttribute('data-content')) || 'content.json';
+
   /* Loaded before the 3D module runs, so the pack can draw from it on first paint. */
-  window.VITS_READY = fetch('content.json', { cache: 'no-cache' })
+  window.VITS_READY = fetch(SRC, { cache: 'no-cache' })
     .then(function (r) {
-      if (!r.ok) throw new Error('content.json ' + r.status);
+      if (!r.ok) throw new Error(SRC + ' ' + r.status);
       return r.json();
     })
     .then(function (data) {

@@ -28,11 +28,10 @@ collections:
   - name: "site"
     label: "Website content"
     files:
-      # ─────────────────────────────────────────────────────────────
       - name: "content"
-        label: "Prototype — all content"
+        label: "Prototype 1"
         file: "content.json"
-        description: "Every headline, paragraph, stat, image and the 3D packaging artwork."
+        description: "Full 3D scroll build. Carries the content no prototype uses yet, so it is not lost."
         fields:
 
           - label: "Brand"
@@ -44,24 +43,6 @@ collections:
               - { label: "Brand name", name: "name", widget: "string" }
               - { label: "Legal entity", name: "legal", widget: "string" }
               - { label: "City", name: "city", widget: "string" }
-
-          - label: "Navigation"
-            name: "nav"
-            widget: "object"
-            collapsed: true
-            fields:
-              - label: "Links"
-                name: "links"
-                widget: "list"
-                fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Anchor", name: "href", widget: "string" }
-              - label: "Button"
-                name: "cta"
-                widget: "object"
-                fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Anchor", name: "href", widget: "string" }
 
           - label: "Hero"
             name: "hero"
@@ -89,6 +70,7 @@ collections:
                   - { label: "Body", name: "body", widget: "text" }
 
           # ── THE 3D PACKAGING ────────────────────────────────────────
+
           - label: "3D packaging artwork"
             name: "pack"
             widget: "object"
@@ -209,7 +191,143 @@ collections:
                   - { label: "Photo", name: "image", widget: "image", required: false, hint: "Shown beside this milestone on the home page journey" }
               - { label: "Foot note", name: "footNote", widget: "text" }
 
-          - label: "Credentials strip"
+          - label: "Trade / OEM"
+            name: "trade"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading line 1", name: "heading1", widget: "string" }
+              - { label: "Heading line 2", name: "heading2", widget: "string" }
+              - { label: "Heading line 3", name: "heading3", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Carton caption", name: "cartonCaption", widget: "text" }
+              - { label: "Carton images", name: "cartonImages", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+              - label: "The five buyer checks"
+                name: "checks"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "no", widget: "string" }
+                  - label: "Icon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["formats", "shelf", "cert", "tiers", "custom"]
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Red gate flag", name: "flag", widget: "string", required: false }
+              - { label: "Certification chips", name: "certChips", widget: "list", field: { label: "Chip", name: "chip", widget: "string" } }
+              - label: "Button"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Anchor", name: "href", widget: "string" }
+
+          - label: "The range"
+            name: "range"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - label: "Specimens"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Eyebrow line", name: "line", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Meta A label", name: "metaA", widget: "string" }
+                  - { label: "Meta A value", name: "metaAValue", widget: "string" }
+                  - { label: "Meta B label", name: "metaB", widget: "string" }
+                  - { label: "Meta B value", name: "metaBValue", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: "Use the live 3D pack instead", name: "use3D", widget: "boolean", default: false }
+
+          # Scene 6 on Prototype 1. Had no fields at all, which meant Decap
+          # deleted this block from content.json on every save.
+          - label: "Bowl reel"
+            name: "reel"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Note", name: "_note", widget: "hidden" }
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string", hint: "Inline <br> and <em> are allowed here" }
+              - { label: "Body", name: "body", widget: "text" }
+
+          - label: "About page — not on any prototype yet"
+            name: "about"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading line 1", name: "h1", widget: "string" }
+              - { label: "Heading line 2", name: "h2", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - label: "Timeline"
+                name: "timeline"
+                widget: "object"
+                fields:
+                  - { label: "Kicker", name: "kicker", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+              - label: "Facts"
+                name: "facts"
+                widget: "list"
+                fields:
+                  - { label: "Figure", name: "n", widget: "string" }
+                  - { label: "Caption", name: "s", widget: "string" }
+              - label: "Factory"
+                name: "factory"
+                widget: "object"
+                fields:
+                  - { label: "Kicker", name: "kicker", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Body 2", name: "body2", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+              - label: "Standards"
+                name: "standards"
+                widget: "object"
+                fields:
+                  - { label: "Kicker", name: "kicker", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Note", name: "note", widget: "text" }
+              - label: "Call to action"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Button label", name: "label", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Note", name: "note", widget: "string" }
+              - { label: "Demo line", name: "demo", widget: "string" }
+              - { label: "Model credit (CC BY — must stay)", name: "credit", widget: "string" }
+
+          - label: "Navigation — not on any prototype yet"
+            name: "nav"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Anchor", name: "href", widget: "string" }
+              - label: "Button"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Anchor", name: "href", widget: "string" }
+
+          - label: "Credentials strip — not on any prototype yet"
             name: "credentials"
             widget: "object"
             collapsed: true
@@ -225,6 +343,119 @@ collections:
                     options: ["halal", "shield", "clip", "plant", "globe", "cert"]
                   - { label: "Name", name: "name", widget: "string" }
                   - { label: "Sub label", name: "sub", widget: "string" }
+
+          - label: "The cook — not on any prototype yet"
+            name: "cook"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Display line 1", name: "display1", widget: "string" }
+              - { label: "Display line 2", name: "display2", widget: "string" }
+              - label: "Captions"
+                name: "captions"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Sub", name: "sub", widget: "string" }
+
+          - label: "Finale / enquiry — not on any prototype yet"
+            name: "finale"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading line 1", name: "heading1", widget: "string" }
+              - { label: "Heading line 2 (red)", name: "heading2", widget: "string" }
+              - { label: "Heading line 3", name: "heading3", widget: "string" }
+              - label: "Exhibition calendar"
+                name: "shows"
+                widget: "list"
+                fields:
+                  - { label: "Date", name: "date", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Detail", name: "detail", widget: "string" }
+              - { label: "Skip the queue line", name: "skipLine", widget: "text" }
+              - label: "Enquiry form"
+                name: "form"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Form title", name: "title", widget: "string" }
+                  - { label: "Name label", name: "nameLabel", widget: "string" }
+                  - { label: "Name placeholder", name: "namePlaceholder", widget: "string" }
+                  - { label: "Company label", name: "companyLabel", widget: "string" }
+                  - { label: "Company placeholder", name: "companyPlaceholder", widget: "string" }
+                  - { label: "Market label", name: "marketLabel", widget: "string" }
+                  - { label: "Market placeholder", name: "marketPlaceholder", widget: "string" }
+                  - { label: "Interest label", name: "interestLabel", widget: "string" }
+                  - { label: "Interest options", name: "interestOptions", widget: "list", field: { label: "Option", name: "opt", widget: "string" } }
+                  - { label: "Message label", name: "messageLabel", widget: "string" }
+                  - { label: "Message placeholder", name: "messagePlaceholder", widget: "string" }
+                  - { label: "Submit button", name: "submit", widget: "string" }
+                  - { label: "Note under form", name: "note", widget: "text" }
+
+      # ─────────────────────────────────────────────────────────────
+      - name: "content2"
+        label: "Prototype 2"
+        file: "content2.json"
+        description: "No 3D pack on this prototype."
+        fields:
+
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Brand name", name: "name", widget: "string" }
+              - { label: "Legal entity", name: "legal", widget: "string" }
+              - { label: "City", name: "city", widget: "string" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline word 1", name: "line1a", widget: "string", hint: "Sits on its own line on Prototype 2" }
+              - { label: "Headline line 1", name: "line1b", widget: "string" }
+              - { label: "Headline line 2", name: "line2", widget: "string" }
+              - { label: "Headline line 3", name: "line3", widget: "string", required: false }
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Scroll cue", name: "scrollCue", widget: "string" }
+              - { label: "Scroll cue (long)", name: "scrollCueLong", widget: "string" }
+              - label: "Stat chips"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Figure", name: "value", widget: "string" }
+                  - { label: "Caption", name: "label", widget: "string" }
+              - label: "Callouts"
+                name: "callouts"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+
+          # ── THE 3D PACKAGING ────────────────────────────────────────
+
+          - label: "Story"
+            name: "story"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading line 1", name: "heading1", widget: "string" }
+              - { label: "Heading line 2 (italic)", name: "heading2", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - label: "Fact tiles"
+                name: "tiles"
+                widget: "list"
+                fields:
+                  - { label: "Figure", name: "year", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Red gate flag", name: "flag", widget: "string", required: false }
+                  - { label: "Photo", name: "image", widget: "image", required: false, hint: "Shown beside this milestone on the home page journey" }
+              - { label: "Foot note", name: "footNote", widget: "text" }
 
           - label: "Trade / OEM"
             name: "trade"
@@ -278,55 +509,230 @@ collections:
                   - { label: "Image", name: "image", widget: "image", required: false }
                   - { label: "Use the live 3D pack instead", name: "use3D", widget: "boolean", default: false }
 
-          - label: "The cook"
-            name: "cook"
+          - label: "Footer"
+            name: "footer"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Display line 1", name: "display1", widget: "string" }
-              - { label: "Display line 2", name: "display2", widget: "string" }
-              - label: "Captions"
-                name: "captions"
+              - { label: "Note", name: "note", widget: "string" }
+              - { label: "Demo line", name: "demo", widget: "string" }
+              - { label: "Model credit (CC BY — must stay)", name: "credit", widget: "string" }
+
+      # ─────────────────────────────────────────────────────────────
+      - name: "content3"
+        label: "Prototype 3"
+        file: "content3.json"
+        description: "Shop-style build with the 3D pack."
+        fields:
+
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Brand name", name: "name", widget: "string" }
+              - { label: "Legal entity", name: "legal", widget: "string" }
+              - { label: "City", name: "city", widget: "string" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline word 1", name: "line1a", widget: "string", hint: "Sits on its own line on Prototype 2" }
+              - { label: "Headline line 1", name: "line1b", widget: "string" }
+              - { label: "Headline line 2", name: "line2", widget: "string" }
+              - { label: "Headline line 3", name: "line3", widget: "string", required: false }
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Scroll cue", name: "scrollCue", widget: "string" }
+              - { label: "Scroll cue (long)", name: "scrollCueLong", widget: "string" }
+              - label: "Stat chips"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Figure", name: "value", widget: "string" }
+                  - { label: "Caption", name: "label", widget: "string" }
+              - label: "Callouts"
+                name: "callouts"
                 widget: "list"
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Sub", name: "sub", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
 
-          - label: "Finale / enquiry"
-            name: "finale"
+          # ── THE 3D PACKAGING ────────────────────────────────────────
+
+          - label: "3D packaging artwork"
+            name: "pack"
+            widget: "object"
+            collapsed: true
+            summary: "Everything printed on the 3D pack"
+            fields:
+              - { label: "Note", name: "_note", widget: "hidden" }
+              - label: "Colours"
+                name: "colours"
+                widget: "object"
+                fields:
+                  - { label: "Field (yellow)", name: "field", widget: "color" }
+                  - { label: "Red", name: "red", widget: "color" }
+                  - { label: "Deep red", name: "redDeep", widget: "color" }
+                  - { label: "Ink", name: "ink", widget: "color" }
+              # A list rather than a free-text box on purpose: canvas does not
+              # report an unknown font, it silently draws the default sans. A
+              # typed-in face would look like the CMS was broken.
+              - label: "Typeface"
+                name: "fonts"
+                widget: "object"
+                fields:
+                  - label: "Pack typeface"
+                    name: "family"
+                    widget: "select"
+                    default: "Inter"
+                    hint: "Sets every word printed on the 3D pack. The preview reloads to redraw it."
+                    options:
+                      - "Inter"
+                      - "Archivo"
+                      - "Montserrat"
+                      - "Poppins"
+                      - "Figtree"
+                      - "Barlow Condensed"
+              - { label: "Repeating seal word", name: "sealRepeat", widget: "string" }
+              - label: "Ribbon claim"
+                name: "claim"
+                widget: "object"
+                fields:
+                  - { label: "English / Malay", name: "en", widget: "string" }
+                  - { label: "Chinese", name: "zh", widget: "string" }
+              - label: "Vit's mark"
+                name: "mark"
+                widget: "object"
+                fields:
+                  - { label: "Logo artwork", name: "image", widget: "image" }
+                  - { label: "Chinese lockup", name: "chinese", widget: "string" }
+              - label: "Variety (window type)"
+                name: "variety"
+                widget: "object"
+                fields:
+                  - { label: "English", name: "en", widget: "string" }
+                  - { label: "Chinese", name: "zh", widget: "string" }
+                  - { label: "Malay", name: "ms", widget: "string" }
+              - label: "Cake count block"
+                name: "count"
+                widget: "object"
+                fields:
+                  - { label: "Prefix", name: "prefix", widget: "string" }
+                  - { label: "Prefix chip", name: "prefixSmall", widget: "string" }
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Line 1", name: "unit1", widget: "string" }
+                  - { label: "Line 2", name: "unit2", widget: "string" }
+                  - { label: "Line 3", name: "unit3", widget: "string" }
+              - label: "Net weight"
+                name: "netWeight"
+                widget: "object"
+                fields:
+                  - { label: "Line 1", name: "line1", widget: "string" }
+                  - { label: "Line 2", name: "line2", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+              - label: "Halal mark"
+                name: "halal"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Ring text", name: "ring", widget: "string" }
+                  - { label: "Ring text (Arabic)", name: "ringArabic", widget: "string" }
+                  - { label: "Centre (Arabic)", name: "centreArabic", widget: "string" }
+                  - { label: "Centre (Latin)", name: "centreLatin", widget: "string" }
+                  - { label: "Cert line 1", name: "certLine1", widget: "string" }
+                  - { label: "Cert line 2", name: "certLine2", widget: "string" }
+              - label: "Back panel"
+                name: "back"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Subheading", name: "subheading", widget: "string" }
+                  - label: "Cooking steps"
+                    name: "steps"
+                    widget: "list"
+                    fields:
+                      - { label: "No.", name: "no", widget: "string" }
+                      - { label: "English", name: "en", widget: "string" }
+                      - { label: "Malay", name: "ms", widget: "string" }
+                  - { label: "Ingredients heading", name: "ingredientsHeading", widget: "string" }
+                  - { label: "Ingredients", name: "ingredients", widget: "text" }
+                  - { label: "Manufacturer", name: "manufacturer", widget: "text" }
+                  - { label: "Barcode number", name: "barcode", widget: "string" }
+
+          - label: "Story"
+            name: "story"
             widget: "object"
             collapsed: true
             fields:
               - { label: "Kicker", name: "kicker", widget: "string" }
               - { label: "Heading line 1", name: "heading1", widget: "string" }
-              - { label: "Heading line 2 (red)", name: "heading2", widget: "string" }
-              - { label: "Heading line 3", name: "heading3", widget: "string" }
-              - label: "Exhibition calendar"
-                name: "shows"
+              - { label: "Heading line 2 (italic)", name: "heading2", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - label: "Fact tiles"
+                name: "tiles"
                 widget: "list"
                 fields:
-                  - { label: "Date", name: "date", widget: "string" }
-                  - { label: "Name", name: "name", widget: "string" }
-                  - { label: "Detail", name: "detail", widget: "string" }
-              - { label: "Skip the queue line", name: "skipLine", widget: "text" }
-              - label: "Enquiry form"
-                name: "form"
-                widget: "object"
-                collapsed: true
+                  - { label: "Figure", name: "year", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Red gate flag", name: "flag", widget: "string", required: false }
+                  - { label: "Photo", name: "image", widget: "image", required: false, hint: "Shown beside this milestone on the home page journey" }
+              - { label: "Foot note", name: "footNote", widget: "text" }
+
+          - label: "Trade / OEM"
+            name: "trade"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading line 1", name: "heading1", widget: "string" }
+              - { label: "Heading line 2", name: "heading2", widget: "string" }
+              - { label: "Heading line 3", name: "heading3", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Carton caption", name: "cartonCaption", widget: "text" }
+              - { label: "Carton images", name: "cartonImages", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+              - label: "The five buyer checks"
+                name: "checks"
+                widget: "list"
                 fields:
-                  - { label: "Form title", name: "title", widget: "string" }
-                  - { label: "Name label", name: "nameLabel", widget: "string" }
-                  - { label: "Name placeholder", name: "namePlaceholder", widget: "string" }
-                  - { label: "Company label", name: "companyLabel", widget: "string" }
-                  - { label: "Company placeholder", name: "companyPlaceholder", widget: "string" }
-                  - { label: "Market label", name: "marketLabel", widget: "string" }
-                  - { label: "Market placeholder", name: "marketPlaceholder", widget: "string" }
-                  - { label: "Interest label", name: "interestLabel", widget: "string" }
-                  - { label: "Interest options", name: "interestOptions", widget: "list", field: { label: "Option", name: "opt", widget: "string" } }
-                  - { label: "Message label", name: "messageLabel", widget: "string" }
-                  - { label: "Message placeholder", name: "messagePlaceholder", widget: "string" }
-                  - { label: "Submit button", name: "submit", widget: "string" }
-                  - { label: "Note under form", name: "note", widget: "text" }
+                  - { label: "Number", name: "no", widget: "string" }
+                  - label: "Icon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["formats", "shelf", "cert", "tiers", "custom"]
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Red gate flag", name: "flag", widget: "string", required: false }
+              - { label: "Certification chips", name: "certChips", widget: "list", field: { label: "Chip", name: "chip", widget: "string" } }
+              - label: "Button"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Anchor", name: "href", widget: "string" }
+
+          - label: "The range"
+            name: "range"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - label: "Specimens"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Eyebrow line", name: "line", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - { label: "Meta A label", name: "metaA", widget: "string" }
+                  - { label: "Meta A value", name: "metaAValue", widget: "string" }
+                  - { label: "Meta B label", name: "metaB", widget: "string" }
+                  - { label: "Meta B value", name: "metaBValue", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: "Use the live 3D pack instead", name: "use3D", widget: "boolean", default: false }
 
           - label: "Footer"
             name: "footer"
@@ -336,3 +742,4 @@ collections:
               - { label: "Note", name: "note", widget: "string" }
               - { label: "Demo line", name: "demo", widget: "string" }
               - { label: "Model credit (CC BY — must stay)", name: "credit", widget: "string" }
+
