@@ -47,6 +47,14 @@
     return null;
   }
 
+  /* The three prototypes all read this one content.json. */
+  var PROTOS = [
+    { label: 'Prototype 1', src: '/index.html' },
+    { label: 'Prototype 2', src: '/index2.html' },
+    { label: 'Prototype 3', src: '/index3.html' }
+  ];
+  var PROTO_KEY = 'vits:previewPrototype';
+
   var Preview = component({
     componentDidMount: function () { this.sync(); },
     componentDidUpdate: function () { this.sync(); },
@@ -76,15 +84,60 @@
       win.postMessage({ type: 'vits:reveal', path: changed }, window.location.origin);
     },
 
+    /* One content.json drives all three prototypes, so the editor needs to see
+       their words land in whichever one is being shown. The choice is kept in
+       localStorage rather than the entry, because it is a view preference and
+       has no business in the client's content file. */
+    pick: function (i) {
+      if (i === this.proto) return;
+      this.proto = i;
+      this.ready = false;      /* block posts until the new page has loaded */
+      this.last = null;        /* a switch is not an edit; do not ring anything */
+      try { localStorage.setItem(PROTO_KEY, String(i)); } catch (e) {}
+      this.forceUpdate();
+    },
+
     render: function () {
       var self = this;
-      return h('iframe', {
-        src: '/',
-        title: 'Live preview',
-        ref: function (el) { self.frame = el; },
-        onLoad: function () { self.ready = true; self.last = null; self.sync(); },
-        style: { display: 'block', width: '100%', height: '100vh', border: 0, background: '#fff' }
+      if (this.proto == null) {
+        var saved = 0;
+        try { saved = parseInt(localStorage.getItem(PROTO_KEY), 10) || 0; } catch (e) {}
+        this.proto = (saved >= 0 && saved < PROTOS.length) ? saved : 0;
+      }
+
+      var tabs = PROTOS.map(function (p, i) {
+        var on = i === self.proto;
+        return h('button', {
+          key: p.src,
+          type: 'button',
+          onClick: function () { self.pick(i); },
+          style: {
+            font: '600 12px/1 system-ui,sans-serif', letterSpacing: '.02em',
+            padding: '7px 13px', marginRight: 6, cursor: 'pointer',
+            borderRadius: 999, border: '1px solid ' + (on ? '#E30613' : '#d6cec2'),
+            background: on ? '#E30613' : '#fff', color: on ? '#fff' : '#5A4F45'
+          }
+        }, p.label);
       });
+
+      return h('div', { style: { display: 'flex', flexDirection: 'column', height: '100vh' } }, [
+        h('div', {
+          key: 'bar',
+          style: {
+            flex: '0 0 auto', padding: '9px 12px', background: '#FBF3E2',
+            borderBottom: '1px solid #e6dcc9', whiteSpace: 'nowrap',
+            overflowX: 'auto'
+          }
+        }, tabs),
+        h('iframe', {
+          key: 'frame',
+          src: PROTOS[this.proto].src,
+          title: 'Live preview',
+          ref: function (el) { self.frame = el; },
+          onLoad: function () { self.ready = true; self.last = null; self.sync(); },
+          style: { flex: '1 1 auto', width: '100%', border: 0, background: '#fff' }
+        })
+      ]);
     }
   });
 
