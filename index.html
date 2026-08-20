@@ -1465,7 +1465,7 @@ const SWIN={cx:205,cy:596,rx:150,ry:330};
    side at the panel's vertical centre, both reading bottom-to-top. */
 const SOVAL={cx:176,cy:596,w:224};
 function sideType(x){
-  x.save(); x.translate(322,596); x.rotate(-Math.PI/2); x.textAlign='center';
+  x.save(); x.translate(322,596); x.rotate(Math.PI/2); x.textAlign='center';
   x.font='700 34px '+PF; x.fillText(pk('variety.en','INSTANT NOODLES'),0,-22);
   x.font='700 34px "Noto Sans SC","Microsoft YaHei",sans-serif'; x.fillText(pk('variety.zh','快熟麵'),0,16);
   x.font='700 30px '+PF; x.fillText(pk('variety.ms','MI SEGERA'),0,52);
@@ -1497,7 +1497,7 @@ function drawSide(){
   /* On the real pack the wordmark runs up the gusset rather than sitting
      upright, which is what the scan's own artwork shows. The type beside it is
      already turned by sideType, so the mark has to turn with it. */
-  x.save(); x.translate(SOVAL.cx,SOVAL.cy); x.rotate(-Math.PI/2);
+  x.save(); x.translate(SOVAL.cx,SOVAL.cy); x.rotate(Math.PI/2);
   drawLogo(x,0,0,SOVAL.w);
   x.restore();
   x.fillStyle=CR; sideType(x);
@@ -1651,7 +1651,7 @@ function drawSideAlpha(){
     x.fillStyle='#000'; x.beginPath();
     x.ellipse(SWIN.cx,SWIN.cy,SWIN.rx-6,SWIN.ry-6,0,0,Math.PI*2); x.fill();
     x.fillStyle='#fff';                           /* the mark is printed over the window */
-    x.save(); x.translate(SOVAL.cx,SOVAL.cy); x.rotate(-Math.PI/2);
+    x.save(); x.translate(SOVAL.cx,SOVAL.cy); x.rotate(Math.PI/2);
     drawLogoSil(x,0,0,SOVAL.w);
     x.restore();   /* the die-cut mask has to turn with the mark */
     sideType(x);
