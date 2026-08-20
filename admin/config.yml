@@ -10,6 +10,11 @@ backend:
   name: git-gateway
   branch: main
 
+# Local editing: when the page is served from localhost, Decap talks to
+# `npx decap-server` on :8081 and writes content.json straight to disk,
+# skipping git-gateway and Netlify Identity entirely. Ignored in production.
+local_backend: true
+
 # Uploaded images land here and are referenced as assets/...
 media_folder: "assets"
 public_folder: "assets"
@@ -97,6 +102,25 @@ collections:
                   - { label: "Red", name: "red", widget: "color" }
                   - { label: "Deep red", name: "redDeep", widget: "color" }
                   - { label: "Ink", name: "ink", widget: "color" }
+              # A list rather than a free-text box on purpose: canvas does not
+              # report an unknown font, it silently draws the default sans. A
+              # typed-in face would look like the CMS was broken.
+              - label: "Typeface"
+                name: "fonts"
+                widget: "object"
+                fields:
+                  - label: "Pack typeface"
+                    name: "family"
+                    widget: "select"
+                    default: "Inter"
+                    hint: "Sets every word printed on the 3D pack. The preview reloads to redraw it."
+                    options:
+                      - "Inter"
+                      - "Archivo"
+                      - "Montserrat"
+                      - "Poppins"
+                      - "Figtree"
+                      - "Barlow Condensed"
               - { label: "Repeating seal word", name: "sealRepeat", widget: "string" }
               - label: "Ribbon claim"
                 name: "claim"
