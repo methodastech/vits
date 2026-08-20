@@ -2442,11 +2442,80 @@ const _modelCache={};
    To have both, the GLBs need rebuilding through tools/pack-build.js, which
    box-projects one UV rect per panel so the coded textures drop straight on;
    that needs the source FBX files, which are not in this repo. */
-const USE_SCANNED_PACKS=false;
+const USE_SCANNED_PACKS=true;
+
+/* ------------------------------------------------------------------
+   Re-wrap a scanned pack in the live artwork.
+   The GLBs ship with their artwork baked into one JPEG on an organic
+   unwrap, so nothing on them could be driven by content. tools/pack-build.js
+   shows the way out: a carton is six flat panels, so a box projection per
+   panel is faithful enough. We classify each triangle by its dominant
+   normal, sort into the six BoxGeometry groups (+X,-X,+Y,-Y,+Z,-Z) and
+   project a fresh UV, which lets the coded pack's own material array drop
+   straight on. Scanned silhouette, CMS artwork.
+   ------------------------------------------------------------------ */
+function panelWrap(geo){
+  const g=geo.index?geo.toNonIndexed():geo;
+  const pos=g.attributes.position, nor=g.attributes.normal;
+  const tris=pos.count/3;
+
+  g.computeBoundingBox();
+  const bb=g.boundingBox, sz=new THREE.Vector3(); bb.getSize(sz);
+  const span=a=>Math.max(a,1e-6);
+
+  const id=new Array(tris);
+  for(let t=0;t<tris;t++){
+    let nx=0,ny=0,nz=0;
+    for(let k=0;k<3;k++){ const i=t*3+k; nx+=nor.getX(i); ny+=nor.getY(i); nz+=nor.getZ(i); }
+    const ax=Math.abs(nx), ay=Math.abs(ny), az=Math.abs(nz);
+    id[t] = (ax>=ay&&ax>=az) ? (nx>=0?0:1)
+          : (ay>=az)         ? (ny>=0?2:3)
+          :                    (nz>=0?4:5);
+  }
+
+  /* group the triangles so each panel is one contiguous run */
+  const order=Array.from({length:tris},(_,i)=>i).sort((a,b)=>id[a]-id[b]||a-b);
+  const src=pos.array, sn=nor.array;
+  const P=new Float32Array(tris*9), N=new Float32Array(tris*9), UV=new Float32Array(tris*6);
+  for(let o=0;o<tris;o++){
+    const t=order[o];
+    for(let k=0;k<3;k++){
+      const from=(t*3+k)*3, to=(o*3+k)*3;
+      P[to]=src[from]; P[to+1]=src[from+1]; P[to+2]=src[from+2];
+      N[to]=sn[from];  N[to+1]=sn[from+1];  N[to+2]=sn[from+2];
+      const x=P[to], y=P[to+1], z=P[to+2];
+      let u,v;
+      switch(id[t]){
+        case 0: u=(z-bb.min.z)/span(sz.z); v=(y-bb.min.y)/span(sz.y); break;  /* +X side  */
+        case 1: u=1-(z-bb.min.z)/span(sz.z); v=(y-bb.min.y)/span(sz.y); break;/* -X side  */
+        case 2: u=(x-bb.min.x)/span(sz.x); v=(z-bb.min.z)/span(sz.z); break;  /* +Y crimp */
+        case 3: u=(x-bb.min.x)/span(sz.x); v=1-(z-bb.min.z)/span(sz.z); break;/* -Y crimp */
+        case 4: u=(x-bb.min.x)/span(sz.x); v=(y-bb.min.y)/span(sz.y); break;  /* +Z front */
+        default:u=1-(x-bb.min.x)/span(sz.x); v=(y-bb.min.y)/span(sz.y);       /* -Z back, unmirrored */
+      }
+      const t2=(o*3+k)*2; UV[t2]=u; UV[t2+1]=v;
+    }
+  }
+
+  const out=new THREE.BufferGeometry();
+  out.setAttribute('position',new THREE.BufferAttribute(P,3));
+  out.setAttribute('normal',  new THREE.BufferAttribute(N,3));
+  out.setAttribute('uv',      new THREE.BufferAttribute(UV,2));
+  let run=0;
+  for(let o=0;o<tris;o++){
+    const cur=id[order[o]];
+    if(o===tris-1||id[order[o+1]]!==cur){ out.addGroup(run*3,(o-run+1)*3,cur); run=o+1; }
+  }
+  return out;
+}
 
 function swapInModel(group,sk){
   if(!USE_SCANNED_PACKS) return;
   if(!sk.model) return;
+  /* the coded pack about to be discarded already carries the six live
+     textures; keep them and wrap the scan in them */
+  const coded=group.children.find(c=>c.isMesh&&Array.isArray(c.material));
+  const liveMats=coded?coded.material:null;
   const apply=src=>{
     const inst=src.clone(true);
     const box=new THREE.Box3().setFromObject(inst);
@@ -2458,7 +2527,19 @@ function swapInModel(group,sk){
     inst.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
     inst.traverse(o=>{ if(o.isMesh){
       o.castShadow=false;
-      if(o.material&&o.material.map) o.material.map.anisotropy=Q.aniso;
+      if(liveMats){
+        /* baked artwork out, live artwork in. The coded materials carry a
+           die-cut alpha mask shaped to the coded silhouette; the scan already
+           has the right outline, so that mask would only punch holes in it. */
+        o.geometry=panelWrap(o.geometry);
+        o.material=liveMats.map(m=>{
+          const c=m.clone();            /* same live canvas textures, new flags */
+          c.alphaMap=null; c.alphaTest=0; c.transparent=false;
+          return c;
+        });
+      } else if(o.material&&o.material.map){
+        o.material.map.anisotropy=Q.aniso;
+      }
     }});
     /* drop the coded geometry only once the scan is ready to take its place */
     for(let i=group.children.length-1;i>=0;i--) group.remove(group.children[i]);
