@@ -82,6 +82,9 @@
       "redDeep": "#C1121F",
       "ink": "#1A1A1A"
     },
+    "fonts": {
+      "family": "Inter"
+    },
     "sealRepeat": "Vit's",
     "claim": {
       "en": "Lebih Kenyal, Lebih Sedap!",

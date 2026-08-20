@@ -9,6 +9,91 @@
 <body>
 <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
 <script>
+/* ============================================================
+   Live preview.
+   The default preview lists every field top to bottom, which tells an
+   editor nothing about where their words land. Instead we render the
+   real site in an iframe and post the draft into it on each keystroke;
+   content.js applies it through the same data-c bindings the live page
+   uses, so the preview IS the page. The field the editor just touched
+   is scrolled to and ringed, so there is never a hunt for the text.
+   ============================================================ */
+(function () {
+  var h = window.h || (window.React && window.React.createElement);
+  if (!window.CMS || !h) return;
+
+  function component(spec) {
+    if (window.createClass) return window.createClass(spec);
+    var R = window.React;
+    var C = function (props) { R.Component.call(this, props); };
+    C.prototype = Object.create(R.Component.prototype);
+    C.prototype.constructor = C;
+    Object.keys(spec).forEach(function (k) { C.prototype[k] = spec[k]; });
+    return C;
+  }
+
+  /* Dotted path of the first field that differs — the one being edited. */
+  function firstChange(a, b, prefix) {
+    if (a === b) return null;
+    if (a == null || b == null || typeof a !== 'object' || typeof b !== 'object') {
+      return prefix || null;
+    }
+    var keys = Object.keys(b);
+    for (var i = 0; i < keys.length; i++) {
+      var p = prefix ? prefix + '.' + keys[i] : keys[i];
+      var hit = firstChange(a[keys[i]], b[keys[i]], p);
+      if (hit) return hit;
+    }
+    return null;
+  }
+
+  var Preview = component({
+    componentDidMount: function () { this.sync(); },
+    componentDidUpdate: function () { this.sync(); },
+
+    sync: function () {
+      var self = this;
+      var win = this.frame && this.frame.contentWindow;
+      if (!win || !this.ready) return;
+      var data = this.props.entry.get('data').toJS();
+      win.postMessage({ type: 'vits:preview', data: data }, window.location.origin);
+      /* No previous snapshot means this is the first paint, not an edit. */
+      var changed = this.last ? firstChange(this.last, data) : null;
+      this.last = data;
+      if (!changed) return;
+
+      /* Page copy repaints from the message. The 3D pack cannot: it bakes its
+         colours, typeface and printed words into canvas textures once at
+         startup. So a pack edit needs a genuine reload — debounced, or every
+         keystroke in a pack field would restart the whole scene. */
+      if (changed.indexOf('pack.') === 0) {
+        clearTimeout(this.packTimer);
+        this.packTimer = setTimeout(function () {
+          if (self.frame) { self.ready = false; self.frame.contentWindow.location.reload(); }
+        }, 700);
+        return;
+      }
+      win.postMessage({ type: 'vits:reveal', path: changed }, window.location.origin);
+    },
+
+    render: function () {
+      var self = this;
+      return h('iframe', {
+        src: '/',
+        title: 'Live preview',
+        ref: function (el) { self.frame = el; },
+        onLoad: function () { self.ready = true; self.last = null; self.sync(); },
+        style: { display: 'block', width: '100%', height: '100vh', border: 0, background: '#fff' }
+      });
+    }
+  });
+
+  /* The pane is the whole viewport for the iframe; strip the default padding. */
+  CMS.registerPreviewStyle('html,body{margin:0;padding:0;overflow:hidden}', { raw: true });
+  CMS.registerPreviewTemplate('content', Preview);
+})();
+</script>
+<script>
 /* Netlify Identity: catch the invite/recovery token and open the login dialog,
    then hand off to the CMS once the user is confirmed. */
 if (window.netlifyIdentity) {
