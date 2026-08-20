@@ -91,6 +91,7 @@ collections:
             summary: "Everything printed on the 3D pack"
             fields:
               - { label: "Note", name: "_note", widget: "hidden" }
+              - { label: "Use scanned 3D packs", name: "useScans", widget: "boolean", default: true, hint: "On: photoreal scanned packs, artwork fixed. Off: packs drawn from the fields below, so this text appears on the 3D pack." }
               - label: "Colours"
                 name: "colours"
                 widget: "object"

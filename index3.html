@@ -2406,7 +2406,13 @@ const packA=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack); scA
    per-SKU fit and every position calculation untouched. */
 const _packLoader=new GLTFLoader();
 const _modelCache={};
+/* Scans replace the coded packs; set pack.useScans false in the CMS to keep the
+   coded ones instead. That is the whole difference between photoreal-but-fixed
+   and drawn-but-editable: the coded pack paints its artwork from content.json
+   every load, so its text is CMS-editable. A scan is baked pixels and is not. */
+const USE_SCANS = PACKC.useScans !== false;
 function swapInModel(group,sk){
+  if(!USE_SCANS) return;
   if(!sk.model) return;
   const apply=src=>{
     const inst=src.clone(true);

@@ -141,7 +141,8 @@
       "ingredients": "Wheat flour, palm oil, salt, mineral salts.",
       "manufacturer": "Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur, Malaysia.",
       "barcode": "9 555555 123456"
-    }
+    },
+    "useScans": true
   },
   "story": {
     "kicker": "01 · The story",
