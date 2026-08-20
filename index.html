@@ -1937,6 +1937,11 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(refreshPanels
     logoMask=m;
     refreshPanels();
   };
+  img.onerror=function(){
+    /* Without this the drawn Vit's oval quietly stands in and an uploaded
+       logo looks like it was ignored. */
+    console.warn('Pack logo failed to load, using the drawn mark:', img.src);
+  };
   img.src=pk('mark.image','assets/vits-logo.png');
 })();
 

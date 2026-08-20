@@ -52,8 +52,15 @@
      ignore whatever the editor is typing. Capped, so a preview never hangs. */
   var framed = window.parent !== window;
 
+  /* The latest draft posted by the CMS. It always outranks the saved file:
+     the fetch below and the first postMessage race each other on iframe
+     reload, and when the message won, the fetch was clobbering the editor's
+     unsaved work with the file — the pack then booted showing stale artwork. */
+  var draft = null;
+
   function firstDraft() {
     return new Promise(function (resolve) {
+      if (draft) { resolve(); return; }   /* already arrived; don't wait */
       var settled = false;
       function done() { if (!settled) { settled = true; resolve(); } }
       window.addEventListener('message', function (e) {
@@ -76,6 +83,7 @@
       return r.json();
     })
     .then(function (data) {
+      if (draft) return draft;   /* the editor's unsaved work is newer than the file */
       window.VITS = data;
       apply(document, data);
       document.dispatchEvent(new CustomEvent('vits:content', { detail: data }));
@@ -140,6 +148,7 @@
 
     if (msg.type === 'vits:preview' && msg.data) {
       installFocusStyle();
+      draft = msg.data;
       window.VITS = msg.data;
       apply(document, msg.data, true);
       document.dispatchEvent(new CustomEvent('vits:content', { detail: msg.data }));
