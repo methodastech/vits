@@ -569,6 +569,7 @@ collections:
             summary: "Everything printed on the 3D pack"
             fields:
               - { label: "Note", name: "_note", widget: "hidden" }
+              - { label: "Use scanned 3D packs", name: "useScans", widget: "boolean", default: true, hint: "On: the photoreal scanned pack shapes. Off: the code-built shapes. The artwork comes from the fields below either way." }
               - label: "Colours"
                 name: "colours"
                 widget: "object"

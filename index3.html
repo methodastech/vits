@@ -2450,16 +2450,11 @@ const packA=buildPack(texFront,texSide,texCrimp,texFrontA,texSideA,texBack); scA
    per-SKU fit and every position calculation untouched. */
 const _packLoader=new GLTFLoader();
 const _modelCache={};
-/* The scanned packs (assets/pack-*.glb) carry their artwork as a single baked
-   JPEG on an organic UV unwrap, so nothing printed on them can be driven by the
-   CMS — colour, typeface and every string are fixed in the file. The coded packs
-   built just above are drawn live from content, which is what the client's
-   controls expect. Flip this to true to go back to the scans, accepting that the
-   CMS stops reaching the packaging.
-   To have both, the GLBs need rebuilding through tools/pack-build.js, which
-   box-projects one UV rect per panel so the coded textures drop straight on;
-   that needs the source FBX files, which are not in this repo. */
-const USE_SCANNED_PACKS=true;
+/* pack.useScans in the CMS picks the pack's shape: on, the scanned GLB
+   silhouettes; off, the code-built geometry. Artwork is live either way —
+   panelWrap below re-projects the scan's UVs so the same CMS-drawn textures
+   wrap both. */
+const USE_SCANNED_PACKS = PACKC.useScans !== false;
 
 /* ------------------------------------------------------------------
    Re-wrap a scanned pack in the live artwork.
@@ -2579,8 +2574,15 @@ function swapInModel(group,sk){
           }
           return c;
         });
-      } else if(o.material&&o.material.map){
-        o.material.map.anisotropy=Q.aniso;
+      } else if(o.material){
+        /* baked-texture fallback (no coded pack to borrow artwork from):
+           the scan ships at the GLB default envMapIntensity 1.0 with its
+           shading already baked in, so the RoomEnvironment on top clipped
+           it to white. Pull the env down and let the real lights model it. */
+        if(o.material.map) o.material.map.anisotropy=Q.aniso;
+        o.material.envMapIntensity=0.22;
+        o.material.metalness=0;
+        o.material.roughness=Math.max(o.material.roughness||0,0.85);
       }
     }});
     /* drop the coded geometry only once the scan is ready to take its place */

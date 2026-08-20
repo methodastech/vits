@@ -58,6 +58,7 @@
     "fonts": {
       "family": "Inter"
     },
+    "useScans": true,
     "colours": {
       "field": "#efe155",
       "red": "#E30613",
