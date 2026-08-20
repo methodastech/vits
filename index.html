@@ -1659,8 +1659,10 @@ function drawSideAlpha(){
    a pillow pack moves a lot, which is most of what tells them apart in 3D.
    ============================================================ */
 const RANGE_SKUS=[
+  /* The classic yellow pack is the brand itself, so its palette comes from the
+     CMS. The flavour SKUs below keep their own, being per-variety artwork. */
   { key:'mini',   dims:[2.5,2.8,1.0], bulge:0.30, crimp:true,
-    field:'#FFE000', band:'#E30613', ink:'#1A1A1A', accent:'#E30613',
+    field:CF, band:CR, ink:CIK, accent:CRD,
     kicker:'', title:'', window:true, phoenix:true, meander:true,
     countBox:true, weight:'350g (12.5oz)' },
   { key:'penang', dims:[2.6,2.9,1.05], bulge:0.30, crimp:true,

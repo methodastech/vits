@@ -1583,7 +1583,27 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
 /* wait for content.json so the pack draws its artwork from the CMS on first paint */
-(window.VITS_READY||Promise.resolve()).then(function(){
+function packFontReady(){
+  const fam=(window.VITS&&window.VITS.pack&&window.VITS.pack.fonts&&window.VITS.pack.fonts.family)||'Inter';
+  if(fam!=='Inter'){
+    const id='packfont-'+fam.replace(/\W+/g,'-');
+    if(!document.getElementById(id)){
+      const l=document.createElement('link');
+      l.id=id; l.rel='stylesheet';
+      l.href='https://fonts.googleapis.com/css2?family='+fam.trim().replace(/\s+/g,'+')
+            +':ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap';
+      document.head.appendChild(l);
+    }
+  }
+  if(!document.fonts||!document.fonts.load) return Promise.resolve();
+  const w=[400,600,700,800];
+  const wanted=w.map(n=>document.fonts.load(n+' 100px "'+fam+'"'))
+    .concat(w.slice(2).map(n=>document.fonts.load('italic '+n+' 100px "'+fam+'"')));
+  /* Never let a slow or blocked font CDN hold the hero hostage — draw regardless. */
+  return Promise.race([Promise.all(wanted).catch(()=>{}), new Promise(r=>setTimeout(r,2500))]);
+}
+
+(window.VITS_READY||Promise.resolve()).then(packFontReady).then(function(){
   if(!RM) try{ init3D(); }catch(e){ console.error('3D failed',e); document.body.classList.add('no3d'); }
 });
 
@@ -1599,6 +1619,10 @@ function pk(path,fb){
 const PCOL=PACKC.colours||{};
 const CF=PCOL.field||'#FFE000', CR=PCOL.red||'#E30613',
       CRD=PCOL.redDeep||'#C1121F', CIK=PCOL.ink||'#1A1A1A';
+/* Every word printed on the pack is set in this family. Quoted, because the
+   CMS list offers multi-word names like "Barlow Condensed"; sans-serif tail so
+   a family that failed to load degrades to something rather than nothing. */
+const PF='"'+pk('fonts.family','Inter')+'",sans-serif';
 
 /* ---------- quality tier: full rig on desktop, trimmed on phones and weak GPUs ---------- */
 const COARSE=matchMedia('(pointer:coarse)').matches, NARROW=innerWidth<900;
@@ -1754,9 +1778,9 @@ const NOTCH_Y=OVAL.cy-LOGO_H/2+LOGO_H*LOGO_NOTCH;
 const WIN ={cx:512,cy:NOTCH_Y+122+22,rx:242,ry:122};
 function windowType(x){                     /* printed onto the clear film */
   x.textAlign='center';
-  x.font='700 40px Inter,sans-serif';  x.fillText(pk('variety.en','INSTANT NOODLES'),WIN.cx,WIN.cy-30);
+  x.font='700 40px '+PF;  x.fillText(pk('variety.en','INSTANT NOODLES'),WIN.cx,WIN.cy-30);
   x.font='700 46px "Noto Sans SC","Microsoft YaHei",sans-serif'; x.fillText(pk('variety.zh','快熟麵'),WIN.cx,WIN.cy+26);
-  x.font='700 38px Inter,sans-serif';  x.fillText(pk('variety.ms','MI SEGERA'),WIN.cx,WIN.cy+76);
+  x.font='700 38px '+PF;  x.fillText(pk('variety.ms','MI SEGERA'),WIN.cx,WIN.cy+76);
 }
 function drawFront(){
   const [c,x]=panel(FW,FH);
@@ -1779,17 +1803,17 @@ function drawFront(){
   x.lineTo(-246,38); x.lineTo(-212,0); x.closePath(); x.fill();
   x.strokeStyle='#fff'; x.lineWidth=3; x.stroke();
   x.fillStyle='#fff'; x.textAlign='center';
-  x.font='italic 700 30px Inter,sans-serif'; x.fillText(pk('claim.en','Lebih Kenyal, Lebih Sedap!'),0,-4);
+  x.font='italic 700 30px '+PF; x.fillText(pk('claim.en','Lebih Kenyal, Lebih Sedap!'),0,-4);
   x.font='700 28px "Noto Sans SC","Microsoft YaHei",sans-serif'; x.fillText(pk('claim.zh','更爽更香！'),0,30);
   x.restore();
   meander(x,0,256,FW,50,'#E30613');
   meander(x,0,FH-72,FW,50,'#E30613');
   phoenix(x,512,415,0.92);
-  x.fillStyle=CR; x.font='700 26px Inter,sans-serif'; x.textAlign='left';
+  x.fillStyle=CR; x.font='700 26px '+PF; x.textAlign='left';
   x.fillText('®',646,344);
   /* JAKIM halal mark, top left */
   jakimMark(x,116,398,54);
-  x.fillStyle='#1A1A1A'; x.font='600 17px Inter,sans-serif'; x.textAlign='center';
+  x.fillStyle='#1A1A1A'; x.font='600 17px '+PF; x.textAlign='center';
   x.fillText(pk('halal.certLine1','MS 1500 : 2009'),116,478); x.fillText(pk('halal.certLine2','1 045-12/2012-2004'),116,500);
   /* the window first: die-cut, cake behind it, type printed on the film.
      the mark is laid over it afterwards so the two read as one lockup */
@@ -1812,18 +1836,18 @@ function drawFront(){
   drawLogo(x,OVAL.cx,OVAL.cy,OVAL.w);
   /* Mini pack count, bottom left */
   x.textAlign='left';
-  x.fillStyle='#1A1A1A'; x.font='italic 800 48px Inter,sans-serif'; x.fillText(pk('count.prefix','Mini'),40,902);
+  x.fillStyle='#1A1A1A'; x.font='italic 800 48px '+PF; x.fillText(pk('count.prefix','Mini'),40,902);
   x.fillStyle='#1A1A1A'; x.fillRect(146,866,68,38);
-  x.fillStyle='#fff'; x.font='800 18px Inter,sans-serif'; x.fillText('PACK',152,893);
+  x.fillStyle='#fff'; x.font='800 18px '+PF; x.fillText('PACK',152,893);
   x.fillStyle='#fff'; x.fillRect(40,916,210,138);
   x.strokeStyle='#1A1A1A'; x.lineWidth=6; x.strokeRect(40,916,210,138);
-  x.fillStyle='#1A1A1A'; x.font='800 100px Inter,sans-serif'; x.fillText(pk('count.number','5'),54,1026);
-  x.font='700 24px Inter,sans-serif';
+  x.fillStyle='#1A1A1A'; x.font='800 100px '+PF; x.fillText(pk('count.number','5'),54,1026);
+  x.font='700 24px '+PF;
   x.fillText(pk('count.unit1','Cekas'),128,962); x.fillText(pk('count.unit2','&'),128,998); x.fillText(pk('count.unit3','Kenyang'),128,1034);
   /* net weight, bottom right */
-  x.font='600 21px Inter,sans-serif';
+  x.font='600 21px '+PF;
   x.fillText(pk('netWeight.line1','Net Weight /'),762,984); x.fillText(pk('netWeight.line2','Berat Bersih / 淨重:'),762,1010);
-  x.font='800 34px Inter,sans-serif'; x.fillText(pk('netWeight.value','350g (12.5oz)'),762,1054);
+  x.font='800 34px '+PF; x.fillText(pk('netWeight.value','350g (12.5oz)'),762,1054);
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4; return t;
 }
 /* back panel: cooking steps and the legal block, so the 360 has a real reverse */
@@ -1838,7 +1862,7 @@ function drawBack(){
   meander(x,0,FH-72,FW,50,'#E30613');
   drawLogo(x,512,300,300);
   x.textAlign='center'; x.fillStyle=CRD;
-  x.font='800 40px Inter,sans-serif'; x.fillText('COOKING INSTRUCTIONS',512,470);
+  x.font='800 40px '+PF; x.fillText('COOKING INSTRUCTIONS',512,470);
   x.font='700 30px "Noto Sans SC","Microsoft YaHei",sans-serif';
   x.fillText('CARA MEMASAK · 烹調方法',512,512);
   x.textAlign='left'; x.fillStyle='#1A1A1A';
@@ -1851,14 +1875,14 @@ function drawBack(){
     const y=586+i*104;
     x.fillStyle=CR; x.beginPath(); x.arc(120,y-10,26,0,Math.PI*2); x.fill();
     x.fillStyle='#fff'; x.textAlign='center';
-    x.font='800 30px Inter,sans-serif'; x.fillText(s[0],120,y);
+    x.font='800 30px '+PF; x.fillText(s[0],120,y);
     x.textAlign='left'; x.fillStyle='#1A1A1A';
-    x.font='700 26px Inter,sans-serif'; x.fillText(s[1],168,y-14);
-    x.font='400 23px Inter,sans-serif'; x.fillStyle='#6B5A2E'; x.fillText(s[2],168,y+18);
+    x.font='700 26px '+PF; x.fillText(s[1],168,y-14);
+    x.font='400 23px '+PF; x.fillStyle='#6B5A2E'; x.fillText(s[2],168,y+18);
   });
-  x.fillStyle='#1A1A1A'; x.font='700 24px Inter,sans-serif';
+  x.fillStyle='#1A1A1A'; x.font='700 24px '+PF;
   x.fillText('INGREDIENTS / RAMUAN',64,914);
-  x.font='400 22px Inter,sans-serif'; x.fillStyle='#4A4032';
+  x.font='400 22px '+PF; x.fillStyle='#4A4032';
   x.fillText('Wheat flour, palm oil, salt, mineral salts.',64,946);
   x.fillText('Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur, Malaysia.',64,976);
   /* barcode */
@@ -1866,7 +1890,7 @@ function drawBack(){
   x.fillStyle='#111';
   for(let i=0,px=676;px<938;i++){ const w=2+(i*7%4)*2;
     x.fillRect(px,912,w,88); px+=w+3+((i*5)%3); }
-  x.font='600 20px Inter,sans-serif'; x.textAlign='center';
+  x.font='600 20px '+PF; x.textAlign='center';
   x.fillText('9 555555 123456',810,1020);
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=4; return t;
 }
@@ -1876,9 +1900,9 @@ const SWIN={cx:205,cy:596,rx:150,ry:330};
 const SOVAL={cx:176,cy:596,w:224};
 function sideType(x){
   x.save(); x.translate(322,596); x.rotate(-Math.PI/2); x.textAlign='center';
-  x.font='700 34px Inter,sans-serif'; x.fillText(pk('variety.en','INSTANT NOODLES'),0,-22);
+  x.font='700 34px '+PF; x.fillText(pk('variety.en','INSTANT NOODLES'),0,-22);
   x.font='700 34px "Noto Sans SC","Microsoft YaHei",sans-serif'; x.fillText(pk('variety.zh','快熟麵'),0,16);
-  x.font='700 30px Inter,sans-serif'; x.fillText(pk('variety.ms','MI SEGERA'),0,52);
+  x.font='700 30px '+PF; x.fillText(pk('variety.ms','MI SEGERA'),0,52);
   x.restore();
 }
 function drawSide(){
@@ -2071,8 +2095,11 @@ function drawSideAlpha(){
    a pillow pack moves a lot, which is most of what tells them apart in 3D.
    ============================================================ */
 const RANGE_SKUS=[
+  /* The classic yellow pack is the brand itself, and it is also the hero pack
+     on this prototype, so its palette comes from the CMS. The flavour SKUs
+     below keep their own, since those are per-variety artwork. */
   { key:'mini',   model:'assets/pack-mini.glb', dims:[2.5,2.8,1.0], bulge:0.30, crimp:true,
-    field:'#FFE000', band:'#E30613', ink:'#1A1A1A', accent:'#E30613',
+    field:CF, band:CR, ink:CIK, accent:CRD,
     kicker:'', title:'', window:true, phoenix:true, meander:true,
     countBox:true, weight:'350g (12.5oz)' },
   { key:'penang', model:'assets/pack-penang.glb', dims:[2.6,2.9,1.05], bulge:0.30, crimp:true,
@@ -2154,7 +2181,7 @@ function drawSkuFront(s){
   if(s.kicker){
     x.fillStyle=s.accent; x.textAlign='center';
     const ks=Math.round(26*U);
-    x.font='700 '+ks+'px Inter,sans-serif';
+    x.font='700 '+ks+'px '+PF;
     x.fillText(s.kicker.toUpperCase(),512,ty);
     ty+=ks*1.9;
   }
@@ -2162,13 +2189,13 @@ function drawSkuFront(s){
     x.fillStyle=s.ink; x.textAlign='center';
     const lines=s.title.split('\n');
     const size=Math.round((lines.length>1?76:92)*U);
-    x.font='800 '+size+'px Inter,sans-serif';
+    x.font='800 '+size+'px '+PF;
     lines.forEach(function(l){ ty+=size*0.86; x.fillText(l.toUpperCase(),512,ty); });
     if(s.zh){ const zs=Math.round(40*U);
       x.font='700 '+zs+'px "Noto Sans SC","Microsoft YaHei",sans-serif';
       x.fillStyle=s.accent; ty+=zs*1.15; x.fillText(s.zh,512,ty); }
     if(s.sub){ const ss=Math.round(27*U);
-      x.font='600 '+ss+'px Inter,sans-serif'; x.fillStyle=s.ink;
+      x.font='600 '+ss+'px '+PF; x.fillStyle=s.ink;
       ty+=ss*1.5; x.fillText(s.sub,512,ty); }
   }
   /* the dish takes whatever room is genuinely left between the type and the foot,
@@ -2181,13 +2208,13 @@ function drawSkuFront(s){
   }
   /* JAKIM mark and the weight, along the foot */
   jakimMark(x,104,FH2-176*U,46);
-  x.fillStyle=s.ink; x.font='600 '+Math.round(15*U)+'px Inter,sans-serif'; x.textAlign='center';
+  x.fillStyle=s.ink; x.font='600 '+Math.round(15*U)+'px '+PF; x.textAlign='center';
   x.fillText('MS 1500 : 2009',104,FH2-108*U);
   x.textAlign='right';
-  x.fillStyle=s.ink; x.font='800 '+Math.round(34*U)+'px Inter,sans-serif';
+  x.fillStyle=s.ink; x.font='800 '+Math.round(34*U)+'px '+PF;
   x.fillText(s.weight,FW-46,FH2-118*U);
   if(s.countLabel){
-    x.font='700 '+Math.round(17*U)+'px Inter,sans-serif'; x.fillStyle=s.accent;
+    x.font='700 '+Math.round(17*U)+'px '+PF; x.fillStyle=s.accent;
     x.fillText(s.countLabel,FW-46,FH2-152*U);
   }
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
@@ -2201,9 +2228,9 @@ function drawSkuSide(s){
   x.fillStyle=s.field; x.fillRect(0,0,SW,SH);
   x.fillStyle=s.band; x.fillRect(0,0,SW,band); x.fillRect(0,SH-band,SW,band);
   x.save(); x.translate(SW/2,SH/2); x.rotate(-Math.PI/2);
-  x.fillStyle=s.ink; x.textAlign='center'; x.font='800 62px Inter,sans-serif';
+  x.fillStyle=s.ink; x.textAlign='center'; x.font='800 62px '+PF;
   x.fillText((s.title||"Vit's").replace('\n',' ').toUpperCase(),0,-14);
-  x.font='600 26px Inter,sans-serif'; x.fillStyle=s.accent;
+  x.font='600 26px '+PF; x.fillStyle=s.accent;
   x.fillText(s.sub||'Instant Noodles',0,30);
   x.restore();
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
@@ -2216,27 +2243,27 @@ function drawSkuBack(s){
   x.fillStyle=s.field; x.fillRect(0,0,FW,FH);
   x.fillStyle=s.band; x.fillRect(0,0,FW,64);
   x.fillStyle=s.ink; x.textAlign='left';
-  x.font='800 44px Inter,sans-serif'; x.fillText('COOKING INSTRUCTIONS',64,168);
-  x.font='600 26px Inter,sans-serif'; x.fillStyle=s.accent;
+  x.font='800 44px '+PF; x.fillText('COOKING INSTRUCTIONS',64,168);
+  x.font='600 26px '+PF; x.fillStyle=s.accent;
   x.fillText('CARA MEMASAK · 烹調方法',64,214);
   const steps=[['1','Boil 400ml of water.'],['2','Add the noodle cake, 3 minutes.'],['3','Drain, season, serve hot.']];
   let y=300;
   steps.forEach(function(st){
     x.fillStyle=s.accent; x.beginPath(); x.arc(88,y-10,26,0,Math.PI*2); x.fill();
-    x.fillStyle='#fff'; x.textAlign='center'; x.font='800 28px Inter,sans-serif'; x.fillText(st[0],88,y);
-    x.fillStyle=s.ink; x.textAlign='left'; x.font='600 27px Inter,sans-serif'; x.fillText(st[1],136,y);
+    x.fillStyle='#fff'; x.textAlign='center'; x.font='800 28px '+PF; x.fillText(st[0],88,y);
+    x.fillStyle=s.ink; x.textAlign='left'; x.font='600 27px '+PF; x.fillText(st[1],136,y);
     y+=96;
   });
-  x.fillStyle=s.ink; x.font='800 26px Inter,sans-serif'; x.fillText('INGREDIENTS / RAMUAN',64,y+40);
-  x.font='500 23px Inter,sans-serif'; x.fillText('Wheat flour, palm oil, salt, mineral salts.',64,y+80);
-  x.font='500 20px Inter,sans-serif';
+  x.fillStyle=s.ink; x.font='800 26px '+PF; x.fillText('INGREDIENTS / RAMUAN',64,y+40);
+  x.font='500 23px '+PF; x.fillText('Wheat flour, palm oil, salt, mineral salts.',64,y+80);
+  x.font='500 20px '+PF;
   x.fillText('Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur, Malaysia.',64,y+124);
   /* barcode block */
   x.fillStyle='#fff'; x.fillRect(FW-330,FH-260,266,150);
   let bx=FW-314;
   for(let i=0;i<52;i++){ const w=(i%4===0)?5:2; x.fillStyle='#1A1A1A';
     x.fillRect(bx,FH-246,w,108); bx+=w+3; if(bx>FW-96) break; }
-  x.fillStyle='#1A1A1A'; x.font='600 19px Inter,sans-serif'; x.textAlign='center';
+  x.fillStyle='#1A1A1A'; x.font='600 19px '+PF; x.textAlign='center';
   x.fillText('9 555555 123456',FW-197,FH-122);
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
 }
