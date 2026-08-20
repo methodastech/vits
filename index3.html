@@ -2419,7 +2419,17 @@ function swapInModel(group,sk){
     inst.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
     inst.traverse(o=>{ if(o.isMesh){
       o.castShadow=false;
-      if(o.material&&o.material.map) o.material.map.anisotropy=Q.aniso;
+      if(o.material){
+        if(o.material.map) o.material.map.anisotropy=Q.aniso;
+        /* the scene lights were tuned for the coded packs, whose materials sit at
+           envMapIntensity 0.14-1.0. A scan arrives at the GLB default of 1.0 with
+           its shading already baked into the texture, so the full RoomEnvironment
+           on top clipped it to white. Pull the env way down and let the two real
+           lights do the modelling. */
+        o.material.envMapIntensity=0.22;
+        o.material.metalness=0;
+        o.material.roughness=Math.max(o.material.roughness||0,0.85);
+      }
     }});
     /* drop the coded geometry only once the scan is ready to take its place */
     for(let i=group.children.length-1;i>=0;i--) group.remove(group.children[i]);
