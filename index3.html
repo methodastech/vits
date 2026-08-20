@@ -451,7 +451,8 @@ body{padding-top:52px}
   stroke-dasharray:26;stroke-dashoffset:26;animation:tickDraw .45s .05s cubic-bezier(.65,0,.35,1) forwards}
 @keyframes tickDraw{to{stroke-dashoffset:0}}
 @media(prefers-reduced-motion:reduce){.sendTick path{animation:none;stroke-dashoffset:0}}
-.addCart{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+/* display-only: the button is part of the composition, not a control */
+.addCart{pointer-events:none;display:inline-flex;align-items:center;gap:10px;margin-top:22px;
   padding:12px 22px;border-radius:999px;border:0;cursor:pointer;
   background:var(--red);color:#fff;font-family:Inter,sans-serif;font-weight:700;
   font-size:14.5px;letter-spacing:-.01em;
@@ -2789,32 +2790,11 @@ new IntersectionObserver(e=>{heroVis=e[0].isIntersecting;},{threshold:0.02}).obs
 new IntersectionObserver(e=>{cookVis=e[0].isIntersecting;},{threshold:0.02}).observe(cookHolder.parentElement);
 if(rC) new IntersectionObserver(e=>{rangeVis=e[0].isIntersecting;},{threshold:0.02}).observe(rangeHolder);
 
-/* drag the range specimen for a full 360 view; idles back into a slow turntable */
-const spin={y:-0.18,x:0.04,vy:0,drag:false,px:0,py:0,idle:0};
-if(rC){
-  rangeHolder.style.cursor='grab';
-  rangeHolder.style.touchAction='pan-y';
-  rangeHolder.addEventListener('pointerdown',e=>{
-    spin.drag=true; spin.px=e.clientX; spin.py=e.clientY; spin.vy=0; spin.idle=0;
-    rangeHolder.setPointerCapture(e.pointerId); rangeHolder.style.cursor='grabbing';
-  });
-  rangeHolder.addEventListener('pointermove',e=>{
-    if(!spin.drag) return;
-    const dx=e.clientX-spin.px, dy=e.clientY-spin.py;
-    spin.px=e.clientX; spin.py=e.clientY;
-    spin.vy=dx*0.009; spin.y+=spin.vy;
-    spin.x=Math.max(-0.5,Math.min(0.5,spin.x+dy*0.005));
-    spin.idle=0;
-  });
-  const release=e=>{
-    if(!spin.drag) return;
-    spin.drag=false; rangeHolder.style.cursor='grab';
-    if(e.pointerId!=null&&rangeHolder.hasPointerCapture(e.pointerId))
-      rangeHolder.releasePointerCapture(e.pointerId);
-  };
-  rangeHolder.addEventListener('pointerup',release);
-  rangeHolder.addEventListener('pointercancel',release);
-}
+/* the range is display-only: no drag-to-spin. The spin state stays because the
+   render loop reads it for the idle turntable, which is presentation, not input.
+   Scroll still scrubs the section; the canvas just never takes the pointer. */
+const spin={y:-0.18,x:0.04,vy:0,drag:false,px:0,py:0,idle:1e6};
+if(rC){ rangeHolder.style.pointerEvents='none'; }
 
 let mfA=1,mfB=1,mfC=1; /* narrow-aspect dolly factors so the pack fits phones */
 function sizeAll(){
