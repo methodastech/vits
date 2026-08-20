@@ -232,7 +232,6 @@ body{padding-top:52px}
 #range .stage.mini .hpHome{opacity:.72}
 #range .stage.tomato .hpTomato{opacity:.72}
 #range .stage.bayam .hpBayam{opacity:.72}
-#range .stage.carbonara .hpCarbonara{opacity:.72}
 /* scrim heavy on the left where the copy sits, clearing to the right so the
    street is actually legible. Sits above the photo, not inside its fade. */
 .heritageScrim{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
@@ -241,17 +240,15 @@ body{padding-top:52px}
     rgba(12,8,5,.55) 52%,rgba(12,8,5,.34) 100%)}
 /* every slide is a photograph now, so the scrim is always on and the tile always off */
 #range .stage.penang .heritageScrim,#range .stage.mini .heritageScrim,
-#range .stage.tomato .heritageScrim,#range .stage.bayam .heritageScrim,
-#range .stage.carbonara .heritageScrim{opacity:1}
+#range .stage.tomato .heritageScrim,#range .stage.bayam .heritageScrim{opacity:1}
 #range .stage.penang .heritage,#range .stage.mini .heritage,
-#range .stage.tomato .heritage,#range .stage.bayam .heritage,
-#range .stage.carbonara .heritage{opacity:0}
+#range .stage.tomato .heritage,#range .stage.bayam .heritage{opacity:0}
 /* .dots stays absolute (see its own rule) — listing it here forced it in-flow,
    which stole width from the flex line and knocked .inner off centre. */
 #range .inner,#range .k{position:relative;z-index:1}
 /* the range row that rises inside the hero stage, centre slot reserved for the 3D pack */
 .prodRow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(102px);
-  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;
   /* same page edge as every other section, so the line-up starts under the logo */
   width:calc(100% - 2*var(--gutter));opacity:0;pointer-events:none;z-index:3;
   transition:opacity .2s linear}
@@ -394,7 +391,7 @@ body{padding-top:52px}
 #trade .cta:hover{background:var(--red-deep);transform:translateY(-1px)}
 
 /* ============ scene 5 · range specimens ============ */
-#range{position:relative;height:340vh;background:#120C07}
+#range{position:relative;height:272vh;background:#120C07}
 #range .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
 /* aligned to the nav logo, not centred in its own cap: the page edge is one line */
 #range .inner{width:100%;max-width:none;margin:0;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
@@ -582,7 +579,7 @@ footer .credit a{color:var(--soft);text-decoration:underline}
 /* ============ mobile pacing + fit ============ */
 @media(max-width:760px){
   #heroJourney{height:360vh}
-  #range{height:300vh}
+  #range{height:240vh}
   #cook{height:380vh}
   #range .inner{gap:10px;padding-top:14vh}
   .specTxt{min-height:210px}
@@ -779,8 +776,6 @@ body:not(.no3d) .heroPoster{display:none}
         <b data-c="range.items.1.title">Penang White Curry</b><i data-c="range.items.1.metaAValue">Premium 4-pack</i></div>
       <div class="prodCard" data-sku="2"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="">
         <b data-c="range.items.2.title">Mi Kering Tomato</b><i data-c="range.items.2.metaAValue">Air dried</i></div>
-      <div class="prodCard" data-sku="4"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="">
-        <b data-c="range.items.4.title">Mi Goreng Carbonara</b><i data-c="range.items.4.metaAValue">MIFT Gold 2025</i></div>
       <div class="prodCard" data-sku="3"><div class="slotRing"></div><img class="flatFallback" src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="">
         <b data-c="range.items.3.title">Mi Kering Bayam</b><i data-c="range.items.3.metaAValue">Air dried</i></div>
       <div class="prodCard prodSlot"><div class="slotRing"></div>
@@ -864,8 +859,6 @@ body:not(.no3d) .heroPoster{display:none}
          style="background-image:url('assets/bg-tomato.jpg')"></div>
     <div class="heritagePhoto hpBayam" aria-hidden="true"
          style="background-image:url('assets/bg-bayam.jpg')"></div>
-    <div class="heritagePhoto hpCarbonara" aria-hidden="true"
-         style="background-image:url('assets/bg-carbonara.jpg')"></div>
     <div class="heritageScrim" aria-hidden="true"></div>
     <div class="heritage" aria-hidden="true">
       <svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
@@ -961,13 +954,6 @@ body:not(.no3d) .heroPoster{display:none}
           <div class="meta"><div class="m"><div class="a">Process</div><div class="b">Air dried, high fibre</div></div><div class="m"><div class="a">Colour from</div><div class="b">Real spinach</div></div></div>
           <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
         </div>
-        <div class="spec s4">
-          <div class="ln">Italian Series &middot; Awarded</div>
-          <h3>Mi Goreng Carbonara</h3>
-          <p>MIFT Gold Award for Product Innovation 2025. Proof the seasoning kitchen can leave Malaysia and land.</p>
-          <div class="meta"><div class="m"><div class="a">Award</div><div class="b">MIFT Gold, 2025</div></div><div class="m"><div class="a">Character</div><div class="b">Creamy, zip pack</div></div></div>
-          <button class="addCart" type="button">Add to cart<span aria-hidden="true">+</span></button>
-        </div>
       </div>
       <div class="specImgs">
         <div id="rangeCanvas" class="spec3d act" aria-hidden="true"></div>
@@ -975,10 +961,9 @@ body:not(.no3d) .heroPoster{display:none}
         <img class="si1 photo flatFallback" src="assets/sku-penang-curry.png" data-c-src="range.items.1.image" alt="Vit's Penang White Curry">
         <img class="si2 flatFallback" src="assets/sku-airdried-tomato.png" data-c-src="range.items.2.image" alt="Vit's Mi Kering Tomato">
         <img class="si3 flatFallback" src="assets/sku-airdried-spinach.png" data-c-src="range.items.3.image" alt="Vit's Mi Kering Bayam">
-        <img class="si4 flatFallback" src="assets/sku-carbonara.png" data-c-src="range.items.4.image" alt="Vit's Mi Goreng Carbonara">
       </div>
     </div>
-    <div class="dots" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i><i></i></div>
+    <div class="dots" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -1442,13 +1427,13 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
     /* the Peranakan tiling warms up only on the Taste of Penang slide */
     if(rangeStage){
       /* each line carries its own world behind the pack */
-      var worlds=['mini','penang','tomato','bayam','carbonara'];
+      var worlds=['mini','penang','tomato','bayam'];
       worlds.forEach(function(w,j){ rangeStage.classList.toggle(w,j===i); });
     }
   }
   ScrollTrigger.create({trigger:'#range',start:'top top',end:'bottom bottom',
-    onUpdate:function(self){ setSpec(Math.min(4,Math.floor(self.progress*5))); },
-    onLeave:function(){ setSpec(4); }, onLeaveBack:function(){ setSpec(0); }
+    onUpdate:function(self){ setSpec(Math.min(3,Math.floor(self.progress*4))); },
+    onLeave:function(){ setSpec(3); }, onLeaveBack:function(){ setSpec(0); }
   });
 
   /* cook captions: stepped over the cook runway; canvas reads __cookP */
@@ -1496,7 +1481,7 @@ if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }ca
   var pay=modal.querySelector('.coPay'), badge=document.querySelector('.cartBtn i');
   var basket=[];
   var PRICE={"The Mini Pack":4.90,"Penang White Curry":8.50,"Mi Kering Tomato":6.90,
-             "Mi Kering Bayam":6.90,"Mi Goreng Carbonara":7.50};
+             "Mi Kering Bayam":6.90};
   function money(n){ return "RM "+n.toFixed(2); }
   function render(){
     list.innerHTML="";
@@ -2107,16 +2092,7 @@ const RANGE_SKUS=[
     kicker:'Air Dried · High Fibre', title:'Mi Kering\nBayam',
     sub:'Spinach Noodles', zh:'菠菜麵',
     window:false, phoenix:false, meander:false, bowl:'#6E9B4B',
-    countBox:false, count:'5', countLabel:'HIGH FIBRE', weight:'300g' },
-  { key:'carbo',  model:'assets/pack-carbonara.glb', dims:[2.9,2.5,0.9],  bulge:0.24, crimp:true,
-    field:'#F6E3A8', band:'#C8102E', ink:'#3A2B10', accent:'#1A7A3C',
-    kicker:'Vit’s Mi Segera Perisa', title:'Carbonara',
-    sub:'Mi Goreng · Creamy', zh:'卡邦尼',
-    window:false, phoenix:false, meander:false,
-    /* a real carbonara is cream on cream, which vanished against the field —
-       pushed warmer so the dish still reads at pack size */
-    bowl:'#DCBF7E', tricolour:true,
-    countBox:false, count:'5', countLabel:'MIFT GOLD 2025', weight:'5 x 80g' }
+    countBox:false, count:'5', countLabel:'HIGH FIBRE', weight:'300g' }
 ];
 
 /* a soft product bowl, so each front has something appetising rather than
