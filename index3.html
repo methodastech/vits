@@ -2457,20 +2457,29 @@ const USE_SCANNED_PACKS=true;
 function panelWrap(geo){
   const g=geo.index?geo.toNonIndexed():geo;
   const pos=g.attributes.position, nor=g.attributes.normal;
-  const tris=pos.count/3;
+  const tris=pos.count/3;   /* nor is kept only to copy through, never to classify */
 
   g.computeBoundingBox();
   const bb=g.boundingBox, sz=new THREE.Vector3(); bb.getSize(sz);
   const span=a=>Math.max(a,1e-6);
 
+  /* Work the facing out from the geometry rather than the file's normals: a
+     scan can ship them inverted, which silently mirrors every panel. The face
+     normal is the triangle's own cross product, flipped outward by comparing
+     it against the direction from the mesh centre to the triangle. */
+  const ctr=new THREE.Vector3(); bb.getCenter(ctr);
   const id=new Array(tris);
+  const a=new THREE.Vector3(), b2=new THREE.Vector3(), c2=new THREE.Vector3();
+  const e1=new THREE.Vector3(), e2=new THREE.Vector3(), fn=new THREE.Vector3(), dir=new THREE.Vector3();
   for(let t=0;t<tris;t++){
-    let nx=0,ny=0,nz=0;
-    for(let k=0;k<3;k++){ const i=t*3+k; nx+=nor.getX(i); ny+=nor.getY(i); nz+=nor.getZ(i); }
-    const ax=Math.abs(nx), ay=Math.abs(ny), az=Math.abs(nz);
-    id[t] = (ax>=ay&&ax>=az) ? (nx>=0?0:1)
-          : (ay>=az)         ? (ny>=0?2:3)
-          :                    (nz>=0?4:5);
+    a.fromBufferAttribute(pos,t*3); b2.fromBufferAttribute(pos,t*3+1); c2.fromBufferAttribute(pos,t*3+2);
+    e1.subVectors(b2,a); e2.subVectors(c2,a); fn.crossVectors(e1,e2);
+    dir.copy(a).add(b2).add(c2).multiplyScalar(1/3).sub(ctr);
+    if(fn.dot(dir)<0) fn.negate();
+    const ax=Math.abs(fn.x), ay=Math.abs(fn.y), az=Math.abs(fn.z);
+    id[t] = (ax>=ay&&ax>=az) ? (fn.x>=0?0:1)
+          : (ay>=az)         ? (fn.y>=0?2:3)
+          :                    (fn.z>=0?4:5);
   }
 
   /* group the triangles so each panel is one contiguous run */
@@ -2486,8 +2495,8 @@ function panelWrap(geo){
       const x=P[to], y=P[to+1], z=P[to+2];
       let u,v;
       switch(id[t]){
-        case 0: u=(z-bb.min.z)/span(sz.z); v=(y-bb.min.y)/span(sz.y); break;  /* +X side  */
-        case 1: u=1-(z-bb.min.z)/span(sz.z); v=(y-bb.min.y)/span(sz.y); break;/* -X side  */
+        case 0: u=1-(z-bb.min.z)/span(sz.z); v=(y-bb.min.y)/span(sz.y); break;/* +X side, right is -Z */
+        case 1: u=(z-bb.min.z)/span(sz.z); v=(y-bb.min.y)/span(sz.y); break;  /* -X side, right is +Z */
         case 2: u=(x-bb.min.x)/span(sz.x); v=(z-bb.min.z)/span(sz.z); break;  /* +Y crimp */
         case 3: u=(x-bb.min.x)/span(sz.x); v=1-(z-bb.min.z)/span(sz.z); break;/* -Y crimp */
         case 4: u=(x-bb.min.x)/span(sz.x); v=(y-bb.min.y)/span(sz.y); break;  /* +Z front */
