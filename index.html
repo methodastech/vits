@@ -1751,7 +1751,7 @@ function drawSkuFront(s){
   if(s.kicker){
     x.fillStyle=s.accent; x.textAlign='center';
     const ks=Math.round(26*U);
-    x.font='700 '+ks+'px Inter,sans-serif';
+    x.font='700 '+ks+'px '+PF;
     x.fillText(s.kicker.toUpperCase(),512,ty);
     ty+=ks*1.9;
   }
@@ -1759,13 +1759,13 @@ function drawSkuFront(s){
     x.fillStyle=s.ink; x.textAlign='center';
     const lines=s.title.split('\n');
     const size=Math.round((lines.length>1?76:92)*U);
-    x.font='800 '+size+'px Inter,sans-serif';
+    x.font='800 '+size+'px '+PF;
     lines.forEach(function(l){ ty+=size*0.86; x.fillText(l.toUpperCase(),512,ty); });
     if(s.zh){ const zs=Math.round(40*U);
       x.font='700 '+zs+'px "Noto Sans SC","Microsoft YaHei",sans-serif';
       x.fillStyle=s.accent; ty+=zs*1.15; x.fillText(s.zh,512,ty); }
     if(s.sub){ const ss=Math.round(27*U);
-      x.font='600 '+ss+'px Inter,sans-serif'; x.fillStyle=s.ink;
+      x.font='600 '+ss+'px '+PF; x.fillStyle=s.ink;
       ty+=ss*1.5; x.fillText(s.sub,512,ty); }
   }
   /* the dish takes whatever room is genuinely left between the type and the foot,
@@ -1778,13 +1778,13 @@ function drawSkuFront(s){
   }
   /* JAKIM mark and the weight, along the foot */
   jakimMark(x,104,FH2-176*U,46);
-  x.fillStyle=s.ink; x.font='600 '+Math.round(15*U)+'px Inter,sans-serif'; x.textAlign='center';
+  x.fillStyle=s.ink; x.font='600 '+Math.round(15*U)+'px '+PF; x.textAlign='center';
   x.fillText('MS 1500 : 2009',104,FH2-108*U);
   x.textAlign='right';
-  x.fillStyle=s.ink; x.font='800 '+Math.round(34*U)+'px Inter,sans-serif';
+  x.fillStyle=s.ink; x.font='800 '+Math.round(34*U)+'px '+PF;
   x.fillText(s.weight,FW-46,FH2-118*U);
   if(s.countLabel){
-    x.font='700 '+Math.round(17*U)+'px Inter,sans-serif'; x.fillStyle=s.accent;
+    x.font='700 '+Math.round(17*U)+'px '+PF; x.fillStyle=s.accent;
     x.fillText(s.countLabel,FW-46,FH2-152*U);
   }
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
@@ -1798,9 +1798,9 @@ function drawSkuSide(s){
   x.fillStyle=s.field; x.fillRect(0,0,SW,SH);
   x.fillStyle=s.band; x.fillRect(0,0,SW,band); x.fillRect(0,SH-band,SW,band);
   x.save(); x.translate(SW/2,SH/2); x.rotate(-Math.PI/2);
-  x.fillStyle=s.ink; x.textAlign='center'; x.font='800 62px Inter,sans-serif';
+  x.fillStyle=s.ink; x.textAlign='center'; x.font='800 62px '+PF;
   x.fillText((s.title||"Vit's").replace('\n',' ').toUpperCase(),0,-14);
-  x.font='600 26px Inter,sans-serif'; x.fillStyle=s.accent;
+  x.font='600 26px '+PF; x.fillStyle=s.accent;
   x.fillText(s.sub||'Instant Noodles',0,30);
   x.restore();
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
@@ -1813,27 +1813,27 @@ function drawSkuBack(s){
   x.fillStyle=s.field; x.fillRect(0,0,FW,FH);
   x.fillStyle=s.band; x.fillRect(0,0,FW,64);
   x.fillStyle=s.ink; x.textAlign='left';
-  x.font='800 44px Inter,sans-serif'; x.fillText('COOKING INSTRUCTIONS',64,168);
-  x.font='600 26px Inter,sans-serif'; x.fillStyle=s.accent;
+  x.font='800 44px '+PF; x.fillText('COOKING INSTRUCTIONS',64,168);
+  x.font='600 26px '+PF; x.fillStyle=s.accent;
   x.fillText('CARA MEMASAK · 烹調方法',64,214);
   const steps=[['1','Boil 400ml of water.'],['2','Add the noodle cake, 3 minutes.'],['3','Drain, season, serve hot.']];
   let y=300;
   steps.forEach(function(st){
     x.fillStyle=s.accent; x.beginPath(); x.arc(88,y-10,26,0,Math.PI*2); x.fill();
-    x.fillStyle='#fff'; x.textAlign='center'; x.font='800 28px Inter,sans-serif'; x.fillText(st[0],88,y);
-    x.fillStyle=s.ink; x.textAlign='left'; x.font='600 27px Inter,sans-serif'; x.fillText(st[1],136,y);
+    x.fillStyle='#fff'; x.textAlign='center'; x.font='800 28px '+PF; x.fillText(st[0],88,y);
+    x.fillStyle=s.ink; x.textAlign='left'; x.font='600 27px '+PF; x.fillText(st[1],136,y);
     y+=96;
   });
-  x.fillStyle=s.ink; x.font='800 26px Inter,sans-serif'; x.fillText('INGREDIENTS / RAMUAN',64,y+40);
-  x.font='500 23px Inter,sans-serif'; x.fillText('Wheat flour, palm oil, salt, mineral salts.',64,y+80);
-  x.font='500 20px Inter,sans-serif';
+  x.fillStyle=s.ink; x.font='800 26px '+PF; x.fillText('INGREDIENTS / RAMUAN',64,y+40);
+  x.font='500 23px '+PF; x.fillText('Wheat flour, palm oil, salt, mineral salts.',64,y+80);
+  x.font='500 20px '+PF;
   x.fillText('Vit Makanan (K.L.) Sdn. Bhd., Kuala Lumpur, Malaysia.',64,y+124);
   /* barcode block */
   x.fillStyle='#fff'; x.fillRect(FW-330,FH-260,266,150);
   let bx=FW-314;
   for(let i=0;i<52;i++){ const w=(i%4===0)?5:2; x.fillStyle='#1A1A1A';
     x.fillRect(bx,FH-246,w,108); bx+=w+3; if(bx>FW-96) break; }
-  x.fillStyle='#1A1A1A'; x.font='600 19px Inter,sans-serif'; x.textAlign='center';
+  x.fillStyle='#1A1A1A'; x.font='600 19px '+PF; x.textAlign='center';
   x.fillText('9 555555 123456',FW-197,FH-122);
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=Q.aniso; return t;
 }
