@@ -1,0 +1,638 @@
+{
+  "nav": {
+    "cta": {
+      "label": "Trade Enquiry",
+      "href": "#trade-form"
+    }
+  },
+  "trade": {
+    "cartonCaption": "The real carton, as it ships. OEM, private label and bulk to 30+ countries.",
+    "checks": [
+      {
+        "no": "01",
+        "icon": "formats",
+        "title": "Formats",
+        "body": "Pillow, mini, zip, air-dried kraft, cup on request. Retail 4-packs to 700g family packs.",
+        "flag": ""
+      },
+      {
+        "no": "02",
+        "icon": "shelf",
+        "title": "Shelf life",
+        "body": "Fried and air-dried lines, export shelf life stated per SKU.",
+        "flag": ""
+      },
+      {
+        "no": "03",
+        "icon": "cert",
+        "title": "Certifications",
+        "body": "FSSC 22000, HACCP, GMP, SMETA 4-Pillar, and JAKIM halal held since 1980.",
+        "flag": ""
+      },
+      {
+        "no": "05",
+        "icon": "custom",
+        "title": "Customisation",
+        "body": "Your recipe or ours. Your label, your language, your compliance.",
+        "flag": ""
+      },
+      {
+        "no": "05",
+        "icon": "clock",
+        "title": "Lead time",
+        "body": "12 to 16 weeks from the approved prototype, depending on packaging and volume.",
+        "flag": ""
+      },
+      {
+        "no": "06",
+        "icon": "steps",
+        "title": "Process",
+        "body": "Consultation and brief, prototype, approval and production, delivery and ongoing support.",
+        "flag": ""
+      }
+    ],
+    "heading1": "Seasoned noodles,",
+    "cta": {
+      "label": "Talk to the trade desk",
+      "href": "#trade-form"
+    },
+    "heading2": "made to your",
+    "heading3": "recipe.",
+    "kicker": "03 · For trade buyers",
+    "cartonImages": [
+      "assets/oem-pallets.jpg",
+      "assets/oem-loading.jpg",
+      "assets/hf-factory-line.jpg",
+      "assets/hf-factory-qc.jpg"
+    ],
+    "lede": "Can you match a taste a market already loves, a Korean fire noodle, an Indonesian mi goreng? <b>Yes.</b> 51 years of noodles, a seasoning kitchen fluent in curry, tom yam and rendang, your recipe under your label.",
+    "marketsHeading": "From Malaysia<br><em>to the World</em>",
+    "markets": [
+      "Malaysia",
+      "The Gulf",
+      "United States",
+      "United Kingdom",
+      "Thailand",
+      "30+ countries worldwide"
+    ],
+    "frameTag": "Rawang plant · Selangor · 105,000 sq ft",
+    "ctaLabel": "Talk to the trade desk",
+    "mapHome": {
+      "name": "Kuala Lumpur",
+      "role": "HQ · the plant is in Rawang, Selangor",
+      "lat": 3.14,
+      "lon": 101.7
+    },
+    "mapMarkets": [
+      {
+        "name": "United States",
+        "lat": 39,
+        "lon": -98,
+        "since": ""
+      },
+      {
+        "name": "United Kingdom",
+        "lat": 52.5,
+        "lon": -1.5,
+        "since": ""
+      },
+      {
+        "name": "Europe",
+        "lat": 48,
+        "lon": 10,
+        "since": ""
+      },
+      {
+        "name": "UAE",
+        "lat": 24.4,
+        "lon": 54.4,
+        "since": "",
+        "side": "left"
+      },
+      {
+        "name": "India",
+        "lat": 21,
+        "lon": 78,
+        "since": "",
+        "side": "left"
+      },
+      {
+        "name": "China",
+        "lat": 31.2,
+        "lon": 116.4,
+        "since": "",
+        "side": "left"
+      },
+      {
+        "name": "South Korea",
+        "lat": 36.5,
+        "lon": 127.8,
+        "since": "",
+        "side": "left"
+      },
+      {
+        "name": "Japan",
+        "lat": 36.2,
+        "lon": 138.3,
+        "since": "",
+        "side": "right"
+      },
+      {
+        "name": "Australia",
+        "lat": -25.3,
+        "lon": 133.8,
+        "since": "",
+        "side": "left"
+      }
+    ],
+    "marketsLede": "Made in Malaysia since 1975. Shipped to 30+ countries across Asia, the Gulf, Europe and beyond.",
+    "marketsQuote": "We help businesses grow by turning our quality noodles into your trusted brand.",
+    "marketsCountCaption": "30+ countries worldwide",
+    "mapClaim": "Bringing Malaysian goodness",
+    "mapClaimSub": "to the world",
+    "marketsQuoteBy": "Vit Makanan (K.L.) Sdn. Bhd. · Kuala Lumpur, since 1975"
+  },
+  "brand": {
+    "logo": "assets/vits-logo.png",
+    "name": "Vit's Noodles",
+    "legal": "VIT Makanan (K.L.) Sdn. Bhd.",
+    "city": "Kuala Lumpur, Malaysia"
+  },
+  "cook": {
+    "kicker": "05 · The cook",
+    "display1": "3 minutes",
+    "display2": "to sedap",
+    "captions": [
+      {
+        "title": "Open the pack",
+        "sub": "the wrapper gives, the kitchen starts"
+      },
+      {
+        "title": "1 cake, 1 decision",
+        "sub": "no sachet hunt, no scale"
+      },
+      {
+        "title": "3 minutes",
+        "sub": "rolling water, nothing else"
+      },
+      {
+        "title": "Let it swirl",
+        "sub": "the strands loosen on their own"
+      },
+      {
+        "title": "Sedap",
+        "sub": "the part every market understands"
+      }
+    ]
+  },
+  "about": {
+    "timeline": {
+      "kicker": "03 · The long version",
+      "title": "51 years, in order"
+    },
+    "facts": [
+      {
+        "n": "50",
+        "s": "Years of noodle experience"
+      },
+      {
+        "n": "30+",
+        "s": "Countries supplied worldwide"
+      },
+      {
+        "n": "202m",
+        "s": "Servings a year"
+      },
+      {
+        "n": "5000+",
+        "s": "Businesses around the globe"
+      }
+    ],
+    "h1": "The noodle",
+    "h2": "Malaysia grew up on",
+    "factory": {
+      "kicker": "01 · The factory",
+      "title": "A seasoning kitchen, not just a noodle line",
+      "body": "Most factories make noodles. Few can develop the taste that goes on them. Our kitchen speaks curry, tom yam, rendang and white pepper, so your seasoning is built here, not bought in.",
+      "body2": "Fried and air-dried lines run side by side: a value pillow pack and a trans-fat-free kraft carton from one building.",
+      "image": "assets/hf-factory-line.jpg"
+    },
+    "cta": {
+      "title": "Tell us what your market wants",
+      "body": "Send a market, a format and a volume. The specification sheet comes back in 1 business day.",
+      "label": "Talk to the trade desk"
+    },
+    "kicker": "About us",
+    "standards": {
+      "kicker": "02 · How we hold the line",
+      "title": "Audited, certified, export ready",
+      "note": "Certificates and scopes are issued on request with any specification sheet."
+    },
+    "lede": "Noodles in Kuala Lumpur since 1975. One factory, one family recipe, one yellow pack the whole country recognises.",
+    "factsSource": "Figures supplied by Vit's, September 2026."
+  },
+  "finale": {
+    "kicker": "07 · The ask",
+    "heading1": "Your recipe,",
+    "heading2": "on the line",
+    "heading3": "that fed a country.",
+    "shows": [
+      {
+        "date": "15 to 19 Mar 2027",
+        "name": "Gulfood, Dubai World Trade Centre.",
+        "detail": "8,500 exhibitors, 195 countries. Meet us at the stand."
+      },
+      {
+        "date": "2027",
+        "name": "Also on the circuit.",
+        "detail": "The United States, Bangkok and the United Kingdom. Dates on request."
+      }
+    ],
+    "skipLine": "Or skip the queue. Send your market, format and volume. The spec sheet comes back in 1 business day.",
+    "form": {
+      "namePlaceholder": "Your name",
+      "nameLabel": "Name",
+      "interestLabel": "Interest",
+      "messagePlaceholder": "Flavour direction, format, volumes",
+      "messageLabel": "What your market wants",
+      "note": "Demo build. The live form routes to the trade desk inbox with a 1 business day reply promise.",
+      "interestOptions": [
+        "OEM manufacturing",
+        "Private label",
+        "Bulk supply",
+        "Distribution"
+      ],
+      "companyPlaceholder": "Company",
+      "companyLabel": "Company",
+      "marketPlaceholder": "Country or region",
+      "submit": "Send to the trade desk",
+      "marketLabel": "Market",
+      "title": "Trade enquiry",
+      "emailLabel": "Email",
+      "emailPlaceholder": "name@company.com",
+      "phoneLabel": "Phone or WhatsApp",
+      "phonePlaceholder": "+60",
+      "mailLine": "vit@vit.com.my",
+      "invalid": "Name, company, market and a working email, then it goes.",
+      "sentLine": "Sent. We reply within one business day.",
+      "failLine": "It did not send. Email the trade desk instead."
+    }
+  },
+  "story": {
+    "kicker": "02 · Who makes it",
+    "heading1": "51 years,",
+    "heading2": "1 family recipe",
+    "lede": "Noodles in Kuala Lumpur since 1975. Halal since 1980. One family recipe, one yellow pack the whole country knows.",
+    "tiles": [
+      {
+        "year": "1975",
+        "body": "Noodles begin in Kuala Lumpur. The phoenix goes on the first wrapper.",
+        "flag": "",
+        "image": "assets/col-1975-a.jpg",
+        "print": "assets/col-1975-b.jpg",
+        "cap": "Kuala Lumpur, 1975",
+        "note": "the first recipe",
+        "docCap": "The first account book, kept in pen"
+      },
+      {
+        "year": "1980",
+        "body": "JAKIM halal. 46 years unbroken, doors open across the Gulf.",
+        "flag": "",
+        "image": "assets/col-1980-a.jpg",
+        "print": "assets/col-1980-b.jpg",
+        "cap": "The certificate, 1980",
+        "note": "46 yrs",
+        "docCap": "JAKIM MS 1500, first issued 1980"
+      },
+      {
+        "year": "70%",
+        "body": "Of what leaves the plant is the plain noodle base. Home first, always.",
+        "flag": "",
+        "image": "assets/col-home-a.jpg",
+        "print": "assets/col-home-b.jpg",
+        "cap": "Home kitchens",
+        "note": "seven of every ten packs",
+        "docCap": "A sundry shop docket, one line ringed"
+      },
+      {
+        "year": "30 years",
+        "body": "Of export. On shelves in 30+ countries today.",
+        "flag": "",
+        "image": "assets/col-export-a.jpg",
+        "print": "assets/col-export-b.jpg",
+        "cap": "Port Klang, export",
+        "docCap": "Port Klang to Jebel Ali, carbon copy"
+      },
+      {
+        "year": "4 shows",
+        "body": "A year on the circuit. Dubai, the United States, Bangkok, the UK.",
+        "flag": "",
+        "image": "assets/col-shows-a.jpg",
+        "print": "assets/col-shows-b.jpg",
+        "cap": "Gulfood, Dubai",
+        "docCap": "The stand list, ticked in ballpoint"
+      },
+      {
+        "year": "2026",
+        "body": "51 years, one recipe. The same yellow pack, now on shelves in 30+ countries.",
+        "flag": "",
+        "image": "assets/era/2026-plant.jpg",
+        "print": "assets/ref/real-hand.jpg",
+        "cap": "Rawang, today",
+        "docCap": ""
+      }
+    ],
+    "footNote": "Dates as published by Vit's. Final verification before anything goes to print or page.",
+    "introImage": "assets/journey-factory.jpg",
+    "frameTag": "From the family archive",
+    "boardHint": "Scroll through 51 years"
+  },
+  "pack": {
+    "fonts": {
+      "family": "Inter"
+    },
+    "colours": {
+      "field": "#F6E301",
+      "red": "#E1251C",
+      "redDeep": "#C1121F",
+      "ink": "#1A1A1A",
+      "meander": "#C13908"
+    },
+    "back": {
+      "heading": "How To Cook",
+      "subheading": "Cara Memasak",
+      "steps": [
+        {
+          "no": "1",
+          "en": "Boil 400ml of water in a pot.",
+          "ms": "Didihkan 400ml air."
+        },
+        {
+          "no": "2",
+          "en": "Add the noodle cake, cook 3 minutes.",
+          "ms": "Masukkan mi, masak 3 minit."
+        },
+        {
+          "no": "3",
+          "en": "Drain, season to taste, serve hot.",
+          "ms": "Tos, perasakan, hidang panas."
+        }
+      ],
+      "ingredientsHeading": "RAMUAN / INGREDIENTS|成分：",
+      "ingredients": "Noodles: Wheat Flour, Water, Palm Oil, Salt, Thickener (INS 412), Humectant (INS 451 (i)), Acidity Regulator (INS 500 (i), INS 501 (i)).",
+      "manufacturer": "VIT MAKANAN (KUALA LUMPUR) SDN BHD",
+      "barcode": "9 556354 000605",
+      "ingredientsMs": "Mi: Tepung Gandum, Air, Minyak Kelapa Sawit, Garam, Pemekat (INS 412), Humektan (INS 451 (i)), Pengawal Asid (INS 500 (i), INS 501 (i)).",
+      "bestBefore": "BAIK SEBELUM / BEST BEFORE /",
+      "ingredientsZh": "面：面粉、水、棕榈油、食用盐、增稠剂 (INS 412)、|保湿剂 (INS 451 (i))、酸度调节剂 (INS 500 (i), INS 501 (i))。",
+      "methodHeading": "CARA PENYEDIAAN / PREPARATION METHOD|烹饪方法：",
+      "methodMs": "Masukkan mi ke dalam 400ml air mendidih dan masak selama 3 minit. Kacau perlahan-lahan. Keluarkan mi dan tuskan. Hidangkan serta merta atau masukkan hiasan mengikut selera.",
+      "method": "Put noodles into 400ml of boiling water. Simmer for 3 minutes with gentle stirring. Drain the water away. Serve immediately or may add with garnishing for taste.",
+      "methodZh": "将面条放入400毫升沸水中。用小火慢煮3分钟，轻轻搅拌。|把水滤干后，趁热享用或可以添加调味料增添口味。",
+      "mfrHeading": "Dikilangkan Oleh / Manufactured by :",
+      "addr1": "Lot 126, Taman Industri Rawang,",
+      "addr2": "Selangor Darul Ehsan, Malaysia."
+    },
+    "variety": {
+      "en": "INSTANT NOODLES",
+      "zh": "快熟麵",
+      "ms": "MI SEGERA"
+    },
+    "mark": {
+      "image": "assets/vits-logo.png",
+      "chinese": "唯一麵"
+    },
+    "count": {
+      "prefix": "Mini",
+      "prefixSmall": "迷你",
+      "number": "5",
+      "unit1": "Cakes",
+      "unit2": "塊",
+      "unit3": "Keping"
+    },
+    "_note": "Drives the real-time 3D packaging artwork. Text, colours and figures are all live fields.",
+    "netWeight": {
+      "line1": "Net Wt. /",
+      "line2": "Berat Bersih / 淨重",
+      "value": "350g/12.35oz",
+      "arabic": "الوزن الصافي : 350 غرام / 12.35 أونس"
+    },
+    "sealRepeat": "Vit's",
+    "claim": {
+      "en": "Tiada Pengawet Tambahan",
+      "zh": "不添加防腐剂"
+    },
+    "claimBack": {
+      "en": "No Preservatives Added",
+      "ar": "بدون مواد حافظة مضافة"
+    },
+    "halal": {
+      "ring": "MALAYSIA",
+      "ringArabic": "ماليزيا",
+      "centreArabic": "حلال",
+      "centreLatin": "HALAL",
+      "certLine1": "MS 1500",
+      "certLine2": "1 001-01/2005"
+    }
+  },
+  "reel": {
+    "_note": "The scroll-scrubbed bowl reel. Scene 6 on Prototype Web 1.",
+    "kicker": "06 · One line, every bowl",
+    "title": "Same factory.<br><em>Every flavour.</em>",
+    "body": "One line, one seasoning kitchen, every bowl on this page."
+  },
+  "hero": {
+    "scrollCueLong": ", the pack cooks itself",
+    "callouts": [
+      {
+        "title": "The wrapper Malaysia knows.",
+        "body": "Yellow field, red band. 1 glance finds it on any shelf."
+      },
+      {
+        "title": "The noodle window.",
+        "body": "You see the 5 cakes before you buy. Nothing hidden."
+      },
+      {
+        "title": "The phoenix mark.",
+        "body": "On every pack since the beginning."
+      },
+      {
+        "title": "A 3 line recipe.",
+        "body": "Wheat flour, palm oil, salt."
+      },
+      {
+        "title": "1 pack, 5 meals.",
+        "body": "The value engine of the whole range."
+      }
+    ],
+    "rangeSub": "Five lines, one factory. The plain yellow pack at home, the seasoned range that travels.",
+    "line1a": "The",
+    "line1b": "Yellow Pack",
+    "scrollCue": "Scroll",
+    "jumpLabel": "Explore the journey",
+    "eyebrow": "Vit's Noodles · est. 1975 · Kuala Lumpur",
+    "lede": "The yellow pack Malaysia grew up with. Made in Malaysia since 1975 and halal certified by JAKIM since 1980, on the same three line recipe: wheat flour, palm oil, salt. Five cakes to a pack, three minutes to the table, and now on shelves in thirty countries.",
+    "rangeTitle": "Our best sellers",
+    "line2": "That Raised",
+    "stats": [
+      {
+        "value": "350g",
+        "label": "5 cakes, 1 pack"
+      },
+      {
+        "value": "1980",
+        "label": "halal certified, JAKIM"
+      },
+      {
+        "value": "3 min",
+        "label": "flour, oil, salt, done"
+      }
+    ],
+    "line3": "A Country",
+    "ctaPrimary": "Talk to the trade desk",
+    "ctaPrimaryHref": "#trade-form",
+    "tag": "Mini Pack · 5 cakes · 350 g",
+    "sticker": "3 min<br>to sedap"
+  },
+  "footer": {
+    "address": "Lot 126, Jalan Taman Industri Integrasi Rawang 1/2, Taman Industri Integrasi Rawang, 48000 Rawang Selangor, Malaysia.",
+    "phone": "Tel: +603-6093 3999 / Fax: +603-6093 3888/222",
+    "email": "Email: vit@vit.com.my",
+    "note": "Vit's Noodles · VIT Makanan (K.L.) Sdn. Bhd. · Kuala Lumpur, Malaysia",
+    "demo": "Demo by Brand Method · Aug 2026 · wrapper artwork simplified for the demo",
+    "credit": "Ramen model: \"Classic Ramen\" by Polypus_yum, CC BY 4.0",
+    "signoff": [
+      "The Yellow Pack",
+      "唯一麵",
+      "Since 1975",
+      "Sedap"
+    ]
+  },
+  "credentials": {
+    "eyebrow": "Audited, certified, export ready",
+    "marks": [
+      {
+        "icon": "halal",
+        "name": "JAKIM Halal",
+        "sub": "MS 1500 : 2009"
+      },
+      {
+        "icon": "shield",
+        "name": "FSSC 22000",
+        "sub": "Food safety system"
+      },
+      {
+        "icon": "clip",
+        "name": "HACCP",
+        "sub": "Hazard control"
+      },
+      {
+        "icon": "plant",
+        "name": "GMP",
+        "sub": "Good manufacturing"
+      },
+      {
+        "icon": "globe",
+        "name": "SMETA",
+        "sub": "4-Pillar, Sedex audited"
+      },
+      {
+        "icon": "cert",
+        "name": "Halal since 1980",
+        "sub": "46 years unbroken"
+      }
+    ]
+  },
+  "range": {
+    "kicker": "04 · The range",
+    "items": [
+      {
+        "body": "5 cakes, 350 grams, 1 decision. The pack that built the company.",
+        "metaBValue": "Plain, yours to season",
+        "line": "The original · Mini Pack",
+        "metaAValue": "350g · 5 cakes",
+        "use3D": false,
+        "title": "The Mini Pack",
+        "image": "assets/sku-mini-pack.webp",
+        "metaA": "Weight",
+        "metaB": "Character"
+      },
+      {
+        "body": "The premium line: white curry, asam laksa and Hokkien mee, cooked from paste, not powder.",
+        "metaBValue": "Traditional paste",
+        "line": "Premium · Taste of Penang",
+        "metaAValue": "Premium 4-pack",
+        "use3D": false,
+        "title": "Penang White Curry",
+        "image": "assets/sku-penang-curry.webp",
+        "metaA": "Line",
+        "metaB": "Character"
+      },
+      {
+        "body": "Air dried, never fried, coloured by real tomato. The clean spec that wins world lists.",
+        "metaBValue": "Real tomato",
+        "line": "Healthy Series · Mi Kering, air dried",
+        "metaAValue": "Air dried, trans-fat-free",
+        "use3D": false,
+        "title": "Mi Kering Tomato",
+        "image": "assets/sku-airdried-tomato.webp",
+        "metaA": "Process",
+        "metaB": "Colour from"
+      },
+      {
+        "body": "Spinach in the noodle, not on the label. High fibre, air dried, the quiet pride of the plant.",
+        "metaBValue": "Real spinach",
+        "line": "Healthy Series · Mi Kering, air dried",
+        "metaAValue": "Air dried, high fibre",
+        "use3D": false,
+        "title": "Mi Kering Bayam",
+        "image": "assets/sku-airdried-spinach.webp",
+        "metaA": "Process",
+        "metaB": "Colour from"
+      },
+      {
+        "body": "MIFT Gold 2025. Proof the seasoning kitchen can leave Malaysia and land.",
+        "metaBValue": "Creamy, zip pack",
+        "line": "Italian Series · Awarded",
+        "metaAValue": "MIFT Gold, 2025",
+        "use3D": false,
+        "title": "Mi Goreng Carbonara",
+        "image": "assets/sku-carbonara.webp",
+        "metaA": "Award",
+        "metaB": "Character"
+      }
+    ]
+  },
+  "label": {
+    "kicker": "01 · What is on the pack",
+    "hint": "Hover a point to read it",
+    "beats": [
+      {
+        "title": "Halal since 1980",
+        "body": "JAKIM certified. 46 years unbroken."
+      },
+      {
+        "title": "The wrapper Malaysia knows",
+        "body": "Yellow field, red band. One glance finds it on any shelf."
+      },
+      {
+        "title": "The noodle window",
+        "body": "Five cakes in view before you buy. Nothing hidden."
+      },
+      {
+        "title": "The phoenix mark",
+        "body": "On every pack since 1975."
+      },
+      {
+        "title": "350 g, five meals",
+        "body": "The value engine of the whole range."
+      }
+    ],
+    "title": "What's on<br>the pack"
+  },
+  "turn": {
+    "kicker": "06 · The bowl, turned",
+    "title": "Turn<br><em>the bowl.</em>",
+    "body": "Scroll, and the bowl turns for you. The pour, from every side."
+  }
+}

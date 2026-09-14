@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vit's Noodles · The Yellow Pack of Malaysia · Trade Demo</title>
+<meta name="description" content="Vit's Noodles trade destination demo. 51 years of noodle manufacturing, halal since 1980, OEM and private label for world markets.">
+<!-- 10 Sep: share card. Every link to this demo rendered with no image on WhatsApp,
+     LinkedIn and Slack because there was no og:image. og:url is left out on purpose:
+     the demo has no fixed domain yet and a wrong canonical is worse than none. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vit's Noodles · The Yellow Pack of Malaysia">
+<meta property="og:description" content="51 years of noodle manufacturing, halal since 1980. OEM and private label for world markets.">
+<meta property="og:image" content="assets/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vit's Noodles · The Yellow Pack of Malaysia">
+<meta name="twitter:image" content="assets/og-share.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Archivo:wdth,wght@62..125,400..900&family=Anton&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/site.css?v=241">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Vit Makanan (K.L.) Sdn. Bhd.", "alternateName": "Vit's Noodles", "foundingDate": "1975", "logo": "assets/vits-logo.png", "email": "vit@vit.com.my", "telephone": "+603-6093 3999", "address": {"@type": "PostalAddress", "streetAddress": "Lot 126, Jalan Taman Industri Integrasi Rawang 1/2, Taman Industri Integrasi Rawang", "addressLocality": "Rawang", "addressRegion": "Selangor", "postalCode": "48000", "addressCountry": "MY"}, "sameAs": ["https://www.facebook.com/vitsnoodles", "https://www.instagram.com/vits_malaysia/", "https://www.tiktok.com/@vits_official", "https://www.youtube.com/@VitsOfficial"]}</script>
+</head>
+<body>
+<a class="skip" href="#hero">Skip to content</a>
+
+<!-- ============ the loading plate ============
+     Ships INERT. [hidden] is only removed by the boot script below, so with
+     JavaScript dead the reader never meets a plate that cannot leave.
+     The script sits immediately after the markup and runs synchronously
+     before the parser reaches any page content, so there is no flash. -->
+<div id="vLoad" role="status" aria-live="polite" aria-label="Loading" hidden>
+  <div class="vlPlate vlRed" aria-hidden="true"></div>
+  <!-- ============ THE SLURP (7 Sep, Bazil: "concept of a noodle going up through the
+       screen as if it is being slurped, and that is the percentage") ============
+       One strand rises out of the bowl toward the chopsticks. Its drawn length IS
+       the load: stroke-dashoffset on a path with pathLength 1000, so the whole
+       hold is one composited attribute and one number. The counter is the honest
+       figure (shown), the strand takes max(elapsed, shown) so it can never stall.
+       The two plates and .vlIn keep their names: the exit in css/site.css is the
+       same lift as before. -->
+  <div class="vlPlate vlField">
+    <div class="vlIn">
+      <div class="vlTop">
+        <span class="vlLbl">Vit&rsquo;s Noodles &middot; Kuala Lumpur</span>
+        <span class="vlLbl vlTopR">Since 1975</span>
+      </div>
+      <div class="vlCore" aria-hidden="true">
+        <!-- THE WAVE COLUMN (7 Sep, Bazil's reference). The pack's own print: ten
+             white strands on the field yellow, fading out at the foot. Each strand
+             draws upward from the foot as the load climbs, staggered a breath
+             apart, and sways on a transform-only loop. Nothing else on the plate
+             competes with it. -->
+        <svg class="vlWaves" viewBox="0 0 400 640" preserveAspectRatio="xMidYMid meet" focusable="false">
+          <defs>
+            <linearGradient id="wvFade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#000"/><stop offset=".10" stop-color="#fff"/><stop offset="1" stop-color="#fff"/>   <!-- 7 Sep, Bazil: the strands end clean at the foot, like their tops, not in a fade -->
+            </linearGradient>
+            <mask id="wvMask"><rect x="0" y="0" width="400" height="640" fill="url(#wvFade)"/></mask>
+          </defs>
+          <g class="wvSet wvFlow" fill="none" stroke="#FFFAEE" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+          <path class="wv wvA" d="M47.0,700 L50.5,696 53.3,692 54.8,688 54.8,684 53.3,680 50.5,676 47.0,672 43.5,668 40.7,664 39.2,660 39.2,656 40.7,652 43.5,648 47.0,644 50.5,640 53.3,636 54.8,632 54.8,628 53.3,624 50.5,620 47.0,616 43.5,612 40.7,608 39.2,604 39.2,600 40.7,596 43.5,592 47.0,588 50.5,584 53.3,580 54.8,576 54.8,572 53.3,568 50.5,564 47.0,560 43.5,556 40.7,552 39.2,548 39.2,544 40.7,540 43.5,536 47.0,532 50.5,528 53.3,524 54.8,520 54.8,516 53.3,512 50.5,508 47.0,504 43.5,500 40.7,496 39.2,492 39.2,488 40.7,484 43.5,480 47.0,476 50.5,472 53.3,468 54.8,464 54.8,460 53.3,456 50.5,452 47.0,448 43.5,444 40.7,440 39.2,436 39.2,432 40.7,428 43.5,424 47.0,420 50.5,416 53.3,412 54.8,408 54.8,404 53.3,400 50.5,396 47.0,392 43.5,388 40.7,384 39.2,380 39.2,376 40.7,372 43.5,368 47.0,364 50.5,360 53.3,356 54.8,352 54.8,348 53.3,344 50.5,340 47.0,336 43.5,332 40.7,328 39.2,324 39.2,320 40.7,316 43.5,312 47.0,308 50.5,304 53.3,300 54.8,296 54.8,292 53.3,288 50.5,284 47.0,280 43.5,276 40.7,272 39.2,268 39.2,264 40.7,260 43.5,256 47.0,252 50.5,248 53.3,244 54.8,240 54.8,236 53.3,232 50.5,228 47.0,224 43.5,220 40.7,216 39.2,212 39.2,208 40.7,204 43.5,200 47.0,196 50.5,192 53.3,188 54.8,184 54.8,180 53.3,176 50.5,172 47.0,168 43.5,164 40.7,160 39.2,156 39.2,152 40.7,148 43.5,144 47.0,140 50.5,136 53.3,132 54.8,128 54.8,124 53.3,120 50.5,116 47.0,112 43.5,108 40.7,104 39.2,100 39.2,96 40.7,92 43.5,88 47.0,84 50.5,80 53.3,76 54.8,72 54.8,68 53.3,64 50.5,60 47.0,56 43.5,52 40.7,48 39.2,44 39.2,40 40.7,36 43.5,32 47.0,28 50.5,24 53.3,20 54.8,16 54.8,12 53.3,8 50.5,4 47.0,0 43.5,-4" pathLength="1000"/>
+          <path class="wv wvB" d="M81.0,700 L84.5,696 87.3,692 88.8,688 88.8,684 87.3,680 84.5,676 81.0,672 77.5,668 74.7,664 73.2,660 73.2,656 74.7,652 77.5,648 81.0,644 84.5,640 87.3,636 88.8,632 88.8,628 87.3,624 84.5,620 81.0,616 77.5,612 74.7,608 73.2,604 73.2,600 74.7,596 77.5,592 81.0,588 84.5,584 87.3,580 88.8,576 88.8,572 87.3,568 84.5,564 81.0,560 77.5,556 74.7,552 73.2,548 73.2,544 74.7,540 77.5,536 81.0,532 84.5,528 87.3,524 88.8,520 88.8,516 87.3,512 84.5,508 81.0,504 77.5,500 74.7,496 73.2,492 73.2,488 74.7,484 77.5,480 81.0,476 84.5,472 87.3,468 88.8,464 88.8,460 87.3,456 84.5,452 81.0,448 77.5,444 74.7,440 73.2,436 73.2,432 74.7,428 77.5,424 81.0,420 84.5,416 87.3,412 88.8,408 88.8,404 87.3,400 84.5,396 81.0,392 77.5,388 74.7,384 73.2,380 73.2,376 74.7,372 77.5,368 81.0,364 84.5,360 87.3,356 88.8,352 88.8,348 87.3,344 84.5,340 81.0,336 77.5,332 74.7,328 73.2,324 73.2,320 74.7,316 77.5,312 81.0,308 84.5,304 87.3,300 88.8,296 88.8,292 87.3,288 84.5,284 81.0,280 77.5,276 74.7,272 73.2,268 73.2,264 74.7,260 77.5,256 81.0,252 84.5,248 87.3,244 88.8,240 88.8,236 87.3,232 84.5,228 81.0,224 77.5,220 74.7,216 73.2,212 73.2,208 74.7,204 77.5,200 81.0,196 84.5,192 87.3,188 88.8,184 88.8,180 87.3,176 84.5,172 81.0,168 77.5,164 74.7,160 73.2,156 73.2,152 74.7,148 77.5,144 81.0,140 84.5,136 87.3,132 88.8,128 88.8,124 87.3,120 84.5,116 81.0,112 77.5,108 74.7,104 73.2,100 73.2,96 74.7,92 77.5,88 81.0,84 84.5,80 87.3,76 88.8,72 88.8,68 87.3,64 84.5,60 81.0,56 77.5,52 74.7,48 73.2,44 73.2,40 74.7,36 77.5,32 81.0,28 84.5,24 87.3,20 88.8,16 88.8,12 87.3,8 84.5,4 81.0,0 77.5,-4" pathLength="1000"/>
+          <path class="wv wvA" d="M115.0,700 L118.5,696 121.3,692 122.8,688 122.8,684 121.3,680 118.5,676 115.0,672 111.5,668 108.7,664 107.2,660 107.2,656 108.7,652 111.5,648 115.0,644 118.5,640 121.3,636 122.8,632 122.8,628 121.3,624 118.5,620 115.0,616 111.5,612 108.7,608 107.2,604 107.2,600 108.7,596 111.5,592 115.0,588 118.5,584 121.3,580 122.8,576 122.8,572 121.3,568 118.5,564 115.0,560 111.5,556 108.7,552 107.2,548 107.2,544 108.7,540 111.5,536 115.0,532 118.5,528 121.3,524 122.8,520 122.8,516 121.3,512 118.5,508 115.0,504 111.5,500 108.7,496 107.2,492 107.2,488 108.7,484 111.5,480 115.0,476 118.5,472 121.3,468 122.8,464 122.8,460 121.3,456 118.5,452 115.0,448 111.5,444 108.7,440 107.2,436 107.2,432 108.7,428 111.5,424 115.0,420 118.5,416 121.3,412 122.8,408 122.8,404 121.3,400 118.5,396 115.0,392 111.5,388 108.7,384 107.2,380 107.2,376 108.7,372 111.5,368 115.0,364 118.5,360 121.3,356 122.8,352 122.8,348 121.3,344 118.5,340 115.0,336 111.5,332 108.7,328 107.2,324 107.2,320 108.7,316 111.5,312 115.0,308 118.5,304 121.3,300 122.8,296 122.8,292 121.3,288 118.5,284 115.0,280 111.5,276 108.7,272 107.2,268 107.2,264 108.7,260 111.5,256 115.0,252 118.5,248 121.3,244 122.8,240 122.8,236 121.3,232 118.5,228 115.0,224 111.5,220 108.7,216 107.2,212 107.2,208 108.7,204 111.5,200 115.0,196 118.5,192 121.3,188 122.8,184 122.8,180 121.3,176 118.5,172 115.0,168 111.5,164 108.7,160 107.2,156 107.2,152 108.7,148 111.5,144 115.0,140 118.5,136 121.3,132 122.8,128 122.8,124 121.3,120 118.5,116 115.0,112 111.5,108 108.7,104 107.2,100 107.2,96 108.7,92 111.5,88 115.0,84 118.5,80 121.3,76 122.8,72 122.8,68 121.3,64 118.5,60 115.0,56 111.5,52 108.7,48 107.2,44 107.2,40 108.7,36 111.5,32 115.0,28 118.5,24 121.3,20 122.8,16 122.8,12 121.3,8 118.5,4 115.0,0 111.5,-4" pathLength="1000"/>
+          <path class="wv wvB" d="M149.0,700 L152.5,696 155.3,692 156.8,688 156.8,684 155.3,680 152.5,676 149.0,672 145.5,668 142.7,664 141.2,660 141.2,656 142.7,652 145.5,648 149.0,644 152.5,640 155.3,636 156.8,632 156.8,628 155.3,624 152.5,620 149.0,616 145.5,612 142.7,608 141.2,604 141.2,600 142.7,596 145.5,592 149.0,588 152.5,584 155.3,580 156.8,576 156.8,572 155.3,568 152.5,564 149.0,560 145.5,556 142.7,552 141.2,548 141.2,544 142.7,540 145.5,536 149.0,532 152.5,528 155.3,524 156.8,520 156.8,516 155.3,512 152.5,508 149.0,504 145.5,500 142.7,496 141.2,492 141.2,488 142.7,484 145.5,480 149.0,476 152.5,472 155.3,468 156.8,464 156.8,460 155.3,456 152.5,452 149.0,448 145.5,444 142.7,440 141.2,436 141.2,432 142.7,428 145.5,424 149.0,420 152.5,416 155.3,412 156.8,408 156.8,404 155.3,400 152.5,396 149.0,392 145.5,388 142.7,384 141.2,380 141.2,376 142.7,372 145.5,368 149.0,364 152.5,360 155.3,356 156.8,352 156.8,348 155.3,344 152.5,340 149.0,336 145.5,332 142.7,328 141.2,324 141.2,320 142.7,316 145.5,312 149.0,308 152.5,304 155.3,300 156.8,296 156.8,292 155.3,288 152.5,284 149.0,280 145.5,276 142.7,272 141.2,268 141.2,264 142.7,260 145.5,256 149.0,252 152.5,248 155.3,244 156.8,240 156.8,236 155.3,232 152.5,228 149.0,224 145.5,220 142.7,216 141.2,212 141.2,208 142.7,204 145.5,200 149.0,196 152.5,192 155.3,188 156.8,184 156.8,180 155.3,176 152.5,172 149.0,168 145.5,164 142.7,160 141.2,156 141.2,152 142.7,148 145.5,144 149.0,140 152.5,136 155.3,132 156.8,128 156.8,124 155.3,120 152.5,116 149.0,112 145.5,108 142.7,104 141.2,100 141.2,96 142.7,92 145.5,88 149.0,84 152.5,80 155.3,76 156.8,72 156.8,68 155.3,64 152.5,60 149.0,56 145.5,52 142.7,48 141.2,44 141.2,40 142.7,36 145.5,32 149.0,28 152.5,24 155.3,20 156.8,16 156.8,12 155.3,8 152.5,4 149.0,0 145.5,-4" pathLength="1000"/>
+          <path class="wv wvA" d="M183.0,700 L186.5,696 189.3,692 190.8,688 190.8,684 189.3,680 186.5,676 183.0,672 179.5,668 176.7,664 175.2,660 175.2,656 176.7,652 179.5,648 183.0,644 186.5,640 189.3,636 190.8,632 190.8,628 189.3,624 186.5,620 183.0,616 179.5,612 176.7,608 175.2,604 175.2,600 176.7,596 179.5,592 183.0,588 186.5,584 189.3,580 190.8,576 190.8,572 189.3,568 186.5,564 183.0,560 179.5,556 176.7,552 175.2,548 175.2,544 176.7,540 179.5,536 183.0,532 186.5,528 189.3,524 190.8,520 190.8,516 189.3,512 186.5,508 183.0,504 179.5,500 176.7,496 175.2,492 175.2,488 176.7,484 179.5,480 183.0,476 186.5,472 189.3,468 190.8,464 190.8,460 189.3,456 186.5,452 183.0,448 179.5,444 176.7,440 175.2,436 175.2,432 176.7,428 179.5,424 183.0,420 186.5,416 189.3,412 190.8,408 190.8,404 189.3,400 186.5,396 183.0,392 179.5,388 176.7,384 175.2,380 175.2,376 176.7,372 179.5,368 183.0,364 186.5,360 189.3,356 190.8,352 190.8,348 189.3,344 186.5,340 183.0,336 179.5,332 176.7,328 175.2,324 175.2,320 176.7,316 179.5,312 183.0,308 186.5,304 189.3,300 190.8,296 190.8,292 189.3,288 186.5,284 183.0,280 179.5,276 176.7,272 175.2,268 175.2,264 176.7,260 179.5,256 183.0,252 186.5,248 189.3,244 190.8,240 190.8,236 189.3,232 186.5,228 183.0,224 179.5,220 176.7,216 175.2,212 175.2,208 176.7,204 179.5,200 183.0,196 186.5,192 189.3,188 190.8,184 190.8,180 189.3,176 186.5,172 183.0,168 179.5,164 176.7,160 175.2,156 175.2,152 176.7,148 179.5,144 183.0,140 186.5,136 189.3,132 190.8,128 190.8,124 189.3,120 186.5,116 183.0,112 179.5,108 176.7,104 175.2,100 175.2,96 176.7,92 179.5,88 183.0,84 186.5,80 189.3,76 190.8,72 190.8,68 189.3,64 186.5,60 183.0,56 179.5,52 176.7,48 175.2,44 175.2,40 176.7,36 179.5,32 183.0,28 186.5,24 189.3,20 190.8,16 190.8,12 189.3,8 186.5,4 183.0,0 179.5,-4" pathLength="1000"/>
+          <path class="wv wvB" d="M217.0,700 L220.5,696 223.3,692 224.8,688 224.8,684 223.3,680 220.5,676 217.0,672 213.5,668 210.7,664 209.2,660 209.2,656 210.7,652 213.5,648 217.0,644 220.5,640 223.3,636 224.8,632 224.8,628 223.3,624 220.5,620 217.0,616 213.5,612 210.7,608 209.2,604 209.2,600 210.7,596 213.5,592 217.0,588 220.5,584 223.3,580 224.8,576 224.8,572 223.3,568 220.5,564 217.0,560 213.5,556 210.7,552 209.2,548 209.2,544 210.7,540 213.5,536 217.0,532 220.5,528 223.3,524 224.8,520 224.8,516 223.3,512 220.5,508 217.0,504 213.5,500 210.7,496 209.2,492 209.2,488 210.7,484 213.5,480 217.0,476 220.5,472 223.3,468 224.8,464 224.8,460 223.3,456 220.5,452 217.0,448 213.5,444 210.7,440 209.2,436 209.2,432 210.7,428 213.5,424 217.0,420 220.5,416 223.3,412 224.8,408 224.8,404 223.3,400 220.5,396 217.0,392 213.5,388 210.7,384 209.2,380 209.2,376 210.7,372 213.5,368 217.0,364 220.5,360 223.3,356 224.8,352 224.8,348 223.3,344 220.5,340 217.0,336 213.5,332 210.7,328 209.2,324 209.2,320 210.7,316 213.5,312 217.0,308 220.5,304 223.3,300 224.8,296 224.8,292 223.3,288 220.5,284 217.0,280 213.5,276 210.7,272 209.2,268 209.2,264 210.7,260 213.5,256 217.0,252 220.5,248 223.3,244 224.8,240 224.8,236 223.3,232 220.5,228 217.0,224 213.5,220 210.7,216 209.2,212 209.2,208 210.7,204 213.5,200 217.0,196 220.5,192 223.3,188 224.8,184 224.8,180 223.3,176 220.5,172 217.0,168 213.5,164 210.7,160 209.2,156 209.2,152 210.7,148 213.5,144 217.0,140 220.5,136 223.3,132 224.8,128 224.8,124 223.3,120 220.5,116 217.0,112 213.5,108 210.7,104 209.2,100 209.2,96 210.7,92 213.5,88 217.0,84 220.5,80 223.3,76 224.8,72 224.8,68 223.3,64 220.5,60 217.0,56 213.5,52 210.7,48 209.2,44 209.2,40 210.7,36 213.5,32 217.0,28 220.5,24 223.3,20 224.8,16 224.8,12 223.3,8 220.5,4 217.0,0 213.5,-4" pathLength="1000"/>
+          <path class="wv wvA" d="M251.0,700 L254.5,696 257.3,692 258.8,688 258.8,684 257.3,680 254.5,676 251.0,672 247.5,668 244.7,664 243.2,660 243.2,656 244.7,652 247.5,648 251.0,644 254.5,640 257.3,636 258.8,632 258.8,628 257.3,624 254.5,620 251.0,616 247.5,612 244.7,608 243.2,604 243.2,600 244.7,596 247.5,592 251.0,588 254.5,584 257.3,580 258.8,576 258.8,572 257.3,568 254.5,564 251.0,560 247.5,556 244.7,552 243.2,548 243.2,544 244.7,540 247.5,536 251.0,532 254.5,528 257.3,524 258.8,520 258.8,516 257.3,512 254.5,508 251.0,504 247.5,500 244.7,496 243.2,492 243.2,488 244.7,484 247.5,480 251.0,476 254.5,472 257.3,468 258.8,464 258.8,460 257.3,456 254.5,452 251.0,448 247.5,444 244.7,440 243.2,436 243.2,432 244.7,428 247.5,424 251.0,420 254.5,416 257.3,412 258.8,408 258.8,404 257.3,400 254.5,396 251.0,392 247.5,388 244.7,384 243.2,380 243.2,376 244.7,372 247.5,368 251.0,364 254.5,360 257.3,356 258.8,352 258.8,348 257.3,344 254.5,340 251.0,336 247.5,332 244.7,328 243.2,324 243.2,320 244.7,316 247.5,312 251.0,308 254.5,304 257.3,300 258.8,296 258.8,292 257.3,288 254.5,284 251.0,280 247.5,276 244.7,272 243.2,268 243.2,264 244.7,260 247.5,256 251.0,252 254.5,248 257.3,244 258.8,240 258.8,236 257.3,232 254.5,228 251.0,224 247.5,220 244.7,216 243.2,212 243.2,208 244.7,204 247.5,200 251.0,196 254.5,192 257.3,188 258.8,184 258.8,180 257.3,176 254.5,172 251.0,168 247.5,164 244.7,160 243.2,156 243.2,152 244.7,148 247.5,144 251.0,140 254.5,136 257.3,132 258.8,128 258.8,124 257.3,120 254.5,116 251.0,112 247.5,108 244.7,104 243.2,100 243.2,96 244.7,92 247.5,88 251.0,84 254.5,80 257.3,76 258.8,72 258.8,68 257.3,64 254.5,60 251.0,56 247.5,52 244.7,48 243.2,44 243.2,40 244.7,36 247.5,32 251.0,28 254.5,24 257.3,20 258.8,16 258.8,12 257.3,8 254.5,4 251.0,0 247.5,-4" pathLength="1000"/>
+          <path class="wv wvB" d="M285.0,700 L288.5,696 291.3,692 292.8,688 292.8,684 291.3,680 288.5,676 285.0,672 281.5,668 278.7,664 277.2,660 277.2,656 278.7,652 281.5,648 285.0,644 288.5,640 291.3,636 292.8,632 292.8,628 291.3,624 288.5,620 285.0,616 281.5,612 278.7,608 277.2,604 277.2,600 278.7,596 281.5,592 285.0,588 288.5,584 291.3,580 292.8,576 292.8,572 291.3,568 288.5,564 285.0,560 281.5,556 278.7,552 277.2,548 277.2,544 278.7,540 281.5,536 285.0,532 288.5,528 291.3,524 292.8,520 292.8,516 291.3,512 288.5,508 285.0,504 281.5,500 278.7,496 277.2,492 277.2,488 278.7,484 281.5,480 285.0,476 288.5,472 291.3,468 292.8,464 292.8,460 291.3,456 288.5,452 285.0,448 281.5,444 278.7,440 277.2,436 277.2,432 278.7,428 281.5,424 285.0,420 288.5,416 291.3,412 292.8,408 292.8,404 291.3,400 288.5,396 285.0,392 281.5,388 278.7,384 277.2,380 277.2,376 278.7,372 281.5,368 285.0,364 288.5,360 291.3,356 292.8,352 292.8,348 291.3,344 288.5,340 285.0,336 281.5,332 278.7,328 277.2,324 277.2,320 278.7,316 281.5,312 285.0,308 288.5,304 291.3,300 292.8,296 292.8,292 291.3,288 288.5,284 285.0,280 281.5,276 278.7,272 277.2,268 277.2,264 278.7,260 281.5,256 285.0,252 288.5,248 291.3,244 292.8,240 292.8,236 291.3,232 288.5,228 285.0,224 281.5,220 278.7,216 277.2,212 277.2,208 278.7,204 281.5,200 285.0,196 288.5,192 291.3,188 292.8,184 292.8,180 291.3,176 288.5,172 285.0,168 281.5,164 278.7,160 277.2,156 277.2,152 278.7,148 281.5,144 285.0,140 288.5,136 291.3,132 292.8,128 292.8,124 291.3,120 288.5,116 285.0,112 281.5,108 278.7,104 277.2,100 277.2,96 278.7,92 281.5,88 285.0,84 288.5,80 291.3,76 292.8,72 292.8,68 291.3,64 288.5,60 285.0,56 281.5,52 278.7,48 277.2,44 277.2,40 278.7,36 281.5,32 285.0,28 288.5,24 291.3,20 292.8,16 292.8,12 291.3,8 288.5,4 285.0,0 281.5,-4" pathLength="1000"/>
+          <path class="wv wvA" d="M319.0,700 L322.5,696 325.3,692 326.8,688 326.8,684 325.3,680 322.5,676 319.0,672 315.5,668 312.7,664 311.2,660 311.2,656 312.7,652 315.5,648 319.0,644 322.5,640 325.3,636 326.8,632 326.8,628 325.3,624 322.5,620 319.0,616 315.5,612 312.7,608 311.2,604 311.2,600 312.7,596 315.5,592 319.0,588 322.5,584 325.3,580 326.8,576 326.8,572 325.3,568 322.5,564 319.0,560 315.5,556 312.7,552 311.2,548 311.2,544 312.7,540 315.5,536 319.0,532 322.5,528 325.3,524 326.8,520 326.8,516 325.3,512 322.5,508 319.0,504 315.5,500 312.7,496 311.2,492 311.2,488 312.7,484 315.5,480 319.0,476 322.5,472 325.3,468 326.8,464 326.8,460 325.3,456 322.5,452 319.0,448 315.5,444 312.7,440 311.2,436 311.2,432 312.7,428 315.5,424 319.0,420 322.5,416 325.3,412 326.8,408 326.8,404 325.3,400 322.5,396 319.0,392 315.5,388 312.7,384 311.2,380 311.2,376 312.7,372 315.5,368 319.0,364 322.5,360 325.3,356 326.8,352 326.8,348 325.3,344 322.5,340 319.0,336 315.5,332 312.7,328 311.2,324 311.2,320 312.7,316 315.5,312 319.0,308 322.5,304 325.3,300 326.8,296 326.8,292 325.3,288 322.5,284 319.0,280 315.5,276 312.7,272 311.2,268 311.2,264 312.7,260 315.5,256 319.0,252 322.5,248 325.3,244 326.8,240 326.8,236 325.3,232 322.5,228 319.0,224 315.5,220 312.7,216 311.2,212 311.2,208 312.7,204 315.5,200 319.0,196 322.5,192 325.3,188 326.8,184 326.8,180 325.3,176 322.5,172 319.0,168 315.5,164 312.7,160 311.2,156 311.2,152 312.7,148 315.5,144 319.0,140 322.5,136 325.3,132 326.8,128 326.8,124 325.3,120 322.5,116 319.0,112 315.5,108 312.7,104 311.2,100 311.2,96 312.7,92 315.5,88 319.0,84 322.5,80 325.3,76 326.8,72 326.8,68 325.3,64 322.5,60 319.0,56 315.5,52 312.7,48 311.2,44 311.2,40 312.7,36 315.5,32 319.0,28 322.5,24 325.3,20 326.8,16 326.8,12 325.3,8 322.5,4 319.0,0 315.5,-4" pathLength="1000"/>
+          <path class="wv wvB" d="M353.0,700 L356.5,696 359.3,692 360.8,688 360.8,684 359.3,680 356.5,676 353.0,672 349.5,668 346.7,664 345.2,660 345.2,656 346.7,652 349.5,648 353.0,644 356.5,640 359.3,636 360.8,632 360.8,628 359.3,624 356.5,620 353.0,616 349.5,612 346.7,608 345.2,604 345.2,600 346.7,596 349.5,592 353.0,588 356.5,584 359.3,580 360.8,576 360.8,572 359.3,568 356.5,564 353.0,560 349.5,556 346.7,552 345.2,548 345.2,544 346.7,540 349.5,536 353.0,532 356.5,528 359.3,524 360.8,520 360.8,516 359.3,512 356.5,508 353.0,504 349.5,500 346.7,496 345.2,492 345.2,488 346.7,484 349.5,480 353.0,476 356.5,472 359.3,468 360.8,464 360.8,460 359.3,456 356.5,452 353.0,448 349.5,444 346.7,440 345.2,436 345.2,432 346.7,428 349.5,424 353.0,420 356.5,416 359.3,412 360.8,408 360.8,404 359.3,400 356.5,396 353.0,392 349.5,388 346.7,384 345.2,380 345.2,376 346.7,372 349.5,368 353.0,364 356.5,360 359.3,356 360.8,352 360.8,348 359.3,344 356.5,340 353.0,336 349.5,332 346.7,328 345.2,324 345.2,320 346.7,316 349.5,312 353.0,308 356.5,304 359.3,300 360.8,296 360.8,292 359.3,288 356.5,284 353.0,280 349.5,276 346.7,272 345.2,268 345.2,264 346.7,260 349.5,256 353.0,252 356.5,248 359.3,244 360.8,240 360.8,236 359.3,232 356.5,228 353.0,224 349.5,220 346.7,216 345.2,212 345.2,208 346.7,204 349.5,200 353.0,196 356.5,192 359.3,188 360.8,184 360.8,180 359.3,176 356.5,172 353.0,168 349.5,164 346.7,160 345.2,156 345.2,152 346.7,148 349.5,144 353.0,140 356.5,136 359.3,132 360.8,128 360.8,124 359.3,120 356.5,116 353.0,112 349.5,108 346.7,104 345.2,100 345.2,96 346.7,92 349.5,88 353.0,84 356.5,80 359.3,76 360.8,72 360.8,68 359.3,64 356.5,60 353.0,56 349.5,52 346.7,48 345.2,44 345.2,40 346.7,36 349.5,32 353.0,28 356.5,24 359.3,20 360.8,16 360.8,12 359.3,8 356.5,4 353.0,0 349.5,-4" pathLength="1000"/>
+          </g>
+        </svg>
+      </div>
+      <div class="vlBot">
+        <!-- 7 Sep, Bazil: "loading screen has to have the number percentage": the figure, big, in the pack red -->
+        <span class="vlLoad" aria-hidden="true"><span class="vlLbl">Loading</span><span class="vlNum"><i id="vlPct">0</i><sup>%</sup></span></span>
+        <span class="vlSr" id="vlSr">Loading 0 percent</span>
+        <i class="vlBar" id="vlBar" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   THE LOADING PLATE, boot. Self contained: it reads the page's
+   own signals and owns nothing else.
+
+   IT ALWAYS LEAVES. Three independent escapes, in order of who
+   fires first:
+     1. the real signals: fonts, content.json, window load, and
+        the 3D stage, with the stage capped at 2600ms
+     2. a HARD CAP at 4200ms, armed before any other line runs,
+        so everything below can throw and the plate still goes
+     3. a CSS only bail keyframe at 6s, for the case where this
+        script unhid the plate and then died outright
+   And with scripts dead the plate is never unhidden at all.
+   ============================================================ */
+(function(){
+  'use strict';
+  var el=document.getElementById('vLoad'); if(!el) return;
+  /* PINNED PAGE. The browser must not restore a deep scroll behind the plate,
+     or the press hands over to the middle of the site. motion.js:10 sets this
+     too, but motion.js loads at the foot of the page, long after the restore
+     has already happened. This is the first line that runs, so it is the only
+     place it is worth anything. */
+  if('scrollRestoration' in history){ try{ history.scrollRestoration='manual'; }catch(e){} }
+  var root=document.documentElement;
+  var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches);
+  /* the still path is decided BEFORE first paint and owned entirely by CSS, so
+     the two paths can never flash each other and a script that dies mid run
+     cannot leave the sheet half printed */
+  if(RM) el.classList.add('pxStill');
+  var T0=Date.now(), HARD=4200, MINHOLD=RM?260:820, RUN=1150;
+  var out=false, gone=false, hardT=0, lenisT=0;
+
+  function fire(name){
+    try{ document.dispatchEvent(new CustomEvent(name)); }
+    catch(e){ try{ var ev=document.createEvent('Event'); ev.initEvent(name,true,true);
+                   document.dispatchEvent(ev); }catch(_){} }
+  }
+  function refresh(){
+    try{ if(window.ScrollTrigger&&ScrollTrigger.refresh) ScrollTrigger.refresh(); }catch(e){}
+  }
+  function finish(){
+    if(gone) return; gone=true;
+    el.hidden=true;
+    /* hand the memory back before Three.js asks for it: will-change left on
+       eight full layers costs real bytes at the worst moment on the page */
+    try{ if(PX) PX.free(); }catch(e){}
+    removeEventListener('wheel',block,{passive:false});
+    removeEventListener('touchmove',block,{passive:false});
+    refresh();
+  }
+  /* one handover, whoever gets here first. Idempotent, because a frame and a
+     timer are racing it on purpose. */
+  function go(){
+    if(gone||el.classList.contains('vlOut')) return;
+    el.classList.add('vlOut');
+    flyToPack();
+    fire('vits:loaded');            /* the hero headline intro waits on this */
+    setTimeout(finish, RM?380:1000);   /* the plates take .74s + .20s delay: hide after, never during */
+  }
+  function dismiss(){
+    if(out) return; out=true;
+    clearTimeout(hardT); clearInterval(lenisT);
+    /* release the scroll a frame BEFORE the plates move: the scrollbar comes
+       back while the page is still fully covered, so the reflow is not seen */
+    root.classList.remove('vLoadLock');
+    try{ if(window.__lenis&&window.__lenis.start) window.__lenis.start(); }catch(e){}
+    refresh();
+    /* THE ESCAPE FIX (5 Sep). MEASURED, not inferred: with requestAnimationFrame
+       stubbed dead, this build reaches 5000ms with __vitsLoader.done() true (the
+       4200ms cap DID run dismiss) but .vlOut never added and el.hidden still
+       false, and vLoadLock already off, so the page scrolls under an opaque
+       plate until the 6s CSS bail at 6500ms. In a backgrounded tab Chrome pauses
+       that animation too, so the bail is not a floor either. The class add and
+       the finish timer were both stranded inside one frame request.
+       go() now runs on whichever of a frame and a timer arrives first, and
+       finish() carries its own floor that needs neither frames nor transitions. */
+    requestAnimationFrame(go);        /* the good path: one frame of full cover */
+    setTimeout(go,40);                /* the path where frames never come       */
+    setTimeout(finish,RM?1400:2000);  /* the floor: no frames, no transitions   */
+  }
+  function block(e){ if(!out) e.preventDefault(); }
+  window.__vitsLoader={dismiss:dismiss,done:function(){return out;},
+    /* a handle for the headless proof: drive one station at a chosen u with the
+       loop suspended, so the four stations can be measured and photographed */
+    press:function(u,t){ try{ return PX&&PX.press(u,t); }catch(e){ return 'err '+e.message; } },
+    hold:function(){ out=true; }};
+
+  /* ARM THE ESCAPE FIRST, then show the plate. Nothing below this pair can
+     strand the reader. */
+  hardT=setTimeout(dismiss,HARD);
+  root.classList.add('vLoadLock');
+  el.hidden=false;
+
+  addEventListener('wheel',block,{passive:false});
+  addEventListener('touchmove',block,{passive:false});
+  /* Lenis is built at the foot of the page, so watch for it rather than
+     assuming it exists */
+  lenisT=setInterval(function(){
+    if(out||gone){ clearInterval(lenisT); return; }
+    if(window.__lenis){ try{ window.__lenis.stop(); }catch(e){} clearInterval(lenisT); }
+  },60);
+  setTimeout(function(){ clearInterval(lenisT); },5200);
+
+  /* ---- progress ----
+     Real milestones raise the target; a slow floor keeps it climbing so it can
+     never read as stalled. The bar eases toward the target every frame. */
+  var target=0.08, shown=0, stageOk=false;
+  function bump(v){ v=Math.min(1,v); if(v>target) target=v; }
+
+  try{
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){bump(0.46);},function(){bump(0.46);});
+    else bump(0.46);
+  }catch(e){ bump(0.46); }
+  if(window.VITS_READY&&window.VITS_READY.then) window.VITS_READY.then(function(){bump(0.62);},function(){bump(0.62);});
+  else setTimeout(function(){bump(0.62);},600);
+  if(document.readyState==='complete') bump(0.80);
+  else addEventListener('load',function(){bump(0.80);},{once:true});
+
+  /* the 3D stage. Under reduced motion pack3d never boots, so never wait on it. */
+  function stageDone(){ if(stageOk) return; stageOk=true; bump(1); }
+  if(RM) stageDone();
+  else {
+    document.addEventListener('vits:3dready',stageDone,{once:true});
+    document.addEventListener('vits:3dfail',stageDone,{once:true});
+    setTimeout(stageDone,300);       /* 7 Sep: the 3D boots after the plate now, so the plate no longer waits on it */
+  }
+
+  /* ============================================================
+     THE PRESS. One pass down a line, four stations, folded into the
+     tick that is already running.
+
+     ONE CLOCK, and it is the answer to the MINHOLD problem.
+     u = max(elapsed/RUN, shown). Both terms are monotonic, so max()
+     is monotonic and the line can never run backwards. A warm load
+     makes `shown` race and the press runs its WHOLE pass compressed
+     into the hold, which is what a press does when it comes up to
+     pressure; a cold load is carried by elapsed so it can never read
+     as stalled.
+
+     NO THRESHOLDS. Every station is e = smoothstep(local time) and
+     every visible quantity is a continuous function of e. The four
+     stations OVERLAP by design, so this reads as one pass down a
+     machine rather than four steps firing.
+
+     NO PER-FRAME PAINT, and this is the most important decision in
+     the file. A wipe is normally mask-position, which repaints the
+     strip every frame on a page that is simultaneously booting
+     Three.js. Here every wipe is an opaque cover carrying a STATIC
+     feathered mask that TRANSLATES: identical on screen, composited,
+     and the entire hold is therefore transform and opacity.
+
+     NO CUSTOM PROPERTY IS WRITTEN PER FRAME. A property write on a
+     shared ancestor invalidates style for its whole subtree, which
+     is exactly the wrong thing to do while pack3d builds geometry.
+     ============================================================ */
+  function cl(v){ return v<0?0:v>1?1:v; }
+  function ss(v){ v=cl(v); return v*v*(3-2*v); }
+  function stg(u,a,s){ return ss((u-a)/s); }
+
+  var PX=(function(){
+    var wv=el.querySelectorAll('.wv'), pct=el.querySelector('#vlPct'), svg=el.querySelector('.vlWaves'), lastPct=-1, i, n=wv.length;
+    if(!n) return null;
+    for(i=0;i<n;i++){ wv[i].style.strokeDasharray='1000'; wv[i].style.strokeDashoffset='1000'; }
+    /* u: the rise, max(elapsed, shown), monotonic. Each strand starts a breath
+       after the one before it, so the column climbs as a ripple, not a wall.
+       shown: the honest figure for the readout. */
+    var STEP=0.028, SPAN=1-STEP*(n-1);
+    function press(u,t,shown){
+      var k,off;
+      for(i=0;i<n;i++){
+        k=0.09+0.91*ss((cl(u)-i*STEP)/SPAN);
+        off=(1000*(1-k)).toFixed(1);
+        if(wv[i].__o!==off){ wv[i].__o=off; wv[i].style.strokeDashoffset=off; }
+      }
+      k=Math.round((shown==null?u:shown)*100);
+      if(k!==lastPct&&pct){ lastPct=k; pct.textContent=String(k); }
+      /* the whole column lifts a touch as the load climbs: the slurp */
+      if(svg){ var ty='translateY('+(-2.4*cl(u)).toFixed(2)+'vh)'; if(svg.__t!==ty){ svg.__t=ty; svg.style.transform=ty; } }
+    }
+    function free(){ for(i=0;i<n;i++) wv[i].style.willChange='auto'; }
+    return {sheet:null,press:press,free:free};
+  })();
+
+  function flyToPack(){}
+
+  var bar=document.getElementById('vlBar'), srn=document.getElementById('vlSr'), lastN=-1;
+  (function tick(){
+    if(gone) return;
+    var t=Date.now()-T0;
+    bump(Math.min(0.92,t/HARD*0.92));
+    /* THE CLOSE. A flat 0.12 needs ~46 frames to cross the last 0.38 once target
+       reaches 1, and dismiss() waits on shown >= 0.999: that is ~775ms of the
+       warm load spent waiting for a lerp, and it is why this plate measures
+       nearer 2.3s than 1.5s. The rate is a continuous function of target, so the
+       last stretch closes in ~14 frames with no branch and nothing snapping. */
+    shown = RM ? target : shown+(target-shown)*(0.12+0.22*target*target);
+    if(target>=1&&t>=MINHOLD) shown+=(1-shown)*0.5;   /* 7 Sep: the readout closes in a few frames once the stage is ready, so the plate leaves on its signals and not on the cap */
+    if(target>=1&&shown>0.992) shown=1;
+    try{
+      if(bar) bar.style.transform='scaleX('+shown.toFixed(4)+')';
+      /* the honest percentage, announced at 10% steps rather than 100 times, so
+         role=status does not machine-gun a screen reader */
+      var n=Math.round(shown*10);
+      if(n!==lastN&&srn){ srn.textContent='Loading '+(n*10)+' percent'; lastN=n; }
+      /* ONE PASS DOWN THE LINE. u = max(elapsed, progress): whichever term is
+         further along drives the press, both are monotonic so max() is
+         monotonic, and nothing can ever run backwards. */
+      if(!RM&&PX) PX.press(Math.max(t/RUN,shown),t,shown);
+    }catch(e){}
+    if(!out&&stageOk&&shown>=0.999&&t>=MINHOLD) dismiss();
+    /* the loop runs to `gone`, not to `out`: the lamp and the readout carry on
+       through the seal, and the loop dies exactly when finish() fires */
+    if(!gone) requestAnimationFrame(tick);
+  })();
+})();
+</script>
+
+<div class="bmws"><div class="bmws-in">
+  <div class="bmws-crumb"><b>Vit's Noodles</b><span>Brand Method &middot; Admin Navigation</span></div>
+  <nav class="bmws-tabs" aria-label="Admin navigation">
+    <a href="audit.html"><i>00</i>Web Audit</a>
+    <a href="competitors.html"><i>01</i>Competitors</a>
+    <a href="plan.html"><i>02</i>Web Plan</a>
+    <a class="on" href="index.html"><i>03</i>The Website</a>
+    <a class="bmws-cms" href="admin/" target="_blank" rel="noopener"><i>&#9998;</i>CMS</a>
+  </nav>
+</div></div>
+
+<div id="pgBar" aria-hidden="true"><i></i></div>
+
+<nav class="nav" id="siteNav">
+  <img class="lg" src="assets/vits-logo.png" data-c-src="brand.logo" alt="Vit's">
+  <button class="navBurger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <i></i><i></i><i></i>
+  </button>
+  <div class="links" id="navLinks">
+    <span class="here" aria-current="page">Home</span>
+    <a href="3d.html" class="gated" data-gate="vit321" aria-describedby="gateNote">3D Packs</a>
+    <a class="cta" data-c="nav.cta.label" data-c-href="nav.cta.href" href="#trade-form">Trade Enquiry</a>
+  </div>
+</nav>
+
+<!-- the one 3D stage: the pack lives here for the whole journey -->
+<div id="stage3d" aria-hidden="true"></div>
+<!-- 9 Sep, Bazil: "the packaging must have the same journey like the one in the website".
+     Below 720px pack3d never boots, so the pack sat in five separate slots as five separate
+     pictures. This is the flat twin of #stage3d: ONE pack, fixed, that travels the page from
+     the hero to the pour the way the 3D one does. motion.js drives it and only reveals it
+     once it is running, so a phone with no JS still gets the pictures in the slots. -->
+<div id="mPack" aria-hidden="true"><img src="assets/pack-hero.webp" alt=""></div>
+
+<!-- ============ scene 1: the pack and the brand ============ -->
+<section id="hero" aria-label="The yellow pack">
+  <!-- 7 Sep, Bazil: "why does the background suck". One field: the pack's yellow as a
+       soft sun behind the product, the wave column from the loader rising through
+       it, so the loading screen and the landing are the same graphic. -->
+  <!-- 7 Sep, Bazil: "the whole background having a great layout". The pack's wave
+       column at the scale of the screen, standing in the right third the way it
+       stands on the wrapper, tone on tone, flowing. The field is one warm gradient. -->
+  <!-- 7 Sep, Bazil: the waves belong to the loader now; the landing gets the factory.
+       One photograph of the line, muted, held to the right of the field behind the
+       pack and faded into the cream so the type stays on paper. -->
+  <div class="heroWaves" aria-hidden="true">
+    <img class="heroBack" data-plx="3" src="assets/hero-factory.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    <!-- 7 Sep, Bazil: "moving video behind, subtle, interchanging: factory, selling".
+         Two players crossfade through three ambient clips (the line, the aisle, the
+         counter). The photograph stays underneath as the poster, so a slow network,
+         reduced motion or a phone still sees the same field. motion.js drives it. -->
+    <video class="heroClip" muted playsinline preload="none" data-clips="assets/hero/clip-line.mp4,assets/hero/clip-aisle.mp4,assets/hero/clip-counter.mp4"></video>
+    <video class="heroClip" muted playsinline preload="none"></video>
+  </div>
+  <div class="heroIn">
+    <h1 class="heroTitle">
+        <span class="l disp red" data-hline="1"><span data-c="hero.line1a">The</span> <span data-c="hero.line1b">Yellow Pack</span></span>
+        <span class="l disp" data-hline="2" data-c="hero.line2">That Raised</span>
+        <span class="l disp" data-hline="3" data-c="hero.line3">A Country</span>
+      </h1>
+    <div class="heroCopy">
+
+      <div class="heroMid">
+      <div class="heroLedeWrap">
+      <p class="heroLede" data-c="hero.lede">The yellow pack Malaysia grew up with. Made in Malaysia since 1975 and halal certified by JAKIM since 1980, on the same three line recipe: wheat flour, palm oil, salt. Five cakes to a pack, three minutes to the table, and now on shelves in thirty countries.</p>
+      <a class="heroCta" href="#trade-form" data-c="hero.ctaPrimary" data-c-href="hero.ctaPrimaryHref">Talk to the trade desk<svg viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M1 6h15M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <!-- the heritage seal: a pressed cachet, not a badge. Two rings, a bead
+           ring, the pack's own wave motif, and the ink is struck twice: a faint
+           off-register ghost under a full-weight pass, both eaten by grain. -->
+      <svg class="heroSeal" viewBox="0 0 240 240" role="img" aria-label="Established 1975, Kuala Lumpur, Malaysia">
+        <defs>
+          <!-- displacement roughens every edge; the fine speck knocks pinholes
+               out of the ink and the coarse patch varies the density, which is
+               what separates a stamp from a vector circle -->
+          <filter id="sealInk" x="-30%" y="-30%" width="160%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="4" seed="9" result="edge"/>
+            <feDisplacementMap in="SourceGraphic" in2="edge" scale="2.1"
+                               xChannelSelector="R" yChannelSelector="G" result="rough"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="17" result="speck"/>
+            <feColorMatrix in="speck" type="luminanceToAlpha" result="speckA"/>
+            <feComponentTransfer in="speckA" result="speckM">
+              <feFuncA type="discrete" tableValues="0 1 1 1 1 1 1 1 1 1"/>
+            </feComponentTransfer>
+            <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="3" result="patch"/>
+            <feColorMatrix in="patch" type="luminanceToAlpha" result="patchA"/>
+            <feComponentTransfer in="patchA" result="patchM">
+              <feFuncA type="linear" slope="1.1" intercept="0.56"/>
+            </feComponentTransfer>
+            <feComposite in="rough" in2="speckM" operator="in" result="inked"/>
+            <feComposite in="inked" in2="patchM" operator="in"/>
+          </filter>
+          <filter id="sealGhost" x="-30%" y="-30%" width="160%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" seed="23" result="edge"/>
+            <feDisplacementMap in="SourceGraphic" in2="edge" scale="3.2"
+                               xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <path id="sealTop" d="M120 120 m-76 0 a76 76 0 0 1 152 0"/>
+          <path id="sealBot" d="M120 120 m-84 0 a84 84 0 0 0 168 0"/>
+          <g id="sealArt" fill="none" stroke="currentColor" stroke-linecap="round">
+            <circle cx="120" cy="120" r="110" stroke-width="6"/>
+            <circle cx="120" cy="120" r="99" stroke-width="1.5"/>
+            <!-- the bead ring is one dashed circle: 64 ticks without 64 nodes -->
+            <circle cx="120" cy="120" r="92" stroke-width="5" stroke-dasharray="2 7.03"/>
+            <g fill="currentColor" stroke="none">
+              <text font-family="Archivo, sans-serif" font-size="17" font-weight="700" letter-spacing="4.4"><textPath href="#sealTop" startOffset="50%" text-anchor="middle">ESTABLISHED</textPath></text>
+              <text font-family="Archivo, sans-serif" font-size="15" font-weight="700" letter-spacing="3.2"><textPath href="#sealBot" startOffset="50%" text-anchor="middle">KUALA LUMPUR</textPath></text>
+              <text font-family="Anton, Inter, sans-serif" font-size="58" letter-spacing="1.8" x="120" y="148" text-anchor="middle">1975</text>
+              <path d="M0-9 2.12-2.91 8.56-2.78 3.42 1.11 5.29 7.28 0 3.6-5.29 7.28-3.42 1.11-8.56-2.78-2.12-2.91Z" transform="translate(31,120)"/>
+              <path d="M0-9 2.12-2.91 8.56-2.78 3.42 1.11 5.29 7.28 0 3.6-5.29 7.28-3.42 1.11-8.56-2.78-2.12-2.91Z" transform="translate(209,120)"/>
+            </g>
+            <!-- the wrapper's own waves, carried into the seal -->
+            <g stroke-width="2.4">
+              <path d="M96 60q6-4 12 0t12 0 12 0 12 0"/>
+              <path d="M96 68q6-4 12 0t12 0 12 0 12 0"/>
+              <path d="M96 76q6-4 12 0t12 0 12 0 12 0"/>
+            </g>
+            <path d="M52 96h136M52 166h136" stroke-width="3.6"/>
+          </g>
+        </defs>
+        <g class="sealPass sealB" filter="url(#sealGhost)" transform="translate(1.6,-1.2)"><use href="#sealArt"/></g>
+        <g class="sealPass sealA" filter="url(#sealInk)"><use href="#sealArt"/></g>
+      </svg>
+      </div>
+    </div>
+    <div class="heroShow">
+      <div class="heroSticker" id="heroSticker" aria-hidden="true"><span data-c-html="hero.sticker">3 min<br>to sedap</span></div>
+      <div class="packSlot" id="packSlot">
+        <div class="heroHit" aria-hidden="true"></div>
+        <img class="heroPoster" data-plx="-3" data-plx-m="0" src="assets/pack-hero.webp" alt="" aria-hidden="true">
+      </div>
+    </div>
+    <div class="heroFacts">
+      <div class="fact">
+          <img class="factIcon" src="assets/icon-weight.png" alt="" width="432" height="461" loading="lazy" decoding="async">
+          <span><b class="n" data-c="hero.stats.0.value">350g</b><i class="s" data-c="hero.stats.0.label">5 cakes, 1 pack</i></span>
+        </div>
+      <div class="fact">
+        <img class="factIcon" src="assets/icon-halal.png" alt="" width="528" height="528" loading="lazy" decoding="async">
+        <span><b class="n" data-c="hero.stats.1.value">1980</b><i class="s" data-c="hero.stats.1.label">halal certified, JAKIM</i></span>
+      </div>
+      <div class="fact">
+        <img class="factIcon" src="assets/icon-time.png" alt="" width="567" height="492" loading="lazy" decoding="async">
+        <span><b class="n" data-c="hero.stats.2.value">3 min</b><i class="s" data-c="hero.stats.2.label">flour, oil, salt, done</i></span>
+      </div>
+    </div>
+  </div>
+  <!-- 7 Sep, Bazil: "a bit more visuals and info". The proof strip: the four
+       numbers the CMS already carries under about.facts, so no new fields, with
+       the phoenix as the divider. It rides in the cream the rebalance freed. -->
+  <ul class="heroProof" data-plx="-2" data-plx-m="0.6" data-plx-t="1" aria-label="Vit's in numbers">
+    <li><b class="hpNum" data-c="about.facts.0.n">50</b><span data-c="about.facts.0.s">Years of noodle experience</span></li>
+    <li><b class="hpNum" data-c="about.facts.1.n">30+</b><span data-c="about.facts.1.s">Countries supplied worldwide</span></li>
+    <li><b class="hpNum" data-c="about.facts.2.n">202m</b><span data-c="about.facts.2.s">Servings a year</span></li>
+    <li><b class="hpNum" data-c="about.facts.3.n">5000+</b><span data-c="about.facts.3.s">Businesses around the globe</span></li>
+    <li class="hpSrc" data-c="about.factsSource">Figures supplied by Vit's, September 2026.</li>
+  </ul>
+</section>
+
+<!-- ============ scene 1b: the labelling stage ============
+     The pack stands still and front on while five points on the wrapper are
+     annotated. The dots are placed as percentages of the slot, so they hold
+     their spot on the artwork at any viewport, and the leader lines are drawn
+     by motion.js from each note to its dot. -->
+<section id="label" class="anat" aria-label="What is on the pack">
+  <!-- THE CALLOUTS (4 Sep, third cut). Bazil: the diagram concept was right, do it premium.
+       The pack holds still and front on in a pinned stage; five notes stand either side and
+       reveal one by one with the scroll, each with an elbow leader to a numbered pin on the
+       real point of the 3D pack (hotspots projected by pack3d every frame). Hover a note or
+       a pin and the rest quiets. -->
+  <div class="anatRun">
+    <div class="anatBack" aria-hidden="true">
+      <div class="anatTitleBack"><h2 class="anatBig" data-c-html="label.title">What&rsquo;s on<br>the pack</h2></div>
+    <svg class="anatStrands" viewBox="0 0 440 1000" preserveAspectRatio="xMidYMid slice" focusable="false" fill="none" stroke="#FFF3D6" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M43.4,1040 L47.7,1034 49.8,1028 49.4,1022 46.4,1016 41.7,1010 36.6,1004 32.3,998 30.2,992 30.6,986 33.6,980 38.3,974 43.4,968 47.7,962 49.8,956 49.4,950 46.4,944 41.7,938 36.6,932 32.3,926 30.2,920 30.6,914 33.6,908 38.3,902 43.4,896 47.7,890 49.8,884 49.4,878 46.4,872 41.7,866 36.6,860 32.3,854 30.2,848 30.6,842 33.6,836 38.3,830 43.4,824 47.7,818 49.8,812 49.4,806 46.4,800 41.7,794 36.6,788 32.3,782 30.2,776 30.6,770 33.6,764 38.3,758 43.4,752 47.7,746 49.8,740 49.4,734 46.4,728 41.7,722 36.6,716 32.3,710 30.2,704 30.6,698 33.6,692 38.3,686 43.4,680 47.7,674 49.8,668 49.4,662 46.4,656 41.7,650 36.6,644 32.3,638 30.2,632 30.6,626 33.6,620 38.3,614 43.4,608 47.7,602 49.8,596 49.4,590 46.4,584 41.7,578 36.6,572 32.3,566 30.2,560 30.6,554 33.6,548 38.3,542 43.4,536 47.7,530 49.8,524 49.4,518 46.4,512 41.7,506 36.6,500 32.3,494 30.2,488 30.6,482 33.6,476 38.3,470 43.4,464 47.7,458 49.8,452 49.4,446 46.4,440 41.7,434 36.6,428 32.3,422 30.2,416 30.6,410 33.6,404 38.3,398 43.4,392 47.7,386 49.8,380 49.4,374 46.4,368 41.7,362 36.6,356 32.3,350 30.2,344 30.6,338 33.6,332 38.3,326 43.4,320 47.7,314 49.8,308 49.4,302 46.4,296 41.7,290 36.6,284 32.3,278 30.2,272 30.6,266 33.6,260 38.3,254 43.4,248 47.7,242 49.8,236 49.4,230 46.4,224 41.7,218 36.6,212 32.3,206 30.2,200 30.6,194 33.6,188 38.3,182 43.4,176 47.7,170 49.8,164 49.4,158 46.4,152 41.7,146 36.6,140 32.3,134 30.2,128 30.6,122 33.6,116 38.3,110 43.4,104 47.7,98 49.8,92 49.4,86 46.4,80 41.7,74 36.6,68 32.3,62 30.2,56 30.6,50 33.6,44 38.3,38 43.4,32 47.7,26 49.8,20 49.4,14 46.4,8 41.7,2 36.6,-4 32.3,-10 30.2,-16 30.6,-22 33.6,-28 38.3,-34 43.4,-40"/>
+      <path d="M87.4,1040 L91.7,1034 93.8,1028 93.4,1022 90.4,1016 85.7,1010 80.6,1004 76.3,998 74.2,992 74.6,986 77.6,980 82.3,974 87.4,968 91.7,962 93.8,956 93.4,950 90.4,944 85.7,938 80.6,932 76.3,926 74.2,920 74.6,914 77.6,908 82.3,902 87.4,896 91.7,890 93.8,884 93.4,878 90.4,872 85.7,866 80.6,860 76.3,854 74.2,848 74.6,842 77.6,836 82.3,830 87.4,824 91.7,818 93.8,812 93.4,806 90.4,800 85.7,794 80.6,788 76.3,782 74.2,776 74.6,770 77.6,764 82.3,758 87.4,752 91.7,746 93.8,740 93.4,734 90.4,728 85.7,722 80.6,716 76.3,710 74.2,704 74.6,698 77.6,692 82.3,686 87.4,680 91.7,674 93.8,668 93.4,662 90.4,656 85.7,650 80.6,644 76.3,638 74.2,632 74.6,626 77.6,620 82.3,614 87.4,608 91.7,602 93.8,596 93.4,590 90.4,584 85.7,578 80.6,572 76.3,566 74.2,560 74.6,554 77.6,548 82.3,542 87.4,536 91.7,530 93.8,524 93.4,518 90.4,512 85.7,506 80.6,500 76.3,494 74.2,488 74.6,482 77.6,476 82.3,470 87.4,464 91.7,458 93.8,452 93.4,446 90.4,440 85.7,434 80.6,428 76.3,422 74.2,416 74.6,410 77.6,404 82.3,398 87.4,392 91.7,386 93.8,380 93.4,374 90.4,368 85.7,362 80.6,356 76.3,350 74.2,344 74.6,338 77.6,332 82.3,326 87.4,320 91.7,314 93.8,308 93.4,302 90.4,296 85.7,290 80.6,284 76.3,278 74.2,272 74.6,266 77.6,260 82.3,254 87.4,248 91.7,242 93.8,236 93.4,230 90.4,224 85.7,218 80.6,212 76.3,206 74.2,200 74.6,194 77.6,188 82.3,182 87.4,176 91.7,170 93.8,164 93.4,158 90.4,152 85.7,146 80.6,140 76.3,134 74.2,128 74.6,122 77.6,116 82.3,110 87.4,104 91.7,98 93.8,92 93.4,86 90.4,80 85.7,74 80.6,68 76.3,62 74.2,56 74.6,50 77.6,44 82.3,38 87.4,32 91.7,26 93.8,20 93.4,14 90.4,8 85.7,2 80.6,-4 76.3,-10 74.2,-16 74.6,-22 77.6,-28 82.3,-34 87.4,-40"/>
+      <path d="M131.4,1040 L135.7,1034 137.8,1028 137.4,1022 134.4,1016 129.7,1010 124.6,1004 120.3,998 118.2,992 118.6,986 121.6,980 126.3,974 131.4,968 135.7,962 137.8,956 137.4,950 134.4,944 129.7,938 124.6,932 120.3,926 118.2,920 118.6,914 121.6,908 126.3,902 131.4,896 135.7,890 137.8,884 137.4,878 134.4,872 129.7,866 124.6,860 120.3,854 118.2,848 118.6,842 121.6,836 126.3,830 131.4,824 135.7,818 137.8,812 137.4,806 134.4,800 129.7,794 124.6,788 120.3,782 118.2,776 118.6,770 121.6,764 126.3,758 131.4,752 135.7,746 137.8,740 137.4,734 134.4,728 129.7,722 124.6,716 120.3,710 118.2,704 118.6,698 121.6,692 126.3,686 131.4,680 135.7,674 137.8,668 137.4,662 134.4,656 129.7,650 124.6,644 120.3,638 118.2,632 118.6,626 121.6,620 126.3,614 131.4,608 135.7,602 137.8,596 137.4,590 134.4,584 129.7,578 124.6,572 120.3,566 118.2,560 118.6,554 121.6,548 126.3,542 131.4,536 135.7,530 137.8,524 137.4,518 134.4,512 129.7,506 124.6,500 120.3,494 118.2,488 118.6,482 121.6,476 126.3,470 131.4,464 135.7,458 137.8,452 137.4,446 134.4,440 129.7,434 124.6,428 120.3,422 118.2,416 118.6,410 121.6,404 126.3,398 131.4,392 135.7,386 137.8,380 137.4,374 134.4,368 129.7,362 124.6,356 120.3,350 118.2,344 118.6,338 121.6,332 126.3,326 131.4,320 135.7,314 137.8,308 137.4,302 134.4,296 129.7,290 124.6,284 120.3,278 118.2,272 118.6,266 121.6,260 126.3,254 131.4,248 135.7,242 137.8,236 137.4,230 134.4,224 129.7,218 124.6,212 120.3,206 118.2,200 118.6,194 121.6,188 126.3,182 131.4,176 135.7,170 137.8,164 137.4,158 134.4,152 129.7,146 124.6,140 120.3,134 118.2,128 118.6,122 121.6,116 126.3,110 131.4,104 135.7,98 137.8,92 137.4,86 134.4,80 129.7,74 124.6,68 120.3,62 118.2,56 118.6,50 121.6,44 126.3,38 131.4,32 135.7,26 137.8,20 137.4,14 134.4,8 129.7,2 124.6,-4 120.3,-10 118.2,-16 118.6,-22 121.6,-28 126.3,-34 131.4,-40"/>
+      <path d="M175.4,1040 L179.7,1034 181.8,1028 181.4,1022 178.4,1016 173.7,1010 168.6,1004 164.3,998 162.2,992 162.6,986 165.6,980 170.3,974 175.4,968 179.7,962 181.8,956 181.4,950 178.4,944 173.7,938 168.6,932 164.3,926 162.2,920 162.6,914 165.6,908 170.3,902 175.4,896 179.7,890 181.8,884 181.4,878 178.4,872 173.7,866 168.6,860 164.3,854 162.2,848 162.6,842 165.6,836 170.3,830 175.4,824 179.7,818 181.8,812 181.4,806 178.4,800 173.7,794 168.6,788 164.3,782 162.2,776 162.6,770 165.6,764 170.3,758 175.4,752 179.7,746 181.8,740 181.4,734 178.4,728 173.7,722 168.6,716 164.3,710 162.2,704 162.6,698 165.6,692 170.3,686 175.4,680 179.7,674 181.8,668 181.4,662 178.4,656 173.7,650 168.6,644 164.3,638 162.2,632 162.6,626 165.6,620 170.3,614 175.4,608 179.7,602 181.8,596 181.4,590 178.4,584 173.7,578 168.6,572 164.3,566 162.2,560 162.6,554 165.6,548 170.3,542 175.4,536 179.7,530 181.8,524 181.4,518 178.4,512 173.7,506 168.6,500 164.3,494 162.2,488 162.6,482 165.6,476 170.3,470 175.4,464 179.7,458 181.8,452 181.4,446 178.4,440 173.7,434 168.6,428 164.3,422 162.2,416 162.6,410 165.6,404 170.3,398 175.4,392 179.7,386 181.8,380 181.4,374 178.4,368 173.7,362 168.6,356 164.3,350 162.2,344 162.6,338 165.6,332 170.3,326 175.4,320 179.7,314 181.8,308 181.4,302 178.4,296 173.7,290 168.6,284 164.3,278 162.2,272 162.6,266 165.6,260 170.3,254 175.4,248 179.7,242 181.8,236 181.4,230 178.4,224 173.7,218 168.6,212 164.3,206 162.2,200 162.6,194 165.6,188 170.3,182 175.4,176 179.7,170 181.8,164 181.4,158 178.4,152 173.7,146 168.6,140 164.3,134 162.2,128 162.6,122 165.6,116 170.3,110 175.4,104 179.7,98 181.8,92 181.4,86 178.4,80 173.7,74 168.6,68 164.3,62 162.2,56 162.6,50 165.6,44 170.3,38 175.4,32 179.7,26 181.8,20 181.4,14 178.4,8 173.7,2 168.6,-4 164.3,-10 162.2,-16 162.6,-22 165.6,-28 170.3,-34 175.4,-40"/>
+      <path d="M219.4,1040 L223.7,1034 225.8,1028 225.4,1022 222.4,1016 217.7,1010 212.6,1004 208.3,998 206.2,992 206.6,986 209.6,980 214.3,974 219.4,968 223.7,962 225.8,956 225.4,950 222.4,944 217.7,938 212.6,932 208.3,926 206.2,920 206.6,914 209.6,908 214.3,902 219.4,896 223.7,890 225.8,884 225.4,878 222.4,872 217.7,866 212.6,860 208.3,854 206.2,848 206.6,842 209.6,836 214.3,830 219.4,824 223.7,818 225.8,812 225.4,806 222.4,800 217.7,794 212.6,788 208.3,782 206.2,776 206.6,770 209.6,764 214.3,758 219.4,752 223.7,746 225.8,740 225.4,734 222.4,728 217.7,722 212.6,716 208.3,710 206.2,704 206.6,698 209.6,692 214.3,686 219.4,680 223.7,674 225.8,668 225.4,662 222.4,656 217.7,650 212.6,644 208.3,638 206.2,632 206.6,626 209.6,620 214.3,614 219.4,608 223.7,602 225.8,596 225.4,590 222.4,584 217.7,578 212.6,572 208.3,566 206.2,560 206.6,554 209.6,548 214.3,542 219.4,536 223.7,530 225.8,524 225.4,518 222.4,512 217.7,506 212.6,500 208.3,494 206.2,488 206.6,482 209.6,476 214.3,470 219.4,464 223.7,458 225.8,452 225.4,446 222.4,440 217.7,434 212.6,428 208.3,422 206.2,416 206.6,410 209.6,404 214.3,398 219.4,392 223.7,386 225.8,380 225.4,374 222.4,368 217.7,362 212.6,356 208.3,350 206.2,344 206.6,338 209.6,332 214.3,326 219.4,320 223.7,314 225.8,308 225.4,302 222.4,296 217.7,290 212.6,284 208.3,278 206.2,272 206.6,266 209.6,260 214.3,254 219.4,248 223.7,242 225.8,236 225.4,230 222.4,224 217.7,218 212.6,212 208.3,206 206.2,200 206.6,194 209.6,188 214.3,182 219.4,176 223.7,170 225.8,164 225.4,158 222.4,152 217.7,146 212.6,140 208.3,134 206.2,128 206.6,122 209.6,116 214.3,110 219.4,104 223.7,98 225.8,92 225.4,86 222.4,80 217.7,74 212.6,68 208.3,62 206.2,56 206.6,50 209.6,44 214.3,38 219.4,32 223.7,26 225.8,20 225.4,14 222.4,8 217.7,2 212.6,-4 208.3,-10 206.2,-16 206.6,-22 209.6,-28 214.3,-34 219.4,-40"/>
+      <path d="M263.4,1040 L267.7,1034 269.8,1028 269.4,1022 266.4,1016 261.7,1010 256.6,1004 252.3,998 250.2,992 250.6,986 253.6,980 258.3,974 263.4,968 267.7,962 269.8,956 269.4,950 266.4,944 261.7,938 256.6,932 252.3,926 250.2,920 250.6,914 253.6,908 258.3,902 263.4,896 267.7,890 269.8,884 269.4,878 266.4,872 261.7,866 256.6,860 252.3,854 250.2,848 250.6,842 253.6,836 258.3,830 263.4,824 267.7,818 269.8,812 269.4,806 266.4,800 261.7,794 256.6,788 252.3,782 250.2,776 250.6,770 253.6,764 258.3,758 263.4,752 267.7,746 269.8,740 269.4,734 266.4,728 261.7,722 256.6,716 252.3,710 250.2,704 250.6,698 253.6,692 258.3,686 263.4,680 267.7,674 269.8,668 269.4,662 266.4,656 261.7,650 256.6,644 252.3,638 250.2,632 250.6,626 253.6,620 258.3,614 263.4,608 267.7,602 269.8,596 269.4,590 266.4,584 261.7,578 256.6,572 252.3,566 250.2,560 250.6,554 253.6,548 258.3,542 263.4,536 267.7,530 269.8,524 269.4,518 266.4,512 261.7,506 256.6,500 252.3,494 250.2,488 250.6,482 253.6,476 258.3,470 263.4,464 267.7,458 269.8,452 269.4,446 266.4,440 261.7,434 256.6,428 252.3,422 250.2,416 250.6,410 253.6,404 258.3,398 263.4,392 267.7,386 269.8,380 269.4,374 266.4,368 261.7,362 256.6,356 252.3,350 250.2,344 250.6,338 253.6,332 258.3,326 263.4,320 267.7,314 269.8,308 269.4,302 266.4,296 261.7,290 256.6,284 252.3,278 250.2,272 250.6,266 253.6,260 258.3,254 263.4,248 267.7,242 269.8,236 269.4,230 266.4,224 261.7,218 256.6,212 252.3,206 250.2,200 250.6,194 253.6,188 258.3,182 263.4,176 267.7,170 269.8,164 269.4,158 266.4,152 261.7,146 256.6,140 252.3,134 250.2,128 250.6,122 253.6,116 258.3,110 263.4,104 267.7,98 269.8,92 269.4,86 266.4,80 261.7,74 256.6,68 252.3,62 250.2,56 250.6,50 253.6,44 258.3,38 263.4,32 267.7,26 269.8,20 269.4,14 266.4,8 261.7,2 256.6,-4 252.3,-10 250.2,-16 250.6,-22 253.6,-28 258.3,-34 263.4,-40"/>
+      <path d="M307.4,1040 L311.7,1034 313.8,1028 313.4,1022 310.4,1016 305.7,1010 300.6,1004 296.3,998 294.2,992 294.6,986 297.6,980 302.3,974 307.4,968 311.7,962 313.8,956 313.4,950 310.4,944 305.7,938 300.6,932 296.3,926 294.2,920 294.6,914 297.6,908 302.3,902 307.4,896 311.7,890 313.8,884 313.4,878 310.4,872 305.7,866 300.6,860 296.3,854 294.2,848 294.6,842 297.6,836 302.3,830 307.4,824 311.7,818 313.8,812 313.4,806 310.4,800 305.7,794 300.6,788 296.3,782 294.2,776 294.6,770 297.6,764 302.3,758 307.4,752 311.7,746 313.8,740 313.4,734 310.4,728 305.7,722 300.6,716 296.3,710 294.2,704 294.6,698 297.6,692 302.3,686 307.4,680 311.7,674 313.8,668 313.4,662 310.4,656 305.7,650 300.6,644 296.3,638 294.2,632 294.6,626 297.6,620 302.3,614 307.4,608 311.7,602 313.8,596 313.4,590 310.4,584 305.7,578 300.6,572 296.3,566 294.2,560 294.6,554 297.6,548 302.3,542 307.4,536 311.7,530 313.8,524 313.4,518 310.4,512 305.7,506 300.6,500 296.3,494 294.2,488 294.6,482 297.6,476 302.3,470 307.4,464 311.7,458 313.8,452 313.4,446 310.4,440 305.7,434 300.6,428 296.3,422 294.2,416 294.6,410 297.6,404 302.3,398 307.4,392 311.7,386 313.8,380 313.4,374 310.4,368 305.7,362 300.6,356 296.3,350 294.2,344 294.6,338 297.6,332 302.3,326 307.4,320 311.7,314 313.8,308 313.4,302 310.4,296 305.7,290 300.6,284 296.3,278 294.2,272 294.6,266 297.6,260 302.3,254 307.4,248 311.7,242 313.8,236 313.4,230 310.4,224 305.7,218 300.6,212 296.3,206 294.2,200 294.6,194 297.6,188 302.3,182 307.4,176 311.7,170 313.8,164 313.4,158 310.4,152 305.7,146 300.6,140 296.3,134 294.2,128 294.6,122 297.6,116 302.3,110 307.4,104 311.7,98 313.8,92 313.4,86 310.4,80 305.7,74 300.6,68 296.3,62 294.2,56 294.6,50 297.6,44 302.3,38 307.4,32 311.7,26 313.8,20 313.4,14 310.4,8 305.7,2 300.6,-4 296.3,-10 294.2,-16 294.6,-22 297.6,-28 302.3,-34 307.4,-40"/>
+      <path d="M351.4,1040 L355.7,1034 357.8,1028 357.4,1022 354.4,1016 349.7,1010 344.6,1004 340.3,998 338.2,992 338.6,986 341.6,980 346.3,974 351.4,968 355.7,962 357.8,956 357.4,950 354.4,944 349.7,938 344.6,932 340.3,926 338.2,920 338.6,914 341.6,908 346.3,902 351.4,896 355.7,890 357.8,884 357.4,878 354.4,872 349.7,866 344.6,860 340.3,854 338.2,848 338.6,842 341.6,836 346.3,830 351.4,824 355.7,818 357.8,812 357.4,806 354.4,800 349.7,794 344.6,788 340.3,782 338.2,776 338.6,770 341.6,764 346.3,758 351.4,752 355.7,746 357.8,740 357.4,734 354.4,728 349.7,722 344.6,716 340.3,710 338.2,704 338.6,698 341.6,692 346.3,686 351.4,680 355.7,674 357.8,668 357.4,662 354.4,656 349.7,650 344.6,644 340.3,638 338.2,632 338.6,626 341.6,620 346.3,614 351.4,608 355.7,602 357.8,596 357.4,590 354.4,584 349.7,578 344.6,572 340.3,566 338.2,560 338.6,554 341.6,548 346.3,542 351.4,536 355.7,530 357.8,524 357.4,518 354.4,512 349.7,506 344.6,500 340.3,494 338.2,488 338.6,482 341.6,476 346.3,470 351.4,464 355.7,458 357.8,452 357.4,446 354.4,440 349.7,434 344.6,428 340.3,422 338.2,416 338.6,410 341.6,404 346.3,398 351.4,392 355.7,386 357.8,380 357.4,374 354.4,368 349.7,362 344.6,356 340.3,350 338.2,344 338.6,338 341.6,332 346.3,326 351.4,320 355.7,314 357.8,308 357.4,302 354.4,296 349.7,290 344.6,284 340.3,278 338.2,272 338.6,266 341.6,260 346.3,254 351.4,248 355.7,242 357.8,236 357.4,230 354.4,224 349.7,218 344.6,212 340.3,206 338.2,200 338.6,194 341.6,188 346.3,182 351.4,176 355.7,170 357.8,164 357.4,158 354.4,152 349.7,146 344.6,140 340.3,134 338.2,128 338.6,122 341.6,116 346.3,110 351.4,104 355.7,98 357.8,92 357.4,86 354.4,80 349.7,74 344.6,68 340.3,62 338.2,56 338.6,50 341.6,44 346.3,38 351.4,32 355.7,26 357.8,20 357.4,14 354.4,8 349.7,2 344.6,-4 340.3,-10 338.2,-16 338.6,-22 341.6,-28 346.3,-34 351.4,-40"/>
+      <path d="M395.4,1040 L399.7,1034 401.8,1028 401.4,1022 398.4,1016 393.7,1010 388.6,1004 384.3,998 382.2,992 382.6,986 385.6,980 390.3,974 395.4,968 399.7,962 401.8,956 401.4,950 398.4,944 393.7,938 388.6,932 384.3,926 382.2,920 382.6,914 385.6,908 390.3,902 395.4,896 399.7,890 401.8,884 401.4,878 398.4,872 393.7,866 388.6,860 384.3,854 382.2,848 382.6,842 385.6,836 390.3,830 395.4,824 399.7,818 401.8,812 401.4,806 398.4,800 393.7,794 388.6,788 384.3,782 382.2,776 382.6,770 385.6,764 390.3,758 395.4,752 399.7,746 401.8,740 401.4,734 398.4,728 393.7,722 388.6,716 384.3,710 382.2,704 382.6,698 385.6,692 390.3,686 395.4,680 399.7,674 401.8,668 401.4,662 398.4,656 393.7,650 388.6,644 384.3,638 382.2,632 382.6,626 385.6,620 390.3,614 395.4,608 399.7,602 401.8,596 401.4,590 398.4,584 393.7,578 388.6,572 384.3,566 382.2,560 382.6,554 385.6,548 390.3,542 395.4,536 399.7,530 401.8,524 401.4,518 398.4,512 393.7,506 388.6,500 384.3,494 382.2,488 382.6,482 385.6,476 390.3,470 395.4,464 399.7,458 401.8,452 401.4,446 398.4,440 393.7,434 388.6,428 384.3,422 382.2,416 382.6,410 385.6,404 390.3,398 395.4,392 399.7,386 401.8,380 401.4,374 398.4,368 393.7,362 388.6,356 384.3,350 382.2,344 382.6,338 385.6,332 390.3,326 395.4,320 399.7,314 401.8,308 401.4,302 398.4,296 393.7,290 388.6,284 384.3,278 382.2,272 382.6,266 385.6,260 390.3,254 395.4,248 399.7,242 401.8,236 401.4,230 398.4,224 393.7,218 388.6,212 384.3,206 382.2,200 382.6,194 385.6,188 390.3,182 395.4,176 399.7,170 401.8,164 401.4,158 398.4,152 393.7,146 388.6,140 384.3,134 382.2,128 382.6,122 385.6,116 390.3,110 395.4,104 399.7,98 401.8,92 401.4,86 398.4,80 393.7,74 388.6,68 384.3,62 382.2,56 382.6,50 385.6,44 390.3,38 395.4,32 399.7,26 401.8,20 401.4,14 398.4,8 393.7,2 388.6,-4 384.3,-10 382.2,-16 382.6,-22 385.6,-28 390.3,-34 395.4,-40"/>
+    </svg>
+  </div>
+    <div class="anatStage">
+      <div class="anatHead">
+        <h2 class="anatBig" data-c-html="label.title">What&rsquo;s on<br>the pack</h2>
+      </div>
+      <div class="anatCol anatL">
+        <div class="beat" data-hot="halal" data-i="0"><span class="top"><span class="n">1</span><svg class="beatIco" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="10.5"/><path d="M16 3.5v2.6M16 25.9v2.6M3.5 16h2.6M25.9 16h2.6M7.2 7.2l1.8 1.8M23 23l1.8 1.8M7.2 24.8l1.8-1.8M23 9l1.8-1.8"/><path d="M11.6 16.3l3 3 5.8-6.6"/></svg></span><b data-c="label.beats.0.title">Halal since 1980</b><p data-c="label.beats.0.body">JAKIM certified. 46 years unbroken.</p></div>
+        <div class="beat" data-hot="roundel" data-i="1"><span class="top"><span class="n">2</span><svg class="beatIco" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 9.5h18l1.4 2.4v11.6l-1.4 2.4H7l-1.4-2.4V11.9z"/><path d="M5.6 12.2h20.8M5.6 23.3h20.8"/><ellipse cx="16" cy="17.8" rx="5.2" ry="3.1"/></svg></span><b data-c="label.beats.1.title">The wrapper Malaysia knows</b><p data-c="label.beats.1.body">Yellow field, red band. One glance finds it on any shelf.</p></div>
+        <div class="beat" data-hot="window" data-i="2"><span class="top"><span class="n">3</span><svg class="beatIco" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="7" width="20" height="18" rx="1.5"/><path d="M10 12h12v9H10z"/><path d="M11.2 15.4c1.6-1.4 3.2-1.4 4.8 0s3.2 1.4 4.8 0M11.2 18.6c1.6-1.4 3.2-1.4 4.8 0s3.2 1.4 4.8 0"/></svg></span><b data-c="label.beats.2.title">The noodle window</b><p data-c="label.beats.2.body">Five cakes in view before you buy. Nothing hidden.</p></div>
+      </div>
+      <div class="anatSlot" id="labelSlot">
+        <img class="lblPoster" data-plx="-2.8" data-plx-m="0" src="assets/pack-hero.webp" alt="" aria-hidden="true">
+      </div>
+      <div class="anatCol anatR">
+        <div class="beat" data-hot="phoenix" data-i="3"><span class="top"><span class="n">4</span><svg class="beatIco" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 26.5c0-5-3.2-8-3.2-12 0-3 3.2-5 3.2-8.5 0 3.5 3.2 5.5 3.2 8.5 0 4-3.2 7-3.2 12z"/><path d="M13.2 14.6c-3.2.6-6.4-.9-7.6-4.1 3.2 0 5.4 1.2 7.6 4.1zM18.8 14.6c3.2.6 6.4-.9 7.6-4.1-3.2 0-5.4 1.2-7.6 4.1z"/><path d="M16 26.5v2"/></svg></span><b data-c="label.beats.3.title">The phoenix mark</b><p data-c="label.beats.3.body">On every pack since 1975.</p></div>
+        <div class="beat" data-hot="weight" data-i="4"><span class="top"><span class="n">5</span><svg class="beatIco" viewBox="0 0 32 32" aria-hidden="true"><path d="M5.5 15.5h21c0 6-4.7 10.5-10.5 10.5S5.5 21.5 5.5 15.5z"/><path d="M12 5.5c-1 1.6 1 2.4 0 4M16 5.5c-1 1.6 1 2.4 0 4M20 5.5c-1 1.6 1 2.4 0 4"/><path d="M9.5 26h13"/></svg></span><b data-c="label.beats.4.title">350 g, five meals</b><p data-c="label.beats.4.body">The value engine of the whole range.</p></div>
+      </div>
+      <svg class="anatLines" aria-hidden="true"></svg>
+    </div>
+  </div>
+  <p class="anatHint" data-c="label.hint">Hover a point to read it</p>
+</section>
+
+<!-- ============ scene 2: the story, a pinned heritage runway ============ -->
+<section id="story" aria-label="51 years">
+  <div class="sIntro">
+    <h2 class="disp rv" data-plx="-4" data-plx-m="0" data-plx-t="1"><span data-c="story.heading1">51 years,</span><br><em data-c="story.heading2">1 family recipe</em></h2>
+    <p class="lede rv" data-plx="2" data-plx-m="0" data-plx-t="1" data-c="story.lede">Noodles in Kuala Lumpur since 1975. Halal since 1980. One family recipe, one yellow pack the whole country knows.</p>
+  </div>
+  <!-- the heritage stage: one held frame, five plates that cross-fade as the
+       reader scrolls, the year decoding in and the line revealing under it.
+       With scripts off the five stack as readable panels. The pack keeps its
+       lane on the right of the stage. -->
+  <!-- the heritage run (4 Sep): five full-bleed bands the reader scrolls PAST, each
+       photograph drifting slower than the page with a slow push-in, the year decoding
+       as it arrives. Nothing is pinned and nothing cuts: the old five-plate cross-fade in
+       one held frame was the "teleport" Bazil saw. A giant SINCE 1975 travels sideways
+       behind the fixed pack, the way the reference sites run a word behind the product.
+       Scripts off: the bands stack and read. -->
+  <!-- THE BOARD (4 Sep, Bazil: "a whole journey of all the photos on board, 1975 through the
+       years, the packaging travelling at the centre and the pictures all around it"). One
+       pinned stage: the 3D pack holds the centre; every photograph and era year is pinned to
+       a board that travels up past it as the reader scrolls, each at its own depth. -->
+  <div class="jRun board" id="storyBoard">
+    <div class="boardStage">
+      <i class="bCork" aria-hidden="true"></i>
+      <div class="bWash" aria-hidden="true"></div>
+
+      <!-- the 51 year ruler and the halal claim drawn as a LENGTH: the bracket
+           starts at the 1980 tick and runs 46 years to the foot of the wall.
+           z 9 keeps it under the pinned things, because it is ruled ON the cork. -->
+      <div class="bGut" aria-hidden="true">
+        <i class="bGutTicks"></i>
+        <span class="bGutYear" style="--y:0">1975</span>
+        <span class="bGutYear" style="--y:5">1980</span>
+        <span class="bGutYear" style="--y:15">1990</span>
+        <span class="bGutYear" style="--y:25">2000</span>
+        <span class="bGutYear" style="--y:35">2010</span>
+        <span class="bGutYear" style="--y:45">2020</span>
+        <span class="bGutYear" style="--y:51">2026</span>
+        <i class="bBracket"><b>JAKIM halal &middot; unbroken</b></i>
+      </div>
+
+      <svg class="bString" aria-hidden="true"><g class="bRouteG"><path class="bGhostLine"></path><path class="bRoute"></path></g></svg>
+
+      <div class="jLane" aria-hidden="true"></div>
+      <i class="bPackShade" aria-hidden="true"></i>
+
+      <!-- the board's top edge, so it is an object and not an infinite feed -->
+      <div class="bPile bRail" data-t="0.075" data-ax="0">
+        <div class="bItem bBatten" style="--u:0;--v:0;--k:0;--z:28"><b>Vit&rsquo;s &middot; Kuala Lumpur &middot; since 1975</b></div>
+      </div>
+
+      <!-- ============ PILE 1 &middot; THE SHOPHOUSE, 1975 ============
+           buff paper gone to a warm cast, brass pins, tape cracked and yellowed.
+           --grade is the photographic stock of the era, baked once, never animated. -->
+      <!-- 10 Sep, THE PACK'S COLUMN IS NOT PAPER. Each pile's .bKey is the wall's reserved
+           patch under the travelling pack, 30vw wide, and six prints and documents were
+           pinned reaching into it: measured at 1920 the pack covered 31% of a photograph
+           (home-kedai.jpg) and 36% of a document. Rule, in the pile's own units: a print or
+           doc's near edge stays 15vw from the key's centre: the pack is 22vw wide at 1920 but
+           27vw at 1200, where its pixel size shrinks slower than the frame, plus 1vw of air. Cut-out props may still peek under it; that is what props are for. -->
+      <div class="bPile" data-t="0.165" data-ax="-0.58" style="--paper:#F0DFBC;--pin:#B8892E;--age:1;--grade:sepia(.46) saturate(.66) contrast(.92) brightness(1.03)">
+        <figure class="bItem bPrint bSmall" style="--u:4.5;--v:30.2;--w:19;--r:-4;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/1975-workshop.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/1975-workshop.jpg 320w, assets/era/1975-workshop.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>The workshop, Jalan Petaling</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:55;--v:30.5;--w:19;--r:3;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/1975-pickup.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/1975-pickup.jpg 320w, assets/era/1975-pickup.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>The first deliveries</figcaption></figure>
+        <i class="bKey" style="--u:29;--v:0;--w:30;--ar:.62;--z:7"></i>
+        <i class="bGhost" style="--u:22;--v:-30;--w:13;--ar:.80;--z:6"></i>
+        <figure class="bItem bPrint bBig bPinned" style="--u:-5;--v:-25.4;--w:28;--r:-3.2;--k:.9;--z:22;--curl:1.18">
+          <span class="bHold"><img src="assets/col-1975-a.jpg" data-c-src="story.tiles.0.image" alt="" decoding="async"></span><figcaption data-c="story.tiles.0.cap">Kuala Lumpur, 1975</figcaption></figure>
+        <figure class="bItem bDoc bPinned" style="--u:7.5;--v:-26.1;--w:13;--r:-3;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/ledger-1975.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/ledger-1975.png 320w, assets/art/era/ledger-1975.png 424w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption data-c="story.tiles.0.docCap">The first account book, kept in pen</figcaption></figure>
+        <figure class="bItem bDoc" style="--u:70.5;--v:-34.3;--w:14;--r:4;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/invoice-1975.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/invoice-1975.png 320w, assets/art/era/invoice-1975.png 620w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Flour from Selangor, paid in cash</figcaption></figure>
+        <figure class="bItem bDoc" style="--u:-1;--v:37.4;--w:12;--r:-6;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/rent-1975.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/rent-1975.png 320w, assets/art/era/rent-1975.png 620w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>The shop lot on Jalan Petaling</figcaption></figure>
+        <div class="bItem bEra" style="--u:-6;--v:9.0;--w:26;--r:1.8;--k:.7;--z:24">
+          <span class="bYear" data-c="story.tiles.0.year">1975</span>
+          <p data-c="story.tiles.0.body">Noodles begin in Kuala Lumpur. The phoenix goes on the first wrapper.</p></div>
+        <figure class="bItem bPrint bSmall" style="--u:56;--v:-21.1;--w:21;--r:5;--k:1.15;--z:20">
+          <span class="bHold"><img src="assets/col-1975-b.jpg" data-c-src="story.tiles.0.print" alt="" decoding="async"></span></figure>
+        <figure class="bItem bPrint bMid" style="--u:67;--v:12.7;--w:20;--r:4;--k:.9;--z:15">
+          <span class="bHold"><img src="assets/hf-story-1975.jpg" alt="" decoding="async" srcset="assets/sm/hf-story-1975.jpg 320w, assets/hf-story-1975.jpg 1100w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+        <img class="bItem bProp" src="assets/props/b2.png" alt="" style="--u:58.5;--v:6.5;--w:3.5;--r:-8;--k:.35;--z:26" decoding="async" srcset="assets/sm/props/b2.png 320w, assets/props/b2.png 264w" sizes="(max-width:760px) 30vw, 320px">
+        <img class="bItem bProp bTape" src="assets/props/a4.png" alt="" style="--u:22.5;--v:16;--w:7.6;--r:-34;--k:.12;--z:27" decoding="async" srcset="assets/sm/props/a4.png 320w, assets/props/a4.png 520w" sizes="(max-width:760px) 30vw, 320px">
+        <img class="bItem bProp" src="assets/props/a2.png" alt="" style="--u:19;--v:0;--w:4.5;--r:7;--k:.1;--z:23" decoding="async" srcset="assets/sm/props/a2.png 320w, assets/props/a2.png 356w" sizes="(max-width:760px) 30vw, 320px">
+              <figure class="bItem bDoc" style="--u:70.5;--v:34.3;--w:12;--r:-3.4;--k:.9;--z:30">
+          <span class="bHold"><img src="assets/art/polaroid-plant.png" alt="" decoding="async" srcset="assets/sm/art/polaroid-plant.png 320w, assets/art/polaroid-plant.png 480w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+</div>
+
+      <!-- ============ PILE 2 &middot; THE PAPERWORK, 1980 ============
+           No dominant photograph: the document is the biggest thing on the wall,
+           because the fact is what leads here. -->
+      <div class="bPile" data-t="0.315" data-ax="0.66" style="--paper:#F3E7CB;--pin:#C24B2A;--age:.78;--grade:sepia(.36) saturate(.76) contrast(.94) brightness(1.03)">
+        <figure class="bItem bPrint bSmall" style="--u:-9.5;--v:30.2;--w:19;--r:-4;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/1980-lab.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/1980-lab.jpg 320w, assets/era/1980-lab.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Every batch weighed</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:-58;--v:30.5;--w:19;--r:3;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/1980-packing.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/1980-packing.jpg 320w, assets/era/1980-packing.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>The packing line, 1980</figcaption></figure>
+        <i class="bKey" style="--u:-33;--v:0;--w:30;--ar:.62;--z:7"></i>
+        <i class="bGhost" style="--u:18;--v:-34;--w:11;--ar:.80;--z:6"></i>
+        <figure class="bItem bPrint bBig bPinned" style="--u:4;--v:-26.9;--w:26;--r:3.4;--k:.9;--z:18;--curl:1.06">
+          <span class="bHold"><img src="assets/col-1980-a.jpg" data-c-src="story.tiles.1.image" alt="" decoding="async"></span><figcaption data-c="story.tiles.1.cap">The certificate, 1980</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:-58.5;--v:-21.1;--w:21;--r:4.5;--k:1.15;--z:19">
+          <span class="bHold"><img src="assets/col-1980-b.jpg" data-c-src="story.tiles.1.print" alt="" decoding="async"></span></figure>
+        <figure class="bItem bDoc bPinned" style="--u:-13.5;--v:-26.8;--w:13;--r:2.5;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/jakim-1980.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/jakim-1980.png 320w, assets/art/era/jakim-1980.png 444w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption data-c="story.tiles.1.docCap">JAKIM MS 1500, first issued 1980</figcaption></figure>
+        <figure class="bItem bDoc" style="--u:-74.5;--v:-27.8;--w:13;--r:-4;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/qc-1980.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/qc-1980.png 320w, assets/art/era/qc-1980.png 443w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Every batch, checked and passed</figcaption></figure>
+        <div class="bItem bEra" style="--u:4;--v:6.1;--w:26;--r:1.6;--k:.7;--z:22">
+          <span class="bYear" data-c="story.tiles.1.year">1980</span>
+          <p data-c="story.tiles.1.body">JAKIM halal. 46 years unbroken, doors open across the Gulf.</p></div>
+        <figure class="bItem bPrint bMid" style="--u:-71;--v:12.7;--w:20;--r:-3.5;--k:.9;--z:15">
+          <span class="bHold"><img src="assets/hf-story-1980.jpg" alt="" decoding="async" srcset="assets/sm/hf-story-1980.jpg 320w, assets/hf-story-1980.jpg 1100w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+        <img class="bItem bProp bTape" src="assets/props/a5.png" alt="" style="--u:-1;--v:16;--w:7.6;--r:30;--k:.12;--z:27" decoding="async" srcset="assets/sm/props/a5.png 320w, assets/props/a5.png 520w" sizes="(max-width:760px) 30vw, 320px">
+</div>
+
+      <!-- ============ PILE 3 &middot; THE HOME KITCHEN, 70% ============
+           the crowded pile, and the one where the year is clipped by the frame -->
+      <div class="bPile" data-t="0.465" data-ax="-0.50" style="--paper:#F7EFDD;--pin:var(--red);--age:.5;--grade:sepia(.24) saturate(.86) contrast(.97) brightness(1.03)">
+        <figure class="bItem bPrint bSmall" style="--u:0.5;--v:30.2;--w:19;--r:-4;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/home-kedai.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/home-kedai.jpg 320w, assets/era/home-kedai.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>On the kedai runcit shelf</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:51;--v:30.5;--w:19;--r:3;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/home-mamak.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/home-mamak.jpg 320w, assets/era/home-mamak.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Mee goreng, every night</figcaption></figure>
+        <i class="bKey" style="--u:25;--v:0;--w:30;--ar:.62;--z:7"></i>
+        <i class="bGhost" style="--u:-24;--v:-24;--w:10;--ar:.80;--z:6"></i>
+        <figure class="bItem bPrint bBig bPinned" style="--u:-9;--v:-25.4;--w:28;--r:-3.6;--k:.9;--z:22;--curl:1.24">
+          <span class="bHold"><img src="assets/col-home-a.jpg" data-c-src="story.tiles.2.image" alt="" decoding="async"></span><figcaption data-c="story.tiles.2.cap">Home kitchens</figcaption></figure>
+        <figure class="bItem bPrint bSmall bPola" style="--u:52;--v:-26.1;--w:21;--r:6;--k:1.15;--z:20">
+          <span class="bHold"><img src="assets/col-home-b.jpg" data-c-src="story.tiles.2.print" alt="" decoding="async"></span></figure>
+        <figure class="bItem bDoc bPinned" style="--u:3.5;--v:-27.7;--w:13;--r:5;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/receipt-home.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/receipt-home.png 320w, assets/art/era/receipt-home.png 471w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption data-c="story.tiles.2.docCap">A sundry shop docket, one line ringed</figcaption></figure>
+        <figure class="bItem bDoc" style="--u:66.5;--v:-35.2;--w:14;--r:-3;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/recipe-home.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/recipe-home.png 320w, assets/art/era/recipe-home.png 620w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Three minutes, in her handwriting</figcaption></figure>
+        <div class="bItem bEra bClip" style="--u:-10;--v:9.0;--w:26;--r:2.2;--k:.7;--z:24">
+          <span class="bYear" data-c="story.tiles.2.year">70%</span>
+          <p data-c="story.tiles.2.body">Of what leaves the plant is the plain noodle base. Home first, always.</p></div>
+        <figure class="bItem bPrint bMid" style="--u:63;--v:5.9;--w:20;--r:-4;--k:.9;--z:21">
+          <span class="bHold"><img src="assets/era/home-pantry.jpg" alt="" decoding="async" srcset="assets/sm/era/home-pantry.jpg 320w, assets/era/home-pantry.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+        <img class="bItem bProp bTape" src="assets/props/a6.png" alt="" style="--u:54;--v:-4;--w:7;--r:-28;--k:.12;--z:27" decoding="async" srcset="assets/sm/props/a6.png 320w, assets/props/a6.png 520w" sizes="(max-width:760px) 30vw, 320px">
+</div>
+
+      <!-- ============ PILE 4 &middot; THE EXPORT, 30 YEARS ============
+           the sparsest and the furthest out. The distance is the point. -->
+      <div class="bPile" data-t="0.615" data-ax="0.72" style="--paper:#FAF4E6;--pin:#E0A21A;--age:.26;--grade:sepia(.13) saturate(.94) contrast(1) brightness(1.03)">
+        <figure class="bItem bPrint bSmall" style="--u:-12.5;--v:30.2;--w:19;--r:3;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/export-seal.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/export-seal.jpg 320w, assets/era/export-seal.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Sealed for Jebel Ali</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:-61;--v:30.5;--w:19;--r:-4;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/export-lorry.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/export-lorry.jpg 320w, assets/era/export-lorry.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Port Klang, loading out</figcaption></figure>
+        <i class="bKey" style="--u:-36;--v:0;--w:30;--ar:.62;--z:7"></i>
+        <i class="bGhost" style="--u:-30;--v:26;--w:12;--ar:.80;--z:6"></i>
+        <figure class="bItem bPrint bBig bPinned" style="--u:1;--v:-26.9;--w:26;--r:2.8;--k:.9;--z:22;--curl:1.3">
+          <span class="bHold"><img src="assets/col-export-a.jpg" data-c-src="story.tiles.3.image" alt="" decoding="async"></span><figcaption data-c="story.tiles.3.cap">Port Klang, export</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:-61.5;--v:-21.1;--w:21;--r:5;--k:1.15;--z:20">
+          <span class="bHold"><img src="assets/col-export-b.jpg" data-c-src="story.tiles.3.print" alt="" decoding="async"></span></figure>
+        <figure class="bItem bDoc bPinned" style="--u:5;--v:36.8;--w:13;--r:-2.5;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/waybill-1994.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/waybill-1994.png 320w, assets/art/era/waybill-1994.png 620w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption data-c="story.tiles.3.docCap">Port Klang to Jebel Ali, carbon copy</figcaption></figure>
+        <figure class="bItem bDoc" style="--u:-77.5;--v:-34.7;--w:14;--r:3;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/customs-1994.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/customs-1994.png 320w, assets/art/era/customs-1994.png 620w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Export declaration, cleared</figcaption></figure>
+        <div class="bItem bEra" style="--u:1;--v:4.9;--w:26;--r:-1.8;--k:.7;--z:24">
+          <span class="bYear" data-c="story.tiles.3.year">30 years</span>
+          <p data-c="story.tiles.3.body">Of export. On shelves in 30+ countries today.</p></div>
+        <figure class="bItem bPrint bMid" style="--u:-74;--v:12.7;--w:20;--r:-3;--k:.9;--z:15">
+          <span class="bHold"><img src="assets/hf-story-export.jpg" alt="" decoding="async" srcset="assets/sm/hf-story-export.jpg 320w, assets/hf-story-export.jpg 1100w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+        <img class="bItem bProp" src="assets/props/b5.png" alt="" style="--u:-13.5;--v:0;--w:5;--r:-14;--k:.1;--z:14" decoding="async" srcset="assets/sm/props/b5.png 320w, assets/props/b5.png 468w" sizes="(max-width:760px) 30vw, 320px">
+        <figure class="bItem bDoc" style="--u:-16.5;--v:-28.3;--w:12;--r:-5;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/award.webp" alt="" decoding="async" srcset="assets/sm/art/award.png 320w, assets/art/award.webp 407w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+</div>
+
+      <!-- ============ PILE 5 &middot; THE CIRCUIT, 4 SHOWS ============
+           the only pile that straddles the corridor: the thread ends on a knot at
+           the bottom left print, because the badge and the flag card were pinned
+           later and were never on the route. -->
+      <div class="bPile" data-t="0.765" data-ax="-0.62" style="--paper:#FDF8ED;--pin:var(--yellow);--age:0;--grade:sepia(.04) saturate(1) contrast(1.02) brightness(1.03)">
+        <figure class="bItem bPrint bSmall" style="--u:6.5;--v:30.2;--w:19;--r:-4;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/shows-booth.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/shows-booth.jpg 320w, assets/era/shows-booth.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>The stand at Gulfood</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:57;--v:30.5;--w:19;--r:3;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/shows-chef.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/shows-chef.jpg 320w, assets/era/shows-chef.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>A bowl for every buyer</figcaption></figure>
+        <i class="bKey" style="--u:31;--v:0;--w:30;--ar:.62;--z:7"></i>
+        <i class="bGhost" style="--u:30;--v:-6;--w:12;--ar:.80;--z:6"></i>
+        <figure class="bItem bPrint bBig bPinned" style="--u:-3;--v:-25.4;--w:28;--r:-3;--k:.9;--z:22;--curl:1.12">
+          <span class="bHold"><img src="assets/col-shows-a.jpg" data-c-src="story.tiles.4.image" alt="" decoding="async"></span><figcaption data-c="story.tiles.4.cap">Gulfood, Dubai</figcaption></figure>
+        <figure class="bItem bPrint bMid" style="--u:69;--v:1.2;--w:20;--r:4;--k:.9;--z:17">
+          <span class="bHold"><img src="assets/hf-story-shows.jpg" alt="" decoding="async" srcset="assets/sm/hf-story-shows.jpg 320w, assets/hf-story-shows.jpg 1100w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+        <img class="bItem bProp" src="assets/props/a3.png" alt="" style="--u:18;--v:3;--w:10;--r:-8;--k:1.1;--z:24" decoding="async" srcset="assets/sm/props/a3.png 320w, assets/props/a3.png 520w" sizes="(max-width:760px) 30vw, 320px">
+        <figure class="bItem bDoc" style="--u:72.5;--v:-25.9;--w:13;--r:-6;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/badge-shows.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/badge-shows.png 320w, assets/art/era/badge-shows.png 397w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Exhibitor, Gulfood Dubai</figcaption></figure>
+        <figure class="bItem bDoc" style="--u:1;--v:39.6;--w:14;--r:3;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/boarding-shows.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/boarding-shows.png 320w, assets/art/era/boarding-shows.png 620w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>KL to Bangkok, aisle seat</figcaption></figure>
+        <figure class="bItem bDoc bPinned" style="--u:12;--v:-25.9;--w:13;--r:-4;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/era/checklist-shows.png" alt="" width="620" height="620" decoding="async" loading="lazy" srcset="assets/sm/art/era/checklist-shows.png 320w, assets/art/era/checklist-shows.png 421w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption data-c="story.tiles.4.docCap">The stand list, ticked in ballpoint</figcaption></figure>
+        <div class="bItem bEra" style="--u:-4;--v:9.0;--w:26;--r:2;--k:.7;--z:25">
+          <span class="bYear" data-c="story.tiles.4.year">4 shows</span>
+          <p data-c="story.tiles.4.body">A year on the circuit. Dubai, the United States, Bangkok, the UK.</p></div>
+        <figure class="bItem bPrint bSmall bPinned" style="--u:58;--v:-27.2;--w:21;--r:-5;--k:1.15;--z:20">
+          <span class="bHold"><img src="assets/col-shows-b.jpg" data-c-src="story.tiles.4.print" alt="" decoding="async"></span></figure>
+        <img class="bItem bProp bTape" src="assets/props/a4.png" alt="" style="--u:60;--v:-3;--w:7.6;--r:22;--k:.12;--z:27" decoding="async" srcset="assets/sm/props/a4.png 320w, assets/props/a4.png 520w" sizes="(max-width:760px) 30vw, 320px">
+        <figure class="bItem bDoc" style="--u:72.5;--v:30.3;--w:12;--r:3;--k:1;--z:30">
+          <span class="bHold"><img src="assets/art/award.webp" alt="" decoding="async" srcset="assets/sm/art/award.png 320w, assets/art/award.webp 407w" sizes="(max-width:760px) 30vw, 320px"></span></figure>
+      </div>
+
+      <div class="bBand" aria-hidden="true"></div>
+
+      <!-- the board's bottom edge -->
+      <!-- 7 Sep: the board used to end on empty cork and a hint. The last stop is
+           today: the pack as it stands, and the count that carries the page. -->
+      <div class="bPile" data-t="0.915" data-ax="0.55" style="--paper:#FFFFFF;--pin:var(--red);--age:0;--grade:none">
+        <figure class="bItem bPrint bSmall" style="--u:-58;--v:10;--w:24;--r:-4;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/2026-aisle.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/2026-aisle.jpg 320w, assets/era/2026-aisle.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>On the shelf, today</figcaption></figure>
+        <figure class="bItem bPrint bSmall" style="--u:-54.5;--v:22;--w:24;--r:3;--k:1.05;--z:21">
+          <span class="bHold"><img src="assets/era/2026-kitchen.jpg" alt="" width="1000" height="750" decoding="async" loading="lazy" srcset="assets/sm/era/2026-kitchen.jpg 320w, assets/era/2026-kitchen.jpg 1000w" sizes="(max-width:760px) 30vw, 320px"></span><figcaption>Three minutes, tonight</figcaption></figure>
+        <figure class="bItem bPrint bMid bPinned" style="--u:8.5;--v:-16.3;--w:28;--r:-2.4;--k:1;--z:22">
+          <span class="bHold"><img src="assets/era/2026-plant.jpg" data-c-src="story.tiles.5.image" alt="" width="1100" height="821" decoding="async" loading="lazy"></span><figcaption data-c="story.tiles.5.cap">Rawang, today</figcaption></figure>
+        <div class="bItem bEra" style="--u:9.5;--v:21;--w:26;--r:1.6;--k:.7;--z:25">
+          <span class="bYear" data-c="story.tiles.5.year">2026</span>
+          <p data-c="story.tiles.5.body">51 years, one recipe. The same yellow pack, now on shelves in 30+ countries.</p></div>
+        <img class="bItem bProp bTape" src="assets/props/a3.png" alt="" style="--u:-53.5;--v:-1;--w:11;--r:-10;--k:.12;--z:27" decoding="async" srcset="assets/sm/props/a3.png 320w, assets/props/a3.png 520w" sizes="(max-width:760px) 30vw, 320px">
+        <!-- 7 Sep, Bazil: "stick an iPhone somewhere here that shows a looping video story".
+             The phone is pinned to the wall like everything else and rides it. Its screen is an
+             aspect locked holder the clip fills (never the other way round), and the three
+             factory clips already on disk run as a story with progress segments, cycling for
+             as long as the board is in view and paused the moment it is not. -->
+        <figure class="bItem bPhone" style="--u:-53;--v:-28;--w:20;--r:-2.5;--k:.9;--z:26" data-clips="assets/hero/clip-aisle.mp4,assets/hero/clip-counter.mp4,assets/hero/clip-line.mp4">
+          <span class="bHold"><span class="phShell"><span class="phScreen">
+            <video class="phVid" muted playsinline preload="metadata" aria-hidden="true"></video>
+            <i class="phBars" aria-hidden="true"><b></b><b></b><b></b></i>
+            <i class="phIsland" aria-hidden="true"></i>
+            <i class="phHome" aria-hidden="true"></i>
+          </span></span></span>
+          <figcaption>The story, today</figcaption></figure>
+      </div>
+      <div class="bPile bRail" data-t="1.05" data-ax="0">
+        <div class="bItem bBatten" style="--u:0;--v:0;--k:0;--z:28"><b>51 years &middot; one recipe</b></div>
+      </div>
+
+</div>
+      <p class="bHint" data-c="story.boardHint">Scroll through 51 years</p>
+    </div>
+  </div>
+  <p class="foot-note" data-c="story.footNote">Dates as published by Vit's. Final verification before anything goes to print or page.</p>
+</section>
+
+<!-- ============ the credentials strip ============ -->
+<section class="markStrip" id="standards" aria-label="Certifications and standards">
+  <div class="markWin">
+    <div class="markTrack">
+      <div class="markRow">
+        <div class="mk"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="13.2" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M16 5.6 26.4 16 16 26.4 5.6 16z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M9.5 9.5h13v13h-13z" stroke="currentColor" stroke-width="1.4"/>
+        </svg><span><b data-c="credentials.marks.0.name">JAKIM Halal</b><i data-c="credentials.marks.0.sub">MS 1500 : 2009</i></span></div>
+        <div class="mk"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3.4 27 7.2v9.3c0 6.2-4.5 10.6-11 12.1-6.5-1.5-11-5.9-11-12.1V7.2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="m11.4 16.2 3.2 3.2 6.2-6.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg><span><b data-c="credentials.marks.1.name">FSSC 22000</b><i data-c="credentials.marks.1.sub">Food safety system</i></span></div>
+        <div class="mk"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M7.5 5.5h17v21h-17z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M12.5 3.4h7v4h-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M11.6 15.4h8.8M11.6 20.2h5.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg><span><b data-c="credentials.marks.2.name">HACCP</b><i data-c="credentials.marks.2.sub">Hazard control</i></span></div>
+        <div class="mk"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M4.5 27V13.5l7-4.4 7 4.4V27" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M18.5 27V9l9 5.4V27" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M4.5 27h23" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg><span><b data-c="credentials.marks.3.name">GMP</b><i data-c="credentials.marks.3.sub">Good manufacturing</i></span></div>
+        <div class="mk"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="12.4" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M16 3.6v24.8M3.6 16h24.8" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+          <path d="M16 3.6c4 4 4 20.8 0 24.8-4-4-4-20.8 0-24.8z" stroke="currentColor" stroke-width="1.4"/>
+        </svg><span><b data-c="credentials.marks.4.name">SMETA</b><i data-c="credentials.marks.4.sub">4-Pillar, Sedex audited</i></span></div>
+        <div class="mk"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M6 4.5h20v19H6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M10.5 10.5h11M10.5 15h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="21.5" cy="22" r="4.4" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M18.6 25.6 17.4 30l4.1-2 4.1 2-1.2-4.4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg><span><b data-c="credentials.marks.5.name">Halal since 1980</b><i data-c="credentials.marks.5.sub">46 years unbroken</i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ scene 3: the trade offer ============ -->
+<section id="trade" aria-label="OEM and private label">
+  <div class="fg">
+    <div class="tHead">
+      <div class="tHeadCopy">
+    <h2 class="disp rv" data-plx="-4"><span data-c="trade.heading1">Seasoned noodles,</span><br><em><span data-c="trade.heading2">made to your</span> <span data-c="trade.heading3">recipe.</span></em></h2>
+
+      </div>
+      <div class="tHeadLane" aria-hidden="true"></div>
+      <div class="tHeadLede">
+    <p class="lede rv" data-c-html="trade.lede">Can you match a taste a market already loves, a Korean fire noodle, an Indonesian mi goreng? <b>Yes.</b> 51 years of noodles, a seasoning kitchen fluent in curry, tom yam and rendang, your recipe under your label.</p>
+      </div>
+    </div>
+    <!-- 7 Sep, Bazil: "scrap this and redo, no concept". THE LINE. Five stations of
+         the real Rawang plant in the order a noodle travels, the pack parking at the
+         last one as the thing that ships. Then the four buyer checks as a spec sheet.
+         Static and readable: no lane through the middle of the copy. .tSplit and
+         .tLane stay as class names because motion.js measures them for the pack's
+         travel (tradeOut, tradeBox). Station captions are fixed copy, not CMS. -->
+    <div class="tSplit tLineWrap">
+      <span class="tLineTag" data-c="trade.frameTag">Rawang plant &middot; Selangor &middot; 105,000 sq ft</span>
+      <ol class="tLine" aria-label="The production line, five stations">
+        <li class="tStation">
+          <img src="assets/hf-factory-line.jpg" data-c-src="trade.cartonImages.2" width="1200" height="900" decoding="async" alt="The noodle line at the Rawang plant">
+          <div class="tSt"><b>1</b><span>The line</span><em>Flour, water, palm oil, salt. One recipe since 1975.</em></div>
+        </li>
+        <li class="tStation">
+          <img src="assets/oem-seasoning.jpg" width="1200" height="900" decoding="async" alt="The seasoning kitchen">
+          <div class="tSt"><b>2</b><span>Seasoning kitchen</span><em>Curry, tom yam, rendang. Or your recipe, matched.</em></div>
+        </li>
+        <li class="tStation">
+          <img src="assets/hf-factory-qc.jpg" data-c-src="trade.cartonImages.3" width="1200" height="900" decoding="async" alt="The quality control bench">
+          <div class="tSt"><b>3</b><span>QC bench</span><em>Every batch checked. FSSC 22000, HACCP, JAKIM halal.</em></div>
+        </li>
+        <li class="tStation">
+          <img src="assets/oem-loading.jpg" data-c-src="trade.cartonImages.1" width="1200" height="900" decoding="async" alt="Cartons at the loading bay">
+          <div class="tSt"><b>4</b><span>Loading bay</span><em>Your label, your language, your compliance, on the carton.</em></div>
+        </li>
+        <li class="tStation">
+          <img src="assets/oem-pallets.jpg" data-c-src="trade.cartonImages.0" width="1200" height="900" decoding="async" alt="Pallets ready to ship">
+          <div class="tSt"><b>5</b><span>Out to 30+ countries</span><em>Port Klang to the Gulf, Europe and beyond.</em></div>
+        </li>
+      </ol>
+      <p class="tSwipe" aria-hidden="true">Swipe for the five stations</p>
+      <p class="tLineCap" data-c="trade.cartonCaption">The real carton, as it ships. OEM, private label and bulk to 30+ countries.</p>
+      <ol class="tList tSheet">
+        <li class="tItem">
+          <span class="tNo">1</span>
+          <h3 data-c="trade.checks.0.title">Formats</h3>
+          <p data-c="trade.checks.0.body">Pillow, mini, zip, air-dried kraft, cup on request. Retail 4-packs to 700g family packs.</p>
+        </li>
+        <li class="tItem">
+          <span class="tNo">2</span>
+          <h3 data-c="trade.checks.1.title">Shelf life</h3>
+          <p data-c="trade.checks.1.body">Fried and air-dried lines, export shelf life stated per SKU.</p>
+        </li>
+        <li class="tItem">
+          <span class="tNo">3</span>
+          <h3 data-c="trade.checks.2.title">Certifications</h3>
+          <p data-c="trade.checks.2.body">FSSC 22000, HACCP, GMP, SMETA 4-Pillar, and JAKIM halal held since 1980.</p>
+        </li>
+        <li class="tItem">
+          <span class="tNo">4</span>
+          <h3 data-c="trade.checks.3.title">Customisation</h3>
+          <p data-c="trade.checks.3.body">Your recipe or ours. Your label, your language, your compliance.</p>
+          <span class="tbc" data-c="trade.checks.3.flag" data-c-if="trade.checks.3.flag"></span>
+        </li>
+        <li class="tItem">
+          <span class="tNo">5</span>
+          <h3 data-c="trade.checks.4.title">Lead time</h3>
+          <p data-c="trade.checks.4.body">12 to 16 weeks from the approved prototype, depending on packaging and volume.</p>
+          <span class="tbc" data-c="trade.checks.4.flag" data-c-if="trade.checks.4.flag"></span>
+        </li>
+        <li class="tItem">
+          <span class="tNo">6</span>
+          <h3 data-c="trade.checks.5.title">Process</h3>
+          <p data-c="trade.checks.5.body">Consultation and brief, prototype, approval and production, delivery and ongoing support.</p>
+          <span class="tbc" data-c="trade.checks.5.flag" data-c-if="trade.checks.5.flag"></span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="tMarkets">
+      <!-- the export map. The basemap and its routes are an <img>, so they cost
+           the page no script; the markers, their labels and the card are DOM on
+           top, placed from latitude and longitude by motion.js. -->
+      <div class="mapWrap" data-plx="-4" data-plx-m="0.9">
+        <div class="mapCopy">
+          <h3 class="disp rv" data-c-html="trade.marketsHeading">From Malaysia<br><em>to the World</em></h3>
+          <svg class="mapMark" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.6 1.6h12.8v12.8H1.6zM4.2 4.2h7.6v7.6H6.8V6.8h2.6v2.6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          <p class="mapLede" data-c="trade.marketsLede">Made in Malaysia since 1975. Shipped to 30+ countries across Asia, the Gulf, Europe and beyond.</p>
+        </div>
+        <div class="mapLane" aria-hidden="true"></div>
+        <figure class="tMap">
+          <div class="globeHolder" id="globeHolder" aria-hidden="true"></div>
+          <img src="assets/world-markets.svg?v=5" width="1000" height="394" loading="lazy" decoding="async"
+               alt="Flat world map with shipping routes drawn from Kuala Lumpur out to the markets Vit's exports to">
+          <!-- filled by motion.js from trade.mapMarkets -->
+          <div class="mapPins" id="mapPins"></div>
+          <div class="globePins" id="globePins" aria-hidden="true"></div>
+        </figure>
+      
+      <div class="mapLegend">
+        <div class="mapLeg"><svg class="legIc legHome" viewBox="0 0 32 32" aria-hidden="true"><path d="M4.5 26.5h23"/><path d="M6.5 26.5V14.2l6.2-4.2v4.2l6.2-4.2v4.2l6.2-4.2v16.5"/><path d="M21.6 9.4V5h3.2v6.6"/><path d="M11 21h2.4M17.6 21H20"/></svg><span><b data-c="trade.mapHome.name">Kuala Lumpur</b><em>The one plant · Rawang, Selangor</em></span></div>
+        <div class="mapLeg"><svg class="legIc legMk" viewBox="0 0 32 32" aria-hidden="true"><path d="M22.5 17.8A9 9 0 1 1 14.2 9.5"/><path d="M15.5 16.5 27 5"/><path d="M19.8 5H27v7.2"/></svg><span><b>Export market</b><em data-c="trade.marketsCountCaption">30+ countries worldwide</em></span></div>
+        <div class="mapLeg">
+          <svg class="legGlobe" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><ellipse cx="16" cy="16" rx="5.2" ry="12"/><path d="M4.6 12h22.8M4.6 20h22.8"/></svg>
+          <span><b data-c="trade.mapClaim">Bringing Malaysian goodness</b><em data-c="trade.mapClaimSub">to the world</em></span>
+        </div>
+      </div>
+      <ul class="certGrid rv" aria-label="Certifications and standards">
+      <li class="certCell gold"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13.2" stroke="currentColor" stroke-width="1.7"/><path d="M16 5.6 26.4 16 16 26.4 5.6 16z" stroke="currentColor" stroke-width="1.4"/><path d="M9.5 9.5h13v13h-13z" stroke="currentColor" stroke-width="1.4"/></svg><span><b data-c="credentials.marks.0.name">JAKIM Halal</b><i>Since 1980</i></span></li>
+      <li class="certCell"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3.4 27 7.2v9.3c0 6.2-4.5 10.6-11 12.1-6.5-1.5-11-5.9-11-12.1V7.2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m11.4 16.2 3.2 3.2 6.2-6.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b data-c="credentials.marks.1.name">FSSC 22000</b><i data-c="credentials.marks.1.sub">Food safety system</i></span></li>
+      <li class="certCell"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7.5 5.5h17v21h-17z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12.5 3.4h7v4h-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11.6 15.4h8.8M11.6 20.2h5.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span><b data-c="credentials.marks.2.name">HACCP</b><i data-c="credentials.marks.2.sub">Hazard control</i></span></li>
+      <li class="certCell"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4.5 27V13.5l7-4.4 7 4.4V27" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M18.5 27V9l9 5.4V27" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4.5 27h23" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span><b data-c="credentials.marks.3.name">GMP</b><i data-c="credentials.marks.3.sub">Good manufacturing</i></span></li>
+      <li class="certCell"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12.4" stroke="currentColor" stroke-width="1.7"/><path d="M16 3.6v24.8M3.6 16h24.8" stroke="currentColor" stroke-width="1.2" opacity=".5"/><path d="M16 3.6c4 4 4 20.8 0 24.8-4-4-4-20.8 0-24.8z" stroke="currentColor" stroke-width="1.4"/></svg><span><b data-c="credentials.marks.4.name">SMETA</b><i data-c="credentials.marks.4.sub">4-Pillar, Sedex audited</i></span></li>
+      <li class="certCell"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 4.5h20v19H6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10.5 10.5h11M10.5 15h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="21.5" cy="22" r="4.4" stroke="currentColor" stroke-width="1.6"/><path d="M18.6 25.6 17.4 30l4.1-2 4.1 2-1.2-4.4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><span><b>Sedex</b><i>Member site</i></span></li>
+    </ul>
+    </div>
+      
+      </div>
+    </div>
+
+    <!-- 7 Sep, Bazil: "put icons, badges and structure it correctly". The six standards as one
+         ledger: the mark, the name, what it is; hairlines between; halal in yellow. -->
+    
+    <div class="tClose">
+      <div class="tSay">
+    <blockquote class="tradePromise rv">
+      <p data-c="trade.marketsQuote">We help businesses grow by turning our quality noodles into your trusted brand.</p>
+      <footer class="tradeWho" data-c="trade.marketsQuoteBy">Vit Makanan (K.L.) Sdn. Bhd. &middot; Kuala Lumpur, since 1975</footer>
+    </blockquote>
+    
+      </div>
+      <div class="quoteLane" aria-hidden="true"></div>
+      <div class="tGo"><a class="cta" href="#trade-form"><span data-c="trade.ctaLabel">Talk to the trade desk</span><svg viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M1 6h15M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ scene 4: the range ============ -->
+<section id="range" aria-label="The range">
+  <div class="stage">
+    <div class="heritagePhoto hpHome" aria-hidden="true" style="background-image:url('assets/bg-household.jpg')"></div>
+    <div class="heritagePhoto hpPenang" aria-hidden="true" style="background-image:url('assets/bg-penang.jpg')"></div>
+    <div class="heritagePhoto hpTomato" aria-hidden="true" style="background-image:url('assets/bg-tomato.jpg')"></div>
+    <div class="heritagePhoto hpBayam" aria-hidden="true" style="background-image:url('assets/bg-bayam.jpg')"></div>
+    <div class="heritagePhoto hpCarbonara" aria-hidden="true" style="background-image:url('assets/bg-carbonara.jpg')"></div>
+    <div class="heritageScrim" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="specTxt">
+        <div class="spec s0 act">
+          <div class="ln" data-c="range.items.0.line">The original &middot; Mini Pack</div>
+          <h3 data-c="range.items.0.title">The Mini Pack</h3>
+          <p data-c="range.items.0.body">5 cakes, 350 grams, 1 decision. The pack that built the company.</p>
+          <div class="meta"><div class="m"><div class="a" data-c="range.items.0.metaA">Weight</div><div class="b" data-c="range.items.0.metaAValue">350g &middot; 5 cakes</div></div><div class="m"><div class="a" data-c="range.items.0.metaB">Character</div><div class="b" data-c="range.items.0.metaBValue">Plain, yours to season</div></div></div>
+        </div>
+        <div class="spec s1">
+          <div class="ln" data-c="range.items.1.line">Premium &middot; Taste of Penang</div>
+          <h3 data-c="range.items.1.title">Penang White Curry</h3>
+          <p data-c="range.items.1.body">The premium line: white curry, asam laksa and Hokkien mee, cooked from paste, not powder.</p>
+          <div class="meta"><div class="m"><div class="a" data-c="range.items.1.metaA">Line</div><div class="b" data-c="range.items.1.metaAValue">Premium 4-pack</div></div><div class="m"><div class="a" data-c="range.items.1.metaB">Character</div><div class="b" data-c="range.items.1.metaBValue">Traditional paste</div></div></div>
+        </div>
+        <div class="spec s2">
+          <div class="ln" data-c="range.items.2.line">Healthy Series &middot; Mi Kering, air dried</div>
+          <h3 data-c="range.items.2.title">Mi Kering Tomato</h3>
+          <p data-c="range.items.2.body">Air dried, never fried, coloured by real tomato. The clean spec that wins world lists.</p>
+          <div class="meta"><div class="m"><div class="a" data-c="range.items.2.metaA">Process</div><div class="b" data-c="range.items.2.metaAValue">Air dried, trans-fat-free</div></div><div class="m"><div class="a" data-c="range.items.2.metaB">Colour from</div><div class="b" data-c="range.items.2.metaBValue">Real tomato</div></div></div>
+        </div>
+        <div class="spec s3">
+          <div class="ln" data-c="range.items.3.line">Healthy Series &middot; Mi Kering, air dried</div>
+          <h3 data-c="range.items.3.title">Mi Kering Bayam</h3>
+          <p data-c="range.items.3.body">Spinach in the noodle, not on the label. High fibre, air dried, the quiet pride of the plant.</p>
+          <div class="meta"><div class="m"><div class="a" data-c="range.items.3.metaA">Process</div><div class="b" data-c="range.items.3.metaAValue">Air dried, high fibre</div></div><div class="m"><div class="a" data-c="range.items.3.metaB">Colour from</div><div class="b" data-c="range.items.3.metaBValue">Real spinach</div></div></div>
+        </div>
+        <div class="spec s4">
+          <div class="ln" data-c="range.items.4.line">Italian Series &middot; Awarded</div>
+          <h3 data-c="range.items.4.title">Mi Goreng Carbonara</h3>
+          <p data-c="range.items.4.body">MIFT Gold 2025. Proof the seasoning kitchen can leave Malaysia and land.</p>
+          <div class="meta"><div class="m"><div class="a" data-c="range.items.4.metaA">Award</div><div class="b" data-c="range.items.4.metaAValue">MIFT Gold, 2025</div></div><div class="m"><div class="a" data-c="range.items.4.metaB">Character</div><div class="b" data-c="range.items.4.metaBValue">Creamy, zip pack</div></div></div>
+        </div>
+      </div>
+      <!-- the fixed 3D pack lands here; the pad takes the drag-to-spin.
+           The flat shots below only show if WebGL is unavailable. -->
+      <div class="specStage">
+        <img loading="lazy" decoding="async" class="s0 act fallback" src="assets/sku-mini-pack.webp" data-c-src="range.items.0.image" alt="Vit's Mini Pack">
+        <img loading="lazy" decoding="async" class="s1 fallback" src="assets/sku-penang-curry.webp" data-c-src="range.items.1.image" alt="Vit's Penang White Curry">
+        <img loading="lazy" decoding="async" class="s2 fallback" src="assets/sku-airdried-tomato.webp" data-c-src="range.items.2.image" alt="Vit's Mi Kering Tomato">
+        <img loading="lazy" decoding="async" class="s3 fallback" src="assets/sku-airdried-spinach.webp" data-c-src="range.items.3.image" alt="Vit's Mi Kering Bayam">
+        <img loading="lazy" decoding="async" class="s4 fallback" src="assets/sku-carbonara.webp" data-c-src="range.items.4.image" alt="Vit's Mi Goreng Carbonara">
+        <div class="specHit" aria-hidden="true"></div>
+        <div class="dragHint" aria-hidden="true">Drag to turn the pack</div>
+      </div>
+    </div>
+    <div class="dots" aria-hidden="true"><i class="act"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ============ scene 5: the cook ============ -->
+<section id="cook" aria-label="The cook">
+  <div class="stage">
+    <!-- 10 Sep: cook, reel and the footer had no parallax plane at all, so between the
+     set piece scenes the page read flat. The copy block of each takes a near plane
+     against its own stage; the stages themselves stay put because they are pinned
+     and full bleed, and a moved full bleed shows its edge. -->
+    <div class="cookType" data-plx="-2" aria-hidden="true"><div class="l disp"><span data-c="cook.display1">3 minutes</span><br><span data-c="cook.display2">to sedap</span></div></div>
+    <div class="cookPoster" aria-hidden="true"><img decoding="async" src="assets/pack-hero.webp" alt=""></div>
+    <div class="cookCaps" aria-hidden="true">
+      <div class="ccap c0"><div class="b" data-c="cook.captions.0.title">Open the pack</div><div class="s" data-c="cook.captions.0.sub">the wrapper gives, the kitchen starts</div></div>
+      <div class="ccap c1"><div class="b" data-c="cook.captions.1.title">1 cake, 1 decision</div><div class="s" data-c="cook.captions.1.sub">no sachet hunt, no scale</div></div>
+      <div class="ccap c2"><div class="b" data-c="cook.captions.2.title">3 minutes</div><div class="s" data-c="cook.captions.2.sub">rolling water, nothing else</div></div>
+      <div class="ccap c3"><div class="b" data-c="cook.captions.3.title">Let it swirl</div><div class="s" data-c="cook.captions.3.sub">the strands loosen on their own</div></div>
+      <div class="ccap c4"><div class="b" data-c="cook.captions.4.title">Sedap</div><div class="s" data-c="cook.captions.4.sub">the part every market understands</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ scene 6: the bowl reel ============ -->
+<section id="reel" aria-label="Every bowl from one line">
+  <!-- 7 Sep, Bazil: "push this up, static, bigger type, bigger picture, not cut on the
+       right". The 340vh scrub is gone: one viewport, a two-column grid, the range is
+       a real tab list a person chooses from, and the pack in the corner is the
+       flavour's OWN pack, not the yellow one next to a carbonara bowl. -->
+  <div class="stage">
+    <div class="reelCopy" data-plx="-2">
+      <h2 class="disp" data-c-html="reel.title">Same factory.<br><em>Every flavour.</em></h2>
+      <p data-c="reel.body">One line, one seasoning kitchen, every bowl on this page.</p>
+      <ul class="reelNames" role="tablist" aria-label="The range">
+        <li role="presentation"><button type="button" role="tab" class="act" aria-selected="true" aria-controls="reelPlate0" data-i="0"><b>Mi Goreng</b><span>Sauce fried, the everyday plate</span></button></li>
+        <li role="presentation"><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="reelPlate1" data-i="1"><b>Penang White Curry</b><span>Coconut curry, cockles, tofu puffs</span></button></li>
+        <li role="presentation"><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="reelPlate2" data-i="2"><b>Mi Kering Tomato</b><span>Air dried, coloured by real tomato</span></button></li>
+        <li role="presentation"><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="reelPlate3" data-i="3"><b>Mi Kering Bayam</b><span>Spinach in the noodle, not on the label</span></button></li>
+        <li role="presentation"><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="reelPlate4" data-i="4"><b>Mi Goreng Carbonara</b><span>MIFT Gold 2025, the kitchen leaves home</span></button></li>
+      </ul>
+    </div>
+    <div class="reelShow">
+      <div class="reelPlates">
+        <figure id="reelPlate0" data-bgimg="assets/flavours/bg-goreng.jpg" data-glow="rgba(255,203,5,.42)" data-em="#D8232A" class="reelFlav act" role="tabpanel" data-bg="#FBF3E2" data-ink="#1A130E"><img width="1400" height="1400" src="assets/flavours/goreng.png" alt="Mi Goreng, the bowl" decoding="async"></figure>
+        <figure id="reelPlate1" data-bgimg="assets/flavours/bg-penang.jpg" data-glow="rgba(255,255,255,.40)" data-em="#D8232A" class="reelFlav" role="tabpanel" data-bg="#FFCB05" data-ink="#1A130E"><img width="1400" height="1400" src="assets/flavours/penang.png" alt="Penang White Curry, the bowl" decoding="async" loading="lazy"></figure>
+        <figure id="reelPlate2" data-bgimg="assets/flavours/bg-tomato.jpg" data-glow="rgba(255,203,5,.34)" data-em="#FFCB05" class="reelFlav" role="tabpanel" data-bg="#D8232A" data-ink="#FFF3D6"><img width="1400" height="1400" src="assets/flavours/tomato.png" alt="Mi Kering Tomato, the bowl" decoding="async" loading="lazy"></figure>
+        <figure id="reelPlate3" data-bgimg="assets/flavours/bg-bayam.jpg" data-glow="rgba(255,203,5,.26)" data-em="#FFCB05" class="reelFlav" role="tabpanel" data-bg="#1F4D2E" data-ink="#F3EFE2"><img width="1400" height="1400" src="assets/flavours/bayam.png" alt="Mi Kering Bayam, the bowl" decoding="async" loading="lazy"></figure>
+        <figure id="reelPlate4" data-bgimg="assets/flavours/bg-carbonara.jpg" data-glow="rgba(255,203,5,.24)" data-em="#FFCB05" class="reelFlav" role="tabpanel" data-bg="#2A1D12" data-ink="#F6E9D2"><img width="1400" height="1400" src="assets/flavours/carbonara.png" alt="Mi Goreng Carbonara, the bowl" decoding="async" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ scene 6b: the bowl, turned (4 Sep, Bazil: "before this there was a video
+     parallax, add that one as extra"). The scroll-scrubbed bowl video, restored as its own
+     stage after the five-flavour reel. ============ -->
+<section id="turn" aria-label="The bowl, turned">
+  <div class="stage">
+    <video id="turnVid" class="turnVid" muted playsinline preload="none" disablepictureinpicture aria-hidden="true"
+           poster="assets/turn-poster.jpg?v=1" src="assets/bowl-turn.mp4?v=1"></video>
+    <div class="turnCopy">
+      <h2 class="disp" data-c-html="turn.title">Turn<br><em>the bowl.</em></h2>
+      <p data-c="turn.body">Scroll, and the bowl turns for you. The pour, from every side.</p>
+    </div>
+    <div class="turnRail" aria-hidden="true"><i class="act"></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ============ scene 7: the ask ============ -->
+<section id="finale" aria-label="Trade enquiry">
+  <div class="fg">
+    <h2 class="disp rv" data-plx="-3"><span data-c="finale.heading1">Your recipe,</span><br><em data-c="finale.heading2">on the line</em> <span data-c="finale.heading3">that fed a country.</span></h2>
+    <div class="fgrid">
+      <div>
+        <div class="shows" data-plx="4">
+          <div class="show rv"><div class="d" data-c="finale.shows.0.date">15 to 19 Mar 2027</div><div class="w"><b data-c="finale.shows.0.name">Gulfood, Dubai World Trade Centre.</b> <span data-c="finale.shows.0.detail">8,500 exhibitors, 195 countries. Meet us at the stand.</span></div></div>
+          <div class="show rv"><div class="d" data-c="finale.shows.1.date">2027</div><div class="w"><b data-c="finale.shows.1.name">Also on the circuit.</b> <span data-c="finale.shows.1.detail">The United States, Bangkok and the United Kingdom. Dates on request.</span></div></div>
+        </div>
+        <p class="lede rv" style="margin-top:26px;color:var(--soft);font-size:15px;max-width:52ch" data-c="finale.skipLine">Or skip the queue. Send your market, format and volume. The spec sheet comes back in 1 business day.</p>
+      </div>
+      <form class="fform rv" id="trade-form" data-plx="-4" data-plx-m="0" onsubmit="return false" novalidate data-endpoint="">
+        <span class="k" data-c="finale.form.title">Trade enquiry</span>
+        <label><span data-c="finale.form.nameLabel">Name</span><input type="text" name="name" id="f-name" placeholder="Your name" data-c-ph="finale.form.namePlaceholder" required autocomplete="name"></label>
+        <label><span data-c="finale.form.companyLabel">Company</span><input type="text" name="company" id="f-company" placeholder="Company" data-c-ph="finale.form.companyPlaceholder" required autocomplete="organization"></label>
+        <label><span data-c="finale.form.emailLabel">Email</span><input type="email" name="email" id="f-email" placeholder="name@company.com" data-c-ph="finale.form.emailPlaceholder" required autocomplete="email"></label>
+        <label><span data-c="finale.form.phoneLabel">Phone or WhatsApp</span><input type="tel" name="phone" id="f-phone" placeholder="+60" data-c-ph="finale.form.phonePlaceholder" autocomplete="tel"></label>
+        <label><span data-c="finale.form.marketLabel">Market</span><input type="text" name="market" id="f-market" placeholder="Country or region" data-c-ph="finale.form.marketPlaceholder" required autocomplete="country-name"></label>
+        <label><span data-c="finale.form.interestLabel">Interest</span><select name="interest" id="f-interest">
+          <option data-c="finale.form.interestOptions.0">OEM manufacturing</option>
+          <option data-c="finale.form.interestOptions.1">Private label</option>
+          <option data-c="finale.form.interestOptions.2">Bulk supply</option>
+          <option data-c="finale.form.interestOptions.3">Distribution</option>
+        </select></label>
+        <label><span data-c="finale.form.messageLabel">What your market wants</span><textarea name="message" id="f-message" placeholder="Flavour direction, format, volumes" data-c-ph="finale.form.messagePlaceholder"></textarea></label>
+        <button type="submit" data-c="finale.form.submit">Send to the trade desk</button>
+        <p class="fmsg" role="alert" aria-live="polite"></p>
+        <div class="note" data-c="finale.form.note">Demo build. The live form routes to the trade desk inbox with a 1 business day reply promise.</div>
+        <p class="fmail">Or email <a href="mailto:vit@vit.com.my" data-c="finale.form.mailLine">vit@vit.com.my</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ the footer. The brand walks off in pack language. Links are inert in the demo. ============ -->
+<footer class="siteFoot">
+  <!-- 7 Sep, Bazil: "the pattern must still be at the top of the footer": the printed border, off the pack -->
+  <div class="footBand" aria-hidden="true"></div>
+  <div class="footMarq" aria-hidden="true">
+    <div class="fmTrack">
+      <div class="fmRow">
+        <span class="fmWord" data-c="footer.signoff.0">The Yellow Pack</span>
+        <img decoding="async" class="fmPhx" src="assets/vits-phoenix.png" alt="" loading="lazy">
+        <span class="fmWord fmZh" data-c="footer.signoff.1">&#21807;&#19968;&#40629;</span>
+        <img decoding="async" class="fmPhx" src="assets/vits-phoenix.png" alt="" loading="lazy">
+        <span class="fmWord" data-c="footer.signoff.2">Since 1975</span>
+        <img decoding="async" class="fmPhx" src="assets/vits-phoenix.png" alt="" loading="lazy">
+        <span class="fmWord" data-c="footer.signoff.3">Sedap</span>
+        <img decoding="async" class="fmPhx" src="assets/vits-phoenix.png" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="footIn" data-plx="-1.5">
+    <div class="footBrand">
+      <img class="footLogo" src="assets/vits-logo.png" data-c-src="brand.logo" alt="Vit's">
+      <p class="footFirm" data-c="footer.note">Vit's Noodles &middot; VIT Makanan (K.L.) Sdn. Bhd. &middot; Kuala Lumpur, Malaysia</p>
+      <div class="footLine"><span data-c="footer.address">Lot 126, Jalan Taman Industri Integrasi Rawang 1/2, Taman Industri Integrasi Rawang, 48000 Rawang Selangor, Malaysia.</span></div>
+      <div class="footLine"><span data-c="footer.phone">Tel: +603-6093 3999 / Fax: +603-6093 3888/222</span></div>
+      <div class="footLine"><span data-c="footer.email">Email: vit@vit.com.my</span></div>
+      <div class="footSocial">
+        <a href="https://www.facebook.com/vitsnoodles" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.1V14h2.4v7z"/></svg></a>
+        <a href="https://www.instagram.com/vits_malaysia/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.6a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8zm0 7.2a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6zM17.8 7.4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM16.5 3.5h-9A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4zm2.4 13a2.4 2.4 0 0 1-2.4 2.4h-9a2.4 2.4 0 0 1-2.4-2.4v-9A2.4 2.4 0 0 1 7.5 5.1h9a2.4 2.4 0 0 1 2.4 2.4z"/></svg></a>
+        <a href="https://www.tiktok.com/@vits_official" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 3c.3 2 1.5 3.4 3.5 3.6v2.5c-1.3.1-2.5-.3-3.6-1v5.8c0 4.4-4.2 6.9-7.7 4.7-2.3-1.4-2.9-4.5-1.4-6.7 1.1-1.6 3-2.3 4.9-1.9v2.6c-1.5-.5-2.8.6-2.6 2 .1 1.1 1.2 1.9 2.3 1.7 1-.2 1.7-1 1.7-2V3z"/></svg></a>
+        <a href="https://www.youtube.com/@VitsOfficial" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a>
+      </div>
+    </div>
+    <nav class="footCols" aria-label="Footer">
+      <div><h3 class="footH">Home</h3><a href="#story">Who Are We</a><a href="#trade">Our Services</a><a href="#range">Our Products</a><a href="#trade-form">Trade Enquiry</a><a href="#trade-form">Need Help?</a></div>
+      <div><h3 class="footH">About Us</h3><a href="about.html">Our Milestone</a><a href="about.html">What Makes Us Different</a><a href="about.html">Our Philosophy</a><a href="about.html">Our Brands</a><a href="#standards">Certifications</a><a href="#standards">Food Safety</a><a href="about.html">Our Partners</a><a href="resources.html">FAQ</a></div>
+      <div><h3 class="footH">Products</h3><a href="products.html">All Categories</a><a href="#range">Vit's Classic Instant Noodles</a><a href="products.html">Vit's Fresh Noodle Series</a><a href="#range">Vit's Instant Noodles with Flavour</a><a href="#range">Vit's Plain Instant Noodles</a><a href="#range">Vit's Taste of Malaysia</a><a href="#range">Vit's Italian Mi Goreng</a></div>
+      <div><h3 class="footH">Services</h3><a href="#trade">Private Label</a><a href="#trade">Bulk Purchase</a><a href="#trade">OEM</a></div>
+      <div><h3 class="footH">Resources</h3><a href="resources.html">Recipes</a><a href="resources.html">Blogs</a><a href="resources.html">FAQs</a></div>
+    </nav>
+    <div class="footWaves" aria-hidden="true"></div>
+  </div>
+  <div class="footLegal">
+    <a href="resources.html">Terms &amp; Conditions</a><i aria-hidden="true"></i><a href="resources.html">Privacy Policy</a>
+  </div>
+  <div class="footMeta">
+    <span data-c="footer.demo">Demo by Brand Method &middot; Aug 2026 &middot; wrapper artwork simplified for the demo</span>
+    <span>Ramen model: &ldquo;Classic Ramen&rdquo; by
+      <a href="https://sketchfab.com/Polypus_yum" target="_blank" rel="noopener">Polypus_yum</a>,
+      <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;4.0</a></span>
+  </div>
+  <div class="footRibbon" role="img" aria-label="Demo by BrandMethod.co">
+    <canvas id="demoRibbon" width="460" height="110" aria-hidden="true"></canvas>
+    <span id="demoRibbonFb" class="footRibbonFb" hidden>Demo &middot; BrandMethod.co</span>
+  </div>
+</footer>
+
+<script src="content.js?v=16"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script src="js/motion.js?v=150"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<!-- 7 Sep, Bazil: "make sure the loading screen is smooth". The pack module builds its
+     geometry and paints its textures at evaluation, which used to run under the plate and
+     starve its frames. The module now loads one frame after the plate starts to leave, or at
+     once when there is no plate (reduced motion, or a return visit with the plate hidden). -->
+<script type="module">
+  (function(){
+    var gone=false;
+    /* until the stage is ready the slot shows the flat pack, so nothing pops in a second late */
+    document.body.classList.add('pre3d');
+    document.addEventListener('vits:3dready',function(){ document.body.classList.remove('pre3d'); },{once:true});
+    document.addEventListener('vits:3dfail',function(){ document.body.classList.remove('pre3d'); },{once:true});
+    var go=function(){ if(gone) return; gone=true; setTimeout(function(){ import('./js/pack3d.js?v=424'); },40); };
+    var vl=document.getElementById('vLoad');
+    if(vl&&!vl.hidden&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+      /* the boot lands once the plate is HIDDEN, not when it starts to slide: measured, a
+         boot during the exit put a 0.9s task under the exit's frames. */
+      new MutationObserver(function(){ if(vl.hidden) go(); }).observe(vl,{attributes:true,attributeFilter:['hidden']});
+      setTimeout(go,6500);   /* the floor, whatever the plate does */
+    } else go();
+  })();
+</script>
+<script type="module" src="js/globe.js?v=29"></script>
+</body>
+</html>

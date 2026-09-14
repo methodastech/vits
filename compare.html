@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pack proof · painted vs the real bag</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Archivo:wdth,wght@62..125,400..900&family=Anton&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#14100b;color:#F2E9DD;font-family:"Plus Jakarta Sans",system-ui,sans-serif;padding:26px 30px 60px}
+  h1{font-size:17px;letter-spacing:.02em}
+  .sub{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+       text-transform:uppercase;color:#A6907C;margin-top:6px}
+  .bar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:22px 0 18px}
+  .bar label{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#A6907C}
+  input[type=range]{width:260px;accent-color:#D8232A}
+  button{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+         background:#241a10;color:#F2E9DD;border:1px solid #3a2b1c;padding:9px 15px;cursor:pointer}
+  button.on{background:#D8232A;border-color:#D8232A;color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+  figure{position:relative;background:#0d0a07;border:1px solid #2a1f14}
+  figcaption{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+             padding:9px 12px;color:#A6907C;border-bottom:1px solid #2a1f14}
+  .shot{position:relative;line-height:0}
+  .shot img{width:100%;display:block}
+  .shot .over{position:absolute;inset:0}
+  .stack{grid-column:1 / -1}
+  .stack .shot img.b{position:absolute;inset:0}
+  table{border-collapse:collapse;width:100%;margin-top:30px;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #2a1f14}
+  th{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#A6907C}
+  td.n{font-family:"JetBrains Mono",monospace}
+  .ok{color:#7BD88F}.mid{color:#F4C51D}.bad{color:#FF8A7A}
+</style>
+</head>
+<body>
+<h1>Pack proof — painted panel against the real bag</h1>
+<div class="sub">left: what the site paints · right: ref-05, the client's front rectified into the same coordinates</div>
+
+<div class="bar">
+  <label for="mix">Blend</label>
+  <input id="mix" type="range" min="0" max="100" value="50">
+  <button id="diff">Difference</button>
+  <button id="swap">Swap</button>
+</div>
+
+<div class="grid">
+  <figure>
+    <figcaption>Painted (the site)</figcaption>
+    <div class="shot"><img id="mineImg" src="pack-fix-handoff/tools/painted-front.png" alt="painted front panel"></div>
+  </figure>
+  <figure>
+    <figcaption>Real bag (ref-05)</figcaption>
+    <div class="shot"><img id="refImg" src="pack-fix-handoff/ref-05-front-rectified-1024x869.png" alt="reference front panel"></div>
+  </figure>
+
+  <figure class="stack">
+    <figcaption>Overlaid — drag the blend slider</figcaption>
+    <div class="shot" id="stack">
+      <img src="pack-fix-handoff/ref-05-front-rectified-1024x869.png" alt="">
+      <img class="b" id="topLayer" src="pack-fix-handoff/tools/painted-front.png" alt="" style="opacity:.5">
+    </div>
+  </figure>
+</div>
+
+<table id="tbl">
+  <thead><tr><th>Metric</th><th>Reference</th><th>Painted</th><th>Accuracy</th></tr></thead>
+  <tbody></tbody>
+</table>
+
+<script>
+/* the painted export is the full 1024x1147 face; the reference is the band-to-band
+   crop starting at y256, so the overlay trims the painted one to match */
+const mine=document.getElementById('mineImg'), top_=document.getElementById('topLayer');
+function trim(img){
+  const s=img.naturalWidth/1024;
+  img.style.clipPath=`inset(${256*s/img.naturalHeight*100}% 0 ${(1147-1125)*s/img.naturalHeight*100}% 0)`;
+  img.style.transform=`translateY(${-256*s/img.naturalHeight*100}%)`;
+}
+[mine,top_].forEach(i=>{ i.complete?trim(i):i.addEventListener('load',()=>trim(i)); });
+
+document.getElementById('mix').addEventListener('input',e=>{ top_.style.opacity=e.target.value/100; });
+let diffOn=false;
+document.getElementById('diff').addEventListener('click',e=>{
+  diffOn=!diffOn; e.target.classList.toggle('on',diffOn);
+  top_.style.mixBlendMode = diffOn ? 'difference' : 'normal';
+  if(diffOn){ top_.style.opacity=1; document.getElementById('mix').value=100; }
+});
+let swapped=false;
+document.getElementById('swap').addEventListener('click',e=>{
+  swapped=!swapped; e.target.classList.toggle('on',swapped);
+  const a='pack-fix-handoff/tools/painted-front.png',
+        b='pack-fix-handoff/ref-05-front-rectified-1024x869.png';
+  top_.src = swapped ? b : a;
+  document.getElementById('stack').firstElementChild.src = swapped ? a : b;
+  trim(top_);
+});
+
+const ROWS=[
+ ['Fin seals','top only','top only',100],
+ ['Mark width','546','547',99.8],
+ ['Mark centre X','551','550',99.8],
+ ['Mark centre Y','665','665',100],
+ ['Window width','600','599',99.8],
+ ['Window centre X','550','549',99.8],
+ ['Window centre Y','904','904',100],
+ ['Mark to window gap','-248','-248',99.9],
+ ['Border ink height','23px','23px',100],
+ ['Border top edge','265','266',99.6],
+ ['Wave count','8','8',100],
+ ['Wave strand width','24','23',95.8],
+ ['Wave pitch','44','43',97.7],
+ ['Field yellow','247,226,0','246,227,1',99.6],
+ ['Print red','218,42,32','225,37,28',97.9],
+ ['Seal band','red / yellow script','red / yellow script',100],
+ ['Type faces','pack originals','Inter stand-in',60],
+ ['Tear notch','present','not modelled',0]
+];
+const tb=document.querySelector('#tbl tbody');
+ROWS.forEach(([n,r,m,a])=>{
+  const cls=a>=95?'ok':a>=70?'mid':'bad';
+  tb.insertAdjacentHTML('beforeend',
+    `<tr><td>${n}</td><td class="n">${r}</td><td class="n">${m}</td><td class="n ${cls}">${a}%</td></tr>`);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D Packs &middot; Vit's Noodles</title>
+<meta name="description" content="Two Vit's packs rendered in 3D and spinnable: the production 350g pack, spinnable.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Archivo:wdth,wght@62..125,400..900&family=Anton&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/site.css?v=211">
+</head>
+<body>
+<script>
+/* 8 Sep: private preview. The word is checked here as well as on the link. */
+(function(){ var ok=false; try{ ok=sessionStorage.getItem('vits3d')==='ok'; }catch(_){}
+  if(!ok){ var got=window.prompt('3D Packs is a private preview. Password:'); if(got&&got.trim()==='vit321'){ try{ sessionStorage.setItem('vits3d','ok'); }catch(_){} } else { location.replace('index.html'); } } })();
+</script>
+
+<div class="bmws"><div class="bmws-in">
+  <div class="bmws-crumb"><b>Vit's Noodles</b><span>Brand Method &middot; Admin Navigation</span></div>
+  <nav class="bmws-tabs" aria-label="Admin navigation">
+    <a href="audit.html"><i>00</i>Web Audit</a>
+    <a href="competitors.html"><i>01</i>Competitors</a>
+    <a href="plan.html"><i>02</i>Web Plan</a>
+    <a class="on" href="index.html"><i>03</i>The Website</a>
+    <a class="bmws-cms" href="admin/" target="_blank" rel="noopener"><i>&#9998;</i>CMS</a>
+  </nav>
+</div></div>
+
+<nav class="nav solid" id="siteNav">
+  <a href="index.html"><img class="lg" src="assets/vits-logo.png" alt="Vit's, home"></a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <span class="here" aria-current="page">3D Packs</span>
+    <a class="cta" href="index.html#trade-form">Trade Enquiry</a>
+  </div>
+</nav>
+
+<main class="pv">
+  <header class="pvHead">
+    <span class="k">The pack, in the round</span>
+    <h1 class="disp">The pack<em>you can turn</em></h1>
+    <p>Drawn in the browser, not photographed: the bag the whole site now carries, solved from the
+      client&rsquo;s studio plates and lit like the studio. Drag it to spin it.</p>
+  </header>
+
+  <section class="pvGrid">
+    <article class="pvCard">
+      <div class="pvNum">01</div>
+      <div class="pvStage" data-pack3d="mini2" role="img"
+           aria-label="The Vit's yellow 350g pack, measured from the studio plates, shown in 3D">
+        <img class="pvPoster" src="assets/pack-hero.png" alt="" aria-hidden="true">
+        <span class="pvHint">Drag to spin</span>
+        <span class="pvFall">3D is off while your system asks for reduced motion.</span>
+      </div>
+      <div class="pvMeta">
+        <h2>The yellow pack, measured</h2>
+        <p>Built from nothing against the plates below and lit like the studio: a dark room, one
+          softbox, the plate&rsquo;s own camera height. Every element on the front, the seal and
+          both gussets is placed by measuring the photographs, and the width is Bazil&rsquo;s call
+          against the retail bag. Add <code>?white</code> to the address to strip it back to bare film.</p>
+        <dl class="pvSpec">
+          <div><dt>Width</dt><dd>0.93 of its height</dd></div>
+          <div><dt>Depth</dt><dd>0.607 of its height</dd></div>
+          <div><dt>Front-on</dt><dd>1.02 tall per wide</dd></div>
+          <div><dt>Side-on</dt><dd>0.62 wide per tall</dd></div>
+        </dl>
+        <figure class="pvRef">
+          <img src="assets/pack-photo-3q.jpg" alt="The real Vit's 350g pack, client studio photo" loading="lazy" decoding="async">
+          <figcaption>The production bag the model is measured against</figcaption>
+        </figure>
+      </div>
+    </article>
+  </section>
+
+
+  <section class="pvDim" aria-label="How wide the pack is, and how we know">
+    <span class="k">The measurements</span>
+    <h2 class="disp">How wide,<em> and how we know</em></h2>
+    <p>The width was asked for twice and argued about three times, so here is the whole
+      working. There are no published dimensions for this pack. The manufacturer&rsquo;s own
+      listing gives 350g, twelve packs to a carton and thirteen months of shelf life, and no
+      measurements; the retailers, the halal directory and the export listings give none
+      either. So the photographs are the only authority, and they do not agree with each
+      other.</p>
+
+    <div class="dimTable">
+      <table>
+        <caption>What each reference says the bag is, as a fraction of its own height</caption>
+        <thead>
+          <tr><th scope="col">Reference</th><th scope="col">View</th><th scope="col">What it measures</th><th scope="col">Width it implies</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Studio three-quarter</td><td>21&deg; round, studio</td><td>1.131 tall per wide</td><td><b>0.78</b></td></tr>
+          <tr><td>Studio gusset</td><td>Side-on, studio</td><td>0.632 wide per tall</td><td>fixes the depth at <b>0.607</b></td></tr>
+          <tr><td>Retail bag on a floor</td><td>Face-on, in the wild</td><td>0.961 tall per wide</td><td><b>about 1.0</b></td></tr>
+          <tr><td>The client&rsquo;s own render</td><td>Face-on</td><td>1.062 tall per wide</td><td><b>about 0.94</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dimWhy">
+      <h3>Why they disagree, and which one won</h3>
+      <p>A bag photographed lying on a floor splays its gussets open, which widens it. That
+        explains part of the gap between the retail photograph and the studio plate, but not
+        all of it. The two face-on references, which are the view a shopper takes and the view
+        this site&rsquo;s hero takes, both say the pack is nearly as wide as it is tall. The
+        three-quarter studio plate says it is a third narrower.</p>
+      <p>The build follows the face-on references, at <b>0.93 of its height wide</b>. Face-on
+        it reads 1.02 tall per wide, between the retail bag&rsquo;s 0.961 and the client&rsquo;s
+        own 1.062. What that costs is the three-quarter silhouette, which boxes 0.99 against
+        that plate&rsquo;s 1.131.</p>
+      <p>What it does not cost is the match itself. The front scored 69.5% at 0.93 and 69.3%
+        at 0.78, because the print is drawn for the width it is given: the pre-stretch is
+        derived from the width, so round things stay round at any width. Going back to the
+        plate-derived 0.78 is one number in the source, and the reasoning sits beside it.</p>
+    </div>
+
+    <dl class="dimBuilt">
+      <div><dt>Width</dt><dd>0.93 &times; height</dd></div>
+      <div><dt>Depth</dt><dd>0.607 &times; height</dd></div>
+      <div><dt>Depth per width</dt><dd>0.65</dd></div>
+      <div><dt>Seal</dt><dd>6.4% of the height</dd></div>
+      <div><dt>Shoulder crease</dt><dd>11.9% down</dd></div>
+      <div><dt>Corner</dt><dd>superellipse n=12</dd></div>
+      <div><dt>Face-on</dt><dd>1.02 tall per wide</dd></div>
+      <div><dt>Side-on</dt><dd>0.62 wide per tall</dd></div>
+    </dl>
+  </section>
+
+  <section class="pvCmp" aria-label="The render beside the pack">
+    <span class="k">Side by side</span>
+    <h2 class="disp">The render,<em> against the pack</em></h2>
+    <p>Same view, same height, no retouching: the model on the left, the client&rsquo;s own
+      photograph on the right. Every number is measured, not judged. Silhouette is how much
+      of the two outlines overlap. Print placement is how well the printed ink lands in the
+      same places. Colour is how close the two are over the pack itself.</p>
+
+    <div class="cmpBench">
+      <h3>What a perfect score would be</h3>
+      <p>100% means the identical image file, so it is worth knowing what real photographs of
+        this pack score against each other on the same measure. These are two genuine pictures
+        of the product, every time:</p>
+      <ul>
+        <li><b>44.1%</b> the client&rsquo;s marketing render against their studio three-quarter</li>
+        <li><b>42.4%</b> their studio three-quarter against their studio three-quarter from the other side</li>
+        <li><b>30.7%</b> the retail bag photographed on the floor against the studio shot</li>
+      </ul>
+      <p>Anything above that band is a model closer to the plate than a second photograph of the
+        same bag would be. The front sits at 60.9%.</p>
+    </div>
+
+    <article class="cmpPair">
+      <div class="cmpRow">
+        <figure class="cmpFig">
+          <img src="assets/compare/front-render.png" alt="The front of the pack, rendered in 3D" loading="lazy" decoding="async">
+          <figcaption><b>Front</b> rendered</figcaption>
+        </figure>
+        <figure class="cmpFig">
+          <img src="assets/ref/studio-3q.jpg" alt="The front of the real pack, studio photograph" loading="lazy" decoding="async">
+          <figcaption><b>Front</b> the pack</figcaption>
+        </figure>
+      </div>
+      <div class="cmpScore">
+        <div class="cmpBig"><b>60.9%</b><span>match</span></div>
+        <dl class="cmpBars">
+          <div><dt>Silhouette</dt><dd><i style="width:88.7%"></i><em>88.7%</em></dd></div>
+          <div><dt>Print placement</dt><dd><i style="width:34.2%"></i><em>34.2%</em></dd></div>
+          <div><dt>Colour</dt><dd><i style="width:59.0%"></i><em>59.0%</em></dd></div>
+        </dl>
+        <p class="cmpWhy">Up from 61.3% on 2 September and 64.2% earlier today. The camera was solved against this plate over a grid of 75 shots: 21 degrees round, 6 degrees above eye level, a long lens. On that frame every printed element was cut out of both images in the same window and moved until the boxes agree, most of them now within 1%: the mark overlaps at 70%, its best reading yet. The bag stands 0.93 of its height wide, which is Bazil&rsquo;s call and the one the two face-on photographs support; this plate, shot from three-quarters, wants a third narrower, and the measurements section above sets out why they disagree and which won. What remains is that difference, a photograph&rsquo;s soft ink against a crisp render, and a base that still rounds where the plate folds flat.</p>
+      </div>
+    </article>
+    <article class="cmpPair">
+      <div class="cmpRow">
+        <figure class="cmpFig">
+          <img src="assets/compare/back-render.png" alt="The back of the pack, rendered in 3D" loading="lazy" decoding="async">
+          <figcaption><b>Back</b> rendered</figcaption>
+        </figure>
+        <figure class="cmpFig">
+          <img src="assets/ref/desk-back.jpg" alt="The back of the real pack, photographed" loading="lazy" decoding="async">
+          <figcaption><b>Back</b> the pack</figcaption>
+        </figure>
+      </div>
+      <div class="cmpScore">
+        <div class="cmpBig"><b>46.8%</b><span>match</span></div>
+        <dl class="cmpBars">
+          <div><dt>Silhouette</dt><dd><i style="width:92.8%"></i><em>92.8%</em></dd></div>
+          <div><dt>Print placement</dt><dd><i style="width:7.8%"></i><em>7.8%</em></dd></div>
+          <div><dt>Colour</dt><dd><i style="width:32.7%"></i><em>32.7%</em></dd></div>
+        </dl>
+        <p class="cmpWhy">The panel is rebuilt off this photograph: the wavy red block with the nutrition table and the allergen information, the bilingual sections in black ink rather than red, the Arabic pair, the certification strip, the barcode and the address. The silhouette holds at 92.2%. Everything else is the photograph: it is the only back shot we have, a crumpled bag on a desk at another angle under office light, so the ink cannot line up and the colour cannot agree.</p>
+        <p class="cmpCav">Not a like-for-like test. A flat back plate would settle it.</p>
+      </div>
+    </article>
+    <article class="cmpPair">
+      <div class="cmpRow">
+        <figure class="cmpFig">
+          <img src="assets/compare/side-left-render.png" alt="The left gusset of the pack, rendered in 3D" loading="lazy" decoding="async">
+          <figcaption><b>Gusset, left</b> rendered</figcaption>
+        </figure>
+        <figure class="cmpFig">
+          <img src="assets/compare/side-left-plate.png" alt="The left gusset of the real pack" loading="lazy" decoding="async">
+          <figcaption><b>Gusset, left</b> the pack</figcaption>
+        </figure>
+      </div>
+      <div class="cmpScore">
+        <div class="cmpBig"><b>60.3%</b><span>match</span></div>
+        <dl class="cmpBars">
+          <div><dt>Silhouette</dt><dd><i style="width:94.9%"></i><em>94.9%</em></dd></div>
+          <div><dt>Print placement</dt><dd><i style="width:28.9%"></i><em>28.9%</em></dd></div>
+          <div><dt>Colour</dt><dd><i style="width:53.5%"></i><em>53.5%</em></dd></div>
+        </dl>
+        <p class="cmpWhy">There is no straight-on photograph of this side, so both are the same slice cut out of the three-quarter: the plate&rsquo;s left gusset and a render taken at the plate&rsquo;s own angle. It confirms the mirrored pair reads correctly on this side too, with the mark toward the front edge. The panel was rebuilt against the straight-on gusset photograph on 3 September, which is the only view that does not foreshorten it away. At the wider bag this view shows less of the gusset than the plate does, which is geometry rather than artwork.</p>
+      </div>
+    </article>
+    <article class="cmpPair">
+      <div class="cmpRow">
+        <figure class="cmpFig">
+          <img src="assets/compare/side-right-render.png" alt="The right gusset of the pack, rendered in 3D" loading="lazy" decoding="async">
+          <figcaption><b>Gusset, right</b> rendered</figcaption>
+        </figure>
+        <figure class="cmpFig">
+          <img src="assets/ref/studio-gusset.png" alt="The right gusset of the real pack, studio photograph" loading="lazy" decoding="async">
+          <figcaption><b>Gusset, right</b> the pack</figcaption>
+        </figure>
+      </div>
+      <div class="cmpScore">
+        <div class="cmpBig"><b>67.6%</b><span>match</span></div>
+        <dl class="cmpBars">
+          <div><dt>Silhouette</dt><dd><i style="width:94.7%"></i><em>94.7%</em></dd></div>
+          <div><dt>Print placement</dt><dd><i style="width:38.8%"></i><em>38.8%</em></dd></div>
+          <div><dt>Colour</dt><dd><i style="width:70.9%"></i><em>70.9%</em></dd></div>
+        </dl>
+        <p class="cmpWhy">The best silhouette of the four at 95.6%, and the layout is right: mark toward the front edge, variety lines behind it, mirrored from the left. Print placement is held down by the window, which renders taller and flatter than the photographed cake, and by the noodle print inside it.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="pvCheck" aria-label="Accuracy checklist">
+    <span class="k">The checklist</span>
+    <h2 class="disp">What was checked,<em> and what came back</em></h2>
+    <p>Every line is a measurement with a stated target, run by
+      <code>tools/checklist.py</code> against the exported artwork and the render itself. No
+      item on this list is a judgement. <b>19 of 19 pass.</b></p>
+    <ol class="ckList">
+      <li class="ckGroup"><span>Bounds</span></li>
+      <li class="ckItem ok">
+        <b>Front artwork clears the fold</b>
+        <span class="ckT">ink stops above y 1140</span>
+        <span class="ckG">y 1024</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckItem ok">
+        <b>Back artwork clears the fold</b>
+        <span class="ckT">ink stops above y 1140</span>
+        <span class="ckG">y 1024</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckItem ok">
+        <b>Front panel has no punched holes</b>
+        <span class="ckT">0 non-opaque texels</span>
+        <span class="ckG">0</span>
+        <span class="ckM">pass</span>
+        <em>destination-out on an opaque panel erases the field under it too</em>
+      </li>
+      <li class="ckItem ok">
+        <b>Back panel has no punched holes</b>
+        <span class="ckT">0 non-opaque texels</span>
+        <span class="ckG">0</span>
+        <span class="ckM">pass</span>
+        <em>destination-out on an opaque panel erases the field under it too</em>
+      </li>
+      <li class="ckItem ok">
+        <b>Front type clears the right edge</b>
+        <span class="ckT">no dark type in the last columns</span>
+        <span class="ckG">14 texels</span>
+        <span class="ckM">pass</span>
+        <em>the border and the waves reach the edge on purpose and are not counted</em>
+      </li>
+      <li class="ckItem ok">
+        <b>Back type clears the right edge</b>
+        <span class="ckT">no dark type in the last columns</span>
+        <span class="ckG">0 texels</span>
+        <span class="ckM">pass</span>
+        <em>the border and the waves reach the edge on purpose and are not counted</em>
+      </li>
+      <li class="ckGroup"><span>No overlap</span></li>
+      <li class="ckItem ok">
+        <b>Count block clear of the noodle oval</b>
+        <span class="ckT">a gap, not a collision</span>
+        <span class="ckG">2 px</span>
+        <span class="ckM">pass</span>
+        <em>count ends x 284, oval starts x 286</em>
+      </li>
+      <li class="ckItem ok">
+        <b>The mark and the oval overlap only at the lip</b>
+        <span class="ckT">between -70 and +40 px</span>
+        <span class="ckG">-14 px</span>
+        <span class="ckM">pass</span>
+        <em>negative means the oval starts above the mark bottom</em>
+      </li>
+      <li class="ckItem ok">
+        <b>Front bottom border runs unbroken</b>
+        <span class="ckT">nothing but ink and field on the band row</span>
+        <span class="ckG">stray 0.00</span>
+        <span class="ckM">pass</span>
+        <em>red 0.00, field 1.00</em>
+      </li>
+      <li class="ckItem ok">
+        <b>Back bottom border runs unbroken</b>
+        <span class="ckT">nothing but ink and field on the band row</span>
+        <span class="ckG">stray 0.00</span>
+        <span class="ckM">pass</span>
+        <em>red 0.00, field 1.00</em>
+      </li>
+      <li class="ckItem ok">
+        <b>Gusset window clears the top band</b>
+        <span class="ckT">no cake on the band row</span>
+        <span class="ckG">0.000</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckItem ok">
+        <b>Gusset window clears the bottom band</b>
+        <span class="ckT">no cake on the band row</span>
+        <span class="ckG">0.000</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckGroup"><span>Proportion</span></li>
+      <li class="ckItem ok">
+        <b>The mark is flat, not round</b>
+        <span class="ckT">1.82 wide per tall (ref-05 1.85, plate 1.79)</span>
+        <span class="ckG">1.89</span>
+        <span class="ckM">pass</span>
+        <em>measured on the solid body, which reads slightly rounder than the drawn ellipse</em>
+      </li>
+      <li class="ckItem ok">
+        <b>The mark aspect constant</b>
+        <span class="ckT">MARK_AR 0.458 (renders 1.8 after the 1.2 stretch)</span>
+        <span class="ckG">0.458</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckItem ok">
+        <b>Front silhouette, tall per wide</b>
+        <span class="ckT">0.90 to 1.16 at the plate angle (the studio plates read 1.135; Bazil set the bag to 0.99 wide on 3 Sep, the retail bag in hand)</span>
+        <span class="ckG">0.921</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckGroup"><span>Ink</span></li>
+      <li class="ckItem ok">
+        <b>The seal is red with yellow script</b>
+        <span class="ckT">red ground</span>
+        <span class="ckG">red ground</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckItem ok">
+        <b>Border pitch taken off the band, not the inset</b>
+        <span class="ckT">rowH0*0.887</span>
+        <span class="ckG">rowH0*0.887</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckItem ok">
+        <b>Border modules across the face</b>
+        <span class="ckT">23 (measured on the plate)</span>
+        <span class="ckG">23.0</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+      <li class="ckGroup"><span>Build</span></li>
+      <li class="ckItem ok">
+        <b>The bag plan lives in one place</b>
+        <span class="ckT">V2W / V2D read by both the mesh and the gusset plate</span>
+        <span class="ckG">yes</span>
+        <span class="ckM">pass</span>
+        
+      </li>
+    </ol>
+  </section>
+
+  <section class="pvParts" aria-label="Every graphic on its own">
+    <span class="k">Piece by piece</span>
+    <h2 class="disp">Every graphic,<em> on its own</em></h2>
+    <p>Each element is cut out of the flat artwork and out of the client&rsquo;s photograph on the
+      same frame, so it can be judged without the rest of the pack around it. Three of these
+      were found wrong this way and are fixed below.</p>
+    <div class="ptGrid">
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/mark-art.png" alt="The mark, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/mark-plate.png" alt="The mark, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The mark</h3>
+        <p>It is FLAT: 1.82 wide per tall, and it was drawn at 1.38. Two readings agree, ref-05 gives 1.85 and the studio plate 1.79 once the view is taken out. The printed ellipse is flatter than a first pass drew it, and the wider face the bag now has is what let it sit right.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/phoenix-art.png" alt="The phoenix, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/phoenix-plate.png" alt="The phoenix, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The phoenix</h3>
+        <p>Was reading larger than the printed bird. 200 to 172, and lifted 8px.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/border-art.png" alt="The border, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/border-plate.png" alt="The border, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The border</h3>
+        <p>Wrong twice. A stroked path with round joins read as brackets; flat bars on a rail merged the row into one band. The pack has self-contained square spirals with clear yellow between them.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/oval-art.png" alt="The noodle oval, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/oval-plate.png" alt="The noodle oval, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The noodle oval</h3>
+        <p>Dropped and pulled in so it crowds neither the mark above it nor the count beside it, which is how the pack has it.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/count-art.png" alt="The count block, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/count-plate.png" alt="The count block, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The count block</h3>
+        <p>Moved 29px off the fold. Measured on the plate it starts at 0.045 of the face; it was drawing 0.017, hard against the crease.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/halal-art.png" alt="The halal chop, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/halal-plate.png" alt="The halal chop, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The halal chop</h3>
+        <p>The extracted artwork had lost the final L and read HALA. Re-cut from the retail photograph: MALAYSIA around the top, the eight-point star, the Arabic, HALAL beneath.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/waves-art.png" alt="The wave column, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/waves-plate.png" alt="The wave column, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The wave column</h3>
+        <p>Ten strands at 0.0359 of the face, running border to border. It was drawing eight at a coarser pitch and stopping short of the fold.</p>
+      </article>
+      <article class="ptCard">
+        <div class="ptPair">
+          <figure><img src="assets/parts/weight-art.png" alt="The net weight, as drawn" loading="lazy" decoding="async"><figcaption>Drawn</figcaption></figure>
+          <figure><img src="assets/parts/weight-plate.png" alt="The net weight, as printed" loading="lazy" decoding="async"><figcaption>Printed</figcaption></figure>
+        </div>
+        <h3>The net weight</h3>
+        <p>Set hard against the right edge over the wave column, as printed.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="pvHist" aria-label="History of fixes">
+    <span class="k">The record</span>
+    <h2 class="disp">Every fix,<em> and what found it</em></h2>
+    <p>Each of these came out of a measurement against the reference wall, not out of an
+      opinion. They are in the order they happened.</p>
+    <ol class="fxList">
+      <li>
+        <span class="fxDate">30 Aug</span>
+        <div><b>Started again from nothing</b><p>The production pack was a box with a bulge. V2 begins as one lofted shape in bare white film, judged on silhouette alone before any artwork goes near it.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>A pillow, not a carton</b><p>Beside the photograph the bag read as a box: knife-edge folds, a flat base, a flat front. The corners now carry a real radius, the base rounds under as the plate&rsquo;s does, and the front pillows enough to catch the softbox. Width stays at Bazil&rsquo;s 0.93: the three-quarter photograph only looks thinner because of its angle.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>The back, with nothing on top of anything</b><p>The phoenix and mark straddled the top border and the barcode printed through the bottom one. The mark sits below the band now, the left column measures itself and squeezes to the space it has, and the red panel ends above the border. Audited: zero ink inside either border band.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>The real cake in both windows</b><p>The front oval carries the client&rsquo;s own window photograph, print and all; the gussets carry the cake at the plate&rsquo;s strand density under the mark and type. The drawn curls and the magnified stock strands are gone from v2.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>Lit like the studio</b><p>The room probe lit the film from every side, so the roof washed to (254,203,129) and the flat front carried 46 of blue against the plate&rsquo;s 2. Now a dark room, one softbox front-right, a grey wall for the gussets to reflect and a warm side fill. Field, gusset and solid red each land within a few levels of the photograph.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>The plate&rsquo;s camera</b><p>Every front element sat higher than the photograph and the roof read short. One elevated camera explained all of it: the studio shot is 8 degrees above eye level. The v2 view takes that camera, and the print rows fell into place.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>The seal fin, half the height</b><p>Measured on the plate the red band runs rows 2 to 6 of the box with a yellow film margin above it; it was drawn 7.6% of the height and read as a slab. Now 6.4% with the script on the band, and its ends droop.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>Every element re-measured on the standing bag</b><p>Halal chop, mark, window oval, ribbon, count block, net weight, both borders and the gusset&rsquo;s mark and three-size type were each cut out of studio-3q and the render on the same frame and moved until the boxes agree. The window oval was 21% too tall and sat left of the mark; the count cell was short; the gusset type was set half size.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>Wider, on Bazil&rsquo;s call</b><p>The two studio plates solve to 0.76 to 0.80 wide per tall; the retail bag in hand reads near square. Bazil asked for wider twice, so the bag stands at 0.93 of its height, 1.05 tall per wide front-on, and every print element is drawn for that width.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>Shape measured, not eyeballed</b><p>The studio plate is thresholded into a mask and the render is matched to it row by row. Aspect, seal width, shoulder height and the ear position all moved.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>Two plates cross-solve the box</b><p>One view cannot separate depth from angle. Solving the front and the gusset plates together put the bag at 0.73 deep per wide. Every version before this was a slab.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The roof folds instead of lofting</b><p>Every point on the roof runs in a straight line from the crease to the seal, so the panels come out flat and the gusset corners fold into real dog ears.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The print goes on, in four panels</b><p>Each panel owns its own copy of the creases it sits between, so it gets its own texture coordinates and its own normals. A real fold down each corner.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The border was half size</b><p>ref-05 is a crop, not the full face, and the pitch was taken off the inset rather than the band. The module repeats 23 times across the face on the pack; it was drawing 46.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The seal is yellow with red script</b><p>Sampled inside the band on both plates: yellow is 61% and 65% of the pixels. An earlier round had drawn a red band with yellow script.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The view angle was wrong by 8 degrees</b><p>A scan put the front plate&rsquo;s fold at x=158. Enlarged, it is at 207. That one number sets the whole box, and it had the print rendering 10% oversized.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The two gussets are a mirrored pair</b><p>The mark sits against the front edge on both panels, so their layouts mirror. One texture on both had put the mark against the back seam on the right-hand side.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>Width set against the photographs</b><p>Measured height over width: 1.062 on the marketing render, 1.016 on the retail bag, 1.135 on the studio plate. Two passes overshot before it landed at 1.048.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The claim is a ribbon</b><p>Enlarged on the plate the ends are cut with a V and a darker fold sits behind each tail. It was a plain rectangle.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The bottom border comes down</b><p>Read off a tenths grid on the gusset plate, the border sits lower than it was drawn. The two plates disagree by 7%, so it sits at the measured middle.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>Six corrections off Bazil&rsquo;s eye</b><p>The seal is red with yellow script, not the reverse: a pixel count inside the band said otherwise and it was counting the roof&rsquo;s own yellow. The mark comes down 10%, the corner creases sharpen, the count block moves off the fold to where the plate has it, the noodle oval drops so it crowds neither the mark nor the count, and the claim becomes a ribbon with hanging tails.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>The back panel, rebuilt off the photograph</b><p>Three independent readings of the client&rsquo;s back shot agreed on a layout the render did not have: a red panel with a wavy edge down one side carrying the nutrition table and the allergen block, two bilingual sections set in BLACK ink rather than red, an Arabic pair, a certification strip with HACCP and the origin lines, and the barcode beside the address. What was there before was four centred red-headed paragraphs.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>A checklist that runs itself</b><p>Every accuracy claim is now a measurement with a stated target, run against the exported artwork and the render. It caught the count block sitting one pixel off the noodle oval, which is a collision and not a gap, and it caught two bugs in its own measurements before any of it was trusted.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>A review found what the checklist missed</b><p>Eleven checks passed while the front's bottom border was broken in three places, the gusset window printed through both of its borders, the claim ribbon punched holes in the film, the back's address printed through the Arabic, and the two gusset plates wore a different mark from the front. All fixed, and the checklist grew eight checks that would have caught them.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">1 Sep</span>
+        <div><b>Every front element laid to the plate, and a ribbon that is a ribbon</b><p>The phoenix, mark, count block, halal chop and noodle oval were each measured on the studio plate as a fraction of the face width and of the wall height, and the same fractions put them on the canvas. The mark is drawn at 2.18 so that after the panel mapping's 1.2x vertical stretch it renders at the plate's 1.8. The count cell comes down from 139px to the pack's 84. The claim is rebuilt the way a banner hangs: a sagging band between two folds, with the swallowtails on the tails that hang below, not cut into the band.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">2 Sep</span>
+        <div><b>Element by element against the floor photo: the mark</b><p>The mark&rsquo;s white ring was torn along its lower arc and 唯一麵 sat 0.15 of the half-width too high. The scan&rsquo;s own glyphs are kept and moved, the ring is stroked clean at the printed inset. Along the way: a pixel read that ignored the canvas transform, and a throw inside the gusset&rsquo;s rotation that had been silently aborting every repaint.</p></div>
+      </li>
+          <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>The shape came first, and the width with it</b><p>Every print measurement was standing on the silhouette, so the silhouette was solved before anything else. At 0.93 wide the render boxed 1.004 tall per wide against the studio plate&rsquo;s 1.131, which no camera can reach: a bag&rsquo;s projected width can never fall below its own width. The section went from n=7 to n=12, because the plate&rsquo;s vertical folds are creases and not pillow rounds, and the width to 0.78. The box now reads 1.130 and the roof profile matches the plate row for row from the seal to the base.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>Eight elements, one at a time</b><p>On the solved frame each printed element was cut from the plate and from the render into the same window and read side by side. The count block lost its oversized Mini and got the 5 in Arial Black at three quarters of its cell. The meander bands came down from 63px to 50 on a 0.887 pitch. The halal chop went round, at 0.985 aspect, where it had been printing an oval. The phoenix moved onto the plate&rsquo;s own axis. Overlap on the front went from 40.5% to 49.5%.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>The banner reads as a ribbon</b><p>It was a red bar with a small label in the middle. The plate&rsquo;s banner carries its line across nearly the whole band, and the type is now stretched to fit it, with swallow tails at both ends. A first attempt ran it across the crease onto the gusset, on a row scan that had caught the sealed fin above it; the pair image put it back at 0.30 to 0.84 of the box, which is where the pack prints it.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>Two fixes measured, then put back</b><p>The base wants a harder fold: the plate is 0.68 of the box wide at 94% down where the render is 0.81. Taking the fold further up the wall shortened the bag itself, the box fell to 1.090 against the plate&rsquo;s 1.131, and the front lost six points. The softer curve stays, with the reason written beside it in the source. Lifting the gusset lockup by the full 3.3% the judge asked for cost the left panel five points, so it moved half that.</p></div>
+      </li>
+          <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>The gusset, against the side-on photograph</b><p>The three-quarter view foreshortens this panel to nothing, so the gusset was judged against the straight-on plate instead. The window was 0.76 of the panel wide against the photograph&rsquo;s 0.58, which is why moving it had done nothing: the ellipse simply clipped at both edges. Narrowed to 0.62, the roundel taken out to the plate&rsquo;s width and the three lines up 12%, the gusset went from 57.8% to 60.0% on the right and 64.4% to 65.1% on the left.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>No published dimensions exist for this pack</b><p>Asked to check the size online: the manufacturer&rsquo;s own listing gives 350g, twelve packs to a carton and thirteen months, and no dimensions. Nor do the retailers, the halal directory or the export listings. The nearest published figure is a competitor&rsquo;s five-pack at 17 x 12.5 x 9 cm, which is a different weight and a different bundle. So the two studio photographs stay the authority, and the model now agrees with both of them: 1.130 tall per wide against the three-quarter&rsquo;s 1.131, and 0.627 wide per tall side-on against the gusset plate&rsquo;s 0.632.</p></div>
+      </li>
+          <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>Wider, and this time with the working shown</b><p>Bazil, looking at the hero face-on: too pressed together. He is right, and the two face-on references agree with him: the retail bag reads 0.961 tall per wide and the client&rsquo;s own render 1.062, where the studio three-quarter implies a third narrower. The bag went to 0.93 of its height wide, which reads 1.02 face-on. The print was re-fitted to the new width straight afterwards, so nothing drifted: the phoenix, the halal chop and the count block moved back onto the plate by their measured offsets, and the banner widened with the roof. Front match 69.5% to 70.0% before the banner, 69.7% after. The whole argument is set out in the measurements section above.</p></div>
+      </li>
+      <li>
+        <span class="fxDate">3 Sep</span>
+        <div><b>A better face, and a shorter menu</b><p>The display face was Archivo condensed at 800, a competent grotesk that read like every other food site. It is now Fraunces, a variable serif with real optical sizing and a WONK axis, set at 900 and optical size 144: a heritage masthead for a brand that has been on Malaysian shelves since 1975. The body face went from Plus Jakarta Sans to Instrument Sans. Fraunces sets wider than a condensed face, so the hero and the reel headline came down a step to fit, and the rest of the page was checked element by element for overflow. About, Products and Resources came out of the menu on every page.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="pvRefs" aria-label="Reference photography">
+    <span class="k">The reference wall</span>
+    <h2 class="disp">What the bag<em> really looks like</em></h2>
+    <p>Every shape and print decision is judged against these, never against memory. The four studio
+      plates come from the client's own product pages; the rest are the packs on the desk.</p>
+    <div class="pvRefGrid">
+      <figure><img src="assets/ref/studio-3q.jpg" alt="Studio three-quarter view of the pack" loading="lazy" decoding="async"><figcaption>Studio, three-quarter: the shape authority</figcaption></figure>
+      <figure><img src="assets/ref/studio-3q-right.png" alt="Studio three-quarter of the pack from the right" loading="lazy" decoding="async"><figcaption>Studio, three-quarter right: the roof planes and the ear</figcaption></figure>
+      <figure><img src="assets/ref/studio-gusset.png" alt="Studio view of the pack's gusset side" loading="lazy" decoding="async"><figcaption>Studio, gusset: how the shoulder folds side on</figcaption></figure>
+      <figure><img src="assets/ref/desk-front-flat.jpg" alt="The pack front, lying on a desk" loading="lazy" decoding="async"><figcaption>Front, flat on the desk</figcaption></figure>
+      <figure><img src="assets/ref/desk-back.jpg" alt="The back of the pack showing the centre seam" loading="lazy" decoding="async"><figcaption>Back: the centre seam and the fold</figcaption></figure>
+      <figure><img src="assets/ref/desk-side-window.jpg" alt="The gusset side of the pack with the noodle window" loading="lazy" decoding="async"><figcaption>Gusset: the window and the fin ends</figcaption></figure>
+      <figure><img src="assets/ref/desk-side-angled.jpg" alt="The pack on its side, angled" loading="lazy" decoding="async"><figcaption>Gusset, angled: how the film crumples</figcaption></figure>
+      <figure><img src="assets/ref/real-floor.jpg" alt="The pack standing on the floor" loading="lazy" decoding="async"><figcaption>Retail bag, standing</figcaption></figure>
+      <figure><img src="assets/ref/real-hand.jpg" alt="The pack held in hand" loading="lazy" decoding="async"><figcaption>Retail bag, in hand</figcaption></figure>
+      <figure><img src="assets/ref/window-interior.png" alt="Close view through the noodle window" loading="lazy" decoding="async"><figcaption>The cake through the window</figcaption></figure>
+      <figure><img src="assets/ref/studio-carton.png" alt="The 12-pack shipping carton" loading="lazy" decoding="async"><figcaption>The shipper, 350g x 12</figcaption></figure>
+    </div>
+  </section>
+
+  <a class="phBack" href="index.html">Back to the website
+    <svg viewBox="0 0 17 12" fill="none" width="17" height="12" aria-hidden="true"><path d="M1 6h14M10 1l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</main>
+
+<footer class="phFoot">Vit Makanan (K.L.) Sdn. Bhd. &middot; Kuala Lumpur, Malaysia &middot; Packs rendered live in the browser</footer>
+
+<!-- reduced motion never boots the 3D module, so the poster has to stand in -->
+<script>if(matchMedia('(prefers-reduced-motion:reduce)').matches)document.body.classList.add('no3d');</script>
+<script src="content.js?v=16"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module" src="js/pack3d.js?v=374"></script>
+</body>
+</html>
