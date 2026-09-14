@@ -204,7 +204,7 @@ function superPath(x,cx,cy,rx,ry,n){
 
    Now the mark is composed from crisp parts instead of repaired:
      the oval      drawn, so its edge is as clean as the print
-     the wordmark  cut out of assets/vits-logo.png, the corporate artwork
+     the wordmark  cut out of assets/vits-logo.webp, the corporate artwork
      the Chinese   cut out of the roundel scan, which carries the real brush glyphs
    Both cut-outs are keyed once into cached canvases, unrotated and 1:1, because reading
    pixels through a panel context that may be scaled by Q.tex or rotated 90 degrees for a
@@ -936,7 +936,7 @@ function drawBack(){
   for(let i=0;i<14;i++) x.fillText(pk("sealRepeat","Vit's"),40+i*74,28);
   claimRibbon(x,180,96,FW-360,84);
   x.fillStyle=CF; x.textAlign='center';
-  /* the BACK's ribbon is the English claim with Arabic under it, read off desk-back.jpg (3 Sep) */
+  /* the BACK's ribbon is the English claim with Arabic under it, read off desk-back.webp (3 Sep) */
   x.font='italic 700 30px '+PF; x.fillText(pk('claimBack.en','No Preservatives Added'),512,132);
   x.font='700 24px "Noto Sans SC","Microsoft YaHei",sans-serif';
   x.fillText(pk('claimBack.ar','بدون مواد حافظة مضافة'),512,164);
@@ -2341,7 +2341,7 @@ function refreshPanels(){
   const na=drawFrontAlpha(); texFrontA.image=na.image; texFrontA.needsUpdate=true;
   const nb=drawSideAlpha();  texSideA.image =nb.image; texSideA.needsUpdate =true;
   /* the v2 gusset plates repaint too. They are painted once at module-eval,
-     before assets/vits-roundel.png has loaded, so without this the v2 bag wears
+     before assets/vits-roundel.webp has loaded, so without this the v2 bag wears
      the photographic mark on its front and the drawn fallback on both gussets. */
   if(typeof texSideV2!=='undefined'&&texSideV2){
     const nv=drawSideAt(SW2);      texSideV2.image =nv.image; texSideV2.needsUpdate =true;
@@ -2370,19 +2370,19 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(refreshPanels
        logo looks like it was ignored. */
     console.warn('Pack logo failed to load, using the drawn mark:', img.src);
   };
-  img.src=pk('mark.image','assets/vits-logo.png');
+  img.src=pk('mark.image','assets/vits-logo.webp');
 })();
 /* the phoenix and the JAKIM halal chop, lifted from the pack artwork */
-[['assets/vits-phoenix.png',function(i){phxImg=i;}],
- ['assets/vits-halal.png',  function(i){halalImg=i;}],
- ['assets/vits-roundel.png',function(i){roundelImg=i;}],
+[['assets/vits-phoenix.webp',function(i){phxImg=i;}],
+ ['assets/vits-halal.webp',  function(i){halalImg=i;}],
+ ['assets/vits-roundel.webp',function(i){roundelImg=i;}],
  ['assets/vits-cake.webp',   function(i){cakeImg=i;}],
  /* the cake as it reads THROUGH THE FILM: vits-window.png tone-mapped onto
     the reference wall's window-interior plate, see tools notes in the commit */
  ['assets/vits-window-film.webp', function(i){windowImg=i;}],
  /* 2 Sep, Bazil: "realistic noodle inside". The stock strand photo above is
     magnified far past the real cake (a dozen strands across the window
-    against forty). ref/window-interior.png IS the client's front window,
+    against forty). ref/window-interior.webp IS the client's front window,
     print and all, so v2 lays it straight into the oval; the gusset takes a
     print-free strip of the real cake from the gusset plate, mirror-tiled. */
  ['assets/ref/window-interior.webp', function(i){ovalPhoto=i;}],
@@ -2392,21 +2392,21 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(refreshPanels
     for(let k=0;k<4;k++){ x.save(); x.translate(0,sh*k+(k%2?sh:0)); x.scale(1,k%2?-1:1);
       x.drawImage(i,sx,sy,sw,sh,0,0,sw,sh); x.restore(); }
     gussetCake=c; }],
- ['assets/vits-wintype.png',function(i){winTypeImg=i;}],
+ ['assets/vits-wintype.webp',function(i){winTypeImg=i;}],
  /* THE CLIENT'S OWN FRONT: ref-05, the studio front rectified into painter
     coordinates (1024 x 869 = the wall below the shoulder). Bazil, 3 Sep:
     "you already have the exact reference, copy and paste". The measured bag
     wears this photograph on its face; the painters stay for the roof, the
     seal, the gussets, the back and the four flavour packs. */
- ['assets/pack-front-photo.jpg',function(i){refFrontImg=i;}]   /* 4 Sep: 4K upscale (Higgsfield) fitted to 2560, so the face texture is drawn from more pixels than it shows */,
+ ['assets/pack-front-photo.webp',function(i){refFrontImg=i;}]   /* 4 Sep: 4K upscale (Higgsfield) fitted to 2560, so the face texture is drawn from more pixels than it shows */,
  /* the gussets the same way: the right from the straight-on studio gusset
     plate, the left rectified out of the three-quarter plate's gusset */
- ['assets/sku-penang-front.jpg?v=2',function(i){ skuPhoto.penang=i; reskinSku('penang'); }],
- ['assets/sku-tomato-front.jpg?v=2',function(i){ skuPhoto.tomato=i; reskinSku('tomato'); }],
- ['assets/sku-bayam-front.jpg?v=2', function(i){ skuPhoto.bayam=i;  reskinSku('bayam'); }],
- ['assets/sku-carbo-front.jpg?v=2', function(i){ skuPhoto.carbo=i;  reskinSku('carbo'); }],
- ['assets/pack-side-right-photo.jpg',function(i){refSideR=i;}],
- ['assets/pack-side-left-photo.jpg',function(i){refSideL=i;}]].forEach(function(p){
+ ['assets/sku-penang-front.webp?v=2',function(i){ skuPhoto.penang=i; reskinSku('penang'); }],
+ ['assets/sku-tomato-front.webp?v=2',function(i){ skuPhoto.tomato=i; reskinSku('tomato'); }],
+ ['assets/sku-bayam-front.webp?v=2', function(i){ skuPhoto.bayam=i;  reskinSku('bayam'); }],
+ ['assets/sku-carbo-front.webp?v=2', function(i){ skuPhoto.carbo=i;  reskinSku('carbo'); }],
+ ['assets/pack-side-right-photo.webp',function(i){refSideR=i;}],
+ ['assets/pack-side-left-photo.webp',function(i){refSideL=i;}]].forEach(function(p){
   const img=new Image();
   img.onload=function(){ p[1](img); refreshPanels(); };
   img.onerror=function(){ console.warn('Pack artwork missing, using the drawn fallback:',p[0]); };

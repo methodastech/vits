@@ -1289,7 +1289,7 @@
       return PMAP[i]+(PMAP[i+1]-PMAP[i])*(f-i);
     }
 
-    /* THE CORK STOPS REPAINTING. board-cork.jpg is 2200x1228, so at a 640px tile
+    /* THE CORK STOPS REPAINTING. board-cork.webp is 2200x1228, so at a 640px tile
        it renders 357.24px tall. The tile is seamless, so wrapping the layer by an
        exact multiple of that is pixel identical, and a full viewport background
        repaint every frame becomes one compositor transform. Read from the LOADED
@@ -1297,7 +1297,7 @@
     var TH=640*1228/2200;
     (function(){ var im=new Image();
       im.onload=function(){ if(im.naturalWidth) TH=640*im.naturalHeight/im.naturalWidth; };
-      im.src='assets/board-cork.jpg'; })();
+      im.src='assets/board-cork.webp'; })();
 
     /* the chinagraph rings: getTotalLength is read ONCE per path here and never
        on a frame. If the CMS ever swaps a path node, this cache must be cleared

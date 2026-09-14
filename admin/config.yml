@@ -23,7 +23,7 @@ public_folder: "assets"
 # Editors see a live preview of the running site rather than a generic form preview
 site_url: /
 display_url: /
-logo_url: /assets/vits-logo.png
+logo_url: /assets/vits-logo.webp
 
 collections:
   - name: "site"

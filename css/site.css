@@ -139,7 +139,7 @@ body.navOpen .navBurger i:nth-child(3){transform:translateY(-9px) rotate(-45deg)
 /* the phoenix, ghosted into the paper the way the story section does it */
 .phWrap::after{content:"";position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);
   width:min(340px,26vw);aspect-ratio:200/188;pointer-events:none;opacity:.08;
-  background:url("../assets/vits-phoenix.png") center/contain no-repeat}
+  background:url("../assets/vits-phoenix.webp") center/contain no-repeat}
 @media(max-width:900px){.phWrap::after{display:none}}
 
 /* ============ the 3D packs page ============ */
@@ -515,7 +515,7 @@ body.no3d .lblPoster{display:block}
 .sIntro{position:relative;z-index:80;padding:78px var(--gutter) 26px}
 /* the phoenix from the wrapper, ghosted into the paper like a watermark */
 .sIntro::after{content:"";position:absolute;right:var(--gutter);top:64px;width:min(300px,24vw);aspect-ratio:200/188;
-  background:url("../assets/vits-phoenix.png") center/contain no-repeat;opacity:.08;pointer-events:none}
+  background:url("../assets/vits-phoenix.webp") center/contain no-repeat;opacity:.08;pointer-events:none}
 @media(max-width:900px){.sIntro::after{display:none}}
 #story h2{font-size:clamp(40px,6.4vw,86px);line-height:.98;text-transform:uppercase;margin-top:14px;max-width:min(14ch,31vw)}   /* 5 Sep: the pack's channel, so the headline stops running under it */
 #story h2 em{font-style:normal;color:var(--red)}
@@ -1594,7 +1594,7 @@ html.vLoadLock,html.vLoadLock body{overflow:hidden!important}
 .bHint{position:absolute;left:var(--gutter);bottom:clamp(20px,4vh,44px);margin:0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#3A281A;font-weight:700;z-index:3}
 /* without the script the board is a plain gallery */
 .board:not(.live){height:auto}
-.board:not(.live) .boardStage{position:relative;height:auto;overflow:visible;padding:clamp(30px,6vh,64px) var(--gutter);background:#C9A06A url('../assets/board-cork.jpg') center/640px auto repeat}
+.board:not(.live) .boardStage{position:relative;height:auto;overflow:visible;padding:clamp(30px,6vh,64px) var(--gutter);background:#C9A06A url('../assets/board-cork.webp') center/640px auto repeat}
 /* nothing is pinned and nothing travels: five readable dossiers in date order,
    every artefact and every caption present, the photographic stock still ageing
    down the page because --grade is static CSS and never needed a script */
@@ -1808,7 +1808,7 @@ html.vLoadLock,html.vLoadLock body{overflow:hidden!important}
 /* THE CORK. One layer, wrapped on the tile's real rendered height, so a full
    viewport repaint every frame becomes one compositor transform. */
 .bCork{position:absolute;left:-4%;right:-4%;top:-100vh;height:300vh;z-index:1;pointer-events:none;
-  background:#C9A06A url('../assets/board-cork.jpg') center top/640px auto repeat;
+  background:#C9A06A url('../assets/board-cork.webp') center top/640px auto repeat;
   transform:translate3d(0,var(--corky,0px),0)}
 /* the grain rides the CORK, not the glass, so it is the board's texture and not a
    film over the room (it lived on .boardStage::before until 5 Sep) */
@@ -1976,7 +1976,7 @@ html.vLoadLock,html.vLoadLock body{overflow:hidden!important}
    leaves after the last, so the reader learns the board has a top, a bottom and a
    thickness before they learn anything about 1975. */
 .bBatten{width:116vw!important;display:flex;align-items:center;justify-content:center;
-  height:clamp(44px,4.2vw,74px);background:#6B4A2A url('../assets/board-batten.jpg') 50% 50%/auto 100% repeat-x;
+  height:clamp(44px,4.2vw,74px);background:#6B4A2A url('../assets/board-batten.webp') 50% 50%/auto 100% repeat-x;
   box-shadow:inset 0 3px 0 rgba(255,236,196,.2),16px 24px 34px rgba(44,24,8,.42)}
 .bBatten b{font-family:Anton,Inter,sans-serif;font-weight:400;text-transform:uppercase;
   font-size:clamp(12px,1.1vw,19px);letter-spacing:.2em;color:rgba(251,243,226,.8);text-shadow:0 1px 0 rgba(0,0,0,.45)}
@@ -2078,7 +2078,7 @@ body.no3d .bKey,body.no3d .bPackShade{display:none}
 
 /* THE RANGE NAMES were squeezed into a 76px column under the bowl on a phone. */
 
-/* THE REAL PLATES (5 Sep). pack-front-photo.jpg is the studio front rectified into painter
+/* THE REAL PLATES (5 Sep). pack-front-photo.webp is the studio front rectified into painter
 
 /* the black ink pass was a CSS stand in for the chop, the count block and the net weight.
    The real plates carry all three, so the boxes now print ON TOP of the artwork. */
@@ -2270,7 +2270,7 @@ body.no3d .bKey,body.no3d .bPackShade{display:none}
 @media(min-width:1001px){.turnCopy{max-width:min(40ch,26vw)} .turnVid{right:-12%}}
 /* the callouts field: the pack's own line art back under the light, tone on tone */
 .anatBack::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.14;mix-blend-mode:multiply;
-  background:url('../assets/anat-redart.jpg') center/720px auto repeat}
+  background:url('../assets/anat-redart.webp') center/720px auto repeat}
 /* the footer yellow, a bit lighter */
 .siteFoot{background:#FFD326}
 

@@ -60,10 +60,10 @@
     "heading3": "recipe.",
     "kicker": "03 · For trade buyers",
     "cartonImages": [
-      "assets/oem-pallets.jpg",
-      "assets/oem-loading.jpg",
-      "assets/hf-factory-line.jpg",
-      "assets/hf-factory-qc.jpg"
+      "assets/oem-pallets.webp",
+      "assets/oem-loading.webp",
+      "assets/hf-factory-line.webp",
+      "assets/hf-factory-qc.webp"
     ],
     "lede": "Can you match a taste a market already loves, a Korean fire noodle, an Indonesian mi goreng? <b>Yes.</b> 51 years of noodles, a seasoning kitchen fluent in curry, tom yam and rendang, your recipe under your label.",
     "marketsHeading": "From Malaysia<br><em>to the World</em>",
@@ -153,7 +153,7 @@
     "marketsQuoteBy": "Vit Makanan (K.L.) Sdn. Bhd. · Kuala Lumpur, since 1975"
   },
   "brand": {
-    "logo": "assets/vits-logo.png",
+    "logo": "assets/vits-logo.webp",
     "name": "Vit's Noodles",
     "legal": "VIT Makanan (K.L.) Sdn. Bhd.",
     "city": "Kuala Lumpur, Malaysia"
@@ -215,7 +215,7 @@
       "title": "A seasoning kitchen, not just a noodle line",
       "body": "Most factories make noodles. Few can develop the taste that goes on them. Our kitchen speaks curry, tom yam, rendang and white pepper, so your seasoning is built here, not bought in.",
       "body2": "Fried and air-dried lines run side by side: a value pillow pack and a trans-fat-free kraft carton from one building.",
-      "image": "assets/hf-factory-line.jpg"
+      "image": "assets/hf-factory-line.webp"
     },
     "cta": {
       "title": "Tell us what your market wants",
@@ -288,8 +288,8 @@
         "year": "1975",
         "body": "Noodles begin in Kuala Lumpur. The phoenix goes on the first wrapper.",
         "flag": "",
-        "image": "assets/col-1975-a.jpg",
-        "print": "assets/col-1975-b.jpg",
+        "image": "assets/col-1975-a.webp",
+        "print": "assets/col-1975-b.webp",
         "cap": "Kuala Lumpur, 1975",
         "note": "the first recipe",
         "docCap": "The first account book, kept in pen"
@@ -298,8 +298,8 @@
         "year": "1980",
         "body": "JAKIM halal. 46 years unbroken, doors open across the Gulf.",
         "flag": "",
-        "image": "assets/col-1980-a.jpg",
-        "print": "assets/col-1980-b.jpg",
+        "image": "assets/col-1980-a.webp",
+        "print": "assets/col-1980-b.webp",
         "cap": "The certificate, 1980",
         "note": "46 yrs",
         "docCap": "JAKIM MS 1500, first issued 1980"
@@ -308,8 +308,8 @@
         "year": "70%",
         "body": "Of what leaves the plant is the plain noodle base. Home first, always.",
         "flag": "",
-        "image": "assets/col-home-a.jpg",
-        "print": "assets/col-home-b.jpg",
+        "image": "assets/col-home-a.webp",
+        "print": "assets/col-home-b.webp",
         "cap": "Home kitchens",
         "note": "seven of every ten packs",
         "docCap": "A sundry shop docket, one line ringed"
@@ -318,8 +318,8 @@
         "year": "30 years",
         "body": "Of export. On shelves in 30+ countries today.",
         "flag": "",
-        "image": "assets/col-export-a.jpg",
-        "print": "assets/col-export-b.jpg",
+        "image": "assets/col-export-a.webp",
+        "print": "assets/col-export-b.webp",
         "cap": "Port Klang, export",
         "docCap": "Port Klang to Jebel Ali, carbon copy"
       },
@@ -327,8 +327,8 @@
         "year": "4 shows",
         "body": "A year on the circuit. Dubai, the United States, Bangkok, the UK.",
         "flag": "",
-        "image": "assets/col-shows-a.jpg",
-        "print": "assets/col-shows-b.jpg",
+        "image": "assets/col-shows-a.webp",
+        "print": "assets/col-shows-b.webp",
         "cap": "Gulfood, Dubai",
         "docCap": "The stand list, ticked in ballpoint"
       },
@@ -336,14 +336,14 @@
         "year": "2026",
         "body": "51 years, one recipe. The same yellow pack, now on shelves in 30+ countries.",
         "flag": "",
-        "image": "assets/era/2026-plant.jpg",
-        "print": "assets/ref/real-hand.jpg",
+        "image": "assets/era/2026-plant.webp",
+        "print": "assets/ref/real-hand.webp",
         "cap": "Rawang, today",
         "docCap": ""
       }
     ],
     "footNote": "Dates as published by Vit's. Final verification before anything goes to print or page.",
-    "introImage": "assets/journey-factory.jpg",
+    "introImage": "assets/journey-factory.webp",
     "frameTag": "From the family archive",
     "boardHint": "Scroll through 51 years"
   },
@@ -399,7 +399,7 @@
       "ms": "MI SEGERA"
     },
     "mark": {
-      "image": "assets/vits-logo.png",
+      "image": "assets/vits-logo.webp",
       "chinese": "唯一麵"
     },
     "count": {
