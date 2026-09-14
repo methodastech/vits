@@ -3247,3 +3247,22 @@ body.navOpen .navBurger i{background:var(--red)}
   .bPile>.bEra{width:min(calc(var(--w,10) * 1.62vw),54vw)}
   .bEra .bYear{font-size:clamp(56px,9.6vw,116px)}
 }
+
+/* 14 Sep, Bazil: "overlay cant read" (the callouts, desktop). The stage is one screen tall and
+   the heading takes the top of it, so the left column's three beats get what is left: about 580px
+   at 1687x930, against the ~780px they drew at width-only sizes. The column centres, so the
+   overflow split both ways: beat 1 rode up over "THE PACK" and beat 3's title ran past the
+   stage's clipped foot, which is what showed cut in half over "51 years" on the way out. The
+   heading, icons, titles, body and gaps now take the smaller of their width size and a height
+   size, so three beats fit under the heading on short frames and nothing changes on tall ones.
+   safe centre is the backstop: if a frame is still too short, the column overflows downward
+   only and never onto the heading. */
+@media(min-width:1001px){
+  .anatBig{font-size:clamp(44px,min(7vw,11vh),124px)}
+  .anatCol{gap:clamp(18px,3.4vh,58px);justify-content:safe center;min-height:0}
+  .beat .top{gap:clamp(10px,1.4vh,14px)}
+  .beat .n{font-size:clamp(20px,min(2vw,3.2vh),32px)}
+  .beatIco{width:clamp(30px,min(3.6vw,4.4vh),56px);height:clamp(30px,min(3.6vw,4.4vh),56px)}
+  .beat b{font-size:clamp(20px,min(2.4vw,3.4vh),42px);margin-top:clamp(6px,.9vh,12px)}
+  .beat p{font-size:clamp(14px,min(1.15vw,1.8vh),18px);margin-top:clamp(4px,.7vh,10px);line-height:1.45}
+}

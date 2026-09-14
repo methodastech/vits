@@ -682,13 +682,24 @@
          118 to 39. Both are unclamped now; every plane that carries copy on a scrolling section
          still is. */
       var freePlane=!(el.textContent||'').trim()||!!el.closest('.stage');
-      if((phone||soft)&&!freePlane){
-        var er=el.getBoundingClientRect(), sr2=sec.getBoundingClientRect();
-        var room=Math.max(0,Math.min(er.top-sr2.top, sr2.bottom-er.bottom)-10);
+      /* 14 Sep, Bazil: "TOO CLOSE". Desktop was never clamped: "51 years" (-4, 30px units) starts
+         120px above its rest with 92px to the section top, so it arrived jammed against the red
+         callout stage with the top of the 51 clipped. Desktop copy planes are held to their room
+         too, and keep a clear 56px from the edge rather than the phone's 10.
+         The room is read again on every ScrollTrigger refresh (function values + invalidateOnRefresh),
+         not once at boot: at boot the web fonts and the CMS copy may not have landed, and the
+         heading's box is not yet the one the reader sees. The plane's own current y is taken out
+         of its rect so a refresh mid-travel measures the resting position. */
+      var baseSp=sp, edgeGap=(phone||soft)?10:56;
+      function spNow(){
+        if(freePlane) return baseSp;
+        var er=el.getBoundingClientRect(), sr2=sec.getBoundingClientRect(), cy=parseFloat(gsap.getProperty(el,'y'))||0;
+        var room=Math.max(0,Math.min((er.top-cy)-sr2.top, sr2.bottom-(er.bottom-cy))-edgeGap);
         var maxSp=room/U;
-        if(Math.abs(sp)>maxSp) sp=(sp<0?-1:1)*Math.max(0.6,maxSp);
+        return Math.abs(baseSp)>maxSp ? (baseSp<0?-1:1)*Math.max(0.6,maxSp) : baseSp;
       }
-      var to={y:-sp*U};
+      sp=spNow();
+      var to={y:function(){ return -spNow()*U; }};
       /* 11 Sep: a plane that only translates reads flat. The deepest planes (|speed| >= 3) take
          a whisper of scale with their travel, which is what separates a parallax that feels
          built from one that feels applied. Under a tenth of a per cent per pixel, so nothing
@@ -696,12 +707,12 @@
       if((phone||soft)&&Math.abs(sp)>=3){ to.scale=1+Math.min(0.03,Math.abs(sp)*0.006); gsap.set(el,{transformOrigin:'50% 50%'}); }
       to.ease='none'; to.immediateRender=false;
       to.scrollTrigger={trigger:sec,start:'top bottom',end:'bottom top',scrub:SCRUB,invalidateOnRefresh:true};
-      gsap.fromTo(el, {y:sp*U}, to);
+      gsap.fromTo(el, {y:function(){ return spNow()*U; }}, to);
       /* what this plane was actually GIVEN, after the opt-out, the band's unit and the clamp.
          Walking the page and watching transforms under-samples a plane whose section is eight
          screens tall, so the plan is published instead of inferred. */
       (window.__plxPlan=window.__plxPlan||[]).push({el:el.tagName+'.'+(el.className||'').toString().trim().split(/\s+/)[0],
-        raw:el.getAttribute('data-plx'),m:el.getAttribute('data-plx-m'),sp:+sp.toFixed(2),u:U,travelPx:Math.round(Math.abs(sp)*U*2),clamp:((phone||soft)&&!freePlane)?'clamped':'free'});
+        raw:el.getAttribute('data-plx'),m:el.getAttribute('data-plx-m'),sp:+sp.toFixed(2),u:U,travelPx:Math.round(Math.abs(sp)*U*2),clamp:!freePlane?'clamped':'free'});
     });
   })();
 
