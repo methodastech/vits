@@ -10,7 +10,7 @@
   --cream:#FBF3E2;--cream2:#FBF3E2;--yellow:#FFCB05;--yellow-ink:#EFB905;--red:#D8232A;--red-deep:#A81318;
   --ink:#1A130E;--soft:#5A4F45;--faint:#9A8D80;--kraft:#20150C;--kraft2:#33220F;
   --line:rgba(26,19,14,.14);
-  --barh:52px;
+  --barh:0px;   /* admin workspace bar removed for the public build */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scrollbar-color:var(--red-deep) var(--cream)}
